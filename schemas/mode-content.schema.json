@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vocabulary.local/schemas/mode-content.schema.json",
+  "title": "Vocabulary Mode Content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "modeId",
+    "displayName",
+    "audience",
+    "tier",
+    "gradeBand",
+    "rules",
+    "questions",
+    "metadata"
+  ],
+  "properties": {
+    "modeId": {
+      "type": "string",
+      "enum": [
+        "kids_easy",
+        "kids_middle",
+        "kids_advanced",
+        "adult_elementary",
+        "adult_intermediate",
+        "adult_advanced"
+      ]
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience": {
+      "type": "string",
+      "enum": ["kids", "adult"]
+    },
+    "tier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gradeBand": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minWordLength", "maxWordLength", "allowedQuestionTypes"],
+      "properties": {
+        "minWordLength": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxWordLength": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "allowedQuestionTypes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["guess_word", "meaning_match", "fill_gap"]
+          }
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "prompt",
+          "word",
+          "phonetic",
+          "definition",
+          "sentence",
+          "options",
+          "correctOptionIndex"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": ["guess_word", "meaning_match", "fill_gap"]
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "word": {
+            "type": "string",
+            "minLength": 1
+          },
+          "phonetic": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sentence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "options": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "correctOptionIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "generatedAt", "questionCount", "wordCount"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "questionCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "wordCount": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

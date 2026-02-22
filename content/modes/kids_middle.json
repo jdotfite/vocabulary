@@ -1,0 +1,168 @@
+{
+  "modeId": "kids_middle",
+  "displayName": "Kids Middle",
+  "audience": "kids",
+  "tier": "middle",
+  "gradeBand": "2-3",
+  "rules": {
+    "minWordLength": 4,
+    "maxWordLength": 5,
+    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+  },
+  "questions": [
+    {
+      "id": "kids_middle_q01",
+      "type": "guess_word",
+      "prompt": "A round fruit that can be red or green.",
+      "word": "apple",
+      "phonetic": "ap-uhl",
+      "definition": "A round fruit that can be red or green.",
+      "sentence": "I packed an apple for lunch.",
+      "options": ["apple", "chair", "cloud"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_middle_q02",
+      "type": "meaning_match",
+      "prompt": "chair",
+      "word": "chair",
+      "phonetic": "chair",
+      "definition": "A seat for one person.",
+      "sentence": "Please pull up a chair.",
+      "options": [
+        "A white or gray shape in the sky.",
+        "A seat for one person.",
+        "A happy look on your face."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_middle_q03",
+      "type": "fill_gap",
+      "prompt": "A dark _____ covered the sun.",
+      "word": "cloud",
+      "phonetic": "klowd",
+      "definition": "A white or gray shape in the sky.",
+      "sentence": "A dark cloud covered the sun.",
+      "options": ["smile", "river", "cloud"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_middle_q04",
+      "type": "guess_word",
+      "prompt": "A happy look on your face.",
+      "word": "smile",
+      "phonetic": "smyl",
+      "definition": "A happy look on your face.",
+      "sentence": "Her smile made me laugh.",
+      "options": ["smile", "river", "train"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_middle_q05",
+      "type": "meaning_match",
+      "prompt": "river",
+      "word": "river",
+      "phonetic": "riv-er",
+      "definition": "A large stream of flowing water.",
+      "sentence": "We skipped stones in the river.",
+      "options": [
+        "A long vehicle that moves on tracks.",
+        "A large stream of flowing water.",
+        "Brightness that helps us see."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_middle_q06",
+      "type": "fill_gap",
+      "prompt": "The _____ arrived on time.",
+      "word": "train",
+      "phonetic": "trayn",
+      "definition": "A long vehicle that moves on tracks.",
+      "sentence": "The train arrived on time.",
+      "options": ["light", "dance", "train"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_middle_q07",
+      "type": "guess_word",
+      "prompt": "Brightness that helps us see.",
+      "word": "light",
+      "phonetic": "lyt",
+      "definition": "Brightness that helps us see.",
+      "sentence": "Turn on the light in the hall.",
+      "options": ["light", "dance", "story"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_middle_q08",
+      "type": "meaning_match",
+      "prompt": "dance",
+      "word": "dance",
+      "phonetic": "dans",
+      "definition": "To move your body to music.",
+      "sentence": "We dance at the party.",
+      "options": [
+        "A tale about people or events.",
+        "To move your body to music.",
+        "A living thing that grows in soil."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_middle_q09",
+      "type": "fill_gap",
+      "prompt": "Grandma read a _____ before bed.",
+      "word": "story",
+      "phonetic": "stor-ee",
+      "definition": "A tale about people or events.",
+      "sentence": "Grandma read a story before bed.",
+      "options": ["plant", "bread", "story"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_middle_q10",
+      "type": "guess_word",
+      "prompt": "A living thing that grows in soil.",
+      "word": "plant",
+      "phonetic": "plant",
+      "definition": "A living thing that grows in soil.",
+      "sentence": "The plant needs water each day.",
+      "options": ["plant", "bread", "happy"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_middle_q11",
+      "type": "meaning_match",
+      "prompt": "bread",
+      "word": "bread",
+      "phonetic": "bred",
+      "definition": "A baked food made from flour.",
+      "sentence": "Fresh bread smells great.",
+      "options": [
+        "Feeling joy or pleasure.",
+        "A baked food made from flour.",
+        "A round fruit that can be red or green."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_middle_q12",
+      "type": "fill_gap",
+      "prompt": "I feel _____ when we play outside.",
+      "word": "happy",
+      "phonetic": "hap-ee",
+      "definition": "Feeling joy or pleasure.",
+      "sentence": "I feel happy when we play outside.",
+      "options": ["apple", "chair", "happy"],
+      "correctOptionIndex": 2
+    }
+  ],
+  "metadata": {
+    "source": "seed_word_banks",
+    "generatedAt": "2026-02-22T18:44:32.269Z",
+    "questionCount": 12,
+    "wordCount": 12
+  }
+}

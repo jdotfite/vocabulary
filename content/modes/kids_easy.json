@@ -1,0 +1,168 @@
+{
+  "modeId": "kids_easy",
+  "displayName": "Kids Easy",
+  "audience": "kids",
+  "tier": "easy",
+  "gradeBand": "K-1",
+  "rules": {
+    "minWordLength": 3,
+    "maxWordLength": 3,
+    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+  },
+  "questions": [
+    {
+      "id": "kids_easy_q01",
+      "type": "guess_word",
+      "prompt": "A small pet animal that says meow.",
+      "word": "cat",
+      "phonetic": "kat",
+      "definition": "A small pet animal that says meow.",
+      "sentence": "The cat naps on the rug.",
+      "options": ["cat", "dog", "sun"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_easy_q02",
+      "type": "meaning_match",
+      "prompt": "dog",
+      "word": "dog",
+      "phonetic": "dawg",
+      "definition": "A pet animal that can bark.",
+      "sentence": "My dog runs to the gate.",
+      "options": [
+        "The bright star that gives us light.",
+        "A pet animal that can bark.",
+        "Something you wear on your head."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_easy_q03",
+      "type": "fill_gap",
+      "prompt": "The ___ is warm at noon.",
+      "word": "sun",
+      "phonetic": "suhn",
+      "definition": "The bright star that gives us light.",
+      "sentence": "The sun is warm at noon.",
+      "options": ["hat", "bed", "sun"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_easy_q04",
+      "type": "guess_word",
+      "prompt": "Something you wear on your head.",
+      "word": "hat",
+      "phonetic": "hat",
+      "definition": "Something you wear on your head.",
+      "sentence": "I wear a hat in the rain.",
+      "options": ["hat", "bed", "map"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_easy_q05",
+      "type": "meaning_match",
+      "prompt": "bed",
+      "word": "bed",
+      "phonetic": "bed",
+      "definition": "A place where you sleep.",
+      "sentence": "I jump into bed at night.",
+      "options": [
+        "A picture that shows where places are.",
+        "A place where you sleep.",
+        "To move fast on your feet."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_easy_q06",
+      "type": "fill_gap",
+      "prompt": "We use a ___ to find the park.",
+      "word": "map",
+      "phonetic": "map",
+      "definition": "A picture that shows where places are.",
+      "sentence": "We use a map to find the park.",
+      "options": ["run", "cup", "map"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_easy_q07",
+      "type": "guess_word",
+      "prompt": "To move fast on your feet.",
+      "word": "run",
+      "phonetic": "ruhn",
+      "definition": "To move fast on your feet.",
+      "sentence": "I run across the grass.",
+      "options": ["run", "cup", "pen"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_easy_q08",
+      "type": "meaning_match",
+      "prompt": "cup",
+      "word": "cup",
+      "phonetic": "kuhp",
+      "definition": "A small container for a drink.",
+      "sentence": "The cup is full of milk.",
+      "options": [
+        "A tool used to write words.",
+        "A small container for a drink.",
+        "A farm animal with a curly tail."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_easy_q09",
+      "type": "fill_gap",
+      "prompt": "I sign my name with a ___.",
+      "word": "pen",
+      "phonetic": "pen",
+      "definition": "A tool used to write words.",
+      "sentence": "I sign my name with a pen.",
+      "options": ["pig", "bus", "pen"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_easy_q10",
+      "type": "guess_word",
+      "prompt": "A farm animal with a curly tail.",
+      "word": "pig",
+      "phonetic": "pig",
+      "definition": "A farm animal with a curly tail.",
+      "sentence": "The pig splashes in mud.",
+      "options": ["pig", "bus", "jam"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_easy_q11",
+      "type": "meaning_match",
+      "prompt": "bus",
+      "word": "bus",
+      "phonetic": "buhs",
+      "definition": "A big vehicle that carries many people.",
+      "sentence": "The bus stops near my house.",
+      "options": [
+        "A sweet fruit spread for bread.",
+        "A big vehicle that carries many people.",
+        "A small pet animal that says meow."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_easy_q12",
+      "type": "fill_gap",
+      "prompt": "I put ___ on toast.",
+      "word": "jam",
+      "phonetic": "jam",
+      "definition": "A sweet fruit spread for bread.",
+      "sentence": "I put jam on toast.",
+      "options": ["cat", "dog", "jam"],
+      "correctOptionIndex": 2
+    }
+  ],
+  "metadata": {
+    "source": "seed_word_banks",
+    "generatedAt": "2026-02-22T18:44:32.268Z",
+    "questionCount": 12,
+    "wordCount": 12
+  }
+}

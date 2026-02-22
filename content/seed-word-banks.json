@@ -1,0 +1,446 @@
+{
+  "kids_easy": [
+    {
+      "word": "cat",
+      "definition": "A small pet animal that says meow.",
+      "sentence": "The cat naps on the rug.",
+      "phonetic": "kat"
+    },
+    {
+      "word": "dog",
+      "definition": "A pet animal that can bark.",
+      "sentence": "My dog runs to the gate.",
+      "phonetic": "dawg"
+    },
+    {
+      "word": "sun",
+      "definition": "The bright star that gives us light.",
+      "sentence": "The sun is warm at noon.",
+      "phonetic": "suhn"
+    },
+    {
+      "word": "hat",
+      "definition": "Something you wear on your head.",
+      "sentence": "I wear a hat in the rain.",
+      "phonetic": "hat"
+    },
+    {
+      "word": "bed",
+      "definition": "A place where you sleep.",
+      "sentence": "I jump into bed at night.",
+      "phonetic": "bed"
+    },
+    {
+      "word": "map",
+      "definition": "A picture that shows where places are.",
+      "sentence": "We use a map to find the park.",
+      "phonetic": "map"
+    },
+    {
+      "word": "run",
+      "definition": "To move fast on your feet.",
+      "sentence": "I run across the grass.",
+      "phonetic": "ruhn"
+    },
+    {
+      "word": "cup",
+      "definition": "A small container for a drink.",
+      "sentence": "The cup is full of milk.",
+      "phonetic": "kuhp"
+    },
+    {
+      "word": "pen",
+      "definition": "A tool used to write words.",
+      "sentence": "I sign my name with a pen.",
+      "phonetic": "pen"
+    },
+    {
+      "word": "pig",
+      "definition": "A farm animal with a curly tail.",
+      "sentence": "The pig splashes in mud.",
+      "phonetic": "pig"
+    },
+    {
+      "word": "bus",
+      "definition": "A big vehicle that carries many people.",
+      "sentence": "The bus stops near my house.",
+      "phonetic": "buhs"
+    },
+    {
+      "word": "jam",
+      "definition": "A sweet fruit spread for bread.",
+      "sentence": "I put jam on toast.",
+      "phonetic": "jam"
+    }
+  ],
+  "kids_middle": [
+    {
+      "word": "apple",
+      "definition": "A round fruit that can be red or green.",
+      "sentence": "I packed an apple for lunch.",
+      "phonetic": "ap-uhl"
+    },
+    {
+      "word": "chair",
+      "definition": "A seat for one person.",
+      "sentence": "Please pull up a chair.",
+      "phonetic": "chair"
+    },
+    {
+      "word": "cloud",
+      "definition": "A white or gray shape in the sky.",
+      "sentence": "A dark cloud covered the sun.",
+      "phonetic": "klowd"
+    },
+    {
+      "word": "smile",
+      "definition": "A happy look on your face.",
+      "sentence": "Her smile made me laugh.",
+      "phonetic": "smyl"
+    },
+    {
+      "word": "river",
+      "definition": "A large stream of flowing water.",
+      "sentence": "We skipped stones in the river.",
+      "phonetic": "riv-er"
+    },
+    {
+      "word": "train",
+      "definition": "A long vehicle that moves on tracks.",
+      "sentence": "The train arrived on time.",
+      "phonetic": "trayn"
+    },
+    {
+      "word": "light",
+      "definition": "Brightness that helps us see.",
+      "sentence": "Turn on the light in the hall.",
+      "phonetic": "lyt"
+    },
+    {
+      "word": "dance",
+      "definition": "To move your body to music.",
+      "sentence": "We dance at the party.",
+      "phonetic": "dans"
+    },
+    {
+      "word": "story",
+      "definition": "A tale about people or events.",
+      "sentence": "Grandma read a story before bed.",
+      "phonetic": "stor-ee"
+    },
+    {
+      "word": "plant",
+      "definition": "A living thing that grows in soil.",
+      "sentence": "The plant needs water each day.",
+      "phonetic": "plant"
+    },
+    {
+      "word": "bread",
+      "definition": "A baked food made from flour.",
+      "sentence": "Fresh bread smells great.",
+      "phonetic": "bred"
+    },
+    {
+      "word": "happy",
+      "definition": "Feeling joy or pleasure.",
+      "sentence": "I feel happy when we play outside.",
+      "phonetic": "hap-ee"
+    }
+  ],
+  "kids_advanced": [
+    {
+      "word": "bright",
+      "definition": "Giving off a lot of light or looking smart.",
+      "sentence": "The bright lamp lit the room.",
+      "phonetic": "bryt"
+    },
+    {
+      "word": "brave",
+      "definition": "Showing courage in a hard moment.",
+      "sentence": "She was brave during the storm.",
+      "phonetic": "brayv"
+    },
+    {
+      "word": "puzzle",
+      "definition": "A game where pieces fit together.",
+      "sentence": "We finished the puzzle at the table.",
+      "phonetic": "puhz-uhl"
+    },
+    {
+      "word": "gentle",
+      "definition": "Kind and careful, not rough.",
+      "sentence": "Use a gentle touch with the kitten.",
+      "phonetic": "jen-tl"
+    },
+    {
+      "word": "travel",
+      "definition": "To go from one place to another.",
+      "sentence": "We travel to see our cousins.",
+      "phonetic": "trav-uhl"
+    },
+    {
+      "word": "jungle",
+      "definition": "A thick forest in a warm place.",
+      "sentence": "Many animals live in the jungle.",
+      "phonetic": "juhng-guhl"
+    },
+    {
+      "word": "whisper",
+      "definition": "To speak very softly.",
+      "sentence": "Please whisper in the library.",
+      "phonetic": "whis-per"
+    },
+    {
+      "word": "curious",
+      "definition": "Wanting to learn or know more.",
+      "sentence": "He is curious about space.",
+      "phonetic": "kyur-ee-us"
+    },
+    {
+      "word": "balance",
+      "definition": "To stay steady without falling.",
+      "sentence": "I can balance on one foot.",
+      "phonetic": "bal-uhns"
+    },
+    {
+      "word": "harvest",
+      "definition": "The season or act of gathering crops.",
+      "sentence": "Farmers harvest corn in the fall.",
+      "phonetic": "har-vist"
+    },
+    {
+      "word": "sparkle",
+      "definition": "To shine with small flashes of light.",
+      "sentence": "The stars sparkle at night.",
+      "phonetic": "spar-kuhl"
+    },
+    {
+      "word": "explore",
+      "definition": "To travel and learn about a place.",
+      "sentence": "We explore the trail after lunch.",
+      "phonetic": "ik-splor"
+    }
+  ],
+  "adult_elementary": [
+    {
+      "word": "routine",
+      "definition": "A regular way of doing things.",
+      "sentence": "I follow a morning routine before work.",
+      "phonetic": "roo-teen"
+    },
+    {
+      "word": "compare",
+      "definition": "To look at two things and notice differences and similarities.",
+      "sentence": "We compare prices before buying.",
+      "phonetic": "kuhm-pair"
+    },
+    {
+      "word": "include",
+      "definition": "To have something as part of a whole.",
+      "sentence": "The fee will include all materials.",
+      "phonetic": "in-klood"
+    },
+    {
+      "word": "improve",
+      "definition": "To make something better.",
+      "sentence": "Practice can improve your writing.",
+      "phonetic": "im-proov"
+    },
+    {
+      "word": "method",
+      "definition": "A planned way to do a task.",
+      "sentence": "This method saves time.",
+      "phonetic": "meth-uhd"
+    },
+    {
+      "word": "feature",
+      "definition": "An important part or function of something.",
+      "sentence": "Search is a useful feature in the app.",
+      "phonetic": "fee-cher"
+    },
+    {
+      "word": "option",
+      "definition": "One possible choice.",
+      "sentence": "You have the option to cancel anytime.",
+      "phonetic": "op-shuhn"
+    },
+    {
+      "word": "budget",
+      "definition": "A plan for spending money.",
+      "sentence": "We made a budget for the trip.",
+      "phonetic": "buh-jit"
+    },
+    {
+      "word": "measure",
+      "definition": "To find the size, amount, or degree of something.",
+      "sentence": "Please measure the width of the desk.",
+      "phonetic": "meh-zher"
+    },
+    {
+      "word": "context",
+      "definition": "The situation around something that helps explain it.",
+      "sentence": "The quote makes sense in context.",
+      "phonetic": "kon-tekst"
+    },
+    {
+      "word": "summary",
+      "definition": "A short version of the main points.",
+      "sentence": "He wrote a summary of the article.",
+      "phonetic": "suhm-uh-ree"
+    },
+    {
+      "word": "benefit",
+      "definition": "A good result or advantage.",
+      "sentence": "Daily reading is a major benefit for students.",
+      "phonetic": "ben-uh-fit"
+    }
+  ],
+  "adult_intermediate": [
+    {
+      "word": "accurate",
+      "definition": "Correct and free from mistakes.",
+      "sentence": "Please provide accurate numbers in the report.",
+      "phonetic": "ak-yer-it"
+    },
+    {
+      "word": "dynamic",
+      "definition": "Always changing, active, and energetic.",
+      "sentence": "The market is dynamic this quarter.",
+      "phonetic": "dye-nam-ik"
+    },
+    {
+      "word": "analyze",
+      "definition": "To examine something carefully in detail.",
+      "sentence": "We analyze data before making a decision.",
+      "phonetic": "an-uh-lyz"
+    },
+    {
+      "word": "regulate",
+      "definition": "To control something by rules or limits.",
+      "sentence": "The agency can regulate harmful products.",
+      "phonetic": "reg-yuh-layt"
+    },
+    {
+      "word": "sustain",
+      "definition": "To keep something going over time.",
+      "sentence": "Small habits can sustain progress.",
+      "phonetic": "suh-stayn"
+    },
+    {
+      "word": "logical",
+      "definition": "Reasonable and based on clear thinking.",
+      "sentence": "Her plan is logical and easy to follow.",
+      "phonetic": "loj-i-kuhl"
+    },
+    {
+      "word": "contrast",
+      "definition": "A clear difference between things.",
+      "sentence": "The contrast between both designs is obvious.",
+      "phonetic": "kon-trast"
+    },
+    {
+      "word": "optimize",
+      "definition": "To make something as effective as possible.",
+      "sentence": "We optimize the page for faster loading.",
+      "phonetic": "op-tuh-myz"
+    },
+    {
+      "word": "interpret",
+      "definition": "To explain the meaning of something.",
+      "sentence": "Experts interpret the test results differently.",
+      "phonetic": "in-tur-prit"
+    },
+    {
+      "word": "flexible",
+      "definition": "Able to change easily when needed.",
+      "sentence": "A flexible schedule helps busy parents.",
+      "phonetic": "flek-suh-buhl"
+    },
+    {
+      "word": "reliable",
+      "definition": "Able to be trusted to work well every time.",
+      "sentence": "Choose a reliable source for medical facts.",
+      "phonetic": "ri-ly-uh-buhl"
+    },
+    {
+      "word": "strategy",
+      "definition": "A plan designed to achieve a goal.",
+      "sentence": "Their strategy improved team performance.",
+      "phonetic": "strat-uh-jee"
+    }
+  ],
+  "adult_advanced": [
+    {
+      "word": "ubiquitous",
+      "definition": "Present or found almost everywhere.",
+      "sentence": "Smartphones are ubiquitous in modern cities.",
+      "phonetic": "yoo-bik-wi-tuhs"
+    },
+    {
+      "word": "pragmatic",
+      "definition": "Focused on practical results rather than theory alone.",
+      "sentence": "She offered a pragmatic solution to the conflict.",
+      "phonetic": "prag-mat-ik"
+    },
+    {
+      "word": "meticulous",
+      "definition": "Very careful and precise about details.",
+      "sentence": "His meticulous notes made auditing easier.",
+      "phonetic": "muh-tik-yuh-luhs"
+    },
+    {
+      "word": "mitigate",
+      "definition": "To reduce the seriousness of something harmful.",
+      "sentence": "Early warnings can mitigate flood damage.",
+      "phonetic": "mit-uh-gayt"
+    },
+    {
+      "word": "eloquent",
+      "definition": "Fluent and persuasive in speaking or writing.",
+      "sentence": "The speaker gave an eloquent closing argument.",
+      "phonetic": "el-uh-kwuhnt"
+    },
+    {
+      "word": "resilient",
+      "definition": "Able to recover quickly from difficulty.",
+      "sentence": "Resilient teams adapt to sudden change.",
+      "phonetic": "ri-zil-yuhnt"
+    },
+    {
+      "word": "transient",
+      "definition": "Lasting only a short time.",
+      "sentence": "The market shock was transient.",
+      "phonetic": "tran-zee-uhnt"
+    },
+    {
+      "word": "paradigm",
+      "definition": "A model or pattern for how something is understood.",
+      "sentence": "Cloud computing changed the software paradigm.",
+      "phonetic": "pair-uh-dym"
+    },
+    {
+      "word": "synthesis",
+      "definition": "A combination of ideas into a coherent whole.",
+      "sentence": "Her paper offered a synthesis of prior research.",
+      "phonetic": "sin-thuh-sis"
+    },
+    {
+      "word": "ambiguous",
+      "definition": "Open to more than one interpretation.",
+      "sentence": "The contract language was ambiguous.",
+      "phonetic": "am-big-yoo-uhs"
+    },
+    {
+      "word": "formidable",
+      "definition": "Very impressive, powerful, or difficult to deal with.",
+      "sentence": "They faced a formidable legal challenge.",
+      "phonetic": "for-mi-duh-buhl"
+    },
+    {
+      "word": "articulate",
+      "definition": "Able to express ideas clearly and effectively.",
+      "sentence": "She is articulate in both debate and writing.",
+      "phonetic": "ar-tik-yuh-lit"
+    }
+  ]
+}

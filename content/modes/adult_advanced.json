@@ -1,0 +1,168 @@
+{
+  "modeId": "adult_advanced",
+  "displayName": "Adult Advanced",
+  "audience": "adult",
+  "tier": "advanced",
+  "gradeBand": "Adult",
+  "rules": {
+    "minWordLength": 8,
+    "maxWordLength": 12,
+    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+  },
+  "questions": [
+    {
+      "id": "adult_advanced_q01",
+      "type": "guess_word",
+      "prompt": "Present or found almost everywhere.",
+      "word": "ubiquitous",
+      "phonetic": "yoo-bik-wi-tuhs",
+      "definition": "Present or found almost everywhere.",
+      "sentence": "Smartphones are ubiquitous in modern cities.",
+      "options": ["ubiquitous", "pragmatic", "meticulous"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q02",
+      "type": "meaning_match",
+      "prompt": "pragmatic",
+      "word": "pragmatic",
+      "phonetic": "prag-mat-ik",
+      "definition": "Focused on practical results rather than theory alone.",
+      "sentence": "She offered a pragmatic solution to the conflict.",
+      "options": [
+        "Very careful and precise about details.",
+        "Focused on practical results rather than theory alone.",
+        "To reduce the seriousness of something harmful."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q03",
+      "type": "fill_gap",
+      "prompt": "His __________ notes made auditing easier.",
+      "word": "meticulous",
+      "phonetic": "muh-tik-yuh-luhs",
+      "definition": "Very careful and precise about details.",
+      "sentence": "His meticulous notes made auditing easier.",
+      "options": ["mitigate", "eloquent", "meticulous"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q04",
+      "type": "guess_word",
+      "prompt": "To reduce the seriousness of something harmful.",
+      "word": "mitigate",
+      "phonetic": "mit-uh-gayt",
+      "definition": "To reduce the seriousness of something harmful.",
+      "sentence": "Early warnings can mitigate flood damage.",
+      "options": ["mitigate", "eloquent", "resilient"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q05",
+      "type": "meaning_match",
+      "prompt": "eloquent",
+      "word": "eloquent",
+      "phonetic": "el-uh-kwuhnt",
+      "definition": "Fluent and persuasive in speaking or writing.",
+      "sentence": "The speaker gave an eloquent closing argument.",
+      "options": [
+        "Able to recover quickly from difficulty.",
+        "Fluent and persuasive in speaking or writing.",
+        "Lasting only a short time."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q06",
+      "type": "fill_gap",
+      "prompt": "_________ teams adapt to sudden change.",
+      "word": "resilient",
+      "phonetic": "ri-zil-yuhnt",
+      "definition": "Able to recover quickly from difficulty.",
+      "sentence": "Resilient teams adapt to sudden change.",
+      "options": ["transient", "paradigm", "resilient"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q07",
+      "type": "guess_word",
+      "prompt": "Lasting only a short time.",
+      "word": "transient",
+      "phonetic": "tran-zee-uhnt",
+      "definition": "Lasting only a short time.",
+      "sentence": "The market shock was transient.",
+      "options": ["transient", "paradigm", "synthesis"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q08",
+      "type": "meaning_match",
+      "prompt": "paradigm",
+      "word": "paradigm",
+      "phonetic": "pair-uh-dym",
+      "definition": "A model or pattern for how something is understood.",
+      "sentence": "Cloud computing changed the software paradigm.",
+      "options": [
+        "A combination of ideas into a coherent whole.",
+        "A model or pattern for how something is understood.",
+        "Open to more than one interpretation."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q09",
+      "type": "fill_gap",
+      "prompt": "Her paper offered a _________ of prior research.",
+      "word": "synthesis",
+      "phonetic": "sin-thuh-sis",
+      "definition": "A combination of ideas into a coherent whole.",
+      "sentence": "Her paper offered a synthesis of prior research.",
+      "options": ["ambiguous", "formidable", "synthesis"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q10",
+      "type": "guess_word",
+      "prompt": "Open to more than one interpretation.",
+      "word": "ambiguous",
+      "phonetic": "am-big-yoo-uhs",
+      "definition": "Open to more than one interpretation.",
+      "sentence": "The contract language was ambiguous.",
+      "options": ["ambiguous", "formidable", "articulate"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q11",
+      "type": "meaning_match",
+      "prompt": "formidable",
+      "word": "formidable",
+      "phonetic": "for-mi-duh-buhl",
+      "definition": "Very impressive, powerful, or difficult to deal with.",
+      "sentence": "They faced a formidable legal challenge.",
+      "options": [
+        "Able to express ideas clearly and effectively.",
+        "Very impressive, powerful, or difficult to deal with.",
+        "Present or found almost everywhere."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q12",
+      "type": "fill_gap",
+      "prompt": "She is __________ in both debate and writing.",
+      "word": "articulate",
+      "phonetic": "ar-tik-yuh-lit",
+      "definition": "Able to express ideas clearly and effectively.",
+      "sentence": "She is articulate in both debate and writing.",
+      "options": ["ubiquitous", "pragmatic", "articulate"],
+      "correctOptionIndex": 2
+    }
+  ],
+  "metadata": {
+    "source": "seed_word_banks",
+    "generatedAt": "2026-02-22T18:44:32.273Z",
+    "questionCount": 12,
+    "wordCount": 12
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "modeId": "kids_advanced",
+  "displayName": "Kids Advanced",
+  "audience": "kids",
+  "tier": "advanced",
+  "gradeBand": "4-5",
+  "rules": {
+    "minWordLength": 5,
+    "maxWordLength": 7,
+    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+  },
+  "questions": [
+    {
+      "id": "kids_advanced_q01",
+      "type": "guess_word",
+      "prompt": "Giving off a lot of light or looking smart.",
+      "word": "bright",
+      "phonetic": "bryt",
+      "definition": "Giving off a lot of light or looking smart.",
+      "sentence": "The bright lamp lit the room.",
+      "options": ["bright", "brave", "puzzle"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q02",
+      "type": "meaning_match",
+      "prompt": "brave",
+      "word": "brave",
+      "phonetic": "brayv",
+      "definition": "Showing courage in a hard moment.",
+      "sentence": "She was brave during the storm.",
+      "options": [
+        "A game where pieces fit together.",
+        "Showing courage in a hard moment.",
+        "Kind and careful, not rough."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q03",
+      "type": "fill_gap",
+      "prompt": "We finished the ______ at the table.",
+      "word": "puzzle",
+      "phonetic": "puhz-uhl",
+      "definition": "A game where pieces fit together.",
+      "sentence": "We finished the puzzle at the table.",
+      "options": ["gentle", "travel", "puzzle"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q04",
+      "type": "guess_word",
+      "prompt": "Kind and careful, not rough.",
+      "word": "gentle",
+      "phonetic": "jen-tl",
+      "definition": "Kind and careful, not rough.",
+      "sentence": "Use a gentle touch with the kitten.",
+      "options": ["gentle", "travel", "jungle"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q05",
+      "type": "meaning_match",
+      "prompt": "travel",
+      "word": "travel",
+      "phonetic": "trav-uhl",
+      "definition": "To go from one place to another.",
+      "sentence": "We travel to see our cousins.",
+      "options": [
+        "A thick forest in a warm place.",
+        "To go from one place to another.",
+        "To speak very softly."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q06",
+      "type": "fill_gap",
+      "prompt": "Many animals live in the ______.",
+      "word": "jungle",
+      "phonetic": "juhng-guhl",
+      "definition": "A thick forest in a warm place.",
+      "sentence": "Many animals live in the jungle.",
+      "options": ["whisper", "curious", "jungle"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q07",
+      "type": "guess_word",
+      "prompt": "To speak very softly.",
+      "word": "whisper",
+      "phonetic": "whis-per",
+      "definition": "To speak very softly.",
+      "sentence": "Please whisper in the library.",
+      "options": ["whisper", "curious", "balance"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q08",
+      "type": "meaning_match",
+      "prompt": "curious",
+      "word": "curious",
+      "phonetic": "kyur-ee-us",
+      "definition": "Wanting to learn or know more.",
+      "sentence": "He is curious about space.",
+      "options": [
+        "To stay steady without falling.",
+        "Wanting to learn or know more.",
+        "The season or act of gathering crops."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q09",
+      "type": "fill_gap",
+      "prompt": "I can _______ on one foot.",
+      "word": "balance",
+      "phonetic": "bal-uhns",
+      "definition": "To stay steady without falling.",
+      "sentence": "I can balance on one foot.",
+      "options": ["harvest", "sparkle", "balance"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q10",
+      "type": "guess_word",
+      "prompt": "The season or act of gathering crops.",
+      "word": "harvest",
+      "phonetic": "har-vist",
+      "definition": "The season or act of gathering crops.",
+      "sentence": "Farmers harvest corn in the fall.",
+      "options": ["harvest", "sparkle", "explore"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q11",
+      "type": "meaning_match",
+      "prompt": "sparkle",
+      "word": "sparkle",
+      "phonetic": "spar-kuhl",
+      "definition": "To shine with small flashes of light.",
+      "sentence": "The stars sparkle at night.",
+      "options": [
+        "To travel and learn about a place.",
+        "To shine with small flashes of light.",
+        "Giving off a lot of light or looking smart."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q12",
+      "type": "fill_gap",
+      "prompt": "We _______ the trail after lunch.",
+      "word": "explore",
+      "phonetic": "ik-splor",
+      "definition": "To travel and learn about a place.",
+      "sentence": "We explore the trail after lunch.",
+      "options": ["bright", "brave", "explore"],
+      "correctOptionIndex": 2
+    }
+  ],
+  "metadata": {
+    "source": "seed_word_banks",
+    "generatedAt": "2026-02-22T18:44:32.270Z",
+    "questionCount": 12,
+    "wordCount": 12
+  }
+}

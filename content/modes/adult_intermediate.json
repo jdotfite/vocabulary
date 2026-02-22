@@ -1,0 +1,168 @@
+{
+  "modeId": "adult_intermediate",
+  "displayName": "Adult Intermediate",
+  "audience": "adult",
+  "tier": "intermediate",
+  "gradeBand": "Adult",
+  "rules": {
+    "minWordLength": 7,
+    "maxWordLength": 9,
+    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+  },
+  "questions": [
+    {
+      "id": "adult_intermediate_q01",
+      "type": "guess_word",
+      "prompt": "Correct and free from mistakes.",
+      "word": "accurate",
+      "phonetic": "ak-yer-it",
+      "definition": "Correct and free from mistakes.",
+      "sentence": "Please provide accurate numbers in the report.",
+      "options": ["accurate", "dynamic", "analyze"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q02",
+      "type": "meaning_match",
+      "prompt": "dynamic",
+      "word": "dynamic",
+      "phonetic": "dye-nam-ik",
+      "definition": "Always changing, active, and energetic.",
+      "sentence": "The market is dynamic this quarter.",
+      "options": [
+        "To examine something carefully in detail.",
+        "Always changing, active, and energetic.",
+        "To control something by rules or limits."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q03",
+      "type": "fill_gap",
+      "prompt": "We _______ data before making a decision.",
+      "word": "analyze",
+      "phonetic": "an-uh-lyz",
+      "definition": "To examine something carefully in detail.",
+      "sentence": "We analyze data before making a decision.",
+      "options": ["regulate", "sustain", "analyze"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q04",
+      "type": "guess_word",
+      "prompt": "To control something by rules or limits.",
+      "word": "regulate",
+      "phonetic": "reg-yuh-layt",
+      "definition": "To control something by rules or limits.",
+      "sentence": "The agency can regulate harmful products.",
+      "options": ["regulate", "sustain", "logical"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q05",
+      "type": "meaning_match",
+      "prompt": "sustain",
+      "word": "sustain",
+      "phonetic": "suh-stayn",
+      "definition": "To keep something going over time.",
+      "sentence": "Small habits can sustain progress.",
+      "options": [
+        "Reasonable and based on clear thinking.",
+        "To keep something going over time.",
+        "A clear difference between things."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q06",
+      "type": "fill_gap",
+      "prompt": "Her plan is _______ and easy to follow.",
+      "word": "logical",
+      "phonetic": "loj-i-kuhl",
+      "definition": "Reasonable and based on clear thinking.",
+      "sentence": "Her plan is logical and easy to follow.",
+      "options": ["contrast", "optimize", "logical"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q07",
+      "type": "guess_word",
+      "prompt": "A clear difference between things.",
+      "word": "contrast",
+      "phonetic": "kon-trast",
+      "definition": "A clear difference between things.",
+      "sentence": "The contrast between both designs is obvious.",
+      "options": ["contrast", "optimize", "interpret"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q08",
+      "type": "meaning_match",
+      "prompt": "optimize",
+      "word": "optimize",
+      "phonetic": "op-tuh-myz",
+      "definition": "To make something as effective as possible.",
+      "sentence": "We optimize the page for faster loading.",
+      "options": [
+        "To explain the meaning of something.",
+        "To make something as effective as possible.",
+        "Able to change easily when needed."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q09",
+      "type": "fill_gap",
+      "prompt": "Experts _________ the test results differently.",
+      "word": "interpret",
+      "phonetic": "in-tur-prit",
+      "definition": "To explain the meaning of something.",
+      "sentence": "Experts interpret the test results differently.",
+      "options": ["flexible", "reliable", "interpret"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q10",
+      "type": "guess_word",
+      "prompt": "Able to change easily when needed.",
+      "word": "flexible",
+      "phonetic": "flek-suh-buhl",
+      "definition": "Able to change easily when needed.",
+      "sentence": "A flexible schedule helps busy parents.",
+      "options": ["flexible", "reliable", "strategy"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q11",
+      "type": "meaning_match",
+      "prompt": "reliable",
+      "word": "reliable",
+      "phonetic": "ri-ly-uh-buhl",
+      "definition": "Able to be trusted to work well every time.",
+      "sentence": "Choose a reliable source for medical facts.",
+      "options": [
+        "A plan designed to achieve a goal.",
+        "Able to be trusted to work well every time.",
+        "Correct and free from mistakes."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q12",
+      "type": "fill_gap",
+      "prompt": "Their ________ improved team performance.",
+      "word": "strategy",
+      "phonetic": "strat-uh-jee",
+      "definition": "A plan designed to achieve a goal.",
+      "sentence": "Their strategy improved team performance.",
+      "options": ["accurate", "dynamic", "strategy"],
+      "correctOptionIndex": 2
+    }
+  ],
+  "metadata": {
+    "source": "seed_word_banks",
+    "generatedAt": "2026-02-22T18:44:32.272Z",
+    "questionCount": 12,
+    "wordCount": 12
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "modeId": "adult_elementary",
+  "displayName": "Adult Elementary",
+  "audience": "adult",
+  "tier": "elementary",
+  "gradeBand": "Adult",
+  "rules": {
+    "minWordLength": 6,
+    "maxWordLength": 8,
+    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+  },
+  "questions": [
+    {
+      "id": "adult_elementary_q01",
+      "type": "guess_word",
+      "prompt": "A regular way of doing things.",
+      "word": "routine",
+      "phonetic": "roo-teen",
+      "definition": "A regular way of doing things.",
+      "sentence": "I follow a morning routine before work.",
+      "options": ["routine", "compare", "include"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_elementary_q02",
+      "type": "meaning_match",
+      "prompt": "compare",
+      "word": "compare",
+      "phonetic": "kuhm-pair",
+      "definition": "To look at two things and notice differences and similarities.",
+      "sentence": "We compare prices before buying.",
+      "options": [
+        "To have something as part of a whole.",
+        "To look at two things and notice differences and similarities.",
+        "To make something better."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_elementary_q03",
+      "type": "fill_gap",
+      "prompt": "The fee will _______ all materials.",
+      "word": "include",
+      "phonetic": "in-klood",
+      "definition": "To have something as part of a whole.",
+      "sentence": "The fee will include all materials.",
+      "options": ["improve", "method", "include"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_elementary_q04",
+      "type": "guess_word",
+      "prompt": "To make something better.",
+      "word": "improve",
+      "phonetic": "im-proov",
+      "definition": "To make something better.",
+      "sentence": "Practice can improve your writing.",
+      "options": ["improve", "method", "feature"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_elementary_q05",
+      "type": "meaning_match",
+      "prompt": "method",
+      "word": "method",
+      "phonetic": "meth-uhd",
+      "definition": "A planned way to do a task.",
+      "sentence": "This method saves time.",
+      "options": [
+        "An important part or function of something.",
+        "A planned way to do a task.",
+        "One possible choice."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_elementary_q06",
+      "type": "fill_gap",
+      "prompt": "Search is a useful _______ in the app.",
+      "word": "feature",
+      "phonetic": "fee-cher",
+      "definition": "An important part or function of something.",
+      "sentence": "Search is a useful feature in the app.",
+      "options": ["option", "budget", "feature"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_elementary_q07",
+      "type": "guess_word",
+      "prompt": "One possible choice.",
+      "word": "option",
+      "phonetic": "op-shuhn",
+      "definition": "One possible choice.",
+      "sentence": "You have the option to cancel anytime.",
+      "options": ["option", "budget", "measure"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_elementary_q08",
+      "type": "meaning_match",
+      "prompt": "budget",
+      "word": "budget",
+      "phonetic": "buh-jit",
+      "definition": "A plan for spending money.",
+      "sentence": "We made a budget for the trip.",
+      "options": [
+        "To find the size, amount, or degree of something.",
+        "A plan for spending money.",
+        "The situation around something that helps explain it."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_elementary_q09",
+      "type": "fill_gap",
+      "prompt": "Please _______ the width of the desk.",
+      "word": "measure",
+      "phonetic": "meh-zher",
+      "definition": "To find the size, amount, or degree of something.",
+      "sentence": "Please measure the width of the desk.",
+      "options": ["context", "summary", "measure"],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_elementary_q10",
+      "type": "guess_word",
+      "prompt": "The situation around something that helps explain it.",
+      "word": "context",
+      "phonetic": "kon-tekst",
+      "definition": "The situation around something that helps explain it.",
+      "sentence": "The quote makes sense in context.",
+      "options": ["context", "summary", "benefit"],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_elementary_q11",
+      "type": "meaning_match",
+      "prompt": "summary",
+      "word": "summary",
+      "phonetic": "suhm-uh-ree",
+      "definition": "A short version of the main points.",
+      "sentence": "He wrote a summary of the article.",
+      "options": [
+        "A good result or advantage.",
+        "A short version of the main points.",
+        "A regular way of doing things."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_elementary_q12",
+      "type": "fill_gap",
+      "prompt": "Daily reading is a major _______ for students.",
+      "word": "benefit",
+      "phonetic": "ben-uh-fit",
+      "definition": "A good result or advantage.",
+      "sentence": "Daily reading is a major benefit for students.",
+      "options": ["routine", "compare", "benefit"],
+      "correctOptionIndex": 2
+    }
+  ],
+  "metadata": {
+    "source": "seed_word_banks",
+    "generatedAt": "2026-02-22T18:44:32.271Z",
+    "questionCount": 12,
+    "wordCount": 12
+  }
+}
