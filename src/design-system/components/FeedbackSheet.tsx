@@ -12,6 +12,10 @@ export interface FeedbackSheetProps {
   definition: string;
   sentence: string;
   onNext: () => void;
+  isFavorited: boolean;
+  isBookmarked: boolean;
+  onToggleFavorite: () => void;
+  onToggleBookmark: () => void;
 }
 
 function SpeakerIcon(): JSX.Element {
@@ -38,7 +42,11 @@ export function FeedbackSheet({
   word,
   definition,
   sentence,
-  onNext
+  onNext,
+  isFavorited,
+  isBookmarked,
+  onToggleFavorite,
+  onToggleBookmark
 }: FeedbackSheetProps): JSX.Element | null {
   if (!open) return null;
 
@@ -69,6 +77,44 @@ export function FeedbackSheet({
         <div className="flex items-center gap-2">
           <p className="text-2xl font-bold text-text-primary">{word}</p>
           <SpeakerIcon />
+          <div className="ml-auto flex items-center gap-3">
+            <button
+              aria-label={isFavorited ? "Unfavorite word" : "Favorite word"}
+              onClick={onToggleFavorite}
+              type="button"
+            >
+              <svg
+                aria-hidden
+                className={clsx("h-5 w-5", isFavorited ? "text-accent-teal" : "text-text-secondary")}
+                fill={isFavorited ? "currentColor" : "none"}
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </button>
+            <button
+              aria-label={isBookmarked ? "Remove bookmark" : "Bookmark word"}
+              onClick={onToggleBookmark}
+              type="button"
+            >
+              <svg
+                aria-hidden
+                className={clsx("h-5 w-5", isBookmarked ? "text-accent-teal" : "text-text-secondary")}
+                fill={isBookmarked ? "currentColor" : "none"}
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {isCorrect ? (

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Surface } from "@/design-system/primitives/Surface";
 import { formatPracticeDate, getPracticeStatsSnapshot } from "@/lib/practiceStats";
+import { useUserProgress } from "@/lib/userProgressStore";
 
 interface StatTileProps {
   value: number;
@@ -96,6 +97,8 @@ function StatTile({ value, label, icon }: StatTileProps): JSX.Element {
 export function StatsPage(): JSX.Element {
   const navigate = useNavigate();
   const stats = useMemo(() => getPracticeStatsSnapshot(), []);
+  const favoritedCount = useUserProgress((s) => s.favorites.length);
+  const bookmarkedCount = useUserProgress((s) => s.bookmarks.length);
 
   const lastScoreText = stats.lastPractice ? `${stats.lastPractice.score}/${stats.lastPractice.total}` : "0/0";
   const lastDateText = stats.lastPractice ? formatPracticeDate(stats.lastPractice.completedAt) : "No practice yet";
@@ -171,8 +174,8 @@ export function StatsPage(): JSX.Element {
 
       <section className="grid grid-cols-2 gap-3">
         <StatTile icon={<ReadIcon />} label="Read" value={stats.wordsRead} />
-        <StatTile icon={<HeartIcon />} label="Favorited" value={stats.favorited} />
-        <StatTile icon={<BookmarkIcon />} label="Saved" value={stats.saved} />
+        <StatTile icon={<HeartIcon />} label="Favorited" value={favoritedCount} />
+        <StatTile icon={<BookmarkIcon />} label="Saved" value={bookmarkedCount} />
         <StatTile icon={<PracticeIcon />} label="Practices" value={stats.practices} />
       </section>
     </main>

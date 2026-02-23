@@ -7,6 +7,10 @@ export interface ResultsListItemProps {
   sentence: string;
   isCorrect: boolean;
   partOfSpeech?: string;
+  isFavorited: boolean;
+  isBookmarked: boolean;
+  onToggleFavorite: () => void;
+  onToggleBookmark: () => void;
 }
 
 function SpeakerIcon(): JSX.Element {
@@ -27,30 +31,17 @@ function SpeakerIcon(): JSX.Element {
   );
 }
 
-function BookmarkIcon(): JSX.Element {
-  return (
-    <svg
-      aria-hidden
-      className="h-5 w-5 text-text-secondary"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      viewBox="0 0 24 24"
-    >
-      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-    </svg>
-  );
-}
-
 export function ResultsListItem({
   word,
   phonetic,
   definition,
   sentence,
   isCorrect,
-  partOfSpeech
+  partOfSpeech,
+  isFavorited,
+  isBookmarked,
+  onToggleFavorite,
+  onToggleBookmark
 }: ResultsListItemProps): JSX.Element {
   return (
     <div className="border-b border-bg-surface-alt py-3">
@@ -73,11 +64,15 @@ export function ResultsListItem({
               <SpeakerIcon />
             </div>
             <div className="flex items-center gap-3">
-              <button aria-label="Favorite word" type="button">
+              <button
+                aria-label={isFavorited ? "Unfavorite word" : "Favorite word"}
+                onClick={onToggleFavorite}
+                type="button"
+              >
                 <svg
                   aria-hidden
-                  className="h-5 w-5 text-text-secondary"
-                  fill="none"
+                  className={clsx("h-5 w-5", isFavorited ? "text-accent-teal" : "text-text-secondary")}
+                  fill={isFavorited ? "currentColor" : "none"}
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -87,8 +82,23 @@ export function ResultsListItem({
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
               </button>
-              <button aria-label="Bookmark word" type="button">
-                <BookmarkIcon />
+              <button
+                aria-label={isBookmarked ? "Remove bookmark" : "Bookmark word"}
+                onClick={onToggleBookmark}
+                type="button"
+              >
+                <svg
+                  aria-hidden
+                  className={clsx("h-5 w-5", isBookmarked ? "text-accent-teal" : "text-text-secondary")}
+                  fill={isBookmarked ? "currentColor" : "none"}
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                </svg>
               </button>
             </div>
           </div>
