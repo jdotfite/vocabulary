@@ -16,45 +16,56 @@ interface UserRow {
   avatar_url: string | null;
 }
 
+interface GoogleTokenPayload extends Record<string, unknown> {
+  sub?: unknown;
+  email_verified?: unknown;
+  email?: unknown;
+  name?: unknown;
+  picture?: unknown;
+}
+
 export default async function handler(request: Request): Promise<Response> {
   if (request.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
 
   const { credential } = (await request.json()) as { credential?: string };
-  if (!credential) {
+  const normalizedCredential = credential?.trim();
+  if (!normalizedCredential) {
     return new Response("Missing credential", { status: 400 });
   }
 
-  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const clientId = process.env.GOOGLE_CLIENT_ID?.trim();
   if (!clientId) {
     return new Response("Server misconfigured", { status: 500 });
   }
 
-  let payload;
+  let payload: GoogleTokenPayload;
   try {
-    ({ payload } = await jwtVerify(credential, GOOGLE_JWKS, {
+    const verified = await jwtVerify(normalizedCredential, GOOGLE_JWKS, {
       issuer: ["https://accounts.google.com", "accounts.google.com"],
       audience: clientId
-    }));
+    });
+    payload = verified.payload as GoogleTokenPayload;
   } catch (err) {
     console.error("Google token verification failed:", err);
     return new Response("Authentication failed", { status: 401 });
   }
 
-  if (typeof payload.sub !== "string") {
+  const sub = payload.sub;
+  if (typeof sub !== "string") {
     return new Response("Invalid token: missing sub", { status: 401 });
   }
 
-  if (payload.email_verified !== true) {
+  const emailVerified = payload.email_verified;
+  if (emailVerified !== true) {
     return new Response("Email not verified", { status: 403 });
   }
 
-  const googleId = payload.sub;
+  const googleId = sub;
   const email = typeof payload.email === "string" ? payload.email : null;
   const displayName = typeof payload.name === "string" ? payload.name : null;
-  const avatarUrl =
-    typeof payload.picture === "string" ? payload.picture : null;
+  const avatarUrl = typeof payload.picture === "string" ? payload.picture : null;
 
   try {
     const sql = getSQL();

@@ -117,10 +117,25 @@ function AppRoutes(): JSX.Element {
 }
 
 export function App(): JSX.Element {
+  const rawGoogleClientId = import.meta.env
+    .VITE_GOOGLE_CLIENT_ID as unknown;
+  const googleClientId =
+    typeof rawGoogleClientId === "string"
+      ? rawGoogleClientId.trim()
+      : "";
+
+  if (!googleClientId) {
+    return (
+      <main className="flex min-h-screen items-center justify-center px-4 text-center">
+        <p className="text-text-secondary">
+          Google auth is not configured. Set `VITE_GOOGLE_CLIENT_ID`.
+        </p>
+      </main>
+    );
+  }
+
   return (
-    <GoogleOAuthProvider
-      clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID as string}
-    >
+    <GoogleOAuthProvider clientId={googleClientId}>
       <AuthProvider>
         <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-bg-app px-screenX pb-8 pt-4">
           <AppRoutes />
