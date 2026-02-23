@@ -19,7 +19,7 @@ export function OptionButton({
     <button
       aria-label={label}
       className={clsx(
-        "h-option w-full rounded-button border-2 border-b-[4px] border-border-strong px-5 text-center text-xl font-bold transition-colors duration-fast",
+        "min-h-[4rem] w-full rounded-button border-2 border-b-[4px] border-border-strong px-5 py-3 text-center text-xl font-bold transition-colors duration-fast",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright focus-visible:ring-offset-2 focus-visible:ring-offset-bg-app",
         state === "default" && "bg-bg-surface text-text-primary hover:bg-bg-surface-alt",
         state === "correct" && "bg-state-correct text-bg-app",
