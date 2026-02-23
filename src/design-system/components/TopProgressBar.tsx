@@ -25,7 +25,7 @@ export function TopProgressBar({ progress, onClose }: TopProgressBarProps): JSX.
       >
         ×
       </button>
-      <div className="h-3 flex-1 overflow-hidden rounded-full border-2 border-b-[3px] border-border-strong bg-bg-app-deep">
+      <div className="h-[14px] flex-1 overflow-hidden rounded-full border-2 border-b-[3px] border-border-strong bg-bg-app-deep">
         <div
           className="h-full rounded-full bg-accent-teal transition-all duration-sheet"
           style={{ width: `${safeProgress * 100}%` }}

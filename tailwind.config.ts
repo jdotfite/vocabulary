@@ -15,14 +15,14 @@ const config: Config = {
         "border-strong": "#000000",
         "accent-teal": "#93C1C1",
         "accent-teal-bright": "#A4D0D0",
-        "state-correct": "#779158",
+        "state-correct": "#B5CE65",
         "state-correct-icon": "#AFD681",
-        "state-incorrect": "#A56459",
+        "state-incorrect": "#E8948A",
         "state-error-icon": "#F39483"
       },
       fontFamily: {
         display: ["Merriweather", "serif"],
-        body: ["Nunito Sans", "sans-serif"]
+        body: ["Nunito", "sans-serif"]
       },
       borderRadius: {
         card: "24px",
