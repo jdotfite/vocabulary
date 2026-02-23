@@ -5,6 +5,8 @@ export interface QuizAnswerRecord {
   isCorrect: boolean;
 }
 
+export type ChallengeMode = "standard" | "sprint" | "perfection";
+
 export interface QuizState {
   totalQuestions: number;
   currentIndex: number;
@@ -13,6 +15,7 @@ export interface QuizState {
   score: number;
   status: "playing" | "finished";
   answers: QuizAnswerRecord[];
+  challengeMode: ChallengeMode;
 }
 
 export type QuizAction =
@@ -23,9 +26,15 @@ export type QuizAction =
       correctOptionIndex: number;
     }
   | { type: "nextQuestion" }
-  | { type: "reset"; totalQuestions: number };
+  | { type: "reset"; totalQuestions: number; challengeMode?: ChallengeMode }
+  | { type: "sprintReshuffle"; totalQuestions: number }
+  | { type: "failPerfection" }
+  | { type: "timeUp" };
 
-export function createInitialQuizState(totalQuestions: number): QuizState {
+export function createInitialQuizState(
+  totalQuestions: number,
+  challengeMode: ChallengeMode = "standard"
+): QuizState {
   return {
     totalQuestions,
     currentIndex: 0,
@@ -33,7 +42,8 @@ export function createInitialQuizState(totalQuestions: number): QuizState {
     isAnswered: false,
     score: 0,
     status: totalQuestions > 0 ? "playing" : "finished",
-    answers: []
+    answers: [],
+    challengeMode
   };
 }
 
@@ -86,7 +96,32 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
     }
 
     case "reset": {
-      return createInitialQuizState(action.totalQuestions);
+      return createInitialQuizState(
+        action.totalQuestions,
+        action.challengeMode ?? "standard"
+      );
+    }
+
+    case "sprintReshuffle": {
+      if (state.challengeMode !== "sprint") return state;
+      return {
+        ...state,
+        totalQuestions: action.totalQuestions,
+        currentIndex: 0,
+        selectedOptionIndex: null,
+        isAnswered: false
+        // score and answers are preserved
+      };
+    }
+
+    case "failPerfection": {
+      if (state.challengeMode !== "perfection") return state;
+      return { ...state, status: "finished" };
+    }
+
+    case "timeUp": {
+      if (state.challengeMode !== "sprint") return state;
+      return { ...state, status: "finished" };
     }
 
     default: {

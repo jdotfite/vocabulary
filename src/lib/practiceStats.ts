@@ -21,11 +21,24 @@ export interface PracticeStatsSnapshot {
   bookmarkedCount: number;
 }
 
+const PSEUDO_MODES = new Set([
+  "shuffle",
+  "guess_word",
+  "meaning_match",
+  "fill_gap",
+  "weak_words",
+  "sprint",
+  "perfection"
+]);
+
 export async function recordPracticeSession(
   session: CompletedQuizPayload
 ): Promise<void> {
+  const isPseudo = PSEUDO_MODES.has(session.modeId);
   await apiPost("/api/progress/session", {
-    modeId: session.modeId,
+    ...(isPseudo
+      ? { modeType: session.modeId }
+      : { modeId: session.modeId }),
     score: session.score,
     total: session.total,
     answers: session.answers,

@@ -11,16 +11,16 @@ const modesDir = path.join(rootDir, "content", "modes");
 const ALLOWED_QUESTION_TYPES = ["guess_word", "meaning_match", "fill_gap"];
 
 const MODE_POLICIES = {
-  kids_easy: {
+  kids_beginner: {
     audience: "kids",
-    tier: "easy",
+    tier: "beginner",
     gradeBand: "K-1",
     minWordLength: 3,
     maxWordLength: 3
   },
-  kids_middle: {
+  kids_intermediate: {
     audience: "kids",
-    tier: "middle",
+    tier: "intermediate",
     gradeBand: "2-3",
     minWordLength: 4,
     maxWordLength: 5
@@ -32,9 +32,9 @@ const MODE_POLICIES = {
     minWordLength: 5,
     maxWordLength: 7
   },
-  adult_elementary: {
+  adult_beginner: {
     audience: "adult",
-    tier: "elementary",
+    tier: "beginner",
     gradeBand: "Adult",
     minWordLength: 6,
     maxWordLength: 8

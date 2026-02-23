@@ -14,6 +14,7 @@ interface UserRow {
   display_name: string | null;
   email: string | null;
   avatar_url: string | null;
+  onboarding_completed: boolean;
 }
 
 interface GoogleTokenPayload extends Record<string, unknown> {
@@ -77,7 +78,7 @@ export default async function handler(request: Request): Promise<Response> {
             display_name = EXCLUDED.display_name,
             avatar_url = EXCLUDED.avatar_url,
             last_seen_at = now()
-      RETURNING id, display_name, email, avatar_url
+      RETURNING id, display_name, email, avatar_url, onboarding_completed
     `) as unknown as UserRow[];
 
     const user = rows[0];
@@ -92,7 +93,8 @@ export default async function handler(request: Request): Promise<Response> {
         id: user.id,
         displayName: user.display_name,
         email: user.email,
-        avatarUrl: user.avatar_url
+        avatarUrl: user.avatar_url,
+        onboardingCompleted: user.onboarding_completed
       }),
       {
         status: 200,

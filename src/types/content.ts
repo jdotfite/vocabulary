@@ -1,12 +1,25 @@
 export type QuestionType = "guess_word" | "meaning_match" | "fill_gap";
 
 export type ModeId =
-  | "kids_easy"
-  | "kids_middle"
+  | "kids_beginner"
+  | "kids_intermediate"
   | "kids_advanced"
-  | "adult_elementary"
+  | "adult_beginner"
   | "adult_intermediate"
   | "adult_advanced";
+
+/** Pseudo-modes that assemble questions from the user's tier pool. */
+export type PseudoModeId =
+  | "shuffle"
+  | "guess_word"
+  | "meaning_match"
+  | "fill_gap"
+  | "weak_words"
+  | "sprint"
+  | "perfection";
+
+/** Any valid mode identifier — real tier or pseudo-mode. */
+export type AnyModeId = ModeId | PseudoModeId;
 
 export interface ModeQuestion {
   id: string;

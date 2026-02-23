@@ -55,14 +55,15 @@ CREATE TABLE questions (
 -- ---------------------------------------------------------------------------
 
 CREATE TABLE users (
-  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  anon_token    TEXT UNIQUE,
-  google_id     TEXT UNIQUE,
-  display_name  TEXT,
-  email         TEXT,
-  avatar_url    TEXT,
-  created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
-  last_seen_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+  id                    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  anon_token            TEXT UNIQUE,
+  google_id             TEXT UNIQUE,
+  display_name          TEXT,
+  email                 TEXT,
+  avatar_url            TEXT,
+  onboarding_completed  BOOLEAN NOT NULL DEFAULT false,
+  created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  last_seen_at          TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 -- ---------------------------------------------------------------------------
@@ -100,10 +101,23 @@ CREATE TABLE user_bookmarks (
   UNIQUE (user_id, word_id)
 );
 
+CREATE TABLE user_preferences (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id          UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE UNIQUE,
+  age_range        TEXT CHECK (age_range IN ('13-17','18-24','25-34','35-44','45-54','55+')),
+  gender           TEXT CHECK (gender IN ('female','male','other','prefer_not_to_say')),
+  nickname         TEXT,
+  vocabulary_level TEXT CHECK (vocabulary_level IN ('beginner','intermediate','advanced')),
+  known_words      JSONB NOT NULL DEFAULT '[]'::JSONB,
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at       TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 CREATE TABLE practice_sessions (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id       UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  tier_id       UUID NOT NULL REFERENCES difficulty_tiers(id),
+  tier_id       UUID REFERENCES difficulty_tiers(id),
+  mode_type     TEXT,
   score         INT  NOT NULL,
   total         INT  NOT NULL,
   completed_at  TIMESTAMPTZ NOT NULL,
@@ -134,6 +148,7 @@ CREATE INDEX idx_user_word_stats_user    ON user_word_stats(user_id);
 CREATE INDEX idx_user_word_stats_word    ON user_word_stats(word_id);
 CREATE INDEX idx_user_favorites_user     ON user_favorites(user_id);
 CREATE INDEX idx_user_bookmarks_user     ON user_bookmarks(user_id);
+CREATE INDEX idx_user_preferences_user   ON user_preferences(user_id);
 CREATE INDEX idx_practice_sessions_user  ON practice_sessions(user_id);
 CREATE INDEX idx_review_log_session      ON review_log(session_id);
 CREATE INDEX idx_review_log_user         ON review_log(user_id);

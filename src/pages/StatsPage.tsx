@@ -1,13 +1,15 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { NavCard } from "@/design-system/components/NavCard";
 import { Surface } from "@/design-system/primitives/Surface";
 import {
   formatPracticeDate,
   getPracticeStatsSnapshot
 } from "@/lib/practiceStats";
 import type { PracticeStatsSnapshot } from "@/lib/practiceStats";
+import { useUserProgress } from "@/lib/userProgressStore";
 
 interface StatTileProps {
   value: number;
@@ -183,12 +185,35 @@ function StatTile({ value, label, icon }: StatTileProps): JSX.Element {
 export function StatsPage(): JSX.Element {
   const navigate = useNavigate();
   const [stats, setStats] = useState<PracticeStatsSnapshot | null>(null);
+  const [fetchError, setFetchError] = useState(false);
+  const favorites = useUserProgress((s) => s.favorites);
+  const wordStats = useUserProgress((s) => s.wordStats);
 
-  useEffect(() => {
+  const loadStats = useCallback(() => {
+    setFetchError(false);
     getPracticeStatsSnapshot()
       .then((s) => setStats(s))
-      .catch(() => undefined);
+      .catch(() => setFetchError(true));
   }, []);
+
+  useEffect(() => {
+    loadStats();
+  }, [loadStats]);
+
+  if (fetchError) {
+    return (
+      <main className="flex min-h-[60vh] flex-col items-center justify-center gap-4">
+        <p className="text-text-secondary">Could not load stats.</p>
+        <button
+          className="rounded-button border-2 border-border-strong bg-bg-surface px-5 py-2 text-sm font-bold text-text-primary"
+          onClick={loadStats}
+          type="button"
+        >
+          Retry
+        </button>
+      </main>
+    );
+  }
 
   if (!stats) {
     return (
@@ -219,9 +244,33 @@ export function StatsPage(): JSX.Element {
         >
           <CloseIcon />
         </button>
-        <h1 className="font-display text-5xl font-bold text-text-primary">
+        <h1 className="flex-1 font-display text-5xl font-bold text-text-primary">
           Word stats
         </h1>
+        <button
+          aria-label="Settings"
+          className={clsx(
+            "flex h-7 w-7 items-center justify-center rounded-full text-text-secondary",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
+          )}
+          onClick={() => navigate("/settings")}
+          type="button"
+        >
+          <svg
+            aria-hidden
+            fill="none"
+            height="20"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            width="20"
+          >
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+        </button>
       </header>
 
       <Surface
@@ -301,6 +350,53 @@ export function StatsPage(): JSX.Element {
           label="Practices"
           value={stats.practices}
         />
+      </section>
+
+      {/* Percentile placeholder */}
+      <Surface className="space-y-3 p-4 text-center" variant="default">
+        <p className="text-sm font-bold uppercase tracking-widest text-text-secondary">
+          Vocabulary percentile
+        </p>
+        <div className="flex h-16 items-end justify-center gap-[3px]">
+          {[1, 2, 4, 7, 10, 14, 18, 22, 18, 14, 10, 7, 4, 2, 1].map(
+            (h, i) => (
+              <div
+                className="w-3 rounded-t bg-bg-surface-alt"
+                key={i}
+                style={{ height: `${h * 3}px` }}
+              />
+            )
+          )}
+        </div>
+        <p className="text-xs text-text-secondary">Coming soon</p>
+      </Surface>
+
+      {/* Your Vocabulary */}
+      <section>
+        <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-text-secondary">
+          Your vocabulary
+        </h2>
+        <div className="grid grid-cols-2 gap-3">
+          <NavCard
+            count={favorites.length}
+            icon="❤️"
+            onClick={() => navigate("/stats/favorites")}
+            title="Favorites"
+          />
+          <NavCard
+            count={Object.keys(wordStats).length}
+            icon="📖"
+            onClick={() => navigate("/stats/words")}
+            title="Your words"
+          />
+          <NavCard
+            count={stats.practices}
+            icon="📊"
+            onClick={() => navigate("/stats/history")}
+            title="History"
+          />
+          <NavCard icon="📁" locked title="Collections" />
+        </div>
       </section>
     </main>
   );

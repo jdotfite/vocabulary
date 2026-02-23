@@ -1,8 +1,8 @@
 import type { QuizAnswerRecord } from "@/game/quizReducer";
-import type { ModeId } from "@/types/content";
+import type { AnyModeId } from "@/types/content";
 
 export interface CompletedQuizPayload {
-  modeId: ModeId;
+  modeId: AnyModeId;
   score: number;
   total: number;
   answers: QuizAnswerRecord[];

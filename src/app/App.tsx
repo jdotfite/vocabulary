@@ -4,11 +4,17 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthProvider, useAuth } from "@/lib/AuthContext";
 import { useUserProgress } from "@/lib/userProgressStore";
+import { ChallengePlayPage } from "@/pages/ChallengePlayPage";
+import { HomePage } from "@/pages/HomePage";
 import { LevelPage } from "@/pages/LevelPage";
 import { LoginPage } from "@/pages/LoginPage";
-import { ModeSelectPage } from "@/pages/ModeSelectPage";
+import { OnboardingPage } from "@/pages/onboarding/OnboardingPage";
 import { PlayPage } from "@/pages/PlayPage";
 import { ResultsPage } from "@/pages/ResultsPage";
+import { SettingsPage } from "@/pages/SettingsPage";
+import { FavoritesPage } from "@/pages/stats/FavoritesPage";
+import { HistoryPage } from "@/pages/stats/HistoryPage";
+import { WordsPage } from "@/pages/stats/WordsPage";
 import { StatsPage } from "@/pages/StatsPage";
 import { SummaryPage } from "@/pages/SummaryPage";
 
@@ -48,6 +54,10 @@ function AuthGate({ children }: { children: React.ReactNode }): JSX.Element {
     return <Navigate replace to="/login" />;
   }
 
+  if (!user.onboardingCompleted) {
+    return <Navigate replace to="/onboarding" />;
+  }
+
   if (!initialized) {
     return (
       <main className="flex min-h-[80vh] items-center justify-center">
@@ -59,17 +69,56 @@ function AuthGate({ children }: { children: React.ReactNode }): JSX.Element {
   return <>{children}</>;
 }
 
+/** Auth-only gate: checks login but NOT onboarding status. Used for /onboarding route. */
+function AuthOnlyGate({ children }: { children: React.ReactNode }): JSX.Element {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <main className="flex min-h-[80vh] items-center justify-center">
+        <p className="text-text-secondary">Loading...</p>
+      </main>
+    );
+  }
+
+  if (!user) {
+    return <Navigate replace to="/login" />;
+  }
+
+  if (user.onboardingCompleted) {
+    return <Navigate replace to="/modes" />;
+  }
+
+  return <>{children}</>;
+}
+
 function AppRoutes(): JSX.Element {
   return (
     <Routes>
       <Route element={<LoginPage />} path="/login" />
       <Route
         element={
+          <AuthOnlyGate>
+            <OnboardingPage />
+          </AuthOnlyGate>
+        }
+        path="/onboarding"
+      />
+      <Route
+        element={
           <AuthGate>
-            <ModeSelectPage />
+            <HomePage />
           </AuthGate>
         }
         path="/modes"
+      />
+      <Route
+        element={
+          <AuthGate>
+            <ChallengePlayPage />
+          </AuthGate>
+        }
+        path="/play/challenge/:challengeType"
       />
       <Route
         element={
@@ -98,6 +147,30 @@ function AppRoutes(): JSX.Element {
       <Route
         element={
           <AuthGate>
+            <FavoritesPage />
+          </AuthGate>
+        }
+        path="/stats/favorites"
+      />
+      <Route
+        element={
+          <AuthGate>
+            <WordsPage />
+          </AuthGate>
+        }
+        path="/stats/words"
+      />
+      <Route
+        element={
+          <AuthGate>
+            <HistoryPage />
+          </AuthGate>
+        }
+        path="/stats/history"
+      />
+      <Route
+        element={
+          <AuthGate>
             <ResultsPage />
           </AuthGate>
         }
@@ -110,6 +183,14 @@ function AppRoutes(): JSX.Element {
           </AuthGate>
         }
         path="/level"
+      />
+      <Route
+        element={
+          <AuthGate>
+            <SettingsPage />
+          </AuthGate>
+        }
+        path="/settings"
       />
       <Route element={<Navigate replace to="/modes" />} path="*" />
     </Routes>

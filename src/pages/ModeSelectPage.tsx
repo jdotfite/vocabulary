@@ -5,10 +5,10 @@ import { Surface } from "@/design-system/primitives/Surface";
 import { getAllModes } from "@/lib/modes";
 
 const modeDescriptions: Record<string, string> = {
-  kids_easy: "Kindergarten to 1st grade",
-  kids_middle: "2nd to 3rd grade",
+  kids_beginner: "Kindergarten to 1st grade",
+  kids_intermediate: "2nd to 3rd grade",
   kids_advanced: "4th to 5th grade",
-  adult_elementary: "Adult fundamentals",
+  adult_beginner: "Adult fundamentals",
   adult_intermediate: "Adult growing vocabulary",
   adult_advanced: "Adult challenge vocabulary"
 };

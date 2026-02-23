@@ -1,8 +1,8 @@
 {
-  "modeId": "kids_middle",
-  "displayName": "Kids Middle",
+  "modeId": "kids_intermediate",
+  "displayName": "Kids Intermediate",
   "audience": "kids",
-  "tier": "middle",
+  "tier": "intermediate",
   "gradeBand": "2-3",
   "rules": {
     "minWordLength": 4,
@@ -11,7 +11,7 @@
   },
   "questions": [
     {
-      "id": "kids_middle_q01",
+      "id": "kids_intermediate_q01",
       "type": "guess_word",
       "prompt": "A round fruit that can be red or green.",
       "word": "apple",
@@ -22,7 +22,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_middle_q02",
+      "id": "kids_intermediate_q02",
       "type": "meaning_match",
       "prompt": "chair",
       "word": "chair",
@@ -37,7 +37,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_middle_q03",
+      "id": "kids_intermediate_q03",
       "type": "fill_gap",
       "prompt": "A dark _____ covered the sun.",
       "word": "cloud",
@@ -48,7 +48,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "kids_middle_q04",
+      "id": "kids_intermediate_q04",
       "type": "guess_word",
       "prompt": "A happy look on your face.",
       "word": "smile",
@@ -59,7 +59,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_middle_q05",
+      "id": "kids_intermediate_q05",
       "type": "meaning_match",
       "prompt": "river",
       "word": "river",
@@ -74,7 +74,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_middle_q06",
+      "id": "kids_intermediate_q06",
       "type": "fill_gap",
       "prompt": "The _____ arrived on time.",
       "word": "train",
@@ -85,7 +85,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "kids_middle_q07",
+      "id": "kids_intermediate_q07",
       "type": "guess_word",
       "prompt": "Brightness that helps us see.",
       "word": "light",
@@ -96,7 +96,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_middle_q08",
+      "id": "kids_intermediate_q08",
       "type": "meaning_match",
       "prompt": "dance",
       "word": "dance",
@@ -111,7 +111,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_middle_q09",
+      "id": "kids_intermediate_q09",
       "type": "fill_gap",
       "prompt": "Grandma read a _____ before bed.",
       "word": "story",
@@ -122,7 +122,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "kids_middle_q10",
+      "id": "kids_intermediate_q10",
       "type": "guess_word",
       "prompt": "A living thing that grows in soil.",
       "word": "plant",
@@ -133,7 +133,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_middle_q11",
+      "id": "kids_intermediate_q11",
       "type": "meaning_match",
       "prompt": "bread",
       "word": "bread",
@@ -148,7 +148,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_middle_q12",
+      "id": "kids_intermediate_q12",
       "type": "fill_gap",
       "prompt": "I feel _____ when we play outside.",
       "word": "happy",

@@ -1,5 +1,5 @@
 {
-  "kids_easy": [
+  "kids_beginner": [
     {
       "word": "cat",
       "definition": "A small pet animal that says meow.",
@@ -73,7 +73,7 @@
       "phonetic": "jam"
     }
   ],
-  "kids_middle": [
+  "kids_intermediate": [
     {
       "word": "apple",
       "definition": "A round fruit that can be red or green.",
@@ -221,7 +221,7 @@
       "phonetic": "ik-splor"
     }
   ],
-  "adult_elementary": [
+  "adult_beginner": [
     {
       "word": "routine",
       "definition": "A regular way of doing things.",

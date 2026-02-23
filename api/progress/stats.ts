@@ -23,15 +23,21 @@ export default async function handler(request: Request): Promise<Response> {
     return new Response("Method not allowed", { status: 405 });
   }
 
+  let userId: string;
   try {
-    const { userId } = await verifySession(request);
+    ({ userId } = await verifySession(request));
+  } catch {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
+  try {
     const sql = getSQL();
 
     const [sessionsRows, favCountRows, bookCountRows] = await Promise.all([
       sql`
-        SELECT dt.mode_id, ps.score, ps.total, ps.completed_at
+        SELECT COALESCE(dt.mode_id, ps.mode_type) as mode_id, ps.score, ps.total, ps.completed_at
         FROM practice_sessions ps
-        JOIN difficulty_tiers dt ON dt.id = ps.tier_id
+        LEFT JOIN difficulty_tiers dt ON dt.id = ps.tier_id
         WHERE ps.user_id = ${userId}
         ORDER BY ps.completed_at DESC
       `,
@@ -104,7 +110,8 @@ export default async function handler(request: Request): Promise<Response> {
         headers: { "Content-Type": "application/json" }
       }
     );
-  } catch {
-    return new Response("Unauthorized", { status: 401 });
+  } catch (err) {
+    console.error("Stats fetch error:", err);
+    return new Response("Internal server error", { status: 500 });
   }
 }

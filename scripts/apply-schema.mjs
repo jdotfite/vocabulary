@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import { Pool } from "@neondatabase/serverless";
 
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -20,6 +20,28 @@ async function run() {
   console.log("Applying seed data...");
   await pool.query(seedSQL);
   console.log("Seed data applied.");
+
+  // Apply migrations in order (idempotent for existing DBs)
+  const migrationDir = "db/migrations";
+  try {
+    const files = readdirSync(migrationDir)
+      .filter((f) => f.endsWith(".sql"))
+      .sort();
+
+    for (const file of files) {
+      const sql = readFileSync(`${migrationDir}/${file}`, "utf-8");
+      console.log(`Applying migration: ${file}...`);
+      try {
+        await pool.query(sql);
+        console.log(`  Applied: ${file}`);
+      } catch (err) {
+        // Migrations may fail on fresh DB if schema already includes the change
+        console.log(`  Skipped (already applied or conflict): ${file} — ${err.message}`);
+      }
+    }
+  } catch {
+    console.log("No migrations directory found, skipping.");
+  }
 
   await pool.end();
   console.log("Done.");

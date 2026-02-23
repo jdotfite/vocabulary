@@ -18,7 +18,8 @@ const config: Config = {
         "state-correct": "#B5CE65",
         "state-correct-icon": "#AFD681",
         "state-incorrect": "#E8948A",
-        "state-error-icon": "#F39483"
+        "state-error-icon": "#F39483",
+        "state-warning": "#E8B84A"
       },
       fontFamily: {
         display: ["Merriweather", "serif"],

@@ -8,6 +8,7 @@ interface UserRow {
   display_name: string | null;
   email: string | null;
   avatar_url: string | null;
+  onboarding_completed: boolean;
 }
 
 export default async function handler(request: Request): Promise<Response> {
@@ -26,7 +27,7 @@ export default async function handler(request: Request): Promise<Response> {
     const sql = getSQL();
 
     const rows = (await sql`
-      SELECT id, display_name, email, avatar_url FROM users WHERE id = ${userId}
+      SELECT id, display_name, email, avatar_url, onboarding_completed FROM users WHERE id = ${userId}
     `) as unknown as UserRow[];
 
     const user = rows[0];
@@ -39,7 +40,8 @@ export default async function handler(request: Request): Promise<Response> {
         id: user.id,
         displayName: user.display_name,
         email: user.email,
-        avatarUrl: user.avatar_url
+        avatarUrl: user.avatar_url,
+        onboardingCompleted: user.onboarding_completed
       }),
       {
         status: 200,

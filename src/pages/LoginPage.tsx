@@ -13,7 +13,10 @@ export function LoginPage(): JSX.Element {
     (credential: string) => {
       setError(null);
       login(credential)
-        .then(() => navigate("/modes", { replace: true }))
+        .then(() => {
+          // AuthGate will redirect to /onboarding if needed
+          navigate("/modes", { replace: true });
+        })
         .catch((err: unknown) => {
           const msg =
             err instanceof Error ? err.message : "Login failed";

@@ -10,9 +10,32 @@ import { TopProgressBar } from "@/design-system/components/TopProgressBar";
 import { quizReducer, createInitialQuizState } from "@/game/quizReducer";
 import { getModeById } from "@/lib/modes";
 import { recordPracticeSession } from "@/lib/practiceStats";
+import {
+  getShufflePool,
+  getPoolByType,
+  getWeakWordsPool,
+  getSprintPool,
+  getPerfectionPool
+} from "@/lib/questionPool";
 import { useUserProgress, getRecentlySeenWords } from "@/lib/userProgressStore";
-import type { ModeQuestion } from "@/types/content";
+import type { AnyModeId, ModeQuestion, QuestionType } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
+
+const PSEUDO_MODES = new Set([
+  "shuffle",
+  "guess_word",
+  "meaning_match",
+  "fill_gap",
+  "weak_words",
+  "sprint",
+  "perfection"
+]);
+
+const TYPE_MAP: Record<string, QuestionType> = {
+  guess_word: "guess_word",
+  meaning_match: "meaning_match",
+  fill_gap: "fill_gap"
+};
 
 function modeLabelByType(type: string): string {
   if (type === "guess_word") return "Guess the word";
@@ -54,18 +77,44 @@ function shuffleWithDeprioritization(
   return [...shuffleArray(fresh), ...shuffleArray(recent)];
 }
 
+function usePseudoModeQuestions(modeId: string): ModeQuestion[] | null {
+  const vocabularyLevel = useUserProgress((s) => s.vocabularyLevel);
+  const ageRange = useUserProgress((s) => s.ageRange);
+  const wordStats = useUserProgress((s) => s.wordStats);
+
+  return useMemo(() => {
+    if (!PSEUDO_MODES.has(modeId)) return null;
+
+    const prefs = { vocabularyLevel, ageRange };
+
+    if (modeId === "shuffle") return getShufflePool(prefs, wordStats);
+    if (modeId === "sprint") return getSprintPool(prefs, wordStats);
+    if (modeId === "perfection") return getPerfectionPool(prefs, wordStats);
+    if (modeId === "weak_words") return getWeakWordsPool(prefs, wordStats);
+
+    const questionType = TYPE_MAP[modeId];
+    if (questionType) return getPoolByType(prefs, questionType, wordStats);
+
+    return getShufflePool(prefs, wordStats);
+  }, [modeId, vocabularyLevel, ageRange, wordStats]);
+}
+
 export function PlayPage(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams();
   const [showLeaveSheet, setShowLeaveSheet] = useState(false);
 
-  const mode = useMemo(() => getModeById(params.modeId ?? ""), [params.modeId]);
+  const modeId = params.modeId ?? "";
+  const isPseudo = PSEUDO_MODES.has(modeId);
+  const mode = useMemo(() => (isPseudo ? null : getModeById(modeId)), [modeId, isPseudo]);
+  const pseudoQuestions = usePseudoModeQuestions(modeId);
 
   const shuffledQuestions = useMemo(() => {
+    if (isPseudo) return pseudoQuestions ?? [];
     if (!mode) return [];
     const recentWords = getRecentlySeenWords(4);
     return shuffleWithDeprioritization(mode.questions, recentWords);
-  }, [mode]);
+  }, [isPseudo, pseudoQuestions, mode]);
 
   const [state, dispatch] = useReducer(
     quizReducer,
@@ -80,7 +129,7 @@ export function PlayPage(): JSX.Element {
   const bookmarks = useUserProgress((s) => s.bookmarks);
 
   useEffect(() => {
-    if (!mode) {
+    if (!isPseudo && !mode) {
       navigate("/modes", { replace: true });
       return;
     }
@@ -88,9 +137,9 @@ export function PlayPage(): JSX.Element {
       type: "reset",
       totalQuestions: shuffledQuestions.length
     });
-  }, [mode, navigate, shuffledQuestions.length]);
+  }, [isPseudo, mode, navigate, shuffledQuestions.length]);
 
-  if (!mode) {
+  if (!isPseudo && !mode) {
     return <main className="pt-8">Loading mode…</main>;
   }
 
@@ -132,8 +181,11 @@ export function PlayPage(): JSX.Element {
     const isLast = state.currentIndex >= shuffledQuestions.length - 1;
 
     if (isLast) {
+      const effectiveModeId: AnyModeId = isPseudo
+        ? (modeId as AnyModeId)
+        : (mode?.modeId ?? (modeId as AnyModeId));
       const payload: CompletedQuizPayload = {
-        modeId: mode.modeId,
+        modeId: effectiveModeId,
         score: state.score,
         total: shuffledQuestions.length,
         answers: state.answers,

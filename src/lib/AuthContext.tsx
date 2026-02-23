@@ -15,6 +15,7 @@ export interface User {
   displayName: string;
   email: string;
   avatarUrl: string | null;
+  onboardingCompleted: boolean;
 }
 
 interface AuthState {
@@ -22,6 +23,7 @@ interface AuthState {
   loading: boolean;
   login: (credential: string) => Promise<void>;
   logout: () => Promise<void>;
+  markOnboardingComplete: () => void;
 }
 
 const AuthContext = createContext<AuthState | null>(null);
@@ -59,9 +61,15 @@ export function AuthProvider({
     setUser(null);
   }, []);
 
+  const markOnboardingComplete = useCallback(() => {
+    setUser((prev) =>
+      prev ? { ...prev, onboardingCompleted: true } : prev
+    );
+  }, []);
+
   const value = useMemo(
-    () => ({ user, loading, login, logout }),
-    [user, loading, login, logout]
+    () => ({ user, loading, login, logout, markOnboardingComplete }),
+    [user, loading, login, logout, markOnboardingComplete]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

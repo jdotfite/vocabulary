@@ -1,8 +1,8 @@
 {
-  "modeId": "adult_elementary",
-  "displayName": "Adult Elementary",
+  "modeId": "adult_beginner",
+  "displayName": "Adult Beginner",
   "audience": "adult",
-  "tier": "elementary",
+  "tier": "beginner",
   "gradeBand": "Adult",
   "rules": {
     "minWordLength": 6,
@@ -11,7 +11,7 @@
   },
   "questions": [
     {
-      "id": "adult_elementary_q01",
+      "id": "adult_beginner_q01",
       "type": "guess_word",
       "prompt": "A regular way of doing things.",
       "word": "routine",
@@ -22,7 +22,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "adult_elementary_q02",
+      "id": "adult_beginner_q02",
       "type": "meaning_match",
       "prompt": "compare",
       "word": "compare",
@@ -37,7 +37,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "adult_elementary_q03",
+      "id": "adult_beginner_q03",
       "type": "fill_gap",
       "prompt": "The fee will _______ all materials.",
       "word": "include",
@@ -48,7 +48,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "adult_elementary_q04",
+      "id": "adult_beginner_q04",
       "type": "guess_word",
       "prompt": "To make something better.",
       "word": "improve",
@@ -59,7 +59,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "adult_elementary_q05",
+      "id": "adult_beginner_q05",
       "type": "meaning_match",
       "prompt": "method",
       "word": "method",
@@ -74,7 +74,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "adult_elementary_q06",
+      "id": "adult_beginner_q06",
       "type": "fill_gap",
       "prompt": "Search is a useful _______ in the app.",
       "word": "feature",
@@ -85,7 +85,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "adult_elementary_q07",
+      "id": "adult_beginner_q07",
       "type": "guess_word",
       "prompt": "One possible choice.",
       "word": "option",
@@ -96,7 +96,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "adult_elementary_q08",
+      "id": "adult_beginner_q08",
       "type": "meaning_match",
       "prompt": "budget",
       "word": "budget",
@@ -111,7 +111,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "adult_elementary_q09",
+      "id": "adult_beginner_q09",
       "type": "fill_gap",
       "prompt": "Please _______ the width of the desk.",
       "word": "measure",
@@ -122,7 +122,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "adult_elementary_q10",
+      "id": "adult_beginner_q10",
       "type": "guess_word",
       "prompt": "The situation around something that helps explain it.",
       "word": "context",
@@ -133,7 +133,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "adult_elementary_q11",
+      "id": "adult_beginner_q11",
       "type": "meaning_match",
       "prompt": "summary",
       "word": "summary",
@@ -148,7 +148,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "adult_elementary_q12",
+      "id": "adult_beginner_q12",
       "type": "fill_gap",
       "prompt": "Daily reading is a major _______ for students.",
       "word": "benefit",

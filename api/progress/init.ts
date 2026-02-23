@@ -16,6 +16,12 @@ interface WordRow {
   word: string;
 }
 
+interface PreferenceRow {
+  nickname: string | null;
+  vocabulary_level: string | null;
+  age_range: string | null;
+}
+
 export default async function handler(request: Request): Promise<Response> {
   if (request.method !== "GET") {
     return new Response("Method not allowed", { status: 405 });
@@ -25,7 +31,7 @@ export default async function handler(request: Request): Promise<Response> {
     const { userId } = await verifySession(request);
     const sql = getSQL();
 
-    const [rawWordStats, rawFavs, rawBooks] = await Promise.all([
+    const [rawWordStats, rawFavs, rawBooks, rawPrefs] = await Promise.all([
       sql`
         SELECT w.word, uws.times_seen, uws.times_correct, uws.times_incorrect, uws.streak, uws.last_seen_at
         FROM user_word_stats uws
@@ -37,12 +43,18 @@ export default async function handler(request: Request): Promise<Response> {
       `,
       sql`
         SELECT w.word FROM user_bookmarks ub JOIN words w ON w.id = ub.word_id WHERE ub.user_id = ${userId}
+      `,
+      sql`
+        SELECT nickname, vocabulary_level, age_range
+        FROM user_preferences WHERE user_id = ${userId}
+        LIMIT 1
       `
     ]);
 
     const wordStatsRows = rawWordStats as unknown as WordStatRow[];
     const favRows = rawFavs as unknown as WordRow[];
     const bookRows = rawBooks as unknown as WordRow[];
+    const prefRows = rawPrefs as unknown as PreferenceRow[];
 
     const wordStats: Record<
       string,
@@ -66,11 +78,16 @@ export default async function handler(request: Request): Promise<Response> {
       };
     }
 
+    const pref = prefRows[0] ?? null;
+
     return new Response(
       JSON.stringify({
         wordStats,
         favorites: favRows.map((r) => r.word),
-        bookmarks: bookRows.map((r) => r.word)
+        bookmarks: bookRows.map((r) => r.word),
+        nickname: pref?.nickname ?? null,
+        vocabularyLevel: pref?.vocabulary_level ?? null,
+        ageRange: pref?.age_range ?? null
       }),
       {
         status: 200,

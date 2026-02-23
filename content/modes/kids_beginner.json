@@ -1,8 +1,8 @@
 {
-  "modeId": "kids_easy",
-  "displayName": "Kids Easy",
+  "modeId": "kids_beginner",
+  "displayName": "Kids Beginner",
   "audience": "kids",
-  "tier": "easy",
+  "tier": "beginner",
   "gradeBand": "K-1",
   "rules": {
     "minWordLength": 3,
@@ -11,7 +11,7 @@
   },
   "questions": [
     {
-      "id": "kids_easy_q01",
+      "id": "kids_beginner_q01",
       "type": "guess_word",
       "prompt": "A small pet animal that says meow.",
       "word": "cat",
@@ -22,7 +22,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_easy_q02",
+      "id": "kids_beginner_q02",
       "type": "meaning_match",
       "prompt": "dog",
       "word": "dog",
@@ -37,7 +37,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_easy_q03",
+      "id": "kids_beginner_q03",
       "type": "fill_gap",
       "prompt": "The ___ is warm at noon.",
       "word": "sun",
@@ -48,7 +48,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "kids_easy_q04",
+      "id": "kids_beginner_q04",
       "type": "guess_word",
       "prompt": "Something you wear on your head.",
       "word": "hat",
@@ -59,7 +59,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_easy_q05",
+      "id": "kids_beginner_q05",
       "type": "meaning_match",
       "prompt": "bed",
       "word": "bed",
@@ -74,7 +74,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_easy_q06",
+      "id": "kids_beginner_q06",
       "type": "fill_gap",
       "prompt": "We use a ___ to find the park.",
       "word": "map",
@@ -85,7 +85,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "kids_easy_q07",
+      "id": "kids_beginner_q07",
       "type": "guess_word",
       "prompt": "To move fast on your feet.",
       "word": "run",
@@ -96,7 +96,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_easy_q08",
+      "id": "kids_beginner_q08",
       "type": "meaning_match",
       "prompt": "cup",
       "word": "cup",
@@ -111,7 +111,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_easy_q09",
+      "id": "kids_beginner_q09",
       "type": "fill_gap",
       "prompt": "I sign my name with a ___.",
       "word": "pen",
@@ -122,7 +122,7 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "kids_easy_q10",
+      "id": "kids_beginner_q10",
       "type": "guess_word",
       "prompt": "A farm animal with a curly tail.",
       "word": "pig",
@@ -133,7 +133,7 @@
       "correctOptionIndex": 0
     },
     {
-      "id": "kids_easy_q11",
+      "id": "kids_beginner_q11",
       "type": "meaning_match",
       "prompt": "bus",
       "word": "bus",
@@ -148,7 +148,7 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "kids_easy_q12",
+      "id": "kids_beginner_q12",
       "type": "fill_gap",
       "prompt": "I put ___ on toast.",
       "word": "jam",

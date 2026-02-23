@@ -18,10 +18,10 @@
     "modeId": {
       "type": "string",
       "enum": [
-        "kids_easy",
-        "kids_middle",
+        "kids_beginner",
+        "kids_intermediate",
         "kids_advanced",
-        "adult_elementary",
+        "adult_beginner",
         "adult_intermediate",
         "adult_advanced"
       ]
