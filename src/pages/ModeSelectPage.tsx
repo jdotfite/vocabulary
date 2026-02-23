@@ -19,8 +19,17 @@ export function ModeSelectPage(): JSX.Element {
 
   return (
     <main className="space-y-4 pt-4">
-      <header className="space-y-2">
-        <h1 className="font-display text-5xl font-bold">Choose a mode</h1>
+      <header className="space-y-3">
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="font-display text-5xl font-bold">Choose a mode</h1>
+          <button
+            className="rounded-full border-2 border-border-strong bg-bg-surface px-3 py-1 text-sm font-bold text-text-primary transition-colors duration-fast hover:bg-bg-surface-alt"
+            onClick={() => navigate("/stats")}
+            type="button"
+          >
+            Word stats
+          </button>
+        </div>
         <p className="text-base text-text-secondary">
           MVP uses static JSON content with six fixed difficulty tiers.
         </p>

@@ -4,6 +4,7 @@ import { LevelPage } from "@/pages/LevelPage";
 import { ModeSelectPage } from "@/pages/ModeSelectPage";
 import { PlayPage } from "@/pages/PlayPage";
 import { ResultsPage } from "@/pages/ResultsPage";
+import { StatsPage } from "@/pages/StatsPage";
 import { SummaryPage } from "@/pages/SummaryPage";
 
 export function App(): JSX.Element {
@@ -13,6 +14,7 @@ export function App(): JSX.Element {
         <Route element={<ModeSelectPage />} path="/modes" />
         <Route element={<PlayPage />} path="/play/:modeId" />
         <Route element={<SummaryPage />} path="/summary" />
+        <Route element={<StatsPage />} path="/stats" />
         <Route element={<ResultsPage />} path="/results" />
         <Route element={<LevelPage />} path="/level" />
         <Route element={<Navigate replace to="/modes" />} path="*" />
