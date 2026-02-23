@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import { apiGet, apiPost } from "@/lib/api";
+import { useUserProgress } from "@/lib/userProgressStore";
 
 export interface User {
   id: string;
@@ -54,6 +55,7 @@ export function AuthProvider({
 
   const logout = useCallback(async () => {
     await apiPost("/api/auth/logout");
+    useUserProgress.getState().reset();
     setUser(null);
   }, []);
 

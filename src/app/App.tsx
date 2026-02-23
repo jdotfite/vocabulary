@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthProvider, useAuth } from "@/lib/AuthContext";
@@ -16,12 +16,25 @@ function AuthGate({ children }: { children: React.ReactNode }): JSX.Element {
   const { user, loading } = useAuth();
   const initialized = useUserProgress((s) => s.initialized);
   const init = useUserProgress((s) => s.init);
+  const reset = useUserProgress((s) => s.reset);
+  const prevUserIdRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (user && !initialized) {
+    if (!user) {
+      prevUserIdRef.current = null;
+      return;
+    }
+
+    // If user changed (account switch), reset first
+    if (prevUserIdRef.current && prevUserIdRef.current !== user.id) {
+      reset();
+    }
+    prevUserIdRef.current = user.id;
+
+    if (!initialized) {
       void init();
     }
-  }, [user, initialized, init]);
+  }, [user, initialized, init, reset]);
 
   if (loading) {
     return (

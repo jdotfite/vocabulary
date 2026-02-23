@@ -8,7 +8,7 @@ function getJwtSecret(): Uint8Array {
 
 const COOKIE_NAME = "session";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
-const IS_PROD = process.env.VERCEL_ENV === "production";
+const IS_SECURE = process.env.VERCEL_ENV !== undefined; // Secure on all Vercel envs (production + preview)
 
 export interface SessionPayload {
   userId: string;
@@ -33,11 +33,11 @@ export async function createSessionCookie(userId: string): Promise<string> {
     .setIssuedAt()
     .sign(getJwtSecret());
 
-  const secure = IS_PROD ? "; Secure" : "";
+  const secure = IS_SECURE ? "; Secure" : "";
   return `${COOKIE_NAME}=${token}; HttpOnly${secure}; SameSite=Lax; Path=/; Max-Age=${COOKIE_MAX_AGE}`;
 }
 
 export function clearSessionCookie(): string {
-  const secure = IS_PROD ? "; Secure" : "";
+  const secure = IS_SECURE ? "; Secure" : "";
   return `${COOKIE_NAME}=; HttpOnly${secure}; SameSite=Lax; Path=/; Max-Age=0`;
 }
