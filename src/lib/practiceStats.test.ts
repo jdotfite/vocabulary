@@ -25,8 +25,6 @@ describe("practiceStats", () => {
     expect(stats.lastPractice).toBeNull();
     expect(stats.wordsRead).toBe(0);
     expect(stats.practices).toBe(0);
-    expect(stats.favorited).toBe(0);
-    expect(stats.saved).toBe(0);
     expect(stats.streakCount).toBe(0);
     expect(stats.weekActivity).toHaveLength(7);
   });

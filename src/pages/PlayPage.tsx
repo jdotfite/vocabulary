@@ -10,6 +10,8 @@ import { TopProgressBar } from "@/design-system/components/TopProgressBar";
 import { quizReducer, createInitialQuizState } from "@/game/quizReducer";
 import { getModeById } from "@/lib/modes";
 import { recordPracticeSession } from "@/lib/practiceStats";
+import { useUserProgress, getRecentlySeenWords } from "@/lib/userProgressStore";
+import type { ModeQuestion } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
 function modeLabelByType(type: string): string {
@@ -18,17 +20,64 @@ function modeLabelByType(type: string): string {
   return "Fill in the gap";
 }
 
+function shuffleArray<T>(array: readonly T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const a = shuffled[i];
+    const b = shuffled[j];
+    if (a !== undefined && b !== undefined) {
+      shuffled[i] = b;
+      shuffled[j] = a;
+    }
+  }
+  return shuffled;
+}
+
+function shuffleWithDeprioritization(
+  questions: readonly ModeQuestion[],
+  recentWords: Set<string>
+): ModeQuestion[] {
+  if (recentWords.size === 0) return shuffleArray(questions);
+
+  const fresh: ModeQuestion[] = [];
+  const recent: ModeQuestion[] = [];
+
+  for (const q of questions) {
+    if (recentWords.has(q.word)) {
+      recent.push(q);
+    } else {
+      fresh.push(q);
+    }
+  }
+
+  return [...shuffleArray(fresh), ...shuffleArray(recent)];
+}
+
 export function PlayPage(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams();
   const [showLeaveSheet, setShowLeaveSheet] = useState(false);
 
   const mode = useMemo(() => getModeById(params.modeId ?? ""), [params.modeId]);
+
+  const shuffledQuestions = useMemo(() => {
+    if (!mode) return [];
+    const recentWords = getRecentlySeenWords(4);
+    return shuffleWithDeprioritization(mode.questions, recentWords);
+  }, [mode]);
+
   const [state, dispatch] = useReducer(
     quizReducer,
-    mode?.questions.length ?? 0,
+    shuffledQuestions.length,
     createInitialQuizState
   );
+
+  const recordAnswer = useUserProgress((s) => s.recordAnswer);
+  const toggleFavorite = useUserProgress((s) => s.toggleFavorite);
+  const toggleBookmark = useUserProgress((s) => s.toggleBookmark);
+  const favorites = useUserProgress((s) => s.favorites);
+  const bookmarks = useUserProgress((s) => s.bookmarks);
 
   useEffect(() => {
     if (!mode) {
@@ -37,15 +86,15 @@ export function PlayPage(): JSX.Element {
     }
     dispatch({
       type: "reset",
-      totalQuestions: mode.questions.length
+      totalQuestions: shuffledQuestions.length
     });
-  }, [mode, navigate]);
+  }, [mode, navigate, shuffledQuestions.length]);
 
   if (!mode) {
     return <main className="pt-8">Loading mode…</main>;
   }
 
-  const currentQuestion = mode.questions[state.currentIndex];
+  const currentQuestion = shuffledQuestions[state.currentIndex];
 
   if (!currentQuestion) {
     return (
@@ -55,7 +104,7 @@ export function PlayPage(): JSX.Element {
     );
   }
 
-  const progress = (state.currentIndex + 1) / mode.questions.length;
+  const progress = (state.currentIndex + 1) / shuffledQuestions.length;
   const answerStatus =
     state.selectedOptionIndex === currentQuestion.correctOptionIndex ? "correct" : "incorrect";
 
@@ -66,14 +115,27 @@ export function PlayPage(): JSX.Element {
     return "disabled";
   };
 
+  const handleSelectOption = (optionIndex: number): void => {
+    if (state.isAnswered) return;
+
+    const isCorrect = optionIndex === currentQuestion.correctOptionIndex;
+    dispatch({
+      type: "selectOption",
+      questionId: currentQuestion.id,
+      optionIndex,
+      correctOptionIndex: currentQuestion.correctOptionIndex
+    });
+    recordAnswer(currentQuestion.word, isCorrect);
+  };
+
   const handleNext = (): void => {
-    const isLast = state.currentIndex >= mode.questions.length - 1;
+    const isLast = state.currentIndex >= shuffledQuestions.length - 1;
 
     if (isLast) {
       const payload: CompletedQuizPayload = {
         modeId: mode.modeId,
         score: state.score,
-        total: mode.questions.length,
+        total: shuffledQuestions.length,
         answers: state.answers,
         completedAt: new Date().toISOString()
       };
@@ -84,6 +146,9 @@ export function PlayPage(): JSX.Element {
 
     dispatch({ type: "nextQuestion" });
   };
+
+  const isFavorited = favorites.includes(currentQuestion.word);
+  const isBookmarked = bookmarks.includes(currentQuestion.word);
 
   return (
     <main className="space-y-4 pt-2">
@@ -96,14 +161,7 @@ export function PlayPage(): JSX.Element {
           <OptionButton
             key={`${currentQuestion.id}-${option}`}
             label={option}
-            onClick={() =>
-              dispatch({
-                type: "selectOption",
-                questionId: currentQuestion.id,
-                optionIndex,
-                correctOptionIndex: currentQuestion.correctOptionIndex
-              })
-            }
+            onClick={() => handleSelectOption(optionIndex)}
             showCheckIcon={state.isAnswered && optionIndex === currentQuestion.correctOptionIndex}
             state={buildOptionState(optionIndex)}
           />
@@ -112,7 +170,11 @@ export function PlayPage(): JSX.Element {
 
       <FeedbackSheet
         definition={currentQuestion.definition}
+        isBookmarked={isBookmarked}
+        isFavorited={isFavorited}
         onNext={handleNext}
+        onToggleBookmark={() => toggleBookmark(currentQuestion.word)}
+        onToggleFavorite={() => toggleFavorite(currentQuestion.word)}
         open={state.isAnswered}
         phonetic={currentQuestion.phonetic}
         sentence={currentQuestion.sentence}

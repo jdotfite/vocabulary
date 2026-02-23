@@ -22,8 +22,6 @@ export interface PracticeStatsSnapshot {
   streakCount: number;
   weekActivity: WeekActivity[];
   wordsRead: number;
-  favorited: number;
-  saved: number;
   practices: number;
 }
 
@@ -154,10 +152,7 @@ export function getPracticeStatsSnapshot(): PracticeStatsSnapshot {
     streakCount: getCurrentStreak(daySet),
     weekActivity: getWeekActivity(daySet, anchorDate),
     wordsRead: sessions.reduce((total, session) => total + session.total, 0),
-    practices: sessions.length,
-    // MVP placeholders until favorites/saved words storage is implemented.
-    favorited: 0,
-    saved: 0
+    practices: sessions.length
   };
 }
 

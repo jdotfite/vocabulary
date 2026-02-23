@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ResultsListItem } from "@/design-system/components/ResultsListItem";
 import { Button } from "@/design-system/primitives/Button";
 import { getModeById } from "@/lib/modes";
+import { useUserProgress } from "@/lib/userProgressStore";
 import type { CompletedQuizPayload } from "@/types/session";
 
 export function ResultsPage(): JSX.Element {
@@ -12,6 +13,11 @@ export function ResultsPage(): JSX.Element {
   const payload = location.state as CompletedQuizPayload | undefined;
 
   const mode = useMemo(() => getModeById(payload?.modeId ?? ""), [payload?.modeId]);
+
+  const favorites = useUserProgress((s) => s.favorites);
+  const bookmarks = useUserProgress((s) => s.bookmarks);
+  const toggleFavorite = useUserProgress((s) => s.toggleFavorite);
+  const toggleBookmark = useUserProgress((s) => s.toggleBookmark);
 
   if (!payload || !mode) {
     return (
@@ -59,8 +65,12 @@ export function ResultsPage(): JSX.Element {
           return (
             <ResultsListItem
               definition={question.definition}
+              isBookmarked={bookmarks.includes(question.word)}
               isCorrect={answer?.isCorrect ?? false}
+              isFavorited={favorites.includes(question.word)}
               key={question.id}
+              onToggleBookmark={() => toggleBookmark(question.word)}
+              onToggleFavorite={() => toggleFavorite(question.word)}
               phonetic={question.phonetic}
               sentence={question.sentence}
               word={question.word}

@@ -3,18 +3,22 @@ import { describe, expect, it, vi } from "vitest";
 
 import { FeedbackSheet } from "@/design-system/components/FeedbackSheet";
 
+const baseProps = {
+  definition: "sample definition",
+  onNext: vi.fn(),
+  phonetic: "sam-puhl",
+  sentence: "A sample sentence.",
+  word: "sample",
+  isFavorited: false,
+  isBookmarked: false,
+  onToggleFavorite: vi.fn(),
+  onToggleBookmark: vi.fn()
+};
+
 describe("FeedbackSheet", () => {
   it("does not render when closed", () => {
     render(
-      <FeedbackSheet
-        definition="sample definition"
-        onNext={vi.fn()}
-        open={false}
-        phonetic="sam-puhl"
-        sentence="A sample sentence."
-        status="correct"
-        word="sample"
-      />
+      <FeedbackSheet {...baseProps} open={false} status="correct" />
     );
 
     expect(screen.queryByText("That's correct!")).not.toBeInTheDocument();
@@ -22,15 +26,7 @@ describe("FeedbackSheet", () => {
 
   it("shows definition when correct", () => {
     render(
-      <FeedbackSheet
-        definition="sample definition"
-        onNext={vi.fn()}
-        open
-        phonetic="sam-puhl"
-        sentence="A sample sentence."
-        status="correct"
-        word="sample"
-      />
+      <FeedbackSheet {...baseProps} open status="correct" />
     );
 
     expect(screen.getByText("That's correct!")).toBeInTheDocument();
@@ -40,15 +36,7 @@ describe("FeedbackSheet", () => {
 
   it("shows sentence when incorrect", () => {
     render(
-      <FeedbackSheet
-        definition="sample definition"
-        onNext={vi.fn()}
-        open
-        phonetic="sam-puhl"
-        sentence="A sample sentence."
-        status="incorrect"
-        word="sample"
-      />
+      <FeedbackSheet {...baseProps} open status="incorrect" />
     );
 
     expect(screen.getByText("That's incorrect")).toBeInTheDocument();
