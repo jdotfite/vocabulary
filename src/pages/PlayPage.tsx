@@ -9,6 +9,7 @@ import { PromptCard } from "@/design-system/components/PromptCard";
 import { TopProgressBar } from "@/design-system/components/TopProgressBar";
 import { quizReducer, createInitialQuizState } from "@/game/quizReducer";
 import { getModeById } from "@/lib/modes";
+import { recordPracticeSession } from "@/lib/practiceStats";
 import type { CompletedQuizPayload } from "@/types/session";
 
 function modeLabelByType(type: string): string {
@@ -76,6 +77,7 @@ export function PlayPage(): JSX.Element {
         answers: state.answers,
         completedAt: new Date().toISOString()
       };
+      recordPracticeSession(payload);
       navigate("/summary", { state: payload });
       return;
     }

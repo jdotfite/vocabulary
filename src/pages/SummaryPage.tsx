@@ -87,6 +87,9 @@ export function SummaryPage(): JSX.Element {
       <Button onClick={() => navigate("/results", { state: payload })} variant="primary">
         See results
       </Button>
+      <Button onClick={() => navigate("/stats")} variant="secondary">
+        Word stats
+      </Button>
     </main>
   );
 }
