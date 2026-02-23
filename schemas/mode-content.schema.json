@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vocabulary.local/schemas/mode-content.schema.json",
-  "title": "Vocabulary Mode Content",
+  "$id": "https://vocabdeck.local/schemas/mode-content.schema.json",
+  "title": "VocabDeck Mode Content",
   "type": "object",
   "additionalProperties": false,
   "required": [

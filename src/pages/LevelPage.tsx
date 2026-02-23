@@ -43,7 +43,7 @@ export function LevelPage(): JSX.Element {
         <div className="mx-auto flex h-28 w-28 items-center justify-center text-6xl">🎓</div>
       </div>
 
-      <h1 className="text-center text-3xl font-bold text-text-primary">Your vocabulary level</h1>
+      <h1 className="text-center text-3xl font-bold text-text-primary">Your level</h1>
 
       <Surface className="space-y-2 p-4 text-center" variant="card">
         <p className="font-display text-5xl">{currentLevel}</p>
