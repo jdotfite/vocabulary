@@ -139,8 +139,9 @@ export function PlayPage(): JSX.Element {
         answers: state.answers,
         completedAt: new Date().toISOString()
       };
-      recordPracticeSession(payload);
-      navigate("/summary", { state: payload });
+      void recordPracticeSession(payload)
+        .catch(() => undefined)
+        .finally(() => navigate("/summary", { state: payload }));
       return;
     }
 

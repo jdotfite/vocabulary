@@ -1,0 +1,110 @@
+import { verifySession } from "../_lib/auth.js";
+import { getSQL } from "../_lib/db.js";
+
+export const config = { runtime: "edge" };
+
+const WEEKDAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function toDateKey(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function addDays(date: Date, days: number): Date {
+  const next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  next.setDate(next.getDate() + days);
+  return next;
+}
+
+export default async function handler(request: Request): Promise<Response> {
+  if (request.method !== "GET") {
+    return new Response("Method not allowed", { status: 405 });
+  }
+
+  try {
+    const { userId } = await verifySession(request);
+    const sql = getSQL();
+
+    const [sessionsRows, favCountRows, bookCountRows] = await Promise.all([
+      sql`
+        SELECT dt.mode_id, ps.score, ps.total, ps.completed_at
+        FROM practice_sessions ps
+        JOIN difficulty_tiers dt ON dt.id = ps.tier_id
+        WHERE ps.user_id = ${userId}
+        ORDER BY ps.completed_at DESC
+      `,
+      sql`SELECT COUNT(*) as count FROM user_favorites WHERE user_id = ${userId}`,
+      sql`SELECT COUNT(*) as count FROM user_bookmarks WHERE user_id = ${userId}`
+    ]);
+
+    // Build day set for streak calculation
+    const daySet = new Set<string>();
+    for (const row of sessionsRows) {
+      const d = new Date(row.completed_at as string);
+      if (!isNaN(d.getTime())) daySet.add(toDateKey(d));
+    }
+
+    // Streak calculation
+    let streakCount = 0;
+    if (daySet.size > 0) {
+      const timestamps = Array.from(daySet).map(
+        (key) => new Date(`${key}T00:00:00`).getTime()
+      );
+      const latest = new Date(Math.max(...timestamps));
+      let cursor = latest;
+      while (daySet.has(toDateKey(cursor))) {
+        streakCount++;
+        cursor = addDays(cursor, -1);
+      }
+    }
+
+    // Week activity
+    const anchorDate =
+      sessionsRows[0]
+        ? new Date(sessionsRows[0].completed_at as string)
+        : new Date();
+    const weekStart = addDays(anchorDate, -anchorDate.getDay());
+    const weekActivity = WEEKDAY_LABELS.map((label, index) => {
+      const current = addDays(weekStart, index);
+      return { label, isActive: daySet.has(toDateKey(current)) };
+    });
+
+    // Last practice
+    const lastPractice = sessionsRows[0]
+      ? {
+          modeId: sessionsRows[0].mode_id as string,
+          score: sessionsRows[0].score as number,
+          total: sessionsRows[0].total as number,
+          completedAt: new Date(
+            sessionsRows[0].completed_at as string
+          ).toISOString()
+        }
+      : null;
+
+    // Words read = sum of all totals
+    let wordsRead = 0;
+    for (const row of sessionsRows) {
+      wordsRead += row.total as number;
+    }
+
+    return new Response(
+      JSON.stringify({
+        lastPractice,
+        streakCount,
+        weekActivity,
+        wordsRead,
+        practices: sessionsRows.length,
+        favoritedCount: Number(favCountRows[0]?.count ?? 0),
+        bookmarkedCount: Number(bookCountRows[0]?.count ?? 0)
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" }
+      }
+    );
+  } catch {
+    return new Response("Unauthorized", { status: 401 });
+  }
+}
