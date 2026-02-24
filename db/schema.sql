@@ -8,7 +8,7 @@ BEGIN;
 -- Content tables (seeded from static JSON)
 -- ---------------------------------------------------------------------------
 
-CREATE TABLE difficulty_tiers (
+CREATE TABLE IF NOT EXISTS difficulty_tiers (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   mode_id       TEXT UNIQUE NOT NULL,
   display_name  TEXT NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE difficulty_tiers (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE words (
+CREATE TABLE IF NOT EXISTS words (
   id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   word        TEXT UNIQUE NOT NULL,
   phonetic    TEXT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE words (
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE word_examples (
+CREATE TABLE IF NOT EXISTS word_examples (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   word_id       UUID NOT NULL REFERENCES words(id) ON DELETE CASCADE,
   sentence      TEXT NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE word_examples (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE questions (
+CREATE TABLE IF NOT EXISTS questions (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   question_id     TEXT UNIQUE NOT NULL,
   word_id         UUID NOT NULL REFERENCES words(id),
@@ -54,7 +54,7 @@ CREATE TABLE questions (
 -- User identity (dual: anonymous token + Google OAuth for future migration)
 -- ---------------------------------------------------------------------------
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id                    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   anon_token            TEXT UNIQUE,
   google_id             TEXT UNIQUE,
@@ -70,7 +70,7 @@ CREATE TABLE users (
 -- User progress tables
 -- ---------------------------------------------------------------------------
 
-CREATE TABLE user_word_stats (
+CREATE TABLE IF NOT EXISTS user_word_stats (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   word_id         UUID NOT NULL REFERENCES words(id) ON DELETE CASCADE,
@@ -85,7 +85,7 @@ CREATE TABLE user_word_stats (
   UNIQUE (user_id, word_id)
 );
 
-CREATE TABLE user_favorites (
+CREATE TABLE IF NOT EXISTS user_favorites (
   id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id     UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   word_id     UUID NOT NULL REFERENCES words(id) ON DELETE CASCADE,
@@ -93,7 +93,7 @@ CREATE TABLE user_favorites (
   UNIQUE (user_id, word_id)
 );
 
-CREATE TABLE user_bookmarks (
+CREATE TABLE IF NOT EXISTS user_bookmarks (
   id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id     UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   word_id     UUID NOT NULL REFERENCES words(id) ON DELETE CASCADE,
@@ -101,7 +101,7 @@ CREATE TABLE user_bookmarks (
   UNIQUE (user_id, word_id)
 );
 
-CREATE TABLE user_preferences (
+CREATE TABLE IF NOT EXISTS user_preferences (
   id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id          UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE UNIQUE,
   age_range        TEXT CHECK (age_range IN ('13-17','18-24','25-34','35-44','45-54','55+')),
@@ -113,7 +113,7 @@ CREATE TABLE user_preferences (
   updated_at       TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE practice_sessions (
+CREATE TABLE IF NOT EXISTS practice_sessions (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id       UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   tier_id       UUID REFERENCES difficulty_tiers(id),
@@ -124,7 +124,7 @@ CREATE TABLE practice_sessions (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE review_log (
+CREATE TABLE IF NOT EXISTS review_log (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   session_id      UUID NOT NULL REFERENCES practice_sessions(id) ON DELETE CASCADE,
@@ -140,17 +140,17 @@ CREATE TABLE review_log (
 -- Indexes
 -- ---------------------------------------------------------------------------
 
-CREATE INDEX idx_words_tier              ON words(tier_id);
-CREATE INDEX idx_word_examples_word      ON word_examples(word_id);
-CREATE INDEX idx_questions_word          ON questions(word_id);
-CREATE INDEX idx_questions_tier          ON questions(tier_id);
-CREATE INDEX idx_user_word_stats_user    ON user_word_stats(user_id);
-CREATE INDEX idx_user_word_stats_word    ON user_word_stats(word_id);
-CREATE INDEX idx_user_favorites_user     ON user_favorites(user_id);
-CREATE INDEX idx_user_bookmarks_user     ON user_bookmarks(user_id);
-CREATE INDEX idx_user_preferences_user   ON user_preferences(user_id);
-CREATE INDEX idx_practice_sessions_user  ON practice_sessions(user_id);
-CREATE INDEX idx_review_log_session      ON review_log(session_id);
-CREATE INDEX idx_review_log_user         ON review_log(user_id);
+CREATE INDEX IF NOT EXISTS idx_words_tier              ON words(tier_id);
+CREATE INDEX IF NOT EXISTS idx_word_examples_word      ON word_examples(word_id);
+CREATE INDEX IF NOT EXISTS idx_questions_word          ON questions(word_id);
+CREATE INDEX IF NOT EXISTS idx_questions_tier          ON questions(tier_id);
+CREATE INDEX IF NOT EXISTS idx_user_word_stats_user    ON user_word_stats(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_word_stats_word    ON user_word_stats(word_id);
+CREATE INDEX IF NOT EXISTS idx_user_favorites_user     ON user_favorites(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_bookmarks_user     ON user_bookmarks(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_preferences_user   ON user_preferences(user_id);
+CREATE INDEX IF NOT EXISTS idx_practice_sessions_user  ON practice_sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_review_log_session      ON review_log(session_id);
+CREATE INDEX IF NOT EXISTS idx_review_log_user         ON review_log(user_id);
 
 COMMIT;
