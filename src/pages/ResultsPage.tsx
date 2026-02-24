@@ -3,8 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { ResultsListItem } from "@/design-system/components/ResultsListItem";
 import { Button } from "@/design-system/primitives/Button";
-import { getModeById } from "@/lib/modes";
+import { getAllModes } from "@/lib/modes";
 import { useUserProgress } from "@/lib/userProgressStore";
+import type { ModeQuestion } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
 export function ResultsPage(): JSX.Element {
@@ -12,14 +13,22 @@ export function ResultsPage(): JSX.Element {
   const location = useLocation();
   const payload = location.state as CompletedQuizPayload | undefined;
 
-  const mode = useMemo(() => getModeById(payload?.modeId ?? ""), [payload?.modeId]);
+  const questionMap = useMemo(() => {
+    const map = new Map<string, ModeQuestion>();
+    for (const mode of getAllModes()) {
+      for (const q of mode.questions) {
+        map.set(q.id, q);
+      }
+    }
+    return map;
+  }, []);
 
   const favorites = useUserProgress((s) => s.favorites);
   const bookmarks = useUserProgress((s) => s.bookmarks);
   const toggleFavorite = useUserProgress((s) => s.toggleFavorite);
   const toggleBookmark = useUserProgress((s) => s.toggleBookmark);
 
-  if (!payload || !mode) {
+  if (!payload) {
     return (
       <main className="space-y-4 pt-8">
         <h1 className="font-display text-4xl">No result session</h1>
@@ -29,8 +38,6 @@ export function ResultsPage(): JSX.Element {
       </main>
     );
   }
-
-  const answerByQuestionId = new Map(payload.answers.map((answer) => [answer.questionId, answer]));
 
   return (
     <main className="space-y-4 pt-4">
@@ -48,10 +55,10 @@ export function ResultsPage(): JSX.Element {
         </div>
         <button
           className="text-base font-bold text-text-primary"
-          onClick={() => navigate("/level", { state: payload })}
+          onClick={() => navigate("/modes", { replace: true })}
           type="button"
         >
-          Finish
+          Done
         </button>
       </header>
 
@@ -60,15 +67,16 @@ export function ResultsPage(): JSX.Element {
       </p>
 
       <section className="pb-4">
-        {mode.questions.map((question) => {
-          const answer = answerByQuestionId.get(question.id);
+        {payload.answers.map((answer) => {
+          const question = questionMap.get(answer.questionId);
+          if (!question) return null;
           return (
             <ResultsListItem
               definition={question.definition}
               isBookmarked={bookmarks.includes(question.word)}
-              isCorrect={answer?.isCorrect ?? false}
+              isCorrect={answer.isCorrect}
               isFavorited={favorites.includes(question.word)}
-              key={question.id}
+              key={answer.questionId}
               onToggleBookmark={() => toggleBookmark(question.word)}
               onToggleFavorite={() => toggleFavorite(question.word)}
               phonetic={question.phonetic}

@@ -274,7 +274,8 @@ export function StatsPage(): JSX.Element {
       </header>
 
       <Surface
-        className="flex items-center justify-between p-4"
+        className="flex cursor-pointer items-center justify-between p-4"
+        onClick={() => navigate("/stats/history")}
         variant="default"
       >
         <div className="flex items-center gap-3">

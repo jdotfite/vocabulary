@@ -52,26 +52,28 @@ export default async function handler(request: Request): Promise<Response> {
       if (!isNaN(d.getTime())) daySet.add(toDateKey(d));
     }
 
-    // Streak calculation
+    // Streak calculation — anchored to today
     let streakCount = 0;
-    if (daySet.size > 0) {
-      const timestamps = Array.from(daySet).map(
-        (key) => new Date(`${key}T00:00:00`).getTime()
-      );
-      const latest = new Date(Math.max(...timestamps));
-      let cursor = latest;
+    const today = new Date();
+    const todayKey = toDateKey(today);
+    const yesterdayKey = toDateKey(addDays(today, -1));
+
+    if (daySet.has(todayKey)) {
+      let cursor = today;
+      while (daySet.has(toDateKey(cursor))) {
+        streakCount++;
+        cursor = addDays(cursor, -1);
+      }
+    } else if (daySet.has(yesterdayKey)) {
+      let cursor = addDays(today, -1);
       while (daySet.has(toDateKey(cursor))) {
         streakCount++;
         cursor = addDays(cursor, -1);
       }
     }
 
-    // Week activity
-    const anchorDate =
-      sessionsRows[0]
-        ? new Date(sessionsRows[0].completed_at as string)
-        : new Date();
-    const weekStart = addDays(anchorDate, -anchorDate.getDay());
+    // Week activity — anchored to current week
+    const weekStart = addDays(today, -today.getDay());
     const weekActivity = WEEKDAY_LABELS.map((label, index) => {
       const current = addDays(weekStart, index);
       return { label, isActive: daySet.has(toDateKey(current)) };

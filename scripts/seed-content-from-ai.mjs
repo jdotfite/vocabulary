@@ -13,19 +13,19 @@ const QUESTION_TYPES = ["guess_word", "meaning_match", "fill_gap"];
 
 const MODE_CONFIGS = [
   {
-    id: "kids_easy",
-    displayName: "Kids Easy",
+    id: "kids_beginner",
+    displayName: "Kids Beginner",
     audience: "kids",
-    tier: "easy",
+    tier: "beginner",
     gradeBand: "K-1",
     minWordLength: 3,
     maxWordLength: 3
   },
   {
-    id: "kids_middle",
-    displayName: "Kids Middle",
+    id: "kids_intermediate",
+    displayName: "Kids Intermediate",
     audience: "kids",
-    tier: "middle",
+    tier: "intermediate",
     gradeBand: "2-3",
     minWordLength: 4,
     maxWordLength: 5
@@ -40,10 +40,10 @@ const MODE_CONFIGS = [
     maxWordLength: 7
   },
   {
-    id: "adult_elementary",
-    displayName: "Adult Elementary",
+    id: "adult_beginner",
+    displayName: "Adult Beginner",
     audience: "adult",
-    tier: "elementary",
+    tier: "beginner",
     gradeBand: "Adult",
     minWordLength: 6,
     maxWordLength: 8

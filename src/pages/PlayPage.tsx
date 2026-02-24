@@ -82,21 +82,24 @@ function usePseudoModeQuestions(modeId: string): ModeQuestion[] | null {
   const ageRange = useUserProgress((s) => s.ageRange);
   const wordStats = useUserProgress((s) => s.wordStats);
 
+  // Freeze wordStats at session start so adaptive pool doesn't recompute mid-quiz
+  const [frozenWordStats] = useState(() => wordStats);
+
   return useMemo(() => {
     if (!PSEUDO_MODES.has(modeId)) return null;
 
     const prefs = { vocabularyLevel, ageRange };
 
-    if (modeId === "shuffle") return getShufflePool(prefs, wordStats);
-    if (modeId === "sprint") return getSprintPool(prefs, wordStats);
-    if (modeId === "perfection") return getPerfectionPool(prefs, wordStats);
-    if (modeId === "weak_words") return getWeakWordsPool(prefs, wordStats);
+    if (modeId === "shuffle") return getShufflePool(prefs, frozenWordStats);
+    if (modeId === "sprint") return getSprintPool(prefs, frozenWordStats);
+    if (modeId === "perfection") return getPerfectionPool(prefs, frozenWordStats);
+    if (modeId === "weak_words") return getWeakWordsPool(prefs, frozenWordStats);
 
     const questionType = TYPE_MAP[modeId];
-    if (questionType) return getPoolByType(prefs, questionType, wordStats);
+    if (questionType) return getPoolByType(prefs, questionType, frozenWordStats);
 
-    return getShufflePool(prefs, wordStats);
-  }, [modeId, vocabularyLevel, ageRange, wordStats]);
+    return getShufflePool(prefs, frozenWordStats);
+  }, [modeId, vocabularyLevel, ageRange, frozenWordStats]);
 }
 
 export function PlayPage(): JSX.Element {

@@ -74,6 +74,9 @@ export function LevelPage(): JSX.Element {
       <Button onClick={() => navigate("/results", { state: payload })} variant="primary">
         See answers
       </Button>
+      <Button onClick={() => navigate("/modes")} variant="secondary">
+        Done
+      </Button>
     </main>
   );
 }

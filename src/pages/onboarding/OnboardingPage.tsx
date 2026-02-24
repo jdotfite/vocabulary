@@ -42,6 +42,7 @@ export function OnboardingPage(): JSX.Element {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<OnboardingData>(INITIAL_ONBOARDING_DATA);
   const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState(false);
 
   const next = useCallback(() => {
     setStep((s) => Math.min(s + 1, TOTAL_STEPS));
@@ -68,6 +69,7 @@ export function OnboardingPage(): JSX.Element {
 
   const handleFinish = useCallback(async () => {
     setSaving(true);
+    setSaveError(false);
     try {
       await apiPost("/api/onboarding/complete", {
         ageRange: data.ageRange,
@@ -80,9 +82,8 @@ export function OnboardingPage(): JSX.Element {
       navigate("/modes", { replace: true });
     } catch (err) {
       console.error("Onboarding save error:", err);
-      // Still proceed — don't block the user
-      markOnboardingComplete();
-      navigate("/modes", { replace: true });
+      setSaving(false);
+      setSaveError(true);
     }
   }, [data, markOnboardingComplete, navigate]);
 
@@ -195,6 +196,12 @@ export function OnboardingPage(): JSX.Element {
 
   return (
     <main className="flex min-h-[80vh] flex-col">
+      {saveError && (
+        <p className="mt-2 rounded-lg bg-state-incorrect/10 px-3 py-2 text-center text-sm text-state-incorrect">
+          Could not save your preferences. Please try again.
+        </p>
+      )}
+
       {/* Progress dots */}
       <div className="flex items-center justify-center gap-1.5 py-3">
         {Array.from({ length: TOTAL_STEPS }, (_, i) => (

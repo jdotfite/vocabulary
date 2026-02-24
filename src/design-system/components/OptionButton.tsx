@@ -31,7 +31,7 @@ export function OptionButton({
       onClick={onClick}
       type="button"
     >
-      <span className="relative flex items-center justify-center">
+      <span className="relative flex items-center justify-center px-9">
         {showCheckIcon ? (
           <svg
             aria-hidden

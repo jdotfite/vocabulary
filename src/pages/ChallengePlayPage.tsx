@@ -43,6 +43,8 @@ export function ChallengePlayPage(): JSX.Element {
   const vocabularyLevel = useUserProgress((s) => s.vocabularyLevel);
   const ageRange = useUserProgress((s) => s.ageRange);
   const wordStats = useUserProgress((s) => s.wordStats);
+  // Freeze wordStats at session start so the initial pool doesn't recompute mid-quiz
+  const [frozenWordStats] = useState(() => wordStats);
   const recordAnswer = useUserProgress((s) => s.recordAnswer);
   const toggleFavorite = useUserProgress((s) => s.toggleFavorite);
   const toggleBookmark = useUserProgress((s) => s.toggleBookmark);
@@ -55,8 +57,8 @@ export function ChallengePlayPage(): JSX.Element {
   );
 
   const questions = useMemo<ModeQuestion[]>(
-    () => (isSprint ? getSprintPool(prefs, wordStats) : getPerfectionPool(prefs, wordStats)),
-    [isSprint, prefs, wordStats]
+    () => (isSprint ? getSprintPool(prefs, frozenWordStats) : getPerfectionPool(prefs, frozenWordStats)),
+    [isSprint, prefs, frozenWordStats]
   );
 
   const [state, dispatch] = useReducer(
