@@ -7,7 +7,11 @@
   "rules": {
     "minWordLength": 7,
     "maxWordLength": 9,
-    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+    "allowedQuestionTypes": [
+      "guess_word",
+      "meaning_match",
+      "fill_gap"
+    ]
   },
   "questions": [
     {
@@ -17,8 +21,12 @@
       "word": "accurate",
       "phonetic": "ak-yer-it",
       "definition": "Correct and free from mistakes.",
-      "sentence": "Please provide accurate numbers in the report.",
-      "options": ["accurate", "dynamic", "analyze"],
+      "sentence": "Please provide accurate figures in the quarterly report.",
+      "options": [
+        "accurate",
+        "dynamic",
+        "analyze"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -27,36 +35,44 @@
       "prompt": "dynamic",
       "word": "dynamic",
       "phonetic": "dye-nam-ik",
-      "definition": "Always changing, active, and energetic.",
-      "sentence": "The market is dynamic this quarter.",
+      "definition": "Always changing, active, and full of energy.",
+      "sentence": "The market environment is dynamic and requires constant adaptation.",
       "options": [
         "To examine something carefully in detail.",
-        "Always changing, active, and energetic.",
-        "To control something by rules or limits."
+        "To control something by rules or limits.",
+        "Always changing, active, and full of energy."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "id": "adult_intermediate_q03",
       "type": "fill_gap",
-      "prompt": "We _______ data before making a decision.",
+      "prompt": "Researchers must ___ the data before drawing any conclusions.",
       "word": "analyze",
       "phonetic": "an-uh-lyz",
       "definition": "To examine something carefully in detail.",
-      "sentence": "We analyze data before making a decision.",
-      "options": ["regulate", "sustain", "analyze"],
+      "sentence": "Researchers must analyze the data before drawing any conclusions.",
+      "options": [
+        "regulate",
+        "sustain",
+        "analyze"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "adult_intermediate_q04",
       "type": "guess_word",
-      "prompt": "To control something by rules or limits.",
+      "prompt": "To control something by rules or an authority.",
       "word": "regulate",
       "phonetic": "reg-yuh-layt",
-      "definition": "To control something by rules or limits.",
-      "sentence": "The agency can regulate harmful products.",
-      "options": ["regulate", "sustain", "logical"],
-      "correctOptionIndex": 0
+      "definition": "To control something by rules or an authority.",
+      "sentence": "The agency was established to regulate the financial industry.",
+      "options": [
+        "sustain",
+        "regulate",
+        "logical"
+      ],
+      "correctOptionIndex": 1
     },
     {
       "id": "adult_intermediate_q05",
@@ -64,36 +80,44 @@
       "prompt": "sustain",
       "word": "sustain",
       "phonetic": "suh-stayn",
-      "definition": "To keep something going over time.",
-      "sentence": "Small habits can sustain progress.",
+      "definition": "To keep something going over a period of time.",
+      "sentence": "Consistent effort is needed to sustain long-term growth.",
       "options": [
+        "To keep something going over a period of time.",
         "Reasonable and based on clear thinking.",
-        "To keep something going over time.",
-        "A clear difference between things."
+        "A clear difference between two or more things."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 0
     },
     {
       "id": "adult_intermediate_q06",
       "type": "fill_gap",
-      "prompt": "Her plan is _______ and easy to follow.",
+      "prompt": "Her argument was ___ and easy for the committee to follow.",
       "word": "logical",
       "phonetic": "loj-i-kuhl",
       "definition": "Reasonable and based on clear thinking.",
-      "sentence": "Her plan is logical and easy to follow.",
-      "options": ["contrast", "optimize", "logical"],
-      "correctOptionIndex": 2
+      "sentence": "Her argument was logical and easy for the committee to follow.",
+      "options": [
+        "logical",
+        "contrast",
+        "optimize"
+      ],
+      "correctOptionIndex": 0
     },
     {
       "id": "adult_intermediate_q07",
       "type": "guess_word",
-      "prompt": "A clear difference between things.",
+      "prompt": "A striking difference between two or more things.",
       "word": "contrast",
       "phonetic": "kon-trast",
-      "definition": "A clear difference between things.",
-      "sentence": "The contrast between both designs is obvious.",
-      "options": ["contrast", "optimize", "interpret"],
-      "correctOptionIndex": 0
+      "definition": "A striking difference between two or more things.",
+      "sentence": "The report drew a sharp contrast between the two proposals.",
+      "options": [
+        "optimize",
+        "interpret",
+        "contrast"
+      ],
+      "correctOptionIndex": 2
     },
     {
       "id": "adult_intermediate_q08",
@@ -101,36 +125,44 @@
       "prompt": "optimize",
       "word": "optimize",
       "phonetic": "op-tuh-myz",
-      "definition": "To make something as effective as possible.",
-      "sentence": "We optimize the page for faster loading.",
+      "definition": "To make something as effective or efficient as possible.",
+      "sentence": "Engineers worked overnight to optimize the system's performance.",
       "options": [
-        "To explain the meaning of something.",
-        "To make something as effective as possible.",
-        "Able to change easily when needed."
+        "Able to change easily when needed.",
+        "A plan designed to achieve a goal.",
+        "To make something as effective or efficient as possible."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "id": "adult_intermediate_q09",
       "type": "fill_gap",
-      "prompt": "Experts _________ the test results differently.",
+      "prompt": "Scholars continue to ___ the meaning of the ancient text.",
       "word": "interpret",
       "phonetic": "in-tur-prit",
-      "definition": "To explain the meaning of something.",
-      "sentence": "Experts interpret the test results differently.",
-      "options": ["flexible", "reliable", "interpret"],
+      "definition": "To explain or understand the meaning of something.",
+      "sentence": "Scholars continue to interpret the meaning of the ancient text.",
+      "options": [
+        "flexible",
+        "reliable",
+        "interpret"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "adult_intermediate_q10",
       "type": "guess_word",
-      "prompt": "Able to change easily when needed.",
+      "prompt": "Able to adapt or change easily when circumstances require.",
       "word": "flexible",
       "phonetic": "flek-suh-buhl",
-      "definition": "Able to change easily when needed.",
-      "sentence": "A flexible schedule helps busy parents.",
-      "options": ["flexible", "reliable", "strategy"],
-      "correctOptionIndex": 0
+      "definition": "Able to adapt or change easily when circumstances require.",
+      "sentence": "A flexible approach allows the team to respond to new challenges.",
+      "options": [
+        "reliable",
+        "strategy",
+        "flexible"
+      ],
+      "correctOptionIndex": 2
     },
     {
       "id": "adult_intermediate_q11",
@@ -138,31 +170,755 @@
       "prompt": "reliable",
       "word": "reliable",
       "phonetic": "ri-ly-uh-buhl",
-      "definition": "Able to be trusted to work well every time.",
-      "sentence": "Choose a reliable source for medical facts.",
+      "definition": "Consistently performing well and able to be trusted.",
+      "sentence": "Journalists should cite reliable sources to maintain credibility.",
       "options": [
+        "Consistently performing well and able to be trusted.",
         "A plan designed to achieve a goal.",
-        "Able to be trusted to work well every time.",
         "Correct and free from mistakes."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 0
     },
     {
       "id": "adult_intermediate_q12",
       "type": "fill_gap",
-      "prompt": "Their ________ improved team performance.",
+      "prompt": "The marketing team developed a ___ to increase brand awareness.",
       "word": "strategy",
       "phonetic": "strat-uh-jee",
-      "definition": "A plan designed to achieve a goal.",
-      "sentence": "Their strategy improved team performance.",
-      "options": ["accurate", "dynamic", "strategy"],
+      "definition": "A plan of action designed to achieve a long-term goal.",
+      "sentence": "The marketing team developed a strategy to increase brand awareness.",
+      "options": [
+        "decisive",
+        "coherent",
+        "strategy"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q13",
+      "type": "guess_word",
+      "prompt": "Logical and consistent so that the parts fit together well.",
+      "word": "coherent",
+      "phonetic": "koh-heer-unt",
+      "definition": "Logical and consistent so that the parts fit together well.",
+      "sentence": "The proposal must be coherent before it is presented to the board.",
+      "options": [
+        "coherent",
+        "decisive",
+        "advocate"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q14",
+      "type": "meaning_match",
+      "prompt": "decisive",
+      "word": "decisive",
+      "phonetic": "dih-sy-siv",
+      "definition": "Settling an issue quickly and firmly; able to make decisions confidently.",
+      "sentence": "In a crisis, the manager must be decisive and clear-headed.",
+      "options": [
+        "To publicly support or recommend a cause.",
+        "Settling an issue quickly and firmly; able to make decisions confidently.",
+        "To add notes or comments to a text."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q15",
+      "type": "fill_gap",
+      "prompt": "The senator will ___ for stronger environmental protections.",
+      "word": "advocate",
+      "phonetic": "ad-vuh-kit",
+      "definition": "To publicly support or recommend a particular cause or policy.",
+      "sentence": "The senator will advocate for stronger environmental protections.",
+      "options": [
+        "advocate",
+        "annotate",
+        "comprise"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q16",
+      "type": "guess_word",
+      "prompt": "To add explanatory notes or comments to a text.",
+      "word": "annotate",
+      "phonetic": "an-uh-tayt",
+      "definition": "To add explanatory notes or comments to a text.",
+      "sentence": "Students are encouraged to annotate primary sources during research.",
+      "options": [
+        "comprise",
+        "annotate",
+        "converge"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q17",
+      "type": "meaning_match",
+      "prompt": "comprise",
+      "word": "comprise",
+      "phonetic": "kum-pryz",
+      "definition": "To consist of or be made up of specified parts or elements.",
+      "sentence": "The committee will comprise representatives from each department.",
+      "options": [
+        "To consist of or be made up of specified parts or elements.",
+        "To come together at one point.",
+        "A standard used to judge or decide something."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q18",
+      "type": "fill_gap",
+      "prompt": "The two research paths began to ___ on the same conclusion.",
+      "word": "converge",
+      "phonetic": "kun-vurj",
+      "definition": "To come together at one point from different directions.",
+      "sentence": "The two research paths began to converge on the same conclusion.",
+      "options": [
+        "criteria",
+        "delegate",
+        "converge"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q19",
+      "type": "guess_word",
+      "prompt": "The standards or principles used to judge or make a decision.",
+      "word": "criteria",
+      "phonetic": "kry-teer-ee-uh",
+      "definition": "The standards or principles used to judge or make a decision.",
+      "sentence": "Applicants must meet all criteria listed in the job posting.",
+      "options": [
+        "criteria",
+        "delegate",
+        "diminish"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q20",
+      "type": "meaning_match",
+      "prompt": "delegate",
+      "word": "delegate",
+      "phonetic": "del-ih-git",
+      "definition": "To assign responsibility or authority to another person.",
+      "sentence": "Effective leaders know how to delegate tasks to the right people.",
+      "options": [
+        "To grow gradually smaller or weaker.",
+        "To speed up a process or action.",
+        "To assign responsibility or authority to another person."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q21",
+      "type": "fill_gap",
+      "prompt": "Repeated failures began to ___ the team's confidence.",
+      "word": "diminish",
+      "phonetic": "dih-min-ish",
+      "definition": "To make or become less, smaller, or less important.",
+      "sentence": "Repeated failures began to diminish the team's confidence.",
+      "options": [
+        "escalate",
+        "expedite",
+        "diminish"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q22",
+      "type": "guess_word",
+      "prompt": "To increase rapidly or become more serious and intense.",
+      "word": "escalate",
+      "phonetic": "es-kuh-layt",
+      "definition": "To increase rapidly or become more serious and intense.",
+      "sentence": "Unresolved complaints tend to escalate into major disputes.",
+      "options": [
+        "feasible",
+        "escalate",
+        "expedite"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q23",
+      "type": "meaning_match",
+      "prompt": "expedite",
+      "word": "expedite",
+      "phonetic": "ek-spuh-dyt",
+      "definition": "To make a process happen faster or more smoothly.",
+      "sentence": "The supervisor agreed to expedite the approval process.",
+      "options": [
+        "To make a process happen faster or more smoothly.",
+        "Possible and likely to succeed or be achieved.",
+        "To produce or create something."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q24",
+      "type": "fill_gap",
+      "prompt": "The engineers determined that the plan was ___ within budget.",
+      "word": "feasible",
+      "phonetic": "fee-zuh-buhl",
+      "definition": "Possible and likely to succeed or be achieved.",
+      "sentence": "The engineers determined that the plan was feasible within budget.",
+      "options": [
+        "feasible",
+        "generate",
+        "habitual"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q25",
+      "type": "guess_word",
+      "prompt": "To produce or create something, especially as a result of a process.",
+      "word": "generate",
+      "phonetic": "jen-uh-rayt",
+      "definition": "To produce or create something, especially as a result of a process.",
+      "sentence": "The new policy aims to generate more job opportunities.",
+      "options": [
+        "generate",
+        "habitual",
+        "ideology"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q26",
+      "type": "meaning_match",
+      "prompt": "habitual",
+      "word": "habitual",
+      "phonetic": "huh-bich-oo-ul",
+      "definition": "Done regularly as a habit or typical of a person's behavior.",
+      "sentence": "His habitual tardiness became a problem for the entire department.",
+      "options": [
+        "A system of ideas forming the basis of a political or economic theory.",
+        "Done regularly as a habit or typical of a person's behavior.",
+        "Suggested but not directly stated."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q27",
+      "type": "fill_gap",
+      "prompt": "Her speech reflected a strong ___ rooted in democratic values.",
+      "word": "ideology",
+      "phonetic": "eye-dee-ol-uh-jee",
+      "definition": "A system of ideas or beliefs forming the basis of a social or political theory.",
+      "sentence": "Her speech reflected a strong ideology rooted in democratic values.",
+      "options": [
+        "implicit",
+        "innovate",
+        "ideology"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q28",
+      "type": "guess_word",
+      "prompt": "Suggested or understood without being directly stated.",
+      "word": "implicit",
+      "phonetic": "im-plis-it",
+      "definition": "Suggested or understood without being directly stated.",
+      "sentence": "There was an implicit agreement among team members to keep the plan confidential.",
+      "options": [
+        "innovate",
+        "implicit",
+        "maintain"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q29",
+      "type": "meaning_match",
+      "prompt": "innovate",
+      "word": "innovate",
+      "phonetic": "in-uh-vayt",
+      "definition": "To introduce new ideas, methods, or products.",
+      "sentence": "Companies that fail to innovate risk losing their competitive edge.",
+      "options": [
+        "To keep something in good condition or at a required level.",
+        "To introduce new ideas, methods, or products.",
+        "To find a route through an unfamiliar area or situation."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q30",
+      "type": "fill_gap",
+      "prompt": "It is difficult to ___ high standards without consistent effort.",
+      "word": "maintain",
+      "phonetic": "mayn-tayn",
+      "definition": "To keep something in good condition or at a required level.",
+      "sentence": "It is difficult to maintain high standards without consistent effort.",
+      "options": [
+        "navigate",
+        "obsolete",
+        "maintain"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q31",
+      "type": "guess_word",
+      "prompt": "To find one's way through a complex situation or environment.",
+      "word": "navigate",
+      "phonetic": "nav-ih-gayt",
+      "definition": "To find one's way through a complex situation or environment.",
+      "sentence": "New employees must learn to navigate the company's approval process.",
+      "options": [
+        "plausible",
+        "obsolete",
+        "navigate"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q32",
+      "type": "meaning_match",
+      "prompt": "obsolete",
+      "word": "obsolete",
+      "phonetic": "ob-suh-leet",
+      "definition": "No longer produced, used, or needed; out of date.",
+      "sentence": "The rapid pace of technology has rendered many skills obsolete.",
+      "options": [
+        "No longer produced, used, or needed; out of date.",
+        "Seeming reasonable or probable.",
+        "To measure or express as a number or quantity."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q33",
+      "type": "fill_gap",
+      "prompt": "The explanation was ___, though no hard evidence was provided.",
+      "word": "plausible",
+      "phonetic": "plaw-zuh-buhl",
+      "definition": "Seeming reasonable or probable; appearing worthy of belief.",
+      "sentence": "The explanation was plausible, though no hard evidence was provided.",
+      "options": [
+        "quantify",
+        "rigorous",
+        "plausible"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q34",
+      "type": "guess_word",
+      "prompt": "To express or measure something as a numerical value.",
+      "word": "quantify",
+      "phonetic": "kwon-tuh-fy",
+      "definition": "To express or measure something as a numerical value.",
+      "sentence": "The survey was designed to quantify consumer satisfaction.",
+      "options": [
+        "quantify",
+        "rigorous",
+        "scrutiny"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q35",
+      "type": "meaning_match",
+      "prompt": "rigorous",
+      "word": "rigorous",
+      "phonetic": "rig-er-us",
+      "definition": "Extremely thorough, careful, and demanding high standards.",
+      "sentence": "The clinical trial followed a rigorous protocol to ensure accurate results.",
+      "options": [
+        "Real and able to be touched or perceived.",
+        "Extremely thorough, careful, and demanding high standards.",
+        "Close and critical examination or observation."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q36",
+      "type": "fill_gap",
+      "prompt": "The candidate's financial records came under intense ___.",
+      "word": "scrutiny",
+      "phonetic": "skroo-tuh-nee",
+      "definition": "Close and critical examination or observation.",
+      "sentence": "The candidate's financial records came under intense scrutiny.",
+      "options": [
+        "tangible",
+        "validate",
+        "scrutiny"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q37",
+      "type": "guess_word",
+      "prompt": "Real and able to be touched, seen, or clearly identified.",
+      "word": "tangible",
+      "phonetic": "tan-juh-buhl",
+      "definition": "Real and able to be touched, seen, or clearly identified.",
+      "sentence": "The program produced tangible improvements in student performance.",
+      "options": [
+        "validate",
+        "tangible",
+        "cognitive"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q38",
+      "type": "meaning_match",
+      "prompt": "validate",
+      "word": "validate",
+      "phonetic": "val-ih-dayt",
+      "definition": "To confirm the accuracy, quality, or legality of something.",
+      "sentence": "The experiment was repeated to validate the original findings.",
+      "options": [
+        "To confirm the accuracy, quality, or legality of something.",
+        "Relating to mental processes such as thinking and memory.",
+        "To develop or improve something over time."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q39",
+      "type": "fill_gap",
+      "prompt": "Learning a second language has measurable ___ benefits.",
+      "word": "cognitive",
+      "phonetic": "kog-nuh-tiv",
+      "definition": "Relating to mental processes such as thinking, understanding, and memory.",
+      "sentence": "Learning a second language has measurable cognitive benefits.",
+      "options": [
+        "cultivate",
+        "cognitive",
+        "delineate"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q40",
+      "type": "guess_word",
+      "prompt": "To develop or improve something gradually through care and effort.",
+      "word": "cultivate",
+      "phonetic": "kul-tuh-vayt",
+      "definition": "To develop or improve something gradually through care and effort.",
+      "sentence": "Managers should cultivate a culture of open communication.",
+      "options": [
+        "delineate",
+        "cultivate",
+        "emphasize"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q41",
+      "type": "meaning_match",
+      "prompt": "delineate",
+      "word": "delineate",
+      "phonetic": "dih-lin-ee-ayt",
+      "definition": "To describe or portray something precisely; to mark out boundaries.",
+      "sentence": "The contract should delineate each party's responsibilities clearly.",
+      "options": [
+        "To give special importance or prominence to something.",
+        "To describe or portray something precisely; to mark out boundaries.",
+        "Something given freely without expectation of payment."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q42",
+      "type": "fill_gap",
+      "prompt": "The speaker paused to ___ the importance of ethical research.",
+      "word": "emphasize",
+      "phonetic": "em-fuh-syz",
+      "definition": "To give special importance or prominence to something.",
+      "sentence": "The speaker paused to emphasize the importance of ethical research.",
+      "options": [
+        "emphasize",
+        "gratitude",
+        "hierarchy"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q43",
+      "type": "guess_word",
+      "prompt": "A feeling of thankfulness and appreciation.",
+      "word": "gratitude",
+      "phonetic": "grat-ih-tood",
+      "definition": "A feeling of thankfulness and appreciation.",
+      "sentence": "She expressed her gratitude to everyone who contributed to the project.",
+      "options": [
+        "hierarchy",
+        "implement",
+        "gratitude"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q44",
+      "type": "meaning_match",
+      "prompt": "hierarchy",
+      "word": "hierarchy",
+      "phonetic": "hy-uh-rar-kee",
+      "definition": "A system in which people or things are ranked according to importance or authority.",
+      "sentence": "Understanding the corporate hierarchy helps new employees communicate effectively.",
+      "options": [
+        "A system in which people or things are ranked according to importance or authority.",
+        "To put a plan or decision into effect.",
+        "To place side by side for comparison."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q45",
+      "type": "fill_gap",
+      "prompt": "The board voted to ___ the new security policy immediately.",
+      "word": "implement",
+      "phonetic": "im-pluh-ment",
+      "definition": "To put a plan, decision, or agreement into effect.",
+      "sentence": "The board voted to implement the new security policy immediately.",
+      "options": [
+        "juxtapose",
+        "implement",
+        "landscape"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q46",
+      "type": "guess_word",
+      "prompt": "To place two things side by side to highlight their differences.",
+      "word": "juxtapose",
+      "phonetic": "juk-stuh-pohz",
+      "definition": "To place two things side by side to highlight their differences.",
+      "sentence": "The documentary juxtapose scenes of wealth and poverty to make its point.",
+      "options": [
+        "landscape",
+        "juxtapose",
+        "magnitude"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q47",
+      "type": "meaning_match",
+      "prompt": "landscape",
+      "word": "landscape",
+      "phonetic": "land-skayp",
+      "definition": "The overall situation or environment in a particular field or area.",
+      "sentence": "The political landscape shifted dramatically after the election.",
+      "options": [
+        "The size, extent, or importance of something.",
+        "The process of discussing terms to reach an agreement.",
+        "The overall situation or environment in a particular field or area."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q48",
+      "type": "fill_gap",
+      "prompt": "The ___ of the task was underestimated by the project team.",
+      "word": "magnitude",
+      "phonetic": "mag-nih-tood",
+      "definition": "The size, extent, or importance of something.",
+      "sentence": "The magnitude of the task was underestimated by the project team.",
+      "options": [
+        "magnitude",
+        "negotiate",
+        "objection"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q49",
+      "type": "guess_word",
+      "prompt": "To discuss terms with others in order to reach an agreement.",
+      "word": "negotiate",
+      "phonetic": "nuh-goh-shee-ayt",
+      "definition": "To discuss terms with others in order to reach an agreement.",
+      "sentence": "The union representatives will negotiate a new contract next week.",
+      "options": [
+        "objection",
+        "negotiate",
+        "parameter"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q50",
+      "type": "meaning_match",
+      "prompt": "objection",
+      "word": "objection",
+      "phonetic": "ub-jek-shun",
+      "definition": "A reason or argument presented in opposition to something.",
+      "sentence": "The attorney raised an objection to the line of questioning.",
+      "options": [
+        "A reason or argument presented in opposition to something.",
+        "A boundary or fixed limit that defines a system.",
+        "Something that happens again at regular intervals."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q51",
+      "type": "fill_gap",
+      "prompt": "Each test must be conducted within the ___ set by the protocol.",
+      "word": "parameter",
+      "phonetic": "puh-ram-uh-ter",
+      "definition": "A boundary or fixed limit that defines the scope of a system or process.",
+      "sentence": "Each test must be conducted within the parameter set by the protocol.",
+      "options": [
+        "recurrent",
+        "speculate",
+        "parameter"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q52",
+      "type": "guess_word",
+      "prompt": "Occurring or appearing repeatedly over a period of time.",
+      "word": "recurrent",
+      "phonetic": "rih-kur-unt",
+      "definition": "Occurring or appearing repeatedly over a period of time.",
+      "sentence": "The audit revealed a recurrent error in the billing system.",
+      "options": [
+        "recurrent",
+        "speculate",
+        "therefore"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q53",
+      "type": "meaning_match",
+      "prompt": "speculate",
+      "word": "speculate",
+      "phonetic": "spek-yuh-layt",
+      "definition": "To form a theory or guess without firm evidence.",
+      "sentence": "Analysts began to speculate about the company's future direction.",
+      "options": [
+        "As a result or consequence of that.",
+        "To form a theory or guess without firm evidence.",
+        "To take on a task or piece of work."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q54",
+      "type": "fill_gap",
+      "prompt": "The evidence was strong; ___, the verdict was not surprising.",
+      "word": "therefore",
+      "phonetic": "thair-for",
+      "definition": "As a result or logical consequence of something previously stated.",
+      "sentence": "The evidence was strong; therefore, the verdict was not surprising.",
+      "options": [
+        "undertake",
+        "therefore",
+        "versatile"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q55",
+      "type": "guess_word",
+      "prompt": "To commit to and begin a task, duty, or project.",
+      "word": "undertake",
+      "phonetic": "un-der-tayk",
+      "definition": "To commit to and begin a task, duty, or project.",
+      "sentence": "The firm agreed to undertake the renovation of the city library.",
+      "options": [
+        "versatile",
+        "undertake",
+        "wholesale"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q56",
+      "type": "meaning_match",
+      "prompt": "versatile",
+      "word": "versatile",
+      "phonetic": "vur-suh-tul",
+      "definition": "Able to adapt or be used for many different purposes or roles.",
+      "sentence": "A versatile employee can shift between different roles as needed.",
+      "options": [
+        "Able to adapt or be used for many different purposes or roles.",
+        "On a large scale; relating to bulk goods or distribution.",
+        "A standard used to measure or evaluate performance."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q57",
+      "type": "fill_gap",
+      "prompt": "The company bought the goods ___ and resold them at retail prices.",
+      "word": "wholesale",
+      "phonetic": "hohl-sayl",
+      "definition": "The selling of goods in large quantities at low prices, typically for resale.",
+      "sentence": "The company bought the goods wholesale and resold them at retail prices.",
+      "options": [
+        "benchmark",
+        "wholesale",
+        "accurate"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q58",
+      "type": "guess_word",
+      "prompt": "A standard or point of reference used to evaluate performance or quality.",
+      "word": "benchmark",
+      "phonetic": "bench-mark",
+      "definition": "A standard or point of reference used to evaluate performance or quality.",
+      "sentence": "The industry uses this metric as a benchmark for customer satisfaction.",
+      "options": [
+        "dynamic",
+        "benchmark",
+        "regulate"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q59",
+      "type": "meaning_match",
+      "prompt": "apparent",
+      "word": "apparent",
+      "phonetic": "uh-pair-unt",
+      "definition": "Clearly visible or understood; obvious.",
+      "sentence": "It became apparent that the original estimate was too low.",
+      "options": [
+        "Occurring or appearing repeatedly over time.",
+        "Able to adapt or be used for many different purposes.",
+        "Clearly visible or understood; obvious."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q60",
+      "type": "fill_gap",
+      "prompt": "The panel will ___ its review with a formal written report.",
+      "word": "conclude",
+      "phonetic": "kun-klood",
+      "definition": "To bring something to an end; to reach a decision or judgment.",
+      "sentence": "The panel will conclude its review with a formal written report.",
+      "options": [
+        "escalate",
+        "quantify",
+        "conclude"
+      ],
       "correctOptionIndex": 2
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
-    "generatedAt": "2026-02-22T18:44:32.272Z",
-    "questionCount": 12,
-    "wordCount": 12
+    "generatedAt": "2026-02-23T12:00:00.000Z",
+    "questionCount": 60,
+    "wordCount": 60
   }
 }

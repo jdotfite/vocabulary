@@ -7,162 +7,918 @@
   "rules": {
     "minWordLength": 5,
     "maxWordLength": 7,
-    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+    "allowedQuestionTypes": [
+      "guess_word",
+      "meaning_match",
+      "fill_gap"
+    ]
   },
   "questions": [
     {
       "id": "kids_advanced_q01",
       "type": "guess_word",
-      "prompt": "Giving off a lot of light or looking smart.",
-      "word": "bright",
-      "phonetic": "bryt",
-      "definition": "Giving off a lot of light or looking smart.",
-      "sentence": "The bright lamp lit the room.",
-      "options": ["bright", "brave", "puzzle"],
+      "prompt": "The hardened remains of an ancient plant or animal found in rock.",
+      "word": "fossil",
+      "phonetic": "fos-uhl",
+      "definition": "The hardened remains of an ancient plant or animal found in rock.",
+      "sentence": "We found a fossil of a shell at the museum.",
+      "options": [
+        "fossil",
+        "planet",
+        "desert"
+      ],
       "correctOptionIndex": 0
     },
     {
       "id": "kids_advanced_q02",
       "type": "meaning_match",
-      "prompt": "brave",
-      "word": "brave",
-      "phonetic": "brayv",
-      "definition": "Showing courage in a hard moment.",
-      "sentence": "She was brave during the storm.",
+      "prompt": "planet",
+      "word": "planet",
+      "phonetic": "plan-it",
+      "definition": "A large round object in space that orbits a star.",
+      "sentence": "Earth is the only planet known to have life.",
       "options": [
-        "A game where pieces fit together.",
-        "Showing courage in a hard moment.",
-        "Kind and careful, not rough."
+        "The hardened remains of an ancient plant or animal found in rock.",
+        "A large round object in space that orbits a star.",
+        "A very dry land that gets little rain."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "kids_advanced_q03",
       "type": "fill_gap",
-      "prompt": "We finished the ______ at the table.",
-      "word": "puzzle",
-      "phonetic": "puhz-uhl",
-      "definition": "A game where pieces fit together.",
-      "sentence": "We finished the puzzle at the table.",
-      "options": ["gentle", "travel", "puzzle"],
+      "prompt": "The Sahara is the largest hot _______ in the world.",
+      "word": "desert",
+      "phonetic": "dez-ert",
+      "definition": "A very dry land that gets little rain.",
+      "sentence": "The desert gets very little rain each year.",
+      "options": [
+        "wisdom",
+        "colony",
+        "desert"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "kids_advanced_q04",
       "type": "guess_word",
-      "prompt": "Kind and careful, not rough.",
-      "word": "gentle",
-      "phonetic": "jen-tl",
-      "definition": "Kind and careful, not rough.",
-      "sentence": "Use a gentle touch with the kitten.",
-      "options": ["gentle", "travel", "jungle"],
+      "prompt": "The ability to make good decisions based on knowledge and experience.",
+      "word": "wisdom",
+      "phonetic": "wiz-dum",
+      "definition": "The ability to make good decisions based on knowledge and experience.",
+      "sentence": "The old owl in the story had great wisdom.",
+      "options": [
+        "wisdom",
+        "honest",
+        "humble"
+      ],
       "correctOptionIndex": 0
     },
     {
       "id": "kids_advanced_q05",
       "type": "meaning_match",
-      "prompt": "travel",
-      "word": "travel",
-      "phonetic": "trav-uhl",
-      "definition": "To go from one place to another.",
-      "sentence": "We travel to see our cousins.",
+      "prompt": "honest",
+      "word": "honest",
+      "phonetic": "on-ist",
+      "definition": "Telling the truth and not trying to deceive others.",
+      "sentence": "She was honest when she admitted making a mistake.",
       "options": [
-        "A thick forest in a warm place.",
-        "To go from one place to another.",
-        "To speak very softly."
+        "Not thinking too highly of yourself.",
+        "Telling the truth and not trying to deceive others.",
+        "The ability to make good decisions based on knowledge and experience."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "kids_advanced_q06",
       "type": "fill_gap",
-      "prompt": "Many animals live in the ______.",
-      "word": "jungle",
-      "phonetic": "juhng-guhl",
-      "definition": "A thick forest in a warm place.",
-      "sentence": "Many animals live in the jungle.",
-      "options": ["whisper", "curious", "jungle"],
+      "prompt": "Even after winning, Marcus stayed _______ and thanked his teammates.",
+      "word": "humble",
+      "phonetic": "hum-buhl",
+      "definition": "Not thinking too highly of yourself.",
+      "sentence": "The champion was humble and thanked everyone who helped.",
+      "options": [
+        "fluent",
+        "native",
+        "humble"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "kids_advanced_q07",
       "type": "guess_word",
-      "prompt": "To speak very softly.",
-      "word": "whisper",
-      "phonetic": "whis-per",
-      "definition": "To speak very softly.",
-      "sentence": "Please whisper in the library.",
-      "options": ["whisper", "curious", "balance"],
+      "prompt": "A long journey, especially by sea or through space.",
+      "word": "voyage",
+      "phonetic": "voy-ij",
+      "definition": "A long journey, especially by sea or through space.",
+      "sentence": "The sailors set off on a voyage across the ocean.",
+      "options": [
+        "voyage",
+        "theory",
+        "method"
+      ],
       "correctOptionIndex": 0
     },
     {
       "id": "kids_advanced_q08",
       "type": "meaning_match",
-      "prompt": "curious",
-      "word": "curious",
-      "phonetic": "kyur-ee-us",
-      "definition": "Wanting to learn or know more.",
-      "sentence": "He is curious about space.",
+      "prompt": "theory",
+      "word": "theory",
+      "phonetic": "thee-uh-ree",
+      "definition": "An idea or explanation that tries to make sense of something.",
+      "sentence": "The scientist had a theory about why the plants grew faster.",
       "options": [
-        "To stay steady without falling.",
-        "Wanting to learn or know more.",
-        "The season or act of gathering crops."
+        "A long journey, especially by sea or through space.",
+        "A step-by-step way of doing something.",
+        "An idea or explanation that tries to make sense of something."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "id": "kids_advanced_q09",
       "type": "fill_gap",
-      "prompt": "I can _______ on one foot.",
-      "word": "balance",
-      "phonetic": "bal-uhns",
-      "definition": "To stay steady without falling.",
-      "sentence": "I can balance on one foot.",
-      "options": ["harvest", "sparkle", "balance"],
-      "correctOptionIndex": 2
+      "prompt": "We learned a new _______ for solving the math problem.",
+      "word": "method",
+      "phonetic": "meth-ud",
+      "definition": "A step-by-step way of doing something.",
+      "sentence": "The teacher showed us a method for measuring carefully.",
+      "options": [
+        "method",
+        "review",
+        "design"
+      ],
+      "correctOptionIndex": 0
     },
     {
       "id": "kids_advanced_q10",
       "type": "guess_word",
-      "prompt": "The season or act of gathering crops.",
-      "word": "harvest",
-      "phonetic": "har-vist",
-      "definition": "The season or act of gathering crops.",
-      "sentence": "Farmers harvest corn in the fall.",
-      "options": ["harvest", "sparkle", "explore"],
-      "correctOptionIndex": 0
-    },
-    {
-      "id": "kids_advanced_q11",
-      "type": "meaning_match",
-      "prompt": "sparkle",
-      "word": "sparkle",
-      "phonetic": "spar-kuhl",
-      "definition": "To shine with small flashes of light.",
-      "sentence": "The stars sparkle at night.",
+      "prompt": "To look over something again carefully to check for mistakes.",
+      "word": "review",
+      "phonetic": "rih-vyoo",
+      "definition": "To look over something again carefully to check for mistakes.",
+      "sentence": "I review my notes before every test.",
       "options": [
-        "To travel and learn about a place.",
-        "To shine with small flashes of light.",
-        "Giving off a lot of light or looking smart."
+        "design",
+        "review",
+        "patrol"
       ],
       "correctOptionIndex": 1
     },
     {
+      "id": "kids_advanced_q11",
+      "type": "meaning_match",
+      "prompt": "design",
+      "word": "design",
+      "phonetic": "dih-zyn",
+      "definition": "A plan or pattern made before building or creating something.",
+      "sentence": "She drew a design for her birdhouse project.",
+      "options": [
+        "To watch over an area to keep it safe.",
+        "To look over something again carefully to check for mistakes.",
+        "A plan or pattern made before building or creating something."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
       "id": "kids_advanced_q12",
       "type": "fill_gap",
-      "prompt": "We _______ the trail after lunch.",
-      "word": "explore",
-      "phonetic": "ik-splor",
-      "definition": "To travel and learn about a place.",
-      "sentence": "We explore the trail after lunch.",
-      "options": ["bright", "brave", "explore"],
+      "prompt": "The guard will _______ the hallways during the school dance.",
+      "word": "patrol",
+      "phonetic": "puh-trole",
+      "definition": "To walk through an area to keep it safe and watch for problems.",
+      "sentence": "The crossing guard will patrol the street each morning.",
+      "options": [
+        "patrol",
+        "fluent",
+        "statue"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q13",
+      "type": "guess_word",
+      "prompt": "Able to speak or read a language easily and smoothly.",
+      "word": "fluent",
+      "phonetic": "floo-ent",
+      "definition": "Able to speak or read a language easily and smoothly.",
+      "sentence": "After two years, Mia became fluent in Spanish.",
+      "options": [
+        "native",
+        "fluent",
+        "settle"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q14",
+      "type": "meaning_match",
+      "prompt": "statue",
+      "word": "statue",
+      "phonetic": "stach-oo",
+      "definition": "A carved or molded figure of a person or animal.",
+      "sentence": "There is a bronze statue of the founder in the park.",
+      "options": [
+        "A carved or molded figure of a person or animal.",
+        "Able to speak or read a language easily and smoothly.",
+        "To make a home in a new place."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q15",
+      "type": "fill_gap",
+      "prompt": "The pioneers worked hard to _______ in the new land.",
+      "word": "settle",
+      "phonetic": "set-uhl",
+      "definition": "To make a home in a new place.",
+      "sentence": "The family decided to settle near the river.",
+      "options": [
+        "frozen",
+        "expand",
+        "settle"
+      ],
       "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q16",
+      "type": "guess_word",
+      "prompt": "Turned into ice because of very cold temperatures.",
+      "word": "frozen",
+      "phonetic": "froh-zen",
+      "definition": "Turned into ice because of very cold temperatures.",
+      "sentence": "The frozen pond was perfect for skating.",
+      "options": [
+        "frozen",
+        "expand",
+        "filter"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q17",
+      "type": "meaning_match",
+      "prompt": "filter",
+      "word": "filter",
+      "phonetic": "fil-ter",
+      "definition": "To remove unwanted parts from something by passing it through a device.",
+      "sentence": "The filter cleaned the dirty water before we drank it.",
+      "options": [
+        "To grow larger or take up more space.",
+        "To remove unwanted parts from something by passing it through a device.",
+        "Turned into ice because of very cold temperatures."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q18",
+      "type": "fill_gap",
+      "prompt": "The company plans to _______ the playground by adding two new sections.",
+      "word": "expand",
+      "phonetic": "ik-spand",
+      "definition": "To grow larger or take up more space.",
+      "sentence": "Plants expand toward sunlight as they grow.",
+      "options": [
+        "invent",
+        "legend",
+        "expand"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q19",
+      "type": "guess_word",
+      "prompt": "To create something new that did not exist before.",
+      "word": "invent",
+      "phonetic": "in-vent",
+      "definition": "To create something new that did not exist before.",
+      "sentence": "Thomas Edison helped invent the electric light bulb.",
+      "options": [
+        "invent",
+        "legend",
+        "resist"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q20",
+      "type": "meaning_match",
+      "prompt": "legend",
+      "word": "legend",
+      "phonetic": "lej-end",
+      "definition": "An old story passed down through generations, often about heroes.",
+      "sentence": "We read a legend about a brave warrior who saved her village.",
+      "options": [
+        "To create something new that did not exist before.",
+        "To stay strong against something that pulls you toward it.",
+        "An old story passed down through generations, often about heroes."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q21",
+      "type": "fill_gap",
+      "prompt": "It is hard to _______ eating cookies when they smell so good.",
+      "word": "resist",
+      "phonetic": "rih-zist",
+      "definition": "To stay strong against something that pulls or tempts you.",
+      "sentence": "She tried hard to resist the urge to peek at her gift.",
+      "options": [
+        "resist",
+        "absorb",
+        "emerge"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q22",
+      "type": "guess_word",
+      "prompt": "To soak up liquid or information like a sponge.",
+      "word": "absorb",
+      "phonetic": "ab-zorb",
+      "definition": "To soak up liquid or information like a sponge.",
+      "sentence": "A paper towel can absorb a whole cup of water.",
+      "options": [
+        "emerge",
+        "absorb",
+        "battle"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q23",
+      "type": "meaning_match",
+      "prompt": "emerge",
+      "word": "emerge",
+      "phonetic": "ih-merj",
+      "definition": "To come out from a hidden or enclosed place.",
+      "sentence": "The butterfly began to emerge from its cocoon.",
+      "options": [
+        "To come out from a hidden or enclosed place.",
+        "A fight or struggle between two sides.",
+        "To soak up liquid or information like a sponge."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q24",
+      "type": "fill_gap",
+      "prompt": "The two teams had a close _______ in the final round.",
+      "word": "battle",
+      "phonetic": "bat-uhl",
+      "definition": "A fight or struggle between two sides.",
+      "sentence": "The heroes fought a difficult battle against the storm.",
+      "options": [
+        "feline",
+        "insect",
+        "battle"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q25",
+      "type": "guess_word",
+      "prompt": "Relating to cats or belonging to the cat family.",
+      "word": "feline",
+      "phonetic": "fee-lyne",
+      "definition": "Relating to cats or belonging to the cat family.",
+      "sentence": "Lions and tigers are feline animals.",
+      "options": [
+        "feline",
+        "insect",
+        "impact"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q26",
+      "type": "meaning_match",
+      "prompt": "insect",
+      "word": "insect",
+      "phonetic": "in-sekt",
+      "definition": "A small animal with six legs and three body parts.",
+      "sentence": "The bee is an insect that helps pollinate flowers.",
+      "options": [
+        "Relating to cats or belonging to the cat family.",
+        "The effect or influence something has on another thing.",
+        "A small animal with six legs and three body parts."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q27",
+      "type": "fill_gap",
+      "prompt": "Recycling has a big _______ on keeping our planet clean.",
+      "word": "impact",
+      "phonetic": "im-pakt",
+      "definition": "The effect or influence something has on another thing.",
+      "sentence": "The new law had a strong impact on the community.",
+      "options": [
+        "impact",
+        "motion",
+        "margin"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q28",
+      "type": "guess_word",
+      "prompt": "The act of moving or changing position.",
+      "word": "motion",
+      "phonetic": "moh-shun",
+      "definition": "The act of moving or changing position.",
+      "sentence": "The pendulum swings in a steady back-and-forth motion.",
+      "options": [
+        "donate",
+        "motion",
+        "talent"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q29",
+      "type": "meaning_match",
+      "prompt": "donate",
+      "word": "donate",
+      "phonetic": "doh-nayt",
+      "definition": "To give something to others who need it, without asking for payment.",
+      "sentence": "Our class decided to donate supplies to the shelter.",
+      "options": [
+        "To give something to others who need it, without asking for payment.",
+        "The act of moving or changing position.",
+        "A special skill or natural ability."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q30",
+      "type": "fill_gap",
+      "prompt": "Every student showed their _______ at the spring art show.",
+      "word": "talent",
+      "phonetic": "tal-ent",
+      "definition": "A special skill or natural ability.",
+      "sentence": "Her talent for drawing earned her first place in the contest.",
+      "options": [
+        "relate",
+        "follow",
+        "talent"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q31",
+      "type": "guess_word",
+      "prompt": "To find a connection between two things.",
+      "word": "relate",
+      "phonetic": "rih-layt",
+      "definition": "To find a connection between two things.",
+      "sentence": "Can you relate the story to something in your own life?",
+      "options": [
+        "relate",
+        "mighty",
+        "barren"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q32",
+      "type": "meaning_match",
+      "prompt": "mighty",
+      "word": "mighty",
+      "phonetic": "my-tee",
+      "definition": "Very powerful or strong.",
+      "sentence": "The mighty river carved deep canyons over thousands of years.",
+      "options": [
+        "To find a connection between two things.",
+        "Land that has no plants or nutrients and cannot grow crops.",
+        "Very powerful or strong."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q33",
+      "type": "fill_gap",
+      "prompt": "After the drought, the fields were _______ and dry.",
+      "word": "barren",
+      "phonetic": "bar-en",
+      "definition": "Land that has no plants or nutrients and cannot grow crops.",
+      "sentence": "The barren hillside had no trees or grass.",
+      "options": [
+        "unique",
+        "summit",
+        "barren"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q34",
+      "type": "guess_word",
+      "prompt": "Being the only one of its kind; unlike anything else.",
+      "word": "unique",
+      "phonetic": "yoo-neek",
+      "definition": "Being the only one of its kind; unlike anything else.",
+      "sentence": "Each snowflake has a unique pattern.",
+      "options": [
+        "summit",
+        "unique",
+        "detect"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q35",
+      "type": "meaning_match",
+      "prompt": "summit",
+      "word": "summit",
+      "phonetic": "sum-it",
+      "definition": "The very top of a mountain.",
+      "sentence": "The climbers cheered when they reached the summit.",
+      "options": [
+        "The very top of a mountain.",
+        "Being the only one of its kind; unlike anything else.",
+        "To discover or notice something, especially something hidden."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q36",
+      "type": "fill_gap",
+      "prompt": "The smoke detector can _______ a fire before you even smell it.",
+      "word": "detect",
+      "phonetic": "dih-tekt",
+      "definition": "To discover or notice something, especially something hidden.",
+      "sentence": "Scientists use tools to detect changes in the weather.",
+      "options": [
+        "detect",
+        "origin",
+        "scarce"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q37",
+      "type": "guess_word",
+      "prompt": "The starting point or source where something comes from.",
+      "word": "origin",
+      "phonetic": "or-ih-jin",
+      "definition": "The starting point or source where something comes from.",
+      "sentence": "The class learned about the origin of the English language.",
+      "options": [
+        "colony",
+        "origin",
+        "spirit"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q38",
+      "type": "meaning_match",
+      "prompt": "scarce",
+      "word": "scarce",
+      "phonetic": "skairs",
+      "definition": "Hard to find because there is not enough of it.",
+      "sentence": "Clean water is scarce in many parts of the world.",
+      "options": [
+        "The starting point or source where something comes from.",
+        "Hard to find because there is not enough of it.",
+        "A group of people or animals living together in one area."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q39",
+      "type": "fill_gap",
+      "prompt": "Ants form a _______ where every member has a job.",
+      "word": "colony",
+      "phonetic": "kol-uh-nee",
+      "definition": "A group of animals or people living together in one area.",
+      "sentence": "The ant colony worked together to find food.",
+      "options": [
+        "symbol",
+        "energy",
+        "colony"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q40",
+      "type": "guess_word",
+      "prompt": "The feeling of courage, enthusiasm, or the character of a person or group.",
+      "word": "spirit",
+      "phonetic": "spir-it",
+      "definition": "The feeling of courage, enthusiasm, or the character of a person or group.",
+      "sentence": "The team's spirit stayed strong even when they were losing.",
+      "options": [
+        "spirit",
+        "symbol",
+        "energy"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q41",
+      "type": "meaning_match",
+      "prompt": "symbol",
+      "word": "symbol",
+      "phonetic": "sim-buhl",
+      "definition": "A picture, sign, or object that stands for something else.",
+      "sentence": "The dove is a symbol of peace.",
+      "options": [
+        "The power to do work or be active.",
+        "A picture, sign, or object that stands for something else.",
+        "The feeling of courage, enthusiasm, or the character of a person or group."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q42",
+      "type": "fill_gap",
+      "prompt": "Solar panels turn sunlight into _______ for homes.",
+      "word": "energy",
+      "phonetic": "en-er-jee",
+      "definition": "The power needed to do work or move things.",
+      "sentence": "Running gives me energy for the rest of the day.",
+      "options": [
+        "sample",
+        "muscle",
+        "energy"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q43",
+      "type": "guess_word",
+      "prompt": "A small part taken from a larger group to show what the rest is like.",
+      "word": "sample",
+      "phonetic": "sam-puhl",
+      "definition": "A small part taken from a larger group to show what the rest is like.",
+      "sentence": "The scientist collected a water sample from the lake.",
+      "options": [
+        "sample",
+        "muscle",
+        "matter"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q44",
+      "type": "meaning_match",
+      "prompt": "muscle",
+      "word": "muscle",
+      "phonetic": "muhs-uhl",
+      "definition": "A body tissue that contracts to produce movement.",
+      "sentence": "Exercise helps your muscle grow stronger over time.",
+      "options": [
+        "A small part taken from a larger group to show what the rest is like.",
+        "Anything that takes up space and has mass.",
+        "A body tissue that contracts to produce movement."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q45",
+      "type": "fill_gap",
+      "prompt": "Scientists study _______ to understand what things are made of.",
+      "word": "matter",
+      "phonetic": "mat-er",
+      "definition": "Anything that takes up space and has mass.",
+      "sentence": "Water, air, and rock are all forms of matter.",
+      "options": [
+        "matter",
+        "factor",
+        "object"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q46",
+      "type": "guess_word",
+      "prompt": "One of the things that causes a result or affects an outcome.",
+      "word": "factor",
+      "phonetic": "fak-ter",
+      "definition": "One of the things that causes a result or affects an outcome.",
+      "sentence": "Weather is an important factor in how crops grow.",
+      "options": [
+        "region",
+        "factor",
+        "annual"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q47",
+      "type": "meaning_match",
+      "prompt": "object",
+      "word": "object",
+      "phonetic": "ob-jikt",
+      "definition": "A physical thing that you can see and touch.",
+      "sentence": "The student used a magnifying glass to study each object closely.",
+      "options": [
+        "A physical thing that you can see and touch.",
+        "One of the things that causes a result or affects an outcome.",
+        "Happening once every year."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q48",
+      "type": "fill_gap",
+      "prompt": "Alaska is a cold _______ in the far north of the United States.",
+      "word": "region",
+      "phonetic": "ree-jun",
+      "definition": "A large area of land with shared features.",
+      "sentence": "The desert region receives very little rainfall.",
+      "options": [
+        "effort",
+        "system",
+        "region"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q49",
+      "type": "guess_word",
+      "prompt": "Happening once every year.",
+      "word": "annual",
+      "phonetic": "an-yoo-uhl",
+      "definition": "Happening once every year.",
+      "sentence": "The school holds an annual science fair every spring.",
+      "options": [
+        "annual",
+        "effort",
+        "system"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q50",
+      "type": "meaning_match",
+      "prompt": "effort",
+      "word": "effort",
+      "phonetic": "ef-ert",
+      "definition": "The energy or hard work put into doing something.",
+      "sentence": "She put a lot of effort into her science project.",
+      "options": [
+        "Happening once every year.",
+        "The energy or hard work put into doing something.",
+        "A set of parts working together as a whole."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q51",
+      "type": "fill_gap",
+      "prompt": "The solar _______ includes the sun and all the planets that orbit it.",
+      "word": "system",
+      "phonetic": "sis-tem",
+      "definition": "A set of parts that work together as a whole.",
+      "sentence": "The library has a system for organizing every book.",
+      "options": [
+        "volume",
+        "chorus",
+        "system"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q52",
+      "type": "guess_word",
+      "prompt": "The amount of space something takes up, or the loudness of a sound.",
+      "word": "volume",
+      "phonetic": "vol-yoom",
+      "definition": "The amount of space something takes up, or the loudness of a sound.",
+      "sentence": "Turn down the volume so we can hear each other talk.",
+      "options": [
+        "chorus",
+        "volume",
+        "fossil"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q53",
+      "type": "meaning_match",
+      "prompt": "chorus",
+      "word": "chorus",
+      "phonetic": "kor-us",
+      "definition": "A group of singers, or the repeated part of a song.",
+      "sentence": "The whole chorus sang the final verse together.",
+      "options": [
+        "The amount of space something takes up, or the loudness of a sound.",
+        "A long journey, especially by sea or through space.",
+        "A group of singers, or the repeated part of a song."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q54",
+      "type": "fill_gap",
+      "prompt": "Scientists work to _______ the damage caused by pollution.",
+      "word": "reduce",
+      "phonetic": "rih-doos",
+      "definition": "To make something smaller or less in amount.",
+      "sentence": "We can reduce waste by using reusable bags.",
+      "options": [
+        "reduce",
+        "permit",
+        "reveal"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q55",
+      "type": "guess_word",
+      "prompt": "To allow something to happen or to give official permission.",
+      "word": "permit",
+      "phonetic": "per-mit",
+      "definition": "To allow something to happen or to give official permission.",
+      "sentence": "The park rules do not permit feeding the animals.",
+      "options": [
+        "reveal",
+        "permit",
+        "rescue"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_advanced_q56",
+      "type": "meaning_match",
+      "prompt": "reveal",
+      "word": "reveal",
+      "phonetic": "rih-veel",
+      "definition": "To show or make known something that was hidden.",
+      "sentence": "The author will reveal the mystery on the last page.",
+      "options": [
+        "To show or make known something that was hidden.",
+        "To allow something to happen or to give official permission.",
+        "To save someone from danger."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q57",
+      "type": "fill_gap",
+      "prompt": "The firefighters worked quickly to _______ the trapped hikers.",
+      "word": "rescue",
+      "phonetic": "res-kyoo",
+      "definition": "To save someone from danger.",
+      "sentence": "The coast guard had to rescue the stranded sailors.",
+      "options": [
+        "fierce",
+        "grieve",
+        "rescue"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q58",
+      "type": "guess_word",
+      "prompt": "Very strong, violent, or intense.",
+      "word": "fierce",
+      "phonetic": "feerss",
+      "definition": "Very strong, violent, or intense.",
+      "sentence": "The fierce wind knocked branches off the trees.",
+      "options": [
+        "fierce",
+        "grieve",
+        "thrive"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_advanced_q59",
+      "type": "meaning_match",
+      "prompt": "thrive",
+      "word": "thrive",
+      "phonetic": "thryve",
+      "definition": "To grow and do very well.",
+      "sentence": "Plants thrive when they get plenty of water and sunlight.",
+      "options": [
+        "Very strong, violent, or intense.",
+        "To feel deep sadness after a loss.",
+        "To grow and do very well."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_advanced_q60",
+      "type": "fill_gap",
+      "prompt": "It is normal to _______ when you lose someone you love.",
+      "word": "grieve",
+      "phonetic": "greev",
+      "definition": "To feel deep sadness after losing someone or something important.",
+      "sentence": "The children grieve when their favorite teacher retires.",
+      "options": [
+        "reduce",
+        "grieve",
+        "permit"
+      ],
+      "correctOptionIndex": 1
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
-    "generatedAt": "2026-02-22T18:44:32.270Z",
-    "questionCount": 12,
-    "wordCount": 12
+    "generatedAt": "2026-02-23T12:00:00.000Z",
+    "questionCount": 60,
+    "wordCount": 60
   }
 }

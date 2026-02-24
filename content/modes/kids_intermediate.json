@@ -7,162 +7,918 @@
   "rules": {
     "minWordLength": 4,
     "maxWordLength": 5,
-    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+    "allowedQuestionTypes": [
+      "guess_word",
+      "meaning_match",
+      "fill_gap"
+    ]
   },
   "questions": [
     {
       "id": "kids_intermediate_q01",
       "type": "guess_word",
-      "prompt": "A round fruit that can be red or green.",
-      "word": "apple",
-      "phonetic": "ap-uhl",
-      "definition": "A round fruit that can be red or green.",
-      "sentence": "I packed an apple for lunch.",
-      "options": ["apple", "chair", "cloud"],
+      "prompt": "A large animal with hooves that people can ride.",
+      "word": "horse",
+      "phonetic": "horss",
+      "definition": "A large animal with hooves that people can ride.",
+      "sentence": "The horse ran fast across the field.",
+      "options": [
+        "horse",
+        "whale",
+        "river"
+      ],
       "correctOptionIndex": 0
     },
     {
       "id": "kids_intermediate_q02",
       "type": "meaning_match",
-      "prompt": "chair",
-      "word": "chair",
-      "phonetic": "chair",
-      "definition": "A seat for one person.",
-      "sentence": "Please pull up a chair.",
+      "prompt": "whale",
+      "word": "whale",
+      "phonetic": "wayl",
+      "definition": "A very large animal that swims in the ocean.",
+      "sentence": "The whale jumped high out of the water.",
       "options": [
-        "A white or gray shape in the sky.",
-        "A seat for one person.",
-        "A happy look on your face."
+        "A large animal with hooves that people can ride.",
+        "A very large animal that swims in the ocean.",
+        "A bird known for its large size and long neck."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "kids_intermediate_q03",
       "type": "fill_gap",
-      "prompt": "A dark _____ covered the sun.",
-      "word": "cloud",
-      "phonetic": "klowd",
-      "definition": "A white or gray shape in the sky.",
-      "sentence": "A dark cloud covered the sun.",
-      "options": ["smile", "river", "cloud"],
+      "prompt": "The ___ soared high above the mountains.",
+      "word": "eagle",
+      "phonetic": "ee-guhl",
+      "definition": "A large bird with sharp claws that flies very high.",
+      "sentence": "The eagle soared high above the mountains.",
+      "options": [
+        "shark",
+        "frost",
+        "eagle"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "kids_intermediate_q04",
       "type": "guess_word",
-      "prompt": "A happy look on your face.",
-      "word": "smile",
-      "phonetic": "smyl",
-      "definition": "A happy look on your face.",
-      "sentence": "Her smile made me laugh.",
-      "options": ["smile", "river", "train"],
+      "prompt": "A big fish with sharp teeth that lives in the ocean.",
+      "word": "shark",
+      "phonetic": "shahrk",
+      "definition": "A big fish with sharp teeth that lives in the ocean.",
+      "sentence": "The shark swam near the coral reef.",
+      "options": [
+        "shark",
+        "tiger",
+        "storm"
+      ],
       "correctOptionIndex": 0
     },
     {
       "id": "kids_intermediate_q05",
       "type": "meaning_match",
-      "prompt": "river",
-      "word": "river",
-      "phonetic": "riv-er",
-      "definition": "A large stream of flowing water.",
-      "sentence": "We skipped stones in the river.",
+      "prompt": "tiger",
+      "word": "tiger",
+      "phonetic": "ty-ger",
+      "definition": "A large wild cat with orange fur and black stripes.",
+      "sentence": "The tiger crouched low in the tall grass.",
       "options": [
-        "A long vehicle that moves on tracks.",
-        "A large stream of flowing water.",
-        "Brightness that helps us see."
+        "A big fish with sharp teeth that lives in the ocean.",
+        "A long reptile with no legs that slides on the ground.",
+        "A large wild cat with orange fur and black stripes."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "id": "kids_intermediate_q06",
       "type": "fill_gap",
-      "prompt": "The _____ arrived on time.",
-      "word": "train",
-      "phonetic": "trayn",
-      "definition": "A long vehicle that moves on tracks.",
-      "sentence": "The train arrived on time.",
-      "options": ["light", "dance", "train"],
-      "correctOptionIndex": 2
+      "prompt": "The ___ hid under a rock in the garden.",
+      "word": "snake",
+      "phonetic": "snayk",
+      "definition": "A long reptile with no legs that slides on the ground.",
+      "sentence": "The snake hid under a rock in the garden.",
+      "options": [
+        "snake",
+        "mouse",
+        "goose"
+      ],
+      "correctOptionIndex": 0
     },
     {
       "id": "kids_intermediate_q07",
       "type": "guess_word",
-      "prompt": "Brightness that helps us see.",
-      "word": "light",
-      "phonetic": "lyt",
-      "definition": "Brightness that helps us see.",
-      "sentence": "Turn on the light in the hall.",
-      "options": ["light", "dance", "story"],
-      "correctOptionIndex": 0
+      "prompt": "A tiny furry animal with a long tail that squeaks.",
+      "word": "mouse",
+      "phonetic": "mowss",
+      "definition": "A tiny furry animal with a long tail that squeaks.",
+      "sentence": "The mouse nibbled a piece of cheese.",
+      "options": [
+        "flock",
+        "mouse",
+        "crane"
+      ],
+      "correctOptionIndex": 1
     },
     {
       "id": "kids_intermediate_q08",
       "type": "meaning_match",
-      "prompt": "dance",
-      "word": "dance",
-      "phonetic": "dans",
-      "definition": "To move your body to music.",
-      "sentence": "We dance at the party.",
+      "prompt": "goose",
+      "word": "goose",
+      "phonetic": "gooss",
+      "definition": "A large white bird that honks and swims in ponds.",
+      "sentence": "The goose waddled across the park path.",
       "options": [
-        "A tale about people or events.",
-        "To move your body to music.",
-        "A living thing that grows in soil."
+        "A tiny furry animal with a long tail that squeaks.",
+        "A group of birds or sheep moving together.",
+        "A large white bird that honks and swims in ponds."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "id": "kids_intermediate_q09",
       "type": "fill_gap",
-      "prompt": "Grandma read a _____ before bed.",
-      "word": "story",
-      "phonetic": "stor-ee",
-      "definition": "A tale about people or events.",
-      "sentence": "Grandma read a story before bed.",
-      "options": ["plant", "bread", "story"],
-      "correctOptionIndex": 2
-    },
-    {
-      "id": "kids_intermediate_q10",
-      "type": "guess_word",
-      "prompt": "A living thing that grows in soil.",
-      "word": "plant",
-      "phonetic": "plant",
-      "definition": "A living thing that grows in soil.",
-      "sentence": "The plant needs water each day.",
-      "options": ["plant", "bread", "happy"],
-      "correctOptionIndex": 0
-    },
-    {
-      "id": "kids_intermediate_q11",
-      "type": "meaning_match",
-      "prompt": "bread",
-      "word": "bread",
-      "phonetic": "bred",
-      "definition": "A baked food made from flour.",
-      "sentence": "Fresh bread smells great.",
+      "prompt": "A ___ of birds flew over the school.",
+      "word": "flock",
+      "phonetic": "flok",
+      "definition": "A group of birds or sheep moving together.",
+      "sentence": "A flock of birds flew over the school.",
       "options": [
-        "Feeling joy or pleasure.",
-        "A baked food made from flour.",
-        "A round fruit that can be red or green."
+        "globe",
+        "flock",
+        "feast"
       ],
       "correctOptionIndex": 1
     },
     {
+      "id": "kids_intermediate_q10",
+      "type": "guess_word",
+      "prompt": "A tall, thin bird with long legs that wades in water.",
+      "word": "crane",
+      "phonetic": "krayn",
+      "definition": "A tall, thin bird with long legs that wades in water.",
+      "sentence": "The crane stood still in the shallow pond.",
+      "options": [
+        "ocean",
+        "bloom",
+        "crane"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q11",
+      "type": "meaning_match",
+      "prompt": "river",
+      "word": "river",
+      "phonetic": "riv-er",
+      "definition": "A large stream of water that flows across the land.",
+      "sentence": "We skipped stones in the river.",
+      "options": [
+        "A large stream of water that flows across the land.",
+        "A tall, thin bird with long legs that wades in water.",
+        "A thin layer of ice that forms on cold surfaces."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
       "id": "kids_intermediate_q12",
       "type": "fill_gap",
-      "prompt": "I feel _____ when we play outside.",
-      "word": "happy",
-      "phonetic": "hap-ee",
-      "definition": "Feeling joy or pleasure.",
-      "sentence": "I feel happy when we play outside.",
-      "options": ["apple", "chair", "happy"],
+      "prompt": "Divers explore life deep in the ___.",
+      "word": "ocean",
+      "phonetic": "oh-shuhn",
+      "definition": "The huge body of salt water that covers much of Earth.",
+      "sentence": "Divers explore life deep in the ocean.",
+      "options": [
+        "storm",
+        "swamp",
+        "ocean"
+      ],
       "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q13",
+      "type": "guess_word",
+      "prompt": "Loud thunder and heavy rain coming from dark clouds.",
+      "word": "storm",
+      "phonetic": "storm",
+      "definition": "Loud thunder and heavy rain coming from dark clouds.",
+      "sentence": "The storm knocked over trees in our yard.",
+      "options": [
+        "storm",
+        "stone",
+        "bread"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q14",
+      "type": "meaning_match",
+      "prompt": "stone",
+      "word": "stone",
+      "phonetic": "stohn",
+      "definition": "A small hard rock found on the ground.",
+      "sentence": "She found a shiny stone by the creek.",
+      "options": [
+        "Loud thunder and heavy rain coming from dark clouds.",
+        "A sweet sticky food made by bees.",
+        "A small hard rock found on the ground."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q15",
+      "type": "fill_gap",
+      "prompt": "The ___ on the grass melted when the sun came out.",
+      "word": "frost",
+      "phonetic": "frawst",
+      "definition": "A thin layer of ice that forms on cold surfaces.",
+      "sentence": "The frost on the grass melted when the sun came out.",
+      "options": [
+        "frost",
+        "grove",
+        "juice"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q16",
+      "type": "guess_word",
+      "prompt": "A flower opening up and showing its petals.",
+      "word": "bloom",
+      "phonetic": "bloom",
+      "definition": "A flower opening up and showing its petals.",
+      "sentence": "Roses bloom every spring in our garden.",
+      "options": [
+        "plain",
+        "bloom",
+        "ridge"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q17",
+      "type": "meaning_match",
+      "prompt": "swamp",
+      "word": "swamp",
+      "phonetic": "swomp",
+      "definition": "A wet, muddy area of land covered with water and plants.",
+      "sentence": "Frogs and turtles live in the swamp.",
+      "options": [
+        "A wet, muddy area of land covered with water and plants.",
+        "A flower opening up and showing its petals.",
+        "A small group of trees growing together."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q18",
+      "type": "fill_gap",
+      "prompt": "We had a picnic in the shady ___.",
+      "word": "grove",
+      "phonetic": "grohv",
+      "definition": "A small group of trees growing together.",
+      "sentence": "We had a picnic in the shady grove.",
+      "options": [
+        "candy",
+        "grove",
+        "shelf"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q19",
+      "type": "guess_word",
+      "prompt": "A wide, flat area of land with few trees.",
+      "word": "plain",
+      "phonetic": "playn",
+      "definition": "A wide, flat area of land with few trees.",
+      "sentence": "Buffalo once roamed the open plain.",
+      "options": [
+        "plain",
+        "ridge",
+        "fruit"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q20",
+      "type": "meaning_match",
+      "prompt": "ridge",
+      "word": "ridge",
+      "phonetic": "rij",
+      "definition": "A long, narrow top of a hill or mountain.",
+      "sentence": "Hikers walked along the rocky ridge.",
+      "options": [
+        "A wide, flat area of land with few trees.",
+        "A long, narrow top of a hill or mountain.",
+        "A sweet food eaten on special occasions."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q21",
+      "type": "fill_gap",
+      "prompt": "Mom baked fresh ___ for breakfast.",
+      "word": "bread",
+      "phonetic": "bred",
+      "definition": "A baked food made from flour that we eat at meals.",
+      "sentence": "Mom baked fresh bread for breakfast.",
+      "options": [
+        "bread",
+        "grape",
+        "clock"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q22",
+      "type": "guess_word",
+      "prompt": "Something sweet and juicy that grows on plants or trees.",
+      "word": "fruit",
+      "phonetic": "froot",
+      "definition": "Something sweet and juicy that grows on plants or trees.",
+      "sentence": "We had fruit salad at the picnic.",
+      "options": [
+        "candy",
+        "fruit",
+        "snack"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q23",
+      "type": "meaning_match",
+      "prompt": "grape",
+      "word": "grape",
+      "phonetic": "grayp",
+      "definition": "A small round fruit that grows in bunches on a vine.",
+      "sentence": "I popped a grape into my mouth.",
+      "options": [
+        "Something sweet and juicy that grows on plants or trees.",
+        "A sweet sticky food made by bees.",
+        "A small round fruit that grows in bunches on a vine."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q24",
+      "type": "fill_gap",
+      "prompt": "The bees made ___ in their hive.",
+      "word": "honey",
+      "phonetic": "huhn-ee",
+      "definition": "A sweet sticky food made by bees.",
+      "sentence": "The bees made honey in their hive.",
+      "options": [
+        "salad",
+        "honey",
+        "brush"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q25",
+      "type": "guess_word",
+      "prompt": "A sweet food eaten on special occasions, often made of sugar.",
+      "word": "candy",
+      "phonetic": "kan-dee",
+      "definition": "A sweet food eaten on special occasions, often made of sugar.",
+      "sentence": "We got candy at the school fair.",
+      "options": [
+        "feast",
+        "snack",
+        "candy"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q26",
+      "type": "meaning_match",
+      "prompt": "feast",
+      "word": "feast",
+      "phonetic": "feest",
+      "definition": "A very big meal shared by many people.",
+      "sentence": "The family cooked a feast for the holiday.",
+      "options": [
+        "A very big meal shared by many people.",
+        "A sweet food eaten on special occasions, often made of sugar.",
+        "A small amount of food eaten between meals."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q27",
+      "type": "fill_gap",
+      "prompt": "I had an apple as an afternoon ___.",
+      "word": "snack",
+      "phonetic": "snak",
+      "definition": "A small amount of food eaten between meals.",
+      "sentence": "I had an apple as an afternoon snack.",
+      "options": [
+        "cream",
+        "snack",
+        "juice"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q28",
+      "type": "guess_word",
+      "prompt": "A drink made from squeezing fruit.",
+      "word": "juice",
+      "phonetic": "jooss",
+      "definition": "A drink made from squeezing fruit.",
+      "sentence": "I poured a glass of orange juice.",
+      "options": [
+        "juice",
+        "cream",
+        "salad"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q29",
+      "type": "meaning_match",
+      "prompt": "cream",
+      "word": "cream",
+      "phonetic": "kreem",
+      "definition": "A thick white liquid that comes from milk.",
+      "sentence": "She poured cream into her hot cocoa.",
+      "options": [
+        "A drink made from squeezing fruit.",
+        "A thick white liquid that comes from milk.",
+        "A mix of cut vegetables or fruit served cold."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q30",
+      "type": "fill_gap",
+      "prompt": "Dad made a colorful ___ with tomatoes and lettuce.",
+      "word": "salad",
+      "phonetic": "sal-uhd",
+      "definition": "A mix of cut vegetables or fruit served cold.",
+      "sentence": "Dad made a colorful salad with tomatoes and lettuce.",
+      "options": [
+        "dance",
+        "teach",
+        "salad"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q31",
+      "type": "guess_word",
+      "prompt": "To move your body in a fun way to music.",
+      "word": "dance",
+      "phonetic": "dans",
+      "definition": "To move your body in a fun way to music.",
+      "sentence": "We dance together at every party.",
+      "options": [
+        "dance",
+        "climb",
+        "throw"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q32",
+      "type": "meaning_match",
+      "prompt": "climb",
+      "word": "climb",
+      "phonetic": "klym",
+      "definition": "To go up something using your hands and feet.",
+      "sentence": "She loves to climb the rope in gym class.",
+      "options": [
+        "To move your body in a fun way to music.",
+        "To show someone how to do something new.",
+        "To go up something using your hands and feet."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q33",
+      "type": "fill_gap",
+      "prompt": "My sister will ___ me how to braid hair.",
+      "word": "teach",
+      "phonetic": "teech",
+      "definition": "To show someone how to do something new.",
+      "sentence": "My sister will teach me how to braid hair.",
+      "options": [
+        "teach",
+        "throw",
+        "catch"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q34",
+      "type": "guess_word",
+      "prompt": "To send something through the air with your hand.",
+      "word": "throw",
+      "phonetic": "throh",
+      "definition": "To send something through the air with your hand.",
+      "sentence": "He can throw the ball very far.",
+      "options": [
+        "paint",
+        "throw",
+        "learn"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q35",
+      "type": "meaning_match",
+      "prompt": "catch",
+      "word": "catch",
+      "phonetic": "kach",
+      "definition": "To grab something that is moving through the air.",
+      "sentence": "I tried to catch the butterfly in the garden.",
+      "options": [
+        "To grab something that is moving through the air.",
+        "To send something through the air with your hand.",
+        "To put color on something using a brush."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q36",
+      "type": "fill_gap",
+      "prompt": "We used blue and yellow to ___ the sky and sun.",
+      "word": "paint",
+      "phonetic": "paynt",
+      "definition": "To put color on something using a brush.",
+      "sentence": "We used blue and yellow to paint the sky and sun.",
+      "options": [
+        "build",
+        "carry",
+        "paint"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q37",
+      "type": "guess_word",
+      "prompt": "To study or find out something new.",
+      "word": "learn",
+      "phonetic": "lern",
+      "definition": "To study or find out something new.",
+      "sentence": "I want to learn how to play guitar.",
+      "options": [
+        "learn",
+        "build",
+        "carry"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q38",
+      "type": "meaning_match",
+      "prompt": "build",
+      "word": "build",
+      "phonetic": "bild",
+      "definition": "To make something by putting pieces together.",
+      "sentence": "The kids build a tall tower with blocks.",
+      "options": [
+        "To study or find out something new.",
+        "To make something by putting pieces together.",
+        "To hold something and take it from one place to another."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q39",
+      "type": "fill_gap",
+      "prompt": "Can you help me ___ these heavy bags inside?",
+      "word": "carry",
+      "phonetic": "kar-ee",
+      "definition": "To hold something and take it from one place to another.",
+      "sentence": "Can you help me carry these heavy bags inside?",
+      "options": [
+        "serve",
+        "carry",
+        "wheel"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q40",
+      "type": "guess_word",
+      "prompt": "To bring food or drinks to someone at a table.",
+      "word": "serve",
+      "phonetic": "serv",
+      "definition": "To bring food or drinks to someone at a table.",
+      "sentence": "The waiter will serve lunch at noon.",
+      "options": [
+        "clock",
+        "serve",
+        "chair"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q41",
+      "type": "meaning_match",
+      "prompt": "chair",
+      "word": "chair",
+      "phonetic": "chair",
+      "definition": "A seat with four legs and a back for one person.",
+      "sentence": "Please pull up a chair and sit with us.",
+      "options": [
+        "A seat with four legs and a back for one person.",
+        "To bring food or drinks to someone at a table.",
+        "A vehicle that moves along metal tracks."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q42",
+      "type": "fill_gap",
+      "prompt": "The ___ rumbled down the tracks through the tunnel.",
+      "word": "train",
+      "phonetic": "trayn",
+      "definition": "A vehicle that moves along metal tracks.",
+      "sentence": "The train rumbled down the tracks through the tunnel.",
+      "options": [
+        "light",
+        "train",
+        "tower"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q43",
+      "type": "guess_word",
+      "prompt": "Brightness that lets us see in a dark room.",
+      "word": "light",
+      "phonetic": "lyt",
+      "definition": "Brightness that lets us see in a dark room.",
+      "sentence": "Turn on the light so I can read.",
+      "options": [
+        "wheel",
+        "clock",
+        "light"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q44",
+      "type": "meaning_match",
+      "prompt": "wheel",
+      "word": "wheel",
+      "phonetic": "weel",
+      "definition": "A round object that spins and helps things roll.",
+      "sentence": "The wheel on my bike came loose.",
+      "options": [
+        "Brightness that lets us see in a dark room.",
+        "A round object that spins and helps things roll.",
+        "A tool that shows what time it is."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q45",
+      "type": "fill_gap",
+      "prompt": "The ___ on the wall showed that it was noon.",
+      "word": "clock",
+      "phonetic": "klok",
+      "definition": "A tool that shows what time it is.",
+      "sentence": "The clock on the wall showed that it was noon.",
+      "options": [
+        "clock",
+        "brush",
+        "stick"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q46",
+      "type": "guess_word",
+      "prompt": "A tool with bristles used to clean teeth or hair.",
+      "word": "brush",
+      "phonetic": "bruhsh",
+      "definition": "A tool with bristles used to clean teeth or hair.",
+      "sentence": "I use a brush to untangle my hair.",
+      "options": [
+        "brush",
+        "stick",
+        "tower"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q47",
+      "type": "meaning_match",
+      "prompt": "stick",
+      "word": "stick",
+      "phonetic": "stik",
+      "definition": "A thin piece of wood broken from a tree.",
+      "sentence": "The dog fetched the stick I threw.",
+      "options": [
+        "A tool with bristles used to clean teeth or hair.",
+        "A thin piece of wood broken from a tree.",
+        "A very tall building or structure."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q48",
+      "type": "fill_gap",
+      "prompt": "You can see the whole city from the top of the ___.",
+      "word": "tower",
+      "phonetic": "tow-er",
+      "definition": "A very tall building or structure.",
+      "sentence": "You can see the whole city from the top of the tower.",
+      "options": [
+        "globe",
+        "shelf",
+        "tower"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q49",
+      "type": "guess_word",
+      "prompt": "A flat board attached to a wall that holds objects.",
+      "word": "shelf",
+      "phonetic": "shelf",
+      "definition": "A flat board attached to a wall that holds objects.",
+      "sentence": "My books are stacked on the shelf.",
+      "options": [
+        "globe",
+        "shelf",
+        "brave"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q50",
+      "type": "meaning_match",
+      "prompt": "globe",
+      "word": "globe",
+      "phonetic": "glohb",
+      "definition": "A round ball with a map of the Earth on it.",
+      "sentence": "The teacher spun the globe to show us Australia.",
+      "options": [
+        "A flat board attached to a wall that holds objects.",
+        "A round ball with a map of the Earth on it.",
+        "Willing to do something scary without giving up."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q51",
+      "type": "fill_gap",
+      "prompt": "It was ___ of her to save the puppy from the river.",
+      "word": "brave",
+      "phonetic": "brayv",
+      "definition": "Willing to do something scary without giving up.",
+      "sentence": "It was brave of her to save the puppy from the river.",
+      "options": [
+        "brave",
+        "quiet",
+        "smart"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q52",
+      "type": "guess_word",
+      "prompt": "Making very little noise; peaceful and still.",
+      "word": "quiet",
+      "phonetic": "kwy-et",
+      "definition": "Making very little noise; peaceful and still.",
+      "sentence": "The library must be quiet so others can read.",
+      "options": [
+        "proud",
+        "awake",
+        "quiet"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q53",
+      "type": "meaning_match",
+      "prompt": "smart",
+      "word": "smart",
+      "phonetic": "smahrt",
+      "definition": "Very good at learning and thinking.",
+      "sentence": "She is smart and always answers the hard questions.",
+      "options": [
+        "Making very little noise; peaceful and still.",
+        "Very good at learning and thinking.",
+        "Feeling pleased with something you did well."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q54",
+      "type": "fill_gap",
+      "prompt": "He felt ___ after winning the spelling contest.",
+      "word": "proud",
+      "phonetic": "prowd",
+      "definition": "Feeling pleased with something you did well.",
+      "sentence": "He felt proud after winning the spelling contest.",
+      "options": [
+        "fuzzy",
+        "lucky",
+        "proud"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q55",
+      "type": "guess_word",
+      "prompt": "Not asleep; having your eyes open and paying attention.",
+      "word": "awake",
+      "phonetic": "uh-wayk",
+      "definition": "Not asleep; having your eyes open and paying attention.",
+      "sentence": "I stayed awake to watch the meteor shower.",
+      "options": [
+        "awake",
+        "giant",
+        "fuzzy"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q56",
+      "type": "meaning_match",
+      "prompt": "giant",
+      "word": "giant",
+      "phonetic": "jy-uhnt",
+      "definition": "Something that is extremely large in size.",
+      "sentence": "A giant wave crashed onto the beach.",
+      "options": [
+        "Something that is extremely large in size.",
+        "Not asleep; having your eyes open and paying attention.",
+        "Soft and covered with small fluffy fibers."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_intermediate_q57",
+      "type": "fill_gap",
+      "prompt": "The baby chick was soft and ___ in my hands.",
+      "word": "fuzzy",
+      "phonetic": "fuhz-ee",
+      "definition": "Soft and covered with small fluffy fibers.",
+      "sentence": "The baby chick was soft and fuzzy in my hands.",
+      "options": [
+        "lucky",
+        "fuzzy",
+        "swift"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q58",
+      "type": "guess_word",
+      "prompt": "Having good things happen to you by chance.",
+      "word": "lucky",
+      "phonetic": "luhk-ee",
+      "definition": "Having good things happen to you by chance.",
+      "sentence": "I felt lucky when I found a coin on the ground.",
+      "options": [
+        "shiny",
+        "lucky",
+        "swift"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_intermediate_q59",
+      "type": "meaning_match",
+      "prompt": "swift",
+      "word": "swift",
+      "phonetic": "swift",
+      "definition": "Moving or happening very quickly.",
+      "sentence": "The swift deer ran away before we got close.",
+      "options": [
+        "Having good things happen to you by chance.",
+        "Bright and reflecting a lot of light.",
+        "Moving or happening very quickly."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_intermediate_q60",
+      "type": "fill_gap",
+      "prompt": "The ___ star caught my eye in the night sky.",
+      "word": "shiny",
+      "phonetic": "shy-nee",
+      "definition": "Bright and reflecting a lot of light.",
+      "sentence": "The shiny star caught my eye in the night sky.",
+      "options": [
+        "shiny",
+        "brave",
+        "giant"
+      ],
+      "correctOptionIndex": 0
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
-    "generatedAt": "2026-02-22T18:44:32.269Z",
-    "questionCount": 12,
-    "wordCount": 12
+    "generatedAt": "2026-02-23T12:00:00.000Z",
+    "questionCount": 60,
+    "wordCount": 60
   }
 }

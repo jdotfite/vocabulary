@@ -7,7 +7,11 @@
   "rules": {
     "minWordLength": 3,
     "maxWordLength": 3,
-    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+    "allowedQuestionTypes": [
+      "guess_word",
+      "meaning_match",
+      "fill_gap"
+    ]
   },
   "questions": [
     {
@@ -18,7 +22,11 @@
       "phonetic": "kat",
       "definition": "A small pet animal that says meow.",
       "sentence": "The cat naps on the rug.",
-      "options": ["cat", "dog", "sun"],
+      "options": [
+        "cat",
+        "dog",
+        "sun"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -44,7 +52,11 @@
       "phonetic": "suhn",
       "definition": "The bright star that gives us light.",
       "sentence": "The sun is warm at noon.",
-      "options": ["hat", "bed", "sun"],
+      "options": [
+        "hat",
+        "bed",
+        "sun"
+      ],
       "correctOptionIndex": 2
     },
     {
@@ -55,8 +67,12 @@
       "phonetic": "hat",
       "definition": "Something you wear on your head.",
       "sentence": "I wear a hat in the rain.",
-      "options": ["hat", "bed", "map"],
-      "correctOptionIndex": 0
+      "options": [
+        "bed",
+        "hat",
+        "map"
+      ],
+      "correctOptionIndex": 1
     },
     {
       "id": "kids_beginner_q05",
@@ -64,14 +80,14 @@
       "prompt": "bed",
       "word": "bed",
       "phonetic": "bed",
-      "definition": "A place where you sleep.",
+      "definition": "A place where you sleep at night.",
       "sentence": "I jump into bed at night.",
       "options": [
+        "A place where you sleep at night.",
         "A picture that shows where places are.",
-        "A place where you sleep.",
         "To move fast on your feet."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 0
     },
     {
       "id": "kids_beginner_q06",
@@ -81,7 +97,11 @@
       "phonetic": "map",
       "definition": "A picture that shows where places are.",
       "sentence": "We use a map to find the park.",
-      "options": ["run", "cup", "map"],
+      "options": [
+        "run",
+        "cup",
+        "map"
+      ],
       "correctOptionIndex": 2
     },
     {
@@ -92,8 +112,12 @@
       "phonetic": "ruhn",
       "definition": "To move fast on your feet.",
       "sentence": "I run across the grass.",
-      "options": ["run", "cup", "pen"],
-      "correctOptionIndex": 0
+      "options": [
+        "cup",
+        "pen",
+        "run"
+      ],
+      "correctOptionIndex": 2
     },
     {
       "id": "kids_beginner_q08",
@@ -101,25 +125,29 @@
       "prompt": "cup",
       "word": "cup",
       "phonetic": "kuhp",
-      "definition": "A small container for a drink.",
+      "definition": "A small container you drink from.",
       "sentence": "The cup is full of milk.",
       "options": [
+        "A small container you drink from.",
         "A tool used to write words.",
-        "A small container for a drink.",
         "A farm animal with a curly tail."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 0
     },
     {
       "id": "kids_beginner_q09",
       "type": "fill_gap",
-      "prompt": "I sign my name with a ___.",
+      "prompt": "I write my name with a ___.",
       "word": "pen",
       "phonetic": "pen",
       "definition": "A tool used to write words.",
-      "sentence": "I sign my name with a pen.",
-      "options": ["pig", "bus", "pen"],
-      "correctOptionIndex": 2
+      "sentence": "I write my name with a pen.",
+      "options": [
+        "pen",
+        "pig",
+        "bus"
+      ],
+      "correctOptionIndex": 0
     },
     {
       "id": "kids_beginner_q10",
@@ -129,8 +157,12 @@
       "phonetic": "pig",
       "definition": "A farm animal with a curly tail.",
       "sentence": "The pig splashes in mud.",
-      "options": ["pig", "bus", "jam"],
-      "correctOptionIndex": 0
+      "options": [
+        "bus",
+        "pig",
+        "jam"
+      ],
+      "correctOptionIndex": 1
     },
     {
       "id": "kids_beginner_q11",
@@ -142,27 +174,751 @@
       "sentence": "The bus stops near my house.",
       "options": [
         "A sweet fruit spread for bread.",
-        "A big vehicle that carries many people.",
-        "A small pet animal that says meow."
+        "A small pet animal that says meow.",
+        "A big vehicle that carries many people."
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "id": "kids_beginner_q12",
       "type": "fill_gap",
-      "prompt": "I put ___ on toast.",
+      "prompt": "I put ___ on my toast.",
       "word": "jam",
       "phonetic": "jam",
       "definition": "A sweet fruit spread for bread.",
-      "sentence": "I put jam on toast.",
-      "options": ["cat", "dog", "jam"],
+      "sentence": "I put jam on my toast.",
+      "options": [
+        "hen",
+        "jam",
+        "ant"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q13",
+      "type": "guess_word",
+      "prompt": "A female chicken that lays eggs.",
+      "word": "hen",
+      "phonetic": "hen",
+      "definition": "A female chicken that lays eggs.",
+      "sentence": "The hen sits on her eggs.",
+      "options": [
+        "ant",
+        "bee",
+        "hen"
+      ],
       "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q14",
+      "type": "meaning_match",
+      "prompt": "ant",
+      "word": "ant",
+      "phonetic": "ant",
+      "definition": "A tiny insect that lives in the ground.",
+      "sentence": "An ant carries a big crumb.",
+      "options": [
+        "A tiny insect that lives in the ground.",
+        "A flying insect that makes honey.",
+        "A wild animal with a bushy tail."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q15",
+      "type": "fill_gap",
+      "prompt": "The ___ buzzed around the flower.",
+      "word": "bee",
+      "phonetic": "bee",
+      "definition": "A flying insect that makes honey.",
+      "sentence": "The bee buzzed around the flower.",
+      "options": [
+        "fox",
+        "owl",
+        "bee"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q16",
+      "type": "guess_word",
+      "prompt": "A wild animal with a bushy tail that is very clever.",
+      "word": "fox",
+      "phonetic": "foks",
+      "definition": "A wild animal with a bushy tail that is very clever.",
+      "sentence": "The fox ran into the woods.",
+      "options": [
+        "fox",
+        "owl",
+        "cow"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q17",
+      "type": "meaning_match",
+      "prompt": "owl",
+      "word": "owl",
+      "phonetic": "owl",
+      "definition": "A bird that hoots and stays awake at night.",
+      "sentence": "The owl hoots in the dark.",
+      "options": [
+        "A farm animal that gives us milk.",
+        "A bird that hoots and stays awake at night.",
+        "A tiny flying mammal seen at night."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q18",
+      "type": "fill_gap",
+      "prompt": "The ___ gives us milk to drink.",
+      "word": "cow",
+      "phonetic": "kow",
+      "definition": "A farm animal that gives us milk.",
+      "sentence": "The cow gives us milk to drink.",
+      "options": [
+        "cow",
+        "bat",
+        "bug"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q19",
+      "type": "guess_word",
+      "prompt": "A tiny flying mammal seen at night.",
+      "word": "bat",
+      "phonetic": "bat",
+      "definition": "A tiny flying mammal seen at night.",
+      "sentence": "A bat flew over the house.",
+      "options": [
+        "bug",
+        "bat",
+        "ape"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q20",
+      "type": "meaning_match",
+      "prompt": "bug",
+      "word": "bug",
+      "phonetic": "buhg",
+      "definition": "A tiny crawling insect.",
+      "sentence": "A bug crawled on the leaf.",
+      "options": [
+        "A large animal like a monkey but bigger.",
+        "A tiny crawling insect.",
+        "A round baked food you eat."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q21",
+      "type": "fill_gap",
+      "prompt": "The ___ swings in the jungle.",
+      "word": "ape",
+      "phonetic": "ayp",
+      "definition": "A large animal like a monkey but bigger.",
+      "sentence": "The ape swings in the jungle.",
+      "options": [
+        "pie",
+        "yam",
+        "ape"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q22",
+      "type": "guess_word",
+      "prompt": "A round baked food that can be sweet or savory.",
+      "word": "pie",
+      "phonetic": "py",
+      "definition": "A round baked food that can be sweet or savory.",
+      "sentence": "Mom made a pie for dessert.",
+      "options": [
+        "pie",
+        "yam",
+        "egg"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q23",
+      "type": "meaning_match",
+      "prompt": "yam",
+      "word": "yam",
+      "phonetic": "yam",
+      "definition": "A sweet orange vegetable you can bake.",
+      "sentence": "We baked a yam for dinner.",
+      "options": [
+        "A hard food that comes from a shell.",
+        "A sweet orange vegetable you can bake.",
+        "A small green vegetable that grows in a pod."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q24",
+      "type": "fill_gap",
+      "prompt": "We had a fried ___ for breakfast.",
+      "word": "egg",
+      "phonetic": "eg",
+      "definition": "An oval food that birds lay.",
+      "sentence": "We had a fried egg for breakfast.",
+      "options": [
+        "nut",
+        "pea",
+        "egg"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q25",
+      "type": "guess_word",
+      "prompt": "A hard food that comes from a shell.",
+      "word": "nut",
+      "phonetic": "nuht",
+      "definition": "A hard food that comes from a shell.",
+      "sentence": "The squirrel hid a nut in the ground.",
+      "options": [
+        "gum",
+        "nut",
+        "pea"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q26",
+      "type": "meaning_match",
+      "prompt": "pea",
+      "word": "pea",
+      "phonetic": "pee",
+      "definition": "A small green vegetable that grows in a pod.",
+      "sentence": "I ate a pea from my plate.",
+      "options": [
+        "A small green vegetable that grows in a pod.",
+        "A hard food that comes from a shell.",
+        "A chewy sweet you blow into a bubble."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q27",
+      "type": "fill_gap",
+      "prompt": "She blew a bubble with her ___.",
+      "word": "gum",
+      "phonetic": "guhm",
+      "definition": "A chewy sweet you blow into a bubble.",
+      "sentence": "She blew a bubble with her gum.",
+      "options": [
+        "jar",
+        "gum",
+        "jug"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q28",
+      "type": "guess_word",
+      "prompt": "A glass container with a lid used to store food.",
+      "word": "jar",
+      "phonetic": "jar",
+      "definition": "A glass container with a lid used to store food.",
+      "sentence": "The jar is full of honey.",
+      "options": [
+        "jar",
+        "jug",
+        "pot"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q29",
+      "type": "meaning_match",
+      "prompt": "jug",
+      "word": "jug",
+      "phonetic": "juhg",
+      "definition": "A container with a handle used to pour drinks.",
+      "sentence": "Dad poured juice from the jug.",
+      "options": [
+        "A round cooking pot on the stove.",
+        "A flat pan used for cooking.",
+        "A container with a handle used to pour drinks."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q30",
+      "type": "fill_gap",
+      "prompt": "Soup cooks in a big ___ on the stove.",
+      "word": "pot",
+      "phonetic": "pot",
+      "definition": "A round cooking container on the stove.",
+      "sentence": "Soup cooks in a big pot on the stove.",
+      "options": [
+        "mop",
+        "pan",
+        "pot"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q31",
+      "type": "guess_word",
+      "prompt": "A flat cooking container used to fry food.",
+      "word": "pan",
+      "phonetic": "pan",
+      "definition": "A flat cooking container used to fry food.",
+      "sentence": "Mom cooks eggs in a pan.",
+      "options": [
+        "mop",
+        "rug",
+        "pan"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q32",
+      "type": "meaning_match",
+      "prompt": "mop",
+      "word": "mop",
+      "phonetic": "mop",
+      "definition": "A tool with a long handle used to clean floors.",
+      "sentence": "I use a mop to clean the floor.",
+      "options": [
+        "A tool with a long handle used to clean floors.",
+        "A soft floor covering you walk on.",
+        "A large tub used for bathing."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q33",
+      "type": "fill_gap",
+      "prompt": "We have a soft ___ on the floor.",
+      "word": "rug",
+      "phonetic": "ruhg",
+      "definition": "A soft floor covering you walk on.",
+      "sentence": "We have a soft rug on the floor.",
+      "options": [
+        "rug",
+        "tub",
+        "van"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q34",
+      "type": "guess_word",
+      "prompt": "A large container filled with water for bathing.",
+      "word": "tub",
+      "phonetic": "tuhb",
+      "definition": "A large container filled with water for bathing.",
+      "sentence": "I splash in the tub at bath time.",
+      "options": [
+        "tub",
+        "van",
+        "car"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q35",
+      "type": "meaning_match",
+      "prompt": "van",
+      "word": "van",
+      "phonetic": "van",
+      "definition": "A large vehicle with room for many people or things.",
+      "sentence": "Our family rides in a van.",
+      "options": [
+        "A fast vehicle that flies in the sky.",
+        "A small vehicle for one or two people.",
+        "A large vehicle with room for many people or things."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q36",
+      "type": "fill_gap",
+      "prompt": "Dad drove the ___ to the store.",
+      "word": "car",
+      "phonetic": "kar",
+      "definition": "A vehicle with four wheels that you drive.",
+      "sentence": "Dad drove the car to the store.",
+      "options": [
+        "jet",
+        "car",
+        "key"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q37",
+      "type": "guess_word",
+      "prompt": "A very fast airplane.",
+      "word": "jet",
+      "phonetic": "jet",
+      "definition": "A very fast airplane.",
+      "sentence": "A jet flew over our house.",
+      "options": [
+        "net",
+        "jet",
+        "key"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q38",
+      "type": "meaning_match",
+      "prompt": "key",
+      "word": "key",
+      "phonetic": "kee",
+      "definition": "A small metal tool that opens a lock.",
+      "sentence": "Mom uses a key to open the door.",
+      "options": [
+        "A small metal tool that opens a lock.",
+        "A mesh bag used to catch fish or bugs.",
+        "A pointed object used to hold things."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q39",
+      "type": "fill_gap",
+      "prompt": "We used a ___ to catch the butterfly.",
+      "word": "net",
+      "phonetic": "net",
+      "definition": "A mesh bag used to catch fish or bugs.",
+      "sentence": "We used a net to catch the butterfly.",
+      "options": [
+        "pin",
+        "tag",
+        "net"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q40",
+      "type": "guess_word",
+      "prompt": "A small sharp point used to hold fabric together.",
+      "word": "pin",
+      "phonetic": "pin",
+      "definition": "A small sharp point used to hold fabric together.",
+      "sentence": "Mom used a pin to fix my costume.",
+      "options": [
+        "pin",
+        "tag",
+        "box"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q41",
+      "type": "meaning_match",
+      "prompt": "tag",
+      "word": "tag",
+      "phonetic": "tag",
+      "definition": "A small label that shows a name or price.",
+      "sentence": "The tag on my shirt says my name.",
+      "options": [
+        "A container with four sides for storing things.",
+        "A small label that shows a name or price.",
+        "A sack used to carry things."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q42",
+      "type": "fill_gap",
+      "prompt": "The toys are kept in a big ___.",
+      "word": "box",
+      "phonetic": "boks",
+      "definition": "A square container used to store things.",
+      "sentence": "The toys are kept in a big box.",
+      "options": [
+        "box",
+        "bag",
+        "lid"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q43",
+      "type": "guess_word",
+      "prompt": "A sack with handles used to carry things.",
+      "word": "bag",
+      "phonetic": "bag",
+      "definition": "A sack with handles used to carry things.",
+      "sentence": "I put my lunch in my bag.",
+      "options": [
+        "bag",
+        "lid",
+        "log"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q44",
+      "type": "meaning_match",
+      "prompt": "lid",
+      "word": "lid",
+      "phonetic": "lid",
+      "definition": "A cover that goes on top of a container.",
+      "sentence": "Put the lid on the jar.",
+      "options": [
+        "A long piece of cut wood.",
+        "A sticky web made by a spider.",
+        "A cover that goes on top of a container."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q45",
+      "type": "fill_gap",
+      "prompt": "We sat on a ___ by the campfire.",
+      "word": "log",
+      "phonetic": "log",
+      "definition": "A long thick piece of wood from a tree.",
+      "sentence": "We sat on a log by the campfire.",
+      "options": [
+        "wig",
+        "web",
+        "log"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q46",
+      "type": "guess_word",
+      "prompt": "A sticky net made by a spider.",
+      "word": "web",
+      "phonetic": "web",
+      "definition": "A sticky net made by a spider.",
+      "sentence": "A spider spun a web in the corner.",
+      "options": [
+        "wig",
+        "web",
+        "leg"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q47",
+      "type": "meaning_match",
+      "prompt": "wig",
+      "word": "wig",
+      "phonetic": "wig",
+      "definition": "A fake head of hair you can wear.",
+      "sentence": "The clown wore a funny wig.",
+      "options": [
+        "A fake head of hair you can wear.",
+        "One of the long parts under your body used to walk.",
+        "The part of your body from shoulder to hand."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q48",
+      "type": "fill_gap",
+      "prompt": "I hurt my ___ when I fell.",
+      "word": "leg",
+      "phonetic": "leg",
+      "definition": "One of the long body parts you use to walk.",
+      "sentence": "I hurt my leg when I fell.",
+      "options": [
+        "arm",
+        "leg",
+        "hip"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q49",
+      "type": "guess_word",
+      "prompt": "The long body part from your shoulder to your hand.",
+      "word": "arm",
+      "phonetic": "arm",
+      "definition": "The long body part from your shoulder to your hand.",
+      "sentence": "I raised my arm to answer.",
+      "options": [
+        "hip",
+        "arm",
+        "lip"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q50",
+      "type": "meaning_match",
+      "prompt": "hip",
+      "word": "hip",
+      "phonetic": "hip",
+      "definition": "The wide part of your body between your waist and your leg.",
+      "sentence": "She put her hand on her hip.",
+      "options": [
+        "The wide part of your body between your waist and your leg.",
+        "One of the two soft edges around your mouth.",
+        "One of the small bones around your chest."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q51",
+      "type": "fill_gap",
+      "prompt": "I bit my ___ eating a sandwich.",
+      "word": "lip",
+      "phonetic": "lip",
+      "definition": "One of the two soft edges around your mouth.",
+      "sentence": "I bit my lip eating a sandwich.",
+      "options": [
+        "jaw",
+        "lip",
+        "toe"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q52",
+      "type": "guess_word",
+      "prompt": "The part of your face that opens and closes when you chew.",
+      "word": "jaw",
+      "phonetic": "jaw",
+      "definition": "The part of your face that opens and closes when you chew.",
+      "sentence": "He opened his jaw wide to yawn.",
+      "options": [
+        "toe",
+        "sea",
+        "jaw"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q53",
+      "type": "meaning_match",
+      "prompt": "toe",
+      "word": "toe",
+      "phonetic": "toh",
+      "definition": "One of the small parts at the end of your foot.",
+      "sentence": "I painted my big toe pink.",
+      "options": [
+        "The large body of salty water.",
+        "The area of sky above us.",
+        "One of the small parts at the end of your foot."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q54",
+      "type": "fill_gap",
+      "prompt": "Fish swim in the big blue ___.",
+      "word": "sea",
+      "phonetic": "see",
+      "definition": "The large body of salty water.",
+      "sentence": "Fish swim in the big blue sea.",
+      "options": [
+        "sky",
+        "sea",
+        "ice"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q55",
+      "type": "guess_word",
+      "prompt": "The blue space high above the earth where clouds float.",
+      "word": "sky",
+      "phonetic": "sky",
+      "definition": "The blue space high above the earth where clouds float.",
+      "sentence": "Birds fly high in the sky.",
+      "options": [
+        "sky",
+        "ice",
+        "mud"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q56",
+      "type": "meaning_match",
+      "prompt": "ice",
+      "word": "ice",
+      "phonetic": "ys",
+      "definition": "Water that has been frozen solid and is very cold.",
+      "sentence": "I put ice in my cold drink.",
+      "options": [
+        "Wet dirt you can squish in your hands.",
+        "Tiny drops of water on grass in the morning.",
+        "Water that has been frozen solid and is very cold."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "kids_beginner_q57",
+      "type": "fill_gap",
+      "prompt": "The dog got dirty playing in the ___.",
+      "word": "mud",
+      "phonetic": "muhd",
+      "definition": "Wet dirt that is soft and messy.",
+      "sentence": "The dog got dirty playing in the mud.",
+      "options": [
+        "mud",
+        "fog",
+        "dew"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q58",
+      "type": "guess_word",
+      "prompt": "A thick cloud close to the ground that makes it hard to see.",
+      "word": "fog",
+      "phonetic": "fog",
+      "definition": "A thick cloud close to the ground that makes it hard to see.",
+      "sentence": "I could not see far in the fog.",
+      "options": [
+        "dew",
+        "fog",
+        "hug"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "kids_beginner_q59",
+      "type": "meaning_match",
+      "prompt": "dew",
+      "word": "dew",
+      "phonetic": "doo",
+      "definition": "Tiny water drops on grass in the early morning.",
+      "sentence": "My shoes got wet from the dew.",
+      "options": [
+        "Tiny water drops on grass in the early morning.",
+        "A thick cloud close to the ground.",
+        "To wrap your arms around someone you love."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "kids_beginner_q60",
+      "type": "fill_gap",
+      "prompt": "I gave my mom a big ___.",
+      "word": "hug",
+      "phonetic": "huhg",
+      "definition": "To wrap your arms around someone to show you care.",
+      "sentence": "I gave my mom a big hug.",
+      "options": [
+        "jog",
+        "hug",
+        "hop"
+      ],
+      "correctOptionIndex": 1
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
-    "generatedAt": "2026-02-22T18:44:32.268Z",
-    "questionCount": 12,
-    "wordCount": 12
+    "generatedAt": "2026-02-23T12:00:00.000Z",
+    "questionCount": 60,
+    "wordCount": 60
   }
 }

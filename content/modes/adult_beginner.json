@@ -7,7 +7,11 @@
   "rules": {
     "minWordLength": 6,
     "maxWordLength": 8,
-    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+    "allowedQuestionTypes": [
+      "guess_word",
+      "meaning_match",
+      "fill_gap"
+    ]
   },
   "questions": [
     {
@@ -18,7 +22,11 @@
       "phonetic": "roo-teen",
       "definition": "A regular way of doing things.",
       "sentence": "I follow a morning routine before work.",
-      "options": ["routine", "compare", "include"],
+      "options": [
+        "routine",
+        "compare",
+        "include"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -44,7 +52,11 @@
       "phonetic": "in-klood",
       "definition": "To have something as part of a whole.",
       "sentence": "The fee will include all materials.",
-      "options": ["improve", "method", "include"],
+      "options": [
+        "improve",
+        "method",
+        "include"
+      ],
       "correctOptionIndex": 2
     },
     {
@@ -55,7 +67,11 @@
       "phonetic": "im-proov",
       "definition": "To make something better.",
       "sentence": "Practice can improve your writing.",
-      "options": ["improve", "method", "feature"],
+      "options": [
+        "improve",
+        "method",
+        "feature"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -81,7 +97,11 @@
       "phonetic": "fee-cher",
       "definition": "An important part or function of something.",
       "sentence": "Search is a useful feature in the app.",
-      "options": ["option", "budget", "feature"],
+      "options": [
+        "option",
+        "budget",
+        "feature"
+      ],
       "correctOptionIndex": 2
     },
     {
@@ -92,7 +112,11 @@
       "phonetic": "op-shuhn",
       "definition": "One possible choice.",
       "sentence": "You have the option to cancel anytime.",
-      "options": ["option", "budget", "measure"],
+      "options": [
+        "option",
+        "budget",
+        "measure"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -118,7 +142,11 @@
       "phonetic": "meh-zher",
       "definition": "To find the size, amount, or degree of something.",
       "sentence": "Please measure the width of the desk.",
-      "options": ["context", "summary", "measure"],
+      "options": [
+        "context",
+        "summary",
+        "measure"
+      ],
       "correctOptionIndex": 2
     },
     {
@@ -129,7 +157,11 @@
       "phonetic": "kon-tekst",
       "definition": "The situation around something that helps explain it.",
       "sentence": "The quote makes sense in context.",
-      "options": ["context", "summary", "benefit"],
+      "options": [
+        "context",
+        "summary",
+        "benefit"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -155,14 +187,738 @@
       "phonetic": "ben-uh-fit",
       "definition": "A good result or advantage.",
       "sentence": "Daily reading is a major benefit for students.",
-      "options": ["routine", "compare", "benefit"],
+      "options": [
+        "routine",
+        "compare",
+        "benefit"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q13",
+      "type": "guess_word",
+      "prompt": "A series of steps taken to complete a task.",
+      "word": "process",
+      "phonetic": "proh-ses",
+      "definition": "A series of steps taken to complete a task.",
+      "sentence": "The hiring process takes about two weeks.",
+      "options": [
+        "process",
+        "project",
+        "network"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q14",
+      "type": "meaning_match",
+      "prompt": "project",
+      "word": "project",
+      "phonetic": "proj-ekt",
+      "definition": "A planned piece of work with a specific goal.",
+      "sentence": "The team finished the project on time.",
+      "options": [
+        "A planned piece of work with a specific goal.",
+        "A group of connected people or computers.",
+        "A way of behaving in a formal situation."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q15",
+      "type": "fill_gap",
+      "prompt": "She uses her _______ to find new job leads.",
+      "word": "network",
+      "phonetic": "net-wurk",
+      "definition": "A group of connected people who share information or support.",
+      "sentence": "She uses her network to find new job leads.",
+      "options": [
+        "network",
+        "council",
+        "conduct"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q16",
+      "type": "guess_word",
+      "prompt": "A group of people elected or chosen to make decisions.",
+      "word": "council",
+      "phonetic": "koun-suhl",
+      "definition": "A group of people elected or chosen to make decisions.",
+      "sentence": "The city council voted on the new park.",
+      "options": [
+        "conduct",
+        "council",
+        "consent"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q17",
+      "type": "meaning_match",
+      "prompt": "conduct",
+      "word": "conduct",
+      "phonetic": "kon-dukt",
+      "definition": "The way a person behaves, especially in a formal setting.",
+      "sentence": "Professional conduct is expected at the office.",
+      "options": [
+        "A planned piece of work with a specific goal.",
+        "Permission given to do something.",
+        "The way a person behaves, especially in a formal setting."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q18",
+      "type": "fill_gap",
+      "prompt": "You must give _______ before we share your data.",
+      "word": "consent",
+      "phonetic": "kuhn-sent",
+      "definition": "Permission given to do something.",
+      "sentence": "You must give consent before we share your data.",
+      "options": [
+        "confirm",
+        "consent",
+        "climate"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q19",
+      "type": "guess_word",
+      "prompt": "To make something certain or definite.",
+      "word": "confirm",
+      "phonetic": "kuhn-furm",
+      "definition": "To make something certain or definite.",
+      "sentence": "Please confirm your appointment by noon.",
+      "options": [
+        "channel",
+        "capital",
+        "confirm"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q20",
+      "type": "meaning_match",
+      "prompt": "climate",
+      "word": "climate",
+      "phonetic": "kly-mit",
+      "definition": "The typical weather conditions of a region over time.",
+      "sentence": "The climate in the south is warm year-round.",
+      "options": [
+        "The typical weather conditions of a region over time.",
+        "A path for sending messages or signals.",
+        "Money or resources used to start a business."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q21",
+      "type": "fill_gap",
+      "prompt": "The news was broadcast on every _______ available.",
+      "word": "channel",
+      "phonetic": "chan-uhl",
+      "definition": "A path or medium for sending messages or signals.",
+      "sentence": "The news was broadcast on every channel available.",
+      "options": [
+        "capital",
+        "capable",
+        "channel"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q22",
+      "type": "guess_word",
+      "prompt": "Money or wealth used to invest or start a business.",
+      "word": "capital",
+      "phonetic": "kap-ih-tuhl",
+      "definition": "Money or wealth used to invest or start a business.",
+      "sentence": "The startup raised capital from several investors.",
+      "options": [
+        "capable",
+        "capital",
+        "central"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q23",
+      "type": "meaning_match",
+      "prompt": "capable",
+      "word": "capable",
+      "phonetic": "kay-puh-buhl",
+      "definition": "Having the ability or skill to do something.",
+      "sentence": "She is capable of handling the project alone.",
+      "options": [
+        "Most important or main.",
+        "Having the ability or skill to do something.",
+        "To bring goods or people to a place."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q24",
+      "type": "fill_gap",
+      "prompt": "The library is in a _______ location downtown.",
+      "word": "central",
+      "phonetic": "sen-truhl",
+      "definition": "Most important or located in the center.",
+      "sentence": "The library is in a central location downtown.",
+      "options": [
+        "central",
+        "deliver",
+        "develop"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q25",
+      "type": "guess_word",
+      "prompt": "To bring goods or a message to someone.",
+      "word": "deliver",
+      "phonetic": "dih-liv-er",
+      "definition": "To bring goods or a message to someone.",
+      "sentence": "They will deliver the package by Friday.",
+      "options": [
+        "display",
+        "deliver",
+        "express"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q26",
+      "type": "meaning_match",
+      "prompt": "develop",
+      "word": "develop",
+      "phonetic": "dih-vel-uhp",
+      "definition": "To grow, improve, or create something over time.",
+      "sentence": "The city plans to develop the empty lot into a park.",
+      "options": [
+        "To bring goods or a message to someone.",
+        "To show or present something publicly.",
+        "To grow, improve, or create something over time."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q27",
+      "type": "fill_gap",
+      "prompt": "The museum will _______ art from local painters.",
+      "word": "display",
+      "phonetic": "dih-splay",
+      "definition": "To show or present something so others can see it.",
+      "sentence": "The museum will display art from local painters.",
+      "options": [
+        "express",
+        "display",
+        "finance"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q28",
+      "type": "guess_word",
+      "prompt": "To communicate a feeling or idea through words or actions.",
+      "word": "express",
+      "phonetic": "ik-spres",
+      "definition": "To communicate a feeling or idea through words or actions.",
+      "sentence": "It can be hard to express emotions clearly.",
+      "options": [
+        "express",
+        "finance",
+        "gateway"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q29",
+      "type": "meaning_match",
+      "prompt": "finance",
+      "word": "finance",
+      "phonetic": "fy-nans",
+      "definition": "The management of money and other assets.",
+      "sentence": "She studies personal finance to manage her savings.",
+      "options": [
+        "To provide money to fund something.",
+        "The management of money and other assets.",
+        "An entry point that connects two places or networks."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q30",
+      "type": "fill_gap",
+      "prompt": "The airport serves as a _______ to the region.",
+      "word": "gateway",
+      "phonetic": "gayt-way",
+      "definition": "An entry point or opening that leads to something larger.",
+      "sentence": "The airport serves as a gateway to the region.",
+      "options": [
+        "harvest",
+        "inspect",
+        "gateway"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q31",
+      "type": "guess_word",
+      "prompt": "Truly what it claims to be; not fake.",
+      "word": "genuine",
+      "phonetic": "jen-yoo-in",
+      "definition": "Truly what it claims to be; not fake.",
+      "sentence": "She gave a genuine apology after the mistake.",
+      "options": [
+        "harvest",
+        "genuine",
+        "inspect"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q32",
+      "type": "meaning_match",
+      "prompt": "harvest",
+      "word": "harvest",
+      "phonetic": "har-vist",
+      "definition": "To gather crops or other natural resources.",
+      "sentence": "Farmers harvest wheat in late summer.",
+      "options": [
+        "To gather crops or other natural resources.",
+        "To examine something carefully for problems.",
+        "A deep understanding gained from experience."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q33",
+      "type": "fill_gap",
+      "prompt": "The mechanic will _______ the brakes before your road trip.",
+      "word": "inspect",
+      "phonetic": "in-spekt",
+      "definition": "To examine something carefully for problems.",
+      "sentence": "The mechanic will inspect the brakes before your road trip.",
+      "options": [
+        "inspect",
+        "insight",
+        "involve"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q34",
+      "type": "guess_word",
+      "prompt": "A clear and deep understanding of something.",
+      "word": "insight",
+      "phonetic": "in-syt",
+      "definition": "A clear and deep understanding of something.",
+      "sentence": "The report offered valuable insight into customer behavior.",
+      "options": [
+        "journey",
+        "insight",
+        "justice"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q35",
+      "type": "meaning_match",
+      "prompt": "involve",
+      "word": "involve",
+      "phonetic": "in-volv",
+      "definition": "To include someone or something as a necessary part.",
+      "sentence": "The job will involve some travel.",
+      "options": [
+        "A clear and deep understanding of something.",
+        "To include someone or something as a necessary part.",
+        "A trip from one place to another."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q36",
+      "type": "fill_gap",
+      "prompt": "The _______ by train took six hours.",
+      "word": "journey",
+      "phonetic": "jur-nee",
+      "definition": "A trip or travel from one place to another.",
+      "sentence": "The journey by train took six hours.",
+      "options": [
+        "mandate",
+        "journey",
+        "justice"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q37",
+      "type": "guess_word",
+      "prompt": "Fair treatment and proper use of the law.",
+      "word": "justice",
+      "phonetic": "jus-tis",
+      "definition": "Fair treatment and proper use of the law.",
+      "sentence": "Everyone deserves justice under the law.",
+      "options": [
+        "justice",
+        "mandate",
+        "mindful"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q38",
+      "type": "meaning_match",
+      "prompt": "mandate",
+      "word": "mandate",
+      "phonetic": "man-dayt",
+      "definition": "An official order or requirement.",
+      "sentence": "The new law included a mandate to reduce emissions.",
+      "options": [
+        "Fair treatment and proper use of the law.",
+        "Being aware and thoughtful about the present moment.",
+        "An official order or requirement."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q39",
+      "type": "fill_gap",
+      "prompt": "She tries to be _______ of how her words affect others.",
+      "word": "mindful",
+      "phonetic": "mynd-fuhl",
+      "definition": "Being aware and thoughtful about one's actions or surroundings.",
+      "sentence": "She tries to be mindful of how her words affect others.",
+      "options": [
+        "notable",
+        "mindful",
+        "passage"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q40",
+      "type": "guess_word",
+      "prompt": "Worthy of attention; remarkable or important.",
+      "word": "notable",
+      "phonetic": "noh-tuh-buhl",
+      "definition": "Worthy of attention; remarkable or important.",
+      "sentence": "One notable change was the new office policy.",
+      "options": [
+        "passage",
+        "partner",
+        "notable"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q41",
+      "type": "meaning_match",
+      "prompt": "passage",
+      "word": "passage",
+      "phonetic": "pas-ij",
+      "definition": "A section of text, or a route from one place to another.",
+      "sentence": "She read a passage from the book aloud.",
+      "options": [
+        "A section of text, or a route from one place to another.",
+        "Someone who works with you toward a shared goal.",
+        "A repeated design or sequence of events."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q42",
+      "type": "fill_gap",
+      "prompt": "My business _______ handles client meetings.",
+      "word": "partner",
+      "phonetic": "part-ner",
+      "definition": "Someone who works with you toward a shared goal.",
+      "sentence": "My business partner handles client meetings.",
+      "options": [
+        "pattern",
+        "partner",
+        "publish"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q43",
+      "type": "guess_word",
+      "prompt": "A repeated design, sequence, or way of doing things.",
+      "word": "pattern",
+      "phonetic": "pat-ern",
+      "definition": "A repeated design, sequence, or way of doing things.",
+      "sentence": "There is a clear pattern in these monthly figures.",
+      "options": [
+        "pattern",
+        "publish",
+        "qualify"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q44",
+      "type": "meaning_match",
+      "prompt": "publish",
+      "word": "publish",
+      "phonetic": "puhb-lish",
+      "definition": "To prepare and release content for public access.",
+      "sentence": "She hopes to publish her novel next year.",
+      "options": [
+        "To meet the required standards for something.",
+        "To prepare and release content for public access.",
+        "A drastic or complete change."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q45",
+      "type": "fill_gap",
+      "prompt": "You need three years of experience to _______ for the role.",
+      "word": "qualify",
+      "phonetic": "kwol-ih-fy",
+      "definition": "To meet the required standards or conditions for something.",
+      "sentence": "You need three years of experience to qualify for the role.",
+      "options": [
+        "qualify",
+        "radical",
+        "resolve"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q46",
+      "type": "guess_word",
+      "prompt": "Extreme or drastic; departing greatly from tradition.",
+      "word": "radical",
+      "phonetic": "rad-ih-kuhl",
+      "definition": "Extreme or drastic; departing greatly from tradition.",
+      "sentence": "The new policy was a radical shift from the old rules.",
+      "options": [
+        "satisfy",
+        "radical",
+        "resolve"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q47",
+      "type": "meaning_match",
+      "prompt": "resolve",
+      "word": "resolve",
+      "phonetic": "rih-zolv",
+      "definition": "To find a solution to a problem or disagreement.",
+      "sentence": "They met to resolve the dispute quickly.",
+      "options": [
+        "To meet the needs or expectations of someone.",
+        "To find a solution to a problem or disagreement.",
+        "A place offering protection from danger."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q48",
+      "type": "fill_gap",
+      "prompt": "Good customer service will _______ most complaints.",
+      "word": "satisfy",
+      "phonetic": "sat-is-fy",
+      "definition": "To meet the needs or expectations of someone.",
+      "sentence": "Good customer service will satisfy most complaints.",
+      "options": [
+        "shelter",
+        "satisfy",
+        "typical"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q49",
+      "type": "guess_word",
+      "prompt": "A place that provides protection from danger or weather.",
+      "word": "shelter",
+      "phonetic": "shel-ter",
+      "definition": "A place that provides protection from danger or weather.",
+      "sentence": "The hikers found shelter under a large rock.",
+      "options": [
+        "shelter",
+        "typical",
+        "uniform"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q50",
+      "type": "meaning_match",
+      "prompt": "typical",
+      "word": "typical",
+      "phonetic": "tip-ih-kuhl",
+      "definition": "Normal or expected for a particular situation.",
+      "sentence": "A typical workday starts at nine in the morning.",
+      "options": [
+        "Normal or expected for a particular situation.",
+        "The same throughout; without variation.",
+        "A particular form or release of something."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q51",
+      "type": "fill_gap",
+      "prompt": "All staff must wear the company _______.",
+      "word": "uniform",
+      "phonetic": "yoo-nih-form",
+      "definition": "A standard outfit worn by members of a group.",
+      "sentence": "All staff must wear the company uniform.",
+      "options": [
+        "version",
+        "welfare",
+        "uniform"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q52",
+      "type": "guess_word",
+      "prompt": "A particular form or updated release of something.",
+      "word": "version",
+      "phonetic": "vur-zhuhn",
+      "definition": "A particular form or updated release of something.",
+      "sentence": "Please download the latest version of the app.",
+      "options": [
+        "welfare",
+        "version",
+        "process"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q53",
+      "type": "meaning_match",
+      "prompt": "welfare",
+      "word": "welfare",
+      "phonetic": "wel-fair",
+      "definition": "The health, happiness, and general wellbeing of a person or group.",
+      "sentence": "The charity works to improve the welfare of children.",
+      "options": [
+        "The health, happiness, and general wellbeing of a person or group.",
+        "A particular form or updated release of something.",
+        "A standard outfit worn by members of a group."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q54",
+      "type": "fill_gap",
+      "prompt": "The team will _______ the new software by end of month.",
+      "word": "launch",
+      "phonetic": "lawnch",
+      "definition": "To start or release something new to the public.",
+      "sentence": "The team will launch the new software by end of month.",
+      "options": [
+        "launch",
+        "assert",
+        "expand"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q55",
+      "type": "guess_word",
+      "prompt": "To grow larger or wider in size or scope.",
+      "word": "expand",
+      "phonetic": "ik-spand",
+      "definition": "To grow larger or wider in size or scope.",
+      "sentence": "The company plans to expand into new markets.",
+      "options": [
+        "assert",
+        "gather",
+        "expand"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q56",
+      "type": "meaning_match",
+      "prompt": "assert",
+      "word": "assert",
+      "phonetic": "uh-surt",
+      "definition": "To state something confidently and forcefully.",
+      "sentence": "She had to assert her right to a fair hearing.",
+      "options": [
+        "To grow larger or wider in size or scope.",
+        "To bring people or things together in one place.",
+        "To state something confidently and forcefully."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q57",
+      "type": "fill_gap",
+      "prompt": "We will _______ all donations at the community center.",
+      "word": "gather",
+      "phonetic": "gath-er",
+      "definition": "To bring people or things together in one place.",
+      "sentence": "We will gather all donations at the community center.",
+      "options": [
+        "gather",
+        "assign",
+        "launch"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q58",
+      "type": "guess_word",
+      "prompt": "To give a task or role to a specific person.",
+      "word": "assign",
+      "phonetic": "uh-syn",
+      "definition": "To give a task or role to a specific person.",
+      "sentence": "The manager will assign duties to each team member.",
+      "options": [
+        "assign",
+        "obtain",
+        "submit"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q59",
+      "type": "meaning_match",
+      "prompt": "obtain",
+      "word": "obtain",
+      "phonetic": "uhb-tayn",
+      "definition": "To get or acquire something, often through effort.",
+      "sentence": "You must obtain a permit before building.",
+      "options": [
+        "To send in a document or form for review.",
+        "To get or acquire something, often through effort.",
+        "To give a task or role to a specific person."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q60",
+      "type": "fill_gap",
+      "prompt": "Please _______ your application before the deadline.",
+      "word": "submit",
+      "phonetic": "suhb-mit",
+      "definition": "To send in a document or form for review or consideration.",
+      "sentence": "Please submit your application before the deadline.",
+      "options": [
+        "obtain",
+        "expand",
+        "submit"
+      ],
       "correctOptionIndex": 2
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
-    "generatedAt": "2026-02-22T18:44:32.271Z",
-    "questionCount": 12,
-    "wordCount": 12
+    "generatedAt": "2026-02-23T12:00:00.000Z",
+    "questionCount": 60,
+    "wordCount": 60
   }
 }

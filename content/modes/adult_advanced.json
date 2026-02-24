@@ -7,18 +7,26 @@
   "rules": {
     "minWordLength": 8,
     "maxWordLength": 12,
-    "allowedQuestionTypes": ["guess_word", "meaning_match", "fill_gap"]
+    "allowedQuestionTypes": [
+      "guess_word",
+      "meaning_match",
+      "fill_gap"
+    ]
   },
   "questions": [
     {
       "id": "adult_advanced_q01",
       "type": "guess_word",
-      "prompt": "Present or found almost everywhere.",
+      "prompt": "Present or found almost everywhere simultaneously.",
       "word": "ubiquitous",
       "phonetic": "yoo-bik-wi-tuhs",
-      "definition": "Present or found almost everywhere.",
-      "sentence": "Smartphones are ubiquitous in modern cities.",
-      "options": ["ubiquitous", "pragmatic", "meticulous"],
+      "definition": "Present or found almost everywhere simultaneously.",
+      "sentence": "Smartphones have become ubiquitous in modern professional environments.",
+      "options": [
+        "ubiquitous",
+        "ephemeral",
+        "transient"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -27,35 +35,43 @@
       "prompt": "pragmatic",
       "word": "pragmatic",
       "phonetic": "prag-mat-ik",
-      "definition": "Focused on practical results rather than theory alone.",
-      "sentence": "She offered a pragmatic solution to the conflict.",
+      "definition": "Dealing with things sensibly and realistically based on practical considerations rather than theoretical ideals.",
+      "sentence": "The senator took a pragmatic approach to healthcare reform, favoring incremental progress over sweeping overhaul.",
       "options": [
-        "Very careful and precise about details.",
-        "Focused on practical results rather than theory alone.",
-        "To reduce the seriousness of something harmful."
+        "Stubbornly resistant to authority or discipline.",
+        "Dealing with things sensibly and realistically based on practical considerations rather than theoretical ideals.",
+        "Excessively concerned with minor details or rules."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "adult_advanced_q03",
       "type": "fill_gap",
-      "prompt": "His __________ notes made auditing easier.",
+      "prompt": "The forensic accountant's ___________ record-keeping revealed the fraud scheme within hours.",
       "word": "meticulous",
       "phonetic": "muh-tik-yuh-luhs",
-      "definition": "Very careful and precise about details.",
-      "sentence": "His meticulous notes made auditing easier.",
-      "options": ["mitigate", "eloquent", "meticulous"],
+      "definition": "Showing great attention to detail; very careful and precise.",
+      "sentence": "The forensic accountant's meticulous record-keeping revealed the fraud scheme within hours.",
+      "options": [
+        "gratuitous",
+        "audacious",
+        "meticulous"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "adult_advanced_q04",
       "type": "guess_word",
-      "prompt": "To reduce the seriousness of something harmful.",
+      "prompt": "To lessen the severity, seriousness, or painfulness of something.",
       "word": "mitigate",
       "phonetic": "mit-uh-gayt",
-      "definition": "To reduce the seriousness of something harmful.",
-      "sentence": "Early warnings can mitigate flood damage.",
-      "options": ["mitigate", "eloquent", "resilient"],
+      "definition": "To lessen the severity, seriousness, or painfulness of something.",
+      "sentence": "The city installed floodwalls to mitigate the damage caused by seasonal storms.",
+      "options": [
+        "mitigate",
+        "vacillate",
+        "ameliorate"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -64,35 +80,43 @@
       "prompt": "eloquent",
       "word": "eloquent",
       "phonetic": "el-uh-kwuhnt",
-      "definition": "Fluent and persuasive in speaking or writing.",
-      "sentence": "The speaker gave an eloquent closing argument.",
+      "definition": "Fluent, forceful, and persuasive in speech or writing; clearly expressing or indicating something.",
+      "sentence": "Her eloquent closing argument moved several jurors to tears.",
       "options": [
-        "Able to recover quickly from difficulty.",
-        "Fluent and persuasive in speaking or writing.",
-        "Lasting only a short time."
+        "Characterized by excessive, showy display.",
+        "Fluent, forceful, and persuasive in speech or writing; clearly expressing or indicating something.",
+        "Having a ready insight into things; shrewd."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "adult_advanced_q06",
       "type": "fill_gap",
-      "prompt": "_________ teams adapt to sudden change.",
+      "prompt": "After months of hardship, the __________ community rebuilt its infrastructure with remarkable speed.",
       "word": "resilient",
       "phonetic": "ri-zil-yuhnt",
-      "definition": "Able to recover quickly from difficulty.",
-      "sentence": "Resilient teams adapt to sudden change.",
-      "options": ["transient", "paradigm", "resilient"],
+      "definition": "Able to withstand or recover quickly from difficult conditions.",
+      "sentence": "After months of hardship, the resilient community rebuilt its infrastructure with remarkable speed.",
+      "options": [
+        "obdurate",
+        "pedantic",
+        "resilient"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "adult_advanced_q07",
       "type": "guess_word",
-      "prompt": "Lasting only a short time.",
+      "prompt": "Lasting only for a short time; impermanent.",
       "word": "transient",
       "phonetic": "tran-zee-uhnt",
-      "definition": "Lasting only a short time.",
-      "sentence": "The market shock was transient.",
-      "options": ["transient", "paradigm", "synthesis"],
+      "definition": "Lasting only for a short time; impermanent.",
+      "sentence": "The philosopher argued that all earthly pleasures are transient and therefore unreliable sources of happiness.",
+      "options": [
+        "transient",
+        "insidious",
+        "mendacious"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -101,35 +125,43 @@
       "prompt": "paradigm",
       "word": "paradigm",
       "phonetic": "pair-uh-dym",
-      "definition": "A model or pattern for how something is understood.",
-      "sentence": "Cloud computing changed the software paradigm.",
+      "definition": "A typical example or pattern of something; a model or framework that shapes understanding within a discipline.",
+      "sentence": "Kuhn argued that scientific revolutions occur when anomalies accumulate and a new paradigm supplants the old.",
       "options": [
-        "A combination of ideas into a coherent whole.",
-        "A model or pattern for how something is understood.",
-        "Open to more than one interpretation."
+        "An object, idea, or event that is out of its proper historical period.",
+        "A typical example or pattern of something; a model or framework that shapes understanding within a discipline.",
+        "The dominance or leadership of one group over others."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "adult_advanced_q09",
       "type": "fill_gap",
-      "prompt": "Her paper offered a _________ of prior research.",
+      "prompt": "The dissertation offered a compelling __________ of postcolonial theory and feminist critique.",
       "word": "synthesis",
       "phonetic": "sin-thuh-sis",
-      "definition": "A combination of ideas into a coherent whole.",
-      "sentence": "Her paper offered a synthesis of prior research.",
-      "options": ["ambiguous", "formidable", "synthesis"],
+      "definition": "The combination of elements or ideas into a coherent whole; a complex product formed by combining elements.",
+      "sentence": "The dissertation offered a compelling synthesis of postcolonial theory and feminist critique.",
+      "options": [
+        "hegemony",
+        "dichotomy",
+        "synthesis"
+      ],
       "correctOptionIndex": 2
     },
     {
       "id": "adult_advanced_q10",
       "type": "guess_word",
-      "prompt": "Open to more than one interpretation.",
+      "prompt": "Open to more than one interpretation; not having a single clear meaning.",
       "word": "ambiguous",
       "phonetic": "am-big-yoo-uhs",
-      "definition": "Open to more than one interpretation.",
-      "sentence": "The contract language was ambiguous.",
-      "options": ["ambiguous", "formidable", "articulate"],
+      "definition": "Open to more than one interpretation; not having a single clear meaning.",
+      "sentence": "The treaty's ambiguous language led to decades of legal disputes between the two nations.",
+      "options": [
+        "ambiguous",
+        "sagacious",
+        "equivocal"
+      ],
       "correctOptionIndex": 0
     },
     {
@@ -138,31 +170,755 @@
       "prompt": "formidable",
       "word": "formidable",
       "phonetic": "for-mi-duh-buhl",
-      "definition": "Very impressive, powerful, or difficult to deal with.",
-      "sentence": "They faced a formidable legal challenge.",
+      "definition": "Inspiring fear or respect through being impressively powerful, large, or capable.",
+      "sentence": "The prosecution assembled a formidable array of forensic evidence against the defendant.",
       "options": [
-        "Able to express ideas clearly and effectively.",
-        "Very impressive, powerful, or difficult to deal with.",
-        "Present or found almost everywhere."
+        "Behaving in an obedient or excessively compliant manner.",
+        "Inspiring fear or respect through being impressively powerful, large, or capable.",
+        "Given to excessive and often trivial criticism."
       ],
       "correctOptionIndex": 1
     },
     {
       "id": "adult_advanced_q12",
       "type": "fill_gap",
-      "prompt": "She is __________ in both debate and writing.",
+      "prompt": "The diplomat was praised for being __________ in three languages under considerable diplomatic pressure.",
       "word": "articulate",
       "phonetic": "ar-tik-yuh-lit",
-      "definition": "Able to express ideas clearly and effectively.",
-      "sentence": "She is articulate in both debate and writing.",
-      "options": ["ubiquitous", "pragmatic", "articulate"],
+      "definition": "Having or showing the ability to speak fluently and coherently; clearly expressed.",
+      "sentence": "The diplomat was praised for being articulate in three languages under considerable diplomatic pressure.",
+      "options": [
+        "fallacious",
+        "garrulous",
+        "articulate"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q13",
+      "type": "guess_word",
+      "prompt": "Lasting for a very short time; transitory and delicate.",
+      "word": "ephemeral",
+      "phonetic": "ih-fem-uh-ruhl",
+      "definition": "Lasting for a very short time; transitory and delicate.",
+      "sentence": "The artist captured the ephemeral beauty of cherry blossoms before they fell.",
+      "options": [
+        "ephemeral",
+        "clandestine",
+        "recondite"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q14",
+      "type": "meaning_match",
+      "prompt": "perfidious",
+      "word": "perfidious",
+      "phonetic": "pur-fid-ee-uhs",
+      "definition": "Deceitful and untrustworthy; guilty of betrayal.",
+      "sentence": "The perfidious adviser secretly shared state secrets with a rival government.",
+      "options": [
+        "Stubbornly refusing to change one's opinion despite good arguments.",
+        "Deceitful and untrustworthy; guilty of betrayal.",
+        "Harmful and potentially fatal."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q15",
+      "type": "fill_gap",
+      "prompt": "Every office has at least one __________ eager to flatter the manager at every opportunity.",
+      "word": "sycophant",
+      "phonetic": "sik-uh-fant",
+      "definition": "A person who acts obsequiously toward someone important in order to gain advantage.",
+      "sentence": "Every office has at least one sycophant eager to flatter the manager at every opportunity.",
+      "options": [
+        "iconoclast",
+        "misanthrope",
+        "sycophant"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q16",
+      "type": "guess_word",
+      "prompt": "Having an obstinately uncooperative attitude toward authority or discipline.",
+      "word": "recalcitrant",
+      "phonetic": "ri-kal-si-truhnt",
+      "definition": "Having an obstinately uncooperative attitude toward authority or discipline.",
+      "sentence": "The recalcitrant student refused every intervention the school counselor proposed.",
+      "options": [
+        "recalcitrant",
+        "circumspect",
+        "punctilious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q17",
+      "type": "meaning_match",
+      "prompt": "obsequious",
+      "word": "obsequious",
+      "phonetic": "uhb-see-kwee-uhs",
+      "definition": "Obedient or attentive to an excessive or servile degree; fawning.",
+      "sentence": "His obsequious manner disgusted his colleagues, who found his constant flattery transparently self-serving.",
+      "options": [
+        "Extremely careful about detail; meticulous.",
+        "Obedient or attentive to an excessive or servile degree; fawning.",
+        "Loudly aggressive or assertive."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q18",
+      "type": "fill_gap",
+      "prompt": "Her __________ spending habits made budgeting nearly impossible for the finance team.",
+      "word": "capricious",
+      "phonetic": "kuh-prish-uhs",
+      "definition": "Given to sudden and unaccountable changes of mood or behavior; impulsive.",
+      "sentence": "Her capricious spending habits made budgeting nearly impossible for the finance team.",
+      "options": [
+        "capricious",
+        "sagacious",
+        "tenacious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q19",
+      "type": "guess_word",
+      "prompt": "Causing harm or damage, especially in a way that is gradual or not easily noticed.",
+      "word": "deleterious",
+      "phonetic": "del-uh-teer-ee-uhs",
+      "definition": "Causing harm or damage, especially in a way that is gradual or not easily noticed.",
+      "sentence": "Prolonged exposure to fine particulates has a deleterious effect on lung function.",
+      "options": [
+        "deleterious",
+        "meritorious",
+        "ignominious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q20",
+      "type": "meaning_match",
+      "prompt": "equivocal",
+      "word": "equivocal",
+      "phonetic": "ih-kwiv-uh-kuhl",
+      "definition": "Open to more than one interpretation; deliberately ambiguous or unclear.",
+      "sentence": "The candidate's equivocal statement on the issue pleased neither faction of the electorate.",
+      "options": [
+        "Excessively concerned with small details or academic rules.",
+        "Open to more than one interpretation; deliberately ambiguous or unclear.",
+        "Fluent and persuasive in expression."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q21",
+      "type": "fill_gap",
+      "prompt": "The professor's __________ lectures often ran long because he could not resist one more digression.",
+      "word": "loquacious",
+      "phonetic": "loh-kway-shuhs",
+      "definition": "Tending to talk a great deal; garrulous.",
+      "sentence": "The professor's loquacious lectures often ran long because he could not resist one more digression.",
+      "options": [
+        "fallacious",
+        "audacious",
+        "loquacious"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q22",
+      "type": "guess_word",
+      "prompt": "Very generous or forgiving, especially toward a rival or someone less powerful.",
+      "word": "magnanimous",
+      "phonetic": "mag-nan-uh-muhs",
+      "definition": "Very generous or forgiving, especially toward a rival or someone less powerful.",
+      "sentence": "In a magnanimous gesture, the winning team offered to share the prize fund with the runners-up.",
+      "options": [
+        "magnanimous",
+        "mendacious",
+        "acrimonious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q23",
+      "type": "meaning_match",
+      "prompt": "parsimonious",
+      "word": "parsimonious",
+      "phonetic": "par-suh-moh-nee-uhs",
+      "definition": "Unwilling to spend money or use resources; extremely frugal to the point of meanness.",
+      "sentence": "The parsimonious landlord refused to replace the broken heating system despite repeated tenant complaints.",
+      "options": [
+        "Causing harm or damage in a subtle or gradual way.",
+        "Unwilling to spend money or use resources; extremely frugal to the point of meanness.",
+        "Stubbornly resistant to change or correction."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q24",
+      "type": "fill_gap",
+      "prompt": "Using horse-drawn carriages in a sci-fi film struck critics as a glaring __________ in an otherwise meticulous production.",
+      "word": "anachronism",
+      "phonetic": "uh-nak-ruh-niz-uhm",
+      "definition": "A thing belonging or appropriate to a period other than that in which it exists; something out of its proper historical time.",
+      "sentence": "Using horse-drawn carriages in a sci-fi film struck critics as a glaring anachronism in an otherwise meticulous production.",
+      "options": [
+        "synthesis",
+        "paradigm",
+        "anachronism"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q25",
+      "type": "guess_word",
+      "prompt": "Hostile and aggressive; inclined to pick quarrels or start fights.",
+      "word": "belligerent",
+      "phonetic": "buh-lij-uh-ruhnt",
+      "definition": "Hostile and aggressive; inclined to pick quarrels or start fights.",
+      "sentence": "The belligerent faction within the party undermined every attempt at coalition-building.",
+      "options": [
+        "belligerent",
+        "recalcitrant",
+        "truculent"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q26",
+      "type": "meaning_match",
+      "prompt": "circumspect",
+      "word": "circumspect",
+      "phonetic": "sur-kuhm-spekt",
+      "definition": "Wary and unwilling to take risks; carefully considering all circumstances before acting.",
+      "sentence": "A circumspect investor avoids committing capital until thorough due diligence is complete.",
+      "options": [
+        "Refusing to obey; stubbornly defiant of authority.",
+        "Wary and unwilling to take risks; carefully considering all circumstances before acting.",
+        "Excessively talkative, especially on trivial matters."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q27",
+      "type": "fill_gap",
+      "prompt": "The lecture explored the stark __________ between free-market capitalism and centrally planned economies.",
+      "word": "dichotomy",
+      "phonetic": "dy-kot-uh-mee",
+      "definition": "A division or contrast between two things that are represented as being opposed or entirely different.",
+      "sentence": "The lecture explored the stark dichotomy between free-market capitalism and centrally planned economies.",
+      "options": [
+        "hegemony",
+        "erudition",
+        "dichotomy"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q28",
+      "type": "guess_word",
+      "prompt": "To make a problem, bad situation, or negative feeling worse.",
+      "word": "exacerbate",
+      "phonetic": "ig-zas-ur-bayt",
+      "definition": "To make a problem, bad situation, or negative feeling worse.",
+      "sentence": "The government's austerity measures only served to exacerbate poverty in the region.",
+      "options": [
+        "exacerbate",
+        "ameliorate",
+        "mitigate"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q29",
+      "type": "meaning_match",
+      "prompt": "fastidious",
+      "word": "fastidious",
+      "phonetic": "fa-stid-ee-uhs",
+      "definition": "Very attentive to accuracy and detail; difficult to please; excessively demanding.",
+      "sentence": "The fastidious editor returned the manuscript with corrections on every page.",
+      "options": [
+        "Loudly and aggressively defiant.",
+        "Very attentive to accuracy and detail; difficult to please; excessively demanding.",
+        "Inclined to express bitter or cruel displeasure."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q30",
+      "type": "fill_gap",
+      "prompt": "The film's __________ violence added nothing to the narrative and alienated much of the audience.",
+      "word": "gratuitous",
+      "phonetic": "gruh-tyoo-uh-tuhs",
+      "definition": "Uncalled for; lacking good reason; unwarranted; done without necessity or justification.",
+      "sentence": "The film's gratuitous violence added nothing to the narrative and alienated much of the audience.",
+      "options": [
+        "ephemeral",
+        "insidious",
+        "gratuitous"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q31",
+      "type": "guess_word",
+      "prompt": "Leadership or dominance, especially of one country or social group over others.",
+      "word": "hegemony",
+      "phonetic": "hih-jem-uh-nee",
+      "definition": "Leadership or dominance, especially of one country or social group over others.",
+      "sentence": "The rise of new economic powers has gradually eroded the hegemony that Western nations once took for granted.",
+      "options": [
+        "hegemony",
+        "synthesis",
+        "erudition"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q32",
+      "type": "meaning_match",
+      "prompt": "iconoclast",
+      "word": "iconoclast",
+      "phonetic": "eye-kon-uh-klast",
+      "definition": "A person who attacks or criticizes cherished beliefs or institutions; one who challenges established conventions.",
+      "sentence": "The iconoclast artist rejected every convention of the academy, producing work that initially baffled critics.",
+      "options": [
+        "A person who acts obsequiously to gain advantage.",
+        "A person who attacks or criticizes cherished beliefs or institutions; one who challenges established conventions.",
+        "A person characterized by excessive self-interest."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q33",
+      "type": "fill_gap",
+      "prompt": "The tyrant's __________ intent was evident in every decree he issued against the minority population.",
+      "word": "malevolent",
+      "phonetic": "muh-lev-uh-luhnt",
+      "definition": "Having or showing a wish to do evil to others; malicious.",
+      "sentence": "The tyrant's malevolent intent was evident in every decree he issued against the minority population.",
+      "options": [
+        "malevolent",
+        "benevolent",
+        "equivocal"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q34",
+      "type": "guess_word",
+      "prompt": "Wicked or criminal; involving or characterized by criminal wrongdoing.",
+      "word": "nefarious",
+      "phonetic": "nuh-fair-ee-uhs",
+      "definition": "Wicked or criminal; involving or characterized by criminal wrongdoing.",
+      "sentence": "The investigative journalist exposed the nefarious network of shell companies used to launder the funds.",
+      "options": [
+        "nefarious",
+        "perfidious",
+        "inimical"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q35",
+      "type": "meaning_match",
+      "prompt": "ostentatious",
+      "word": "ostentatious",
+      "phonetic": "os-ten-tay-shuhs",
+      "definition": "Characterized by a conspicuous, often excessive display intended to impress or attract notice.",
+      "sentence": "The billionaire's ostentatious yacht featured a helipad, a submarine dock, and a private cinema.",
+      "options": [
+        "Genuinely generous; showing noble character.",
+        "Characterized by a conspicuous, often excessive display intended to impress or attract notice.",
+        "Stubbornly persistent in maintaining a position."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q36",
+      "type": "fill_gap",
+      "prompt": "Lead paint poses a particularly __________ risk because children may ingest it without obvious symptoms appearing for years.",
+      "word": "pernicious",
+      "phonetic": "pur-nish-uhs",
+      "definition": "Having a harmful effect, especially in a gradual or subtle way.",
+      "sentence": "Lead paint poses a particularly pernicious risk because children may ingest it without obvious symptoms appearing for years.",
+      "options": [
+        "deleterious",
+        "audacious",
+        "pernicious"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q37",
+      "type": "guess_word",
+      "prompt": "Complaining in a petulant or whining manner; habitually finding fault.",
+      "word": "querulous",
+      "phonetic": "kwer-yuh-luhs",
+      "definition": "Complaining in a petulant or whining manner; habitually finding fault.",
+      "sentence": "The querulous patient complained about the food, the lighting, and the nurses in equal measure.",
+      "options": [
+        "querulous",
+        "garrulous",
+        "loquacious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q38",
+      "type": "meaning_match",
+      "prompt": "recondite",
+      "word": "recondite",
+      "phonetic": "rek-uhn-dyt",
+      "definition": "Not known by many people; abstruse; dealing with obscure subject matter.",
+      "sentence": "The professor's recondite lectures on Byzantine numismatics attracted a devoted but very small following.",
+      "options": [
+        "Extremely careful and thorough about accuracy.",
+        "Not known by many people; abstruse; dealing with obscure subject matter.",
+        "Willing to obey; compliant to excess."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q39",
+      "type": "fill_gap",
+      "prompt": "Only a __________ investor recognizes when market enthusiasm has outpaced fundamental value.",
+      "word": "sagacious",
+      "phonetic": "suh-gay-shuhs",
+      "definition": "Having or showing keen mental discernment and good judgment; shrewd.",
+      "sentence": "Only a sagacious investor recognizes when market enthusiasm has outpaced fundamental value.",
+      "options": [
+        "fallacious",
+        "capricious",
+        "sagacious"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q40",
+      "type": "guess_word",
+      "prompt": "Eager or quick to argue or fight; aggressively defiant.",
+      "word": "truculent",
+      "phonetic": "truk-yuh-luhnt",
+      "definition": "Eager or quick to argue or fight; aggressively defiant.",
+      "sentence": "The truculent witness refused to answer questions and openly mocked the prosecuting attorney.",
+      "options": [
+        "truculent",
+        "belligerent",
+        "querulous"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q41",
+      "type": "meaning_match",
+      "prompt": "untenable",
+      "word": "untenable",
+      "phonetic": "un-ten-uh-buhl",
+      "definition": "Not able to be maintained or defended against attack or objection; not sustainable.",
+      "sentence": "The minister's position became untenable once the leaked emails contradicted her public statements.",
+      "options": [
+        "Extremely cautious and attentive to risk.",
+        "Not able to be maintained or defended against attack or objection; not sustainable.",
+        "Deliberately misleading through indirect speech."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q42",
+      "type": "fill_gap",
+      "prompt": "Critics noted that the committee tended to __________ on key decisions rather than commit to a clear policy direction.",
+      "word": "vacillate",
+      "phonetic": "vas-uh-layt",
+      "definition": "To waver between different opinions or actions; to be indecisive.",
+      "sentence": "Critics noted that the committee tended to vacillate on key decisions rather than commit to a clear policy direction.",
+      "options": [
+        "ameliorate",
+        "exacerbate",
+        "vacillate"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q43",
+      "type": "guess_word",
+      "prompt": "Angry and bitter, especially in speech or manner; full of sharp ill will.",
+      "word": "acrimonious",
+      "phonetic": "ak-ruh-moh-nee-uhs",
+      "definition": "Angry and bitter, especially in speech or manner; full of sharp ill will.",
+      "sentence": "The acrimonious divorce proceedings dragged on for two years, scarring the entire family.",
+      "options": [
+        "acrimonious",
+        "ignominious",
+        "ostentatious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q44",
+      "type": "meaning_match",
+      "prompt": "ameliorate",
+      "word": "ameliorate",
+      "phonetic": "uh-meel-yuh-rayt",
+      "definition": "To make something bad or unsatisfactory better; to improve.",
+      "sentence": "The new policy was designed to ameliorate the suffering of displaced workers during the economic transition.",
+      "options": [
+        "To worsen or intensify a bad condition.",
+        "To make something bad or unsatisfactory better; to improve.",
+        "To spread widely through a group or population."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q45",
+      "type": "fill_gap",
+      "prompt": "It was __________ of the young prosecutor to challenge the most celebrated defense attorney in the state.",
+      "word": "audacious",
+      "phonetic": "aw-day-shuhs",
+      "definition": "Showing a willingness to take surprisingly bold risks; daringly original.",
+      "sentence": "It was audacious of the young prosecutor to challenge the most celebrated defense attorney in the state.",
+      "options": [
+        "pedantic",
+        "sardonic",
+        "audacious"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q46",
+      "type": "guess_word",
+      "prompt": "Kept secret or done secretively, especially because it is illicit.",
+      "word": "clandestine",
+      "phonetic": "klan-des-tin",
+      "definition": "Kept secret or done secretively, especially because it is illicit.",
+      "sentence": "The intelligence agency conducted a clandestine operation to recover the stolen documents.",
+      "options": [
+        "clandestine",
+        "circumspect",
+        "recondite"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q47",
+      "type": "meaning_match",
+      "prompt": "egregious",
+      "word": "egregious",
+      "phonetic": "ih-gree-juhs",
+      "definition": "Outstandingly bad; shockingly conspicuous; flagrant.",
+      "sentence": "The auditor flagged the egregious accounting irregularities that had gone unnoticed for a decade.",
+      "options": [
+        "Extremely cautious and precise in all dealings.",
+        "Outstandingly bad; shockingly conspicuous; flagrant.",
+        "Stubbornly loyal to an established belief."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q48",
+      "type": "fill_gap",
+      "prompt": "The mediator maintained her __________ despite the hostility of both negotiating parties.",
+      "word": "equanimity",
+      "phonetic": "ee-kwuh-nim-uh-tee",
+      "definition": "Mental calmness and composure, especially in difficult situations.",
+      "sentence": "The mediator maintained her equanimity despite the hostility of both negotiating parties.",
+      "options": [
+        "dichotomy",
+        "hegemony",
+        "equanimity"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q49",
+      "type": "guess_word",
+      "prompt": "Unreasonably high in price or demand; exceeding what is considered reasonable.",
+      "word": "exorbitant",
+      "phonetic": "ig-zor-buh-tuhnt",
+      "definition": "Unreasonably high in price or demand; exceeding what is considered reasonable.",
+      "sentence": "The exorbitant fees charged by the consulting firm prompted the board to seek alternative advisers.",
+      "options": [
+        "exorbitant",
+        "profligate",
+        "parsimonious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q50",
+      "type": "meaning_match",
+      "prompt": "fallacious",
+      "word": "fallacious",
+      "phonetic": "fuh-lay-shuhs",
+      "definition": "Based on a mistaken belief; embodying or containing a fallacy; logically unsound.",
+      "sentence": "The editorial board rejected the columnist's fallacious reasoning that correlation implied causation.",
+      "options": [
+        "Extremely frugal and reluctant to spend resources.",
+        "Based on a mistaken belief; embodying or containing a fallacy; logically unsound.",
+        "Inclined toward an unnecessarily confrontational manner."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q51",
+      "type": "fill_gap",
+      "prompt": "The __________ dinner guest dominated every conversation and rarely paused to listen.",
+      "word": "garrulous",
+      "phonetic": "gar-uh-luhs",
+      "definition": "Excessively talkative, especially on trivial matters.",
+      "sentence": "The garrulous dinner guest dominated every conversation and rarely paused to listen.",
+      "options": [
+        "reticent",
+        "obdurate",
+        "garrulous"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q52",
+      "type": "guess_word",
+      "prompt": "Deserving of or causing public disgrace or shame; humiliating.",
+      "word": "ignominious",
+      "phonetic": "ig-nuh-min-ee-uhs",
+      "definition": "Deserving of or causing public disgrace or shame; humiliating.",
+      "sentence": "The general's ignominious retreat was broadcast live and became the defining image of the failed campaign.",
+      "options": [
+        "ignominious",
+        "meritorious",
+        "acrimonious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q53",
+      "type": "meaning_match",
+      "prompt": "insidious",
+      "word": "insidious",
+      "phonetic": "in-sid-ee-uhs",
+      "definition": "Proceeding in a gradual, subtle way but with harmful effects; deceptively attractive.",
+      "sentence": "Misinformation spreads in an insidious way, eroding trust in institutions before the damage becomes apparent.",
+      "options": [
+        "Easily angered; disposed to anger.",
+        "Proceeding in a gradual, subtle way but with harmful effects; deceptively attractive.",
+        "Having a calm, composed temperament under pressure."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q54",
+      "type": "fill_gap",
+      "prompt": "The __________ tabloid invented a scandal to boost circulation at the politician's expense.",
+      "word": "mendacious",
+      "phonetic": "men-day-shuhs",
+      "definition": "Not telling the truth; lying; habitually dishonest.",
+      "sentence": "The mendacious tabloid invented a scandal to boost circulation at the politician's expense.",
+      "options": [
+        "veracious",
+        "sagacious",
+        "mendacious"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q55",
+      "type": "guess_word",
+      "prompt": "Stubbornly refusing to change one's opinion or course of action; hardened.",
+      "word": "obdurate",
+      "phonetic": "ob-dyoo-rit",
+      "definition": "Stubbornly refusing to change one's opinion or course of action; hardened.",
+      "sentence": "The obdurate negotiator refused every compromise, prolonging the labor dispute by months.",
+      "options": [
+        "obdurate",
+        "recalcitrant",
+        "untenable"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q56",
+      "type": "meaning_match",
+      "prompt": "pedantic",
+      "word": "pedantic",
+      "phonetic": "puh-dan-tik",
+      "definition": "Excessively concerned with minor details or rules, especially as a display of learning.",
+      "sentence": "His pedantic insistence on correcting every grammatical slip alienated him from colleagues.",
+      "options": [
+        "Characterized by cruel and bitter speech or manner.",
+        "Excessively concerned with minor details or rules, especially as a display of learning.",
+        "Openly resistant and defiant to authority."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q57",
+      "type": "fill_gap",
+      "prompt": "The __________ heir squandered his inheritance on gambling and lavish parties within a decade.",
+      "word": "profligate",
+      "phonetic": "prof-luh-git",
+      "definition": "Recklessly extravagant or wasteful in the use of resources; licentious.",
+      "sentence": "The profligate heir squandered his inheritance on gambling and lavish parties within a decade.",
+      "options": [
+        "circumspect",
+        "fastidious",
+        "profligate"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q58",
+      "type": "guess_word",
+      "prompt": "Showing great attention to detail or correct behavior; very careful about rules.",
+      "word": "punctilious",
+      "phonetic": "punk-til-ee-uhs",
+      "definition": "Showing great attention to detail or correct behavior; very careful about rules.",
+      "sentence": "The punctilious archivist catalogued every document with a precision that bordered on obsession.",
+      "options": [
+        "punctilious",
+        "fastidious",
+        "meticulous"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q59",
+      "type": "meaning_match",
+      "prompt": "sardonic",
+      "word": "sardonic",
+      "phonetic": "sar-don-ik",
+      "definition": "Grimly mocking or cynical; disdainfully humorous.",
+      "sentence": "The critic's sardonic review skewered the film's pretensions without offering a single compliment.",
+      "options": [
+        "Showing gentle understanding and kindness.",
+        "Grimly mocking or cynical; disdainfully humorous.",
+        "Reluctant to speak; reserved in manner."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q60",
+      "type": "fill_gap",
+      "prompt": "The heiress's __________ display of designer labels and private jets struck observers as deeply tasteless.",
+      "word": "supercilious",
+      "phonetic": "soo-pur-sil-ee-uhs",
+      "definition": "Behaving or looking as though one thinks one is superior to others; condescendingly arrogant.",
+      "sentence": "The heiress's supercilious display of designer labels and private jets struck observers as deeply tasteless.",
+      "options": [
+        "magnanimous",
+        "circumspect",
+        "supercilious"
+      ],
       "correctOptionIndex": 2
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
-    "generatedAt": "2026-02-22T18:44:32.273Z",
-    "questionCount": 12,
-    "wordCount": 12
+    "generatedAt": "2026-02-23T12:00:00.000Z",
+    "questionCount": 60,
+    "wordCount": 60
   }
 }
