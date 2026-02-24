@@ -52,12 +52,38 @@ function HeartsDisplay({ lives, maxLives }: { lives: number; maxLives: number })
   const hearts: JSX.Element[] = [];
   for (let i = 0; i < maxLives; i++) {
     hearts.push(
-      <span className="text-lg" key={i}>
+      <span className="text-sm" key={i}>
         {i < lives ? "\u2764\uFE0F" : "\u{1F90D}"}
       </span>
     );
   }
-  return <div className="flex gap-1">{hearts}</div>;
+  return (
+    <div className="flex items-center gap-0.5 rounded-full bg-bg-surface px-2.5 py-1.5">
+      {hearts}
+    </div>
+  );
+}
+
+function ScorePill({ score }: { score: number }): JSX.Element {
+  return (
+    <div className="flex items-center gap-1.5 rounded-full bg-bg-surface px-2.5 py-1.5">
+      <svg
+        aria-hidden
+        fill="none"
+        height="14"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+        width="14"
+      >
+        <rect height="14" rx="2" width="14" x="2" y="8" />
+        <path d="M8 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2" />
+      </svg>
+      <span className="text-sm font-bold text-text-primary">{score}</span>
+    </div>
+  );
 }
 
 export function ChallengePlayPage(): JSX.Element {
@@ -450,14 +476,33 @@ export function ChallengePlayPage(): JSX.Element {
         </div>
       )}
 
-      {/* Perfection: progress bar + hearts */}
+      {/* Perfection: X + score pill + hearts pill (no progress bar) */}
       {isPerfection && (
-        <div className="flex items-center gap-3">
-          <TopProgressBar
-            onClose={() => setShowLeaveSheet(true)}
-            progress={progress}
-          />
-          <HeartsDisplay lives={state.lives} maxLives={state.maxLives} />
+        <div className="flex items-center justify-between">
+          <button
+            aria-label="Leave quiz"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
+            onClick={() => setShowLeaveSheet(true)}
+            type="button"
+          >
+            <svg
+              aria-hidden
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeWidth={2.5}
+              viewBox="0 0 24 24"
+              width="18"
+            >
+              <path d="m6 6 12 12" />
+              <path d="m18 6-12 12" />
+            </svg>
+          </button>
+          <div className="flex items-center gap-2">
+            <ScorePill score={state.score} />
+            <HeartsDisplay lives={state.lives} maxLives={state.maxLives} />
+          </div>
         </div>
       )}
 
