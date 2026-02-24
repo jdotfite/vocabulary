@@ -17,6 +17,7 @@ interface InitResponse {
   nickname: string | null;
   vocabularyLevel: string | null;
   ageRange: string | null;
+  splashDismissed: boolean;
 }
 
 interface UserProgressState {
@@ -27,10 +28,12 @@ interface UserProgressState {
   nickname: string | null;
   vocabularyLevel: string | null;
   ageRange: string | null;
+  splashDismissed: boolean;
   init: () => Promise<void>;
   recordAnswer: (word: string, isCorrect: boolean) => void;
   toggleFavorite: (word: string) => void;
   toggleBookmark: (word: string) => void;
+  setSplashDismissed: (dismissed: boolean) => void;
   reset: () => void;
 }
 
@@ -42,6 +45,7 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
   nickname: null,
   vocabularyLevel: null,
   ageRange: null,
+  splashDismissed: false,
 
   init: async () => {
     if (get().initialized) return;
@@ -54,7 +58,8 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
         bookmarks: data.bookmarks,
         nickname: data.nickname,
         vocabularyLevel: data.vocabularyLevel,
-        ageRange: data.ageRange
+        ageRange: data.ageRange,
+        splashDismissed: data.splashDismissed
       });
     } catch {
       // If fetching fails, still mark initialized so we don't loop
@@ -109,6 +114,11 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
     apiPost("/api/progress/bookmark", { word }).catch(() => undefined);
   },
 
+  setSplashDismissed: (dismissed: boolean) => {
+    set({ splashDismissed: dismissed });
+    apiPost("/api/progress/splash", { dismissed }).catch(() => undefined);
+  },
+
   reset: () => {
     set({
       initialized: false,
@@ -117,7 +127,8 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
       bookmarks: [],
       nickname: null,
       vocabularyLevel: null,
-      ageRange: null
+      ageRange: null,
+      splashDismissed: false
     });
   }
 }));

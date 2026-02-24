@@ -76,4 +76,93 @@ describe("quizReducer", () => {
     expect(finished.score).toBe(1);
     expect(finished.answers).toHaveLength(1);
   });
+
+  it("decrements lives on wrong answer when lives are finite", () => {
+    const initial = createInitialQuizState(5, "perfection", 3);
+    expect(initial.lives).toBe(3);
+    expect(initial.maxLives).toBe(3);
+
+    const wrong = quizReducer(initial, {
+      type: "selectOption",
+      questionId: "q1",
+      optionIndex: 0,
+      correctOptionIndex: 1
+    });
+
+    expect(wrong.lives).toBe(2);
+    expect(wrong.status).toBe("playing");
+  });
+
+  it("finishes game when lives reach 0", () => {
+    const initial = createInitialQuizState(5, "rush", 1);
+
+    const wrong = quizReducer(initial, {
+      type: "selectOption",
+      questionId: "q1",
+      optionIndex: 0,
+      correctOptionIndex: 1
+    });
+
+    expect(wrong.lives).toBe(0);
+    expect(wrong.status).toBe("finished");
+  });
+
+  it("does not decrement lives on correct answer", () => {
+    const initial = createInitialQuizState(5, "rush", 3);
+
+    const correct = quizReducer(initial, {
+      type: "selectOption",
+      questionId: "q1",
+      optionIndex: 1,
+      correctOptionIndex: 1
+    });
+
+    expect(correct.lives).toBe(3);
+  });
+
+  it("rushTimeUp decrements a life", () => {
+    const initial = createInitialQuizState(5, "rush", 3);
+
+    const timedOut = quizReducer(initial, { type: "rushTimeUp" });
+
+    expect(timedOut.lives).toBe(2);
+    expect(timedOut.status).toBe("playing");
+  });
+
+  it("rushTimeUp finishes game when last life lost", () => {
+    const initial = createInitialQuizState(5, "rush", 1);
+
+    const timedOut = quizReducer(initial, { type: "rushTimeUp" });
+
+    expect(timedOut.lives).toBe(0);
+    expect(timedOut.status).toBe("finished");
+  });
+
+  it("rushReshuffle resets index but preserves score and lives", () => {
+    let state = createInitialQuizState(2, "rush", 3);
+    state = quizReducer(state, {
+      type: "selectOption",
+      questionId: "q1",
+      optionIndex: 1,
+      correctOptionIndex: 1
+    });
+    state = quizReducer(state, { type: "nextQuestion" });
+    state = quizReducer(state, {
+      type: "selectOption",
+      questionId: "q2",
+      optionIndex: 0,
+      correctOptionIndex: 1
+    });
+
+    const reshuffled = quizReducer(state, {
+      type: "rushReshuffle",
+      totalQuestions: 5
+    });
+
+    expect(reshuffled.currentIndex).toBe(0);
+    expect(reshuffled.totalQuestions).toBe(5);
+    expect(reshuffled.score).toBe(1);
+    expect(reshuffled.lives).toBe(2);
+    expect(reshuffled.isAnswered).toBe(false);
+  });
 });

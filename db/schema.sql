@@ -102,15 +102,16 @@ CREATE TABLE IF NOT EXISTS user_bookmarks (
 );
 
 CREATE TABLE IF NOT EXISTS user_preferences (
-  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id          UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE UNIQUE,
-  age_range        TEXT CHECK (age_range IN ('13-17','18-24','25-34','35-44','45-54','55+')),
-  gender           TEXT CHECK (gender IN ('female','male','other','prefer_not_to_say')),
-  nickname         TEXT,
-  vocabulary_level TEXT CHECK (vocabulary_level IN ('beginner','intermediate','advanced')),
-  known_words      JSONB NOT NULL DEFAULT '[]'::JSONB,
-  created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at       TIMESTAMPTZ NOT NULL DEFAULT now()
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id           UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE UNIQUE,
+  age_range         TEXT CHECK (age_range IN ('13-17','18-24','25-34','35-44','45-54','55+')),
+  gender            TEXT CHECK (gender IN ('female','male','other','prefer_not_to_say')),
+  nickname          TEXT,
+  vocabulary_level  TEXT CHECK (vocabulary_level IN ('beginner','intermediate','advanced')),
+  known_words       JSONB NOT NULL DEFAULT '[]'::JSONB,
+  splash_dismissed  BOOLEAN NOT NULL DEFAULT false,
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at        TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS practice_sessions (
@@ -152,5 +153,20 @@ CREATE INDEX IF NOT EXISTS idx_user_preferences_user   ON user_preferences(user_
 CREATE INDEX IF NOT EXISTS idx_practice_sessions_user  ON practice_sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_review_log_session      ON review_log(session_id);
 CREATE INDEX IF NOT EXISTS idx_review_log_user         ON review_log(user_id);
+
+-- ---------------------------------------------------------------------------
+-- Migrations (safe to re-run)
+-- ---------------------------------------------------------------------------
+
+-- Add splash_dismissed column for existing installs
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'user_preferences' AND column_name = 'splash_dismissed'
+  ) THEN
+    ALTER TABLE user_preferences ADD COLUMN splash_dismissed BOOLEAN NOT NULL DEFAULT false;
+  END IF;
+END $$;
 
 COMMIT;

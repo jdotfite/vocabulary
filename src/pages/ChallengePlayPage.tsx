@@ -4,6 +4,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { FeedbackSheet } from "@/design-system/components/FeedbackSheet";
 import { LeaveConfirmSheet } from "@/design-system/components/LeaveConfirmSheet";
+import { ModeSplash } from "@/design-system/components/ModeSplash";
 import { OptionButton } from "@/design-system/components/OptionButton";
 import type { OptionButtonProps } from "@/design-system/components/OptionButton";
 import { PromptCard } from "@/design-system/components/PromptCard";
@@ -14,14 +15,18 @@ import {
   createInitialQuizState
 } from "@/game/quizReducer";
 import type { ChallengeMode } from "@/game/quizReducer";
+import { CHALLENGE_CONFIGS } from "@/lib/challengeConfig";
 import { recordPracticeSession } from "@/lib/practiceStats";
-import { getSprintPool, getPerfectionPool } from "@/lib/questionPool";
+import { getSprintPool, getPerfectionPool, getRushPool, getLevelTestPool } from "@/lib/questionPool";
 import { useUserProgress } from "@/lib/userProgressStore";
 import type { AnyModeId, ModeQuestion } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
-const SPRINT_DURATION_MS = 90_000;
+const SPRINT_DURATION_MS = 60_000;
+const RUSH_PER_QUESTION_MS = 5_000;
 const FLASH_DURATION_MS = 800;
+
+type ValidChallengeType = "sprint" | "perfection" | "rush" | "level_test";
 
 function modeLabelByType(type: string): string {
   if (type === "guess_word") return "Guess the word";
@@ -29,21 +34,56 @@ function modeLabelByType(type: string): string {
   return "Fill in the gap";
 }
 
-const VALID_CHALLENGE_TYPES = new Set<string>(["sprint", "perfection"]);
+const VALID_CHALLENGE_TYPES = new Set<string>(["sprint", "perfection", "rush", "level_test"]);
+
+function getChallengeMode(type: ValidChallengeType): ChallengeMode {
+  if (type === "sprint") return "sprint";
+  if (type === "rush") return "rush";
+  if (type === "perfection") return "perfection";
+  return "standard"; // level_test uses standard mode
+}
+
+function getLivesForType(type: ValidChallengeType): number {
+  if (type === "perfection" || type === "rush") return 3;
+  return Infinity;
+}
+
+function HeartsDisplay({ lives, maxLives }: { lives: number; maxLives: number }): JSX.Element {
+  const hearts: JSX.Element[] = [];
+  for (let i = 0; i < maxLives; i++) {
+    hearts.push(
+      <span className="text-lg" key={i}>
+        {i < lives ? "\u2764\uFE0F" : "\u{1F90D}"}
+      </span>
+    );
+  }
+  return <div className="flex gap-1">{hearts}</div>;
+}
 
 export function ChallengePlayPage(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams();
   const rawType = params.challengeType ?? "";
   const isValidType = VALID_CHALLENGE_TYPES.has(rawType);
-  const challengeType = isValidType ? (rawType as "sprint" | "perfection") : "sprint";
+  const challengeType = isValidType ? (rawType as ValidChallengeType) : "sprint";
+  const challengeMode = getChallengeMode(challengeType);
   const isSprint = challengeType === "sprint";
-  const challengeMode: ChallengeMode = isSprint ? "sprint" : "perfection";
+  const isRush = challengeType === "rush";
+  const isPerfection = challengeType === "perfection";
+  const isLevelTest = challengeType === "level_test";
+  const usesFlash = isSprint || isRush;
+  const hasLives = isPerfection || isRush;
+  const initialLives = getLivesForType(challengeType);
+
+  // Splash state
+  const splashDismissed = useUserProgress((s) => s.splashDismissed);
+  const setSplashDismissed = useUserProgress((s) => s.setSplashDismissed);
+  const [showSplash, setShowSplash] = useState(!splashDismissed);
+  const [localDismissToggle, setLocalDismissToggle] = useState(splashDismissed);
 
   const vocabularyLevel = useUserProgress((s) => s.vocabularyLevel);
   const ageRange = useUserProgress((s) => s.ageRange);
   const wordStats = useUserProgress((s) => s.wordStats);
-  // Freeze wordStats at session start so the initial pool doesn't recompute mid-quiz
   const [frozenWordStats] = useState(() => wordStats);
   const recordAnswer = useUserProgress((s) => s.recordAnswer);
   const toggleFavorite = useUserProgress((s) => s.toggleFavorite);
@@ -56,25 +96,27 @@ export function ChallengePlayPage(): JSX.Element {
     [vocabularyLevel, ageRange]
   );
 
-  const questions = useMemo<ModeQuestion[]>(
-    () => (isSprint ? getSprintPool(prefs, frozenWordStats) : getPerfectionPool(prefs, frozenWordStats)),
-    [isSprint, prefs, frozenWordStats]
-  );
+  const questions = useMemo<ModeQuestion[]>(() => {
+    if (isLevelTest) return getLevelTestPool();
+    if (isRush) return getRushPool(prefs, frozenWordStats);
+    if (isPerfection) return getPerfectionPool(prefs, frozenWordStats);
+    return getSprintPool(prefs, frozenWordStats);
+  }, [isLevelTest, isRush, isPerfection, prefs, frozenWordStats]);
 
   const [state, dispatch] = useReducer(
     quizReducer,
-    { total: questions.length, mode: challengeMode },
-    (arg) => createInitialQuizState(arg.total, arg.mode)
+    { total: questions.length, mode: challengeMode, lives: initialLives },
+    (arg) => createInitialQuizState(arg.total, arg.mode, arg.lives)
   );
 
   const [showLeaveSheet, setShowLeaveSheet] = useState(false);
 
-  // Sprint timer
+  // Sprint global timer
   const [remainingMs, setRemainingMs] = useState(SPRINT_DURATION_MS);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    if (!isSprint || state.status === "finished") return;
+    if (!isSprint || state.status === "finished" || showSplash) return;
 
     const start = Date.now();
     timerRef.current = setInterval(() => {
@@ -92,13 +134,46 @@ export function ChallengePlayPage(): JSX.Element {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isSprint, state.status]);
+  }, [isSprint, state.status, showSplash]);
 
-  // Sprint: flash feedback then auto-advance
+  // Rush per-question timer
+  const [rushRemainingMs, setRushRemainingMs] = useState(RUSH_PER_QUESTION_MS);
+  const rushTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const clearRushTimer = useCallback(() => {
+    if (rushTimerRef.current) {
+      clearInterval(rushTimerRef.current);
+      rushTimerRef.current = null;
+    }
+  }, []);
+
+  const startRushTimer = useCallback(() => {
+    clearRushTimer();
+    setRushRemainingMs(RUSH_PER_QUESTION_MS);
+    const start = Date.now();
+    rushTimerRef.current = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const remaining = RUSH_PER_QUESTION_MS - elapsed;
+      if (remaining <= 0) {
+        setRushRemainingMs(0);
+        clearRushTimer();
+      } else {
+        setRushRemainingMs(remaining);
+      }
+    }, 50);
+  }, [clearRushTimer]);
+
+  // Rush: start timer on each new question (when not on splash)
+  useEffect(() => {
+    if (!isRush || state.status === "finished" || showSplash || state.isAnswered) return;
+    startRushTimer();
+    return clearRushTimer;
+  }, [isRush, state.status, showSplash, state.currentIndex, state.isAnswered, startRushTimer, clearRushTimer]);
+
+  // Flash feedback for sprint/rush
   const [flashState, setFlashState] = useState<"correct" | "incorrect" | null>(null);
   const flashTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Clear flash timeout on unmount or when game finishes
   useEffect(() => {
     return () => {
       if (flashTimeoutRef.current) clearTimeout(flashTimeoutRef.current);
@@ -112,12 +187,57 @@ export function ChallengePlayPage(): JSX.Element {
     }
   }, [state.status]);
 
-  // For sprint reshuffle when all answered
+  // Question pool for reshuffle modes (sprint/rush)
   const [questionPool, setQuestionPool] = useState(questions);
   const currentQuestion: ModeQuestion | undefined = questionPool[state.currentIndex];
 
+  // Rush: handle timer expiry as wrong answer
+  const rushTimerExpiredRef = useRef(false);
+  useEffect(() => {
+    if (!isRush || rushRemainingMs > 0 || state.isAnswered || state.status === "finished" || flashState) return;
+    if (rushTimerExpiredRef.current) return;
+    rushTimerExpiredRef.current = true;
+
+    // Treat as wrong answer — lose a life, flash red, auto-advance
+    dispatch({ type: "rushTimeUp" });
+
+    if (currentQuestion) {
+      recordAnswer(currentQuestion.word, false);
+    }
+
+    setFlashState("incorrect");
+    flashTimeoutRef.current = setTimeout(() => {
+      setFlashState(null);
+      rushTimerExpiredRef.current = false;
+
+      // Check if game over after losing life
+      const updatedLives = state.lives - 1;
+      if (updatedLives <= 0) return; // finished via reducer
+
+      const isLast = state.currentIndex >= questionPool.length - 1;
+      if (isLast) {
+        const newPool = getRushPool(prefs, wordStats);
+        setQuestionPool(newPool);
+        dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
+      } else {
+        dispatch({ type: "nextQuestion" });
+      }
+    }, FLASH_DURATION_MS);
+  }, [isRush, rushRemainingMs, state.isAnswered, state.status, state.lives, state.currentIndex, questionPool.length, flashState, currentQuestion, recordAnswer, prefs, wordStats]);
+
+  // Reset rush timer expired flag on question change
+  useEffect(() => {
+    rushTimerExpiredRef.current = false;
+  }, [state.currentIndex]);
+
   const finishGame = useCallback(() => {
-    const modeId: AnyModeId = isSprint ? "sprint" : "perfection";
+    const modeIdMap: Record<ValidChallengeType, AnyModeId> = {
+      sprint: "sprint",
+      perfection: "perfection",
+      rush: "rush",
+      level_test: "level_test"
+    };
+    const modeId = modeIdMap[challengeType];
     const payload: CompletedQuizPayload = {
       modeId,
       score: state.score,
@@ -125,17 +245,19 @@ export function ChallengePlayPage(): JSX.Element {
       answers: state.answers,
       completedAt: new Date().toISOString()
     };
+
+    const destination = isLevelTest ? "/level" : "/summary";
+
     void recordPracticeSession(payload)
       .catch(() => undefined)
-      .finally(() => navigate("/summary", { state: payload }));
-  }, [isSprint, state.score, state.answers, navigate]);
+      .finally(() => navigate(destination, { state: payload }));
+  }, [challengeType, isLevelTest, state.score, state.answers, navigate]);
 
   // Navigate when finished
   useEffect(() => {
     if (state.status !== "finished") return;
 
     if (state.answers.length === 0) {
-      // No answers (e.g. timer expired before first answer) — go home
       navigate("/modes", { replace: true });
       return;
     }
@@ -148,6 +270,29 @@ export function ChallengePlayPage(): JSX.Element {
     return <Navigate replace to="/modes" />;
   }
 
+  // Splash screen
+  if (showSplash) {
+    const config = CHALLENGE_CONFIGS[challengeType];
+    if (config) {
+      return (
+        <ModeSplash
+          dismissed={localDismissToggle}
+          onClose={() => navigate("/modes")}
+          onStart={() => {
+            if (localDismissToggle && !splashDismissed) {
+              setSplashDismissed(true);
+            }
+            setShowSplash(false);
+          }}
+          onToggleDismiss={() => setLocalDismissToggle((v) => !v)}
+          placeholderColor={config.accentColor}
+          rules={config.rules}
+          title={config.title}
+        />
+      );
+    }
+  }
+
   if (!currentQuestion) {
     return (
       <main className="space-y-4 pt-8">
@@ -157,7 +302,7 @@ export function ChallengePlayPage(): JSX.Element {
   }
 
   const buildOptionState = (optionIndex: number): OptionButtonProps["state"] => {
-    if (isSprint) {
+    if (usesFlash) {
       if (!flashState) return "default";
       if (optionIndex === currentQuestion.correctOptionIndex) return "correct";
       if (optionIndex === state.selectedOptionIndex) return "incorrect";
@@ -181,46 +326,57 @@ export function ChallengePlayPage(): JSX.Element {
     });
     recordAnswer(currentQuestion.word, isCorrect);
 
-    if (isSprint) {
+    if (usesFlash) {
+      clearRushTimer();
       // Flash green/red then auto-advance
       setFlashState(isCorrect ? "correct" : "incorrect");
       flashTimeoutRef.current = setTimeout(() => {
         setFlashState(null);
 
+        // Check if game over (lives depleted via reducer)
+        if (hasLives && !isCorrect) {
+          const newLives = state.lives - 1;
+          if (newLives <= 0) return; // finished via reducer
+        }
+
         const isLast = state.currentIndex >= questionPool.length - 1;
         if (isLast) {
-          // Reshuffle and continue — score + answers are preserved
-          const newPool = getSprintPool(prefs, wordStats);
-          setQuestionPool(newPool);
-          dispatch({
-            type: "sprintReshuffle",
-            totalQuestions: newPool.length
-          });
+          if (isSprint) {
+            const newPool = getSprintPool(prefs, wordStats);
+            setQuestionPool(newPool);
+            dispatch({ type: "sprintReshuffle", totalQuestions: newPool.length });
+          } else if (isRush) {
+            const newPool = getRushPool(prefs, wordStats);
+            setQuestionPool(newPool);
+            dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
+          }
         } else {
           dispatch({ type: "nextQuestion" });
         }
       }, FLASH_DURATION_MS);
-    } else if (!isCorrect) {
-      // Perfection: first wrong answer ends the game
-      // Show feedback sheet with game over, then failPerfection on "next"
+    } else if (isPerfection && !isCorrect) {
+      // Perfection: wrong answer loses a life — game over handled by FeedbackSheet next
     }
   };
 
   const handleNext = (): void => {
-    if (challengeMode === "perfection") {
-      const lastAnswer = state.answers[state.answers.length - 1];
-      if (lastAnswer && !lastAnswer.isCorrect) {
-        dispatch({ type: "failPerfection" });
-        return;
-      }
-    }
-
-    const isLast = state.currentIndex >= questionPool.length - 1;
-    if (isLast) {
-      dispatch({ type: "failPerfection" }); // end for perfection
+    // For perfection: if all lives lost, end the game
+    if (isPerfection && state.lives <= 0) {
+      dispatch({ type: "failPerfection" });
       return;
     }
 
+    // For perfection: if a wrong answer was given but lives remain, continue
+    const isLast = state.currentIndex >= questionPool.length - 1;
+    if (isLast) {
+      dispatch({ type: "failPerfection" });
+      return;
+    }
+
+    dispatch({ type: "nextQuestion" });
+  };
+
+  const handleLevelTestNext = (): void => {
     dispatch({ type: "nextQuestion" });
   };
 
@@ -233,34 +389,84 @@ export function ChallengePlayPage(): JSX.Element {
   const isFavorited = favorites.includes(currentQuestion.word);
   const isBookmarked = bookmarks.includes(currentQuestion.word);
 
-  // Perfection: show feedback sheet with game over text on wrong answer
+  // Perfection: game over when answered wrong and all lives gone
   const lastAnswer = state.answers[state.answers.length - 1];
   const isPerfectionGameOver =
-    challengeMode === "perfection" &&
-    state.isAnswered &&
-    lastAnswer &&
-    !lastAnswer.isCorrect;
+    isPerfection && state.isAnswered && lastAnswer && !lastAnswer.isCorrect && state.lives <= 0;
+
+  // Rush timer fraction for the per-question timer bar
+  const rushFraction = Math.max(0, Math.min(1, rushRemainingMs / RUSH_PER_QUESTION_MS));
 
   return (
     <main className="space-y-4 pt-2">
-      {isSprint ? (
+      {/* Sprint: global timer bar */}
+      {isSprint && (
         <TimerBar
           onClose={() => setShowLeaveSheet(true)}
           remainingMs={remainingMs}
           totalMs={SPRINT_DURATION_MS}
         />
-      ) : (
+      )}
+
+      {/* Rush: per-question timer + hearts */}
+      {isRush && (
+        <div className="space-y-2">
+          <div className="flex items-center gap-3">
+            <button
+              aria-label="Leave quiz"
+              className="flex h-7 w-7 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
+              onClick={() => setShowLeaveSheet(true)}
+              type="button"
+            >
+              <svg
+                aria-hidden
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path d="m6 6 12 12" />
+                <path d="m18 6-12 12" />
+              </svg>
+            </button>
+            <div className="relative h-3 flex-1 overflow-hidden rounded-full bg-bg-surface">
+              <div
+                className={clsx(
+                  "absolute inset-y-0 left-0 rounded-full transition-all duration-100",
+                  rushRemainingMs <= 1500
+                    ? "bg-state-incorrect"
+                    : rushRemainingMs <= 3000
+                      ? "bg-state-warning"
+                      : "bg-accent-teal"
+                )}
+                style={{ width: `${rushFraction * 100}%` }}
+              />
+            </div>
+            <HeartsDisplay lives={state.lives} maxLives={state.maxLives} />
+          </div>
+        </div>
+      )}
+
+      {/* Perfection: progress bar + hearts */}
+      {isPerfection && (
         <div className="flex items-center gap-3">
           <TopProgressBar
             onClose={() => setShowLeaveSheet(true)}
             progress={progress}
           />
-          {challengeMode === "perfection" && (
-            <span className="text-lg" title="1 life — no mistakes allowed">
-              ❤️
-            </span>
-          )}
+          <HeartsDisplay lives={state.lives} maxLives={state.maxLives} />
         </div>
+      )}
+
+      {/* Level test: progress bar only */}
+      {isLevelTest && (
+        <TopProgressBar
+          onClose={() => setShowLeaveSheet(true)}
+          progress={progress}
+        />
       )}
 
       <PromptCard
@@ -283,8 +489,8 @@ export function ChallengePlayPage(): JSX.Element {
         ))}
       </section>
 
-      {/* Sprint: colored border flash */}
-      {isSprint && flashState && (
+      {/* Sprint/Rush: colored border flash */}
+      {usesFlash && flashState && (
         <div
           className={clsx(
             "pointer-events-none fixed inset-0 rounded-card border-4",
@@ -296,7 +502,7 @@ export function ChallengePlayPage(): JSX.Element {
       )}
 
       {/* Perfection: show FeedbackSheet */}
-      {!isSprint && state.isAnswered && (
+      {isPerfection && state.isAnswered && (
         <FeedbackSheet
           definition={currentQuestion.definition}
           isBookmarked={isBookmarked}
@@ -311,6 +517,23 @@ export function ChallengePlayPage(): JSX.Element {
               ? `Game over! You got ${state.score} correct.`
               : currentQuestion.sentence
           }
+          status={answerStatus}
+          word={currentQuestion.word}
+        />
+      )}
+
+      {/* Level test: show FeedbackSheet */}
+      {isLevelTest && state.isAnswered && (
+        <FeedbackSheet
+          definition={currentQuestion.definition}
+          isBookmarked={isBookmarked}
+          isFavorited={isFavorited}
+          onNext={handleLevelTestNext}
+          onToggleBookmark={() => toggleBookmark(currentQuestion.word)}
+          onToggleFavorite={() => toggleFavorite(currentQuestion.word)}
+          open={state.isAnswered}
+          phonetic={currentQuestion.phonetic}
+          sentence={currentQuestion.sentence}
           status={answerStatus}
           word={currentQuestion.word}
         />

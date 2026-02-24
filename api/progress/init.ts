@@ -20,6 +20,7 @@ interface PreferenceRow {
   nickname: string | null;
   vocabulary_level: string | null;
   age_range: string | null;
+  splash_dismissed: boolean;
 }
 
 export default async function handler(request: Request): Promise<Response> {
@@ -51,7 +52,7 @@ export default async function handler(request: Request): Promise<Response> {
         SELECT w.word FROM user_bookmarks ub JOIN words w ON w.id = ub.word_id WHERE ub.user_id = ${userId}
       `,
       sql`
-        SELECT nickname, vocabulary_level, age_range
+        SELECT nickname, vocabulary_level, age_range, splash_dismissed
         FROM user_preferences WHERE user_id = ${userId}
         LIMIT 1
       `
@@ -93,7 +94,8 @@ export default async function handler(request: Request): Promise<Response> {
         bookmarks: bookRows.map((r) => r.word),
         nickname: pref?.nickname ?? null,
         vocabularyLevel: pref?.vocabulary_level ?? null,
-        ageRange: pref?.age_range ?? null
+        ageRange: pref?.age_range ?? null,
+        splashDismissed: pref?.splash_dismissed ?? false
       }),
       {
         status: 200,

@@ -40,21 +40,29 @@ export function HomePage(): JSX.Element {
             accentColor="#E8B84A"
             icon="⚡"
             onClick={() => navigate("/play/challenge/sprint")}
-            subtitle="90 seconds"
+            subtitle="60 seconds"
             title="Sprint"
           />
           <ChallengeCard
             accentColor="#E8948A"
             icon="💎"
             onClick={() => navigate("/play/challenge/perfection")}
-            subtitle="0 errors allowed"
+            subtitle="3 lives"
             title="Perfection"
           />
           <ChallengeCard
+            accentColor="#6BCB77"
             icon="🚀"
-            locked
-            subtitle="Speed round"
+            onClick={() => navigate("/play/challenge/rush")}
+            subtitle="3 lives, 5s timer"
             title="Rush"
+          />
+          <ChallengeCard
+            accentColor="#93C1C1"
+            icon="🎓"
+            onClick={() => navigate("/play/challenge/level_test")}
+            subtitle="30 questions"
+            title="Level test"
           />
         </div>
       </section>

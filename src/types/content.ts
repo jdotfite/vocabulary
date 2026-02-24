@@ -16,7 +16,9 @@ export type PseudoModeId =
   | "fill_gap"
   | "weak_words"
   | "sprint"
-  | "perfection";
+  | "perfection"
+  | "rush"
+  | "level_test";
 
 /** Any valid mode identifier — real tier or pseudo-mode. */
 export type AnyModeId = ModeId | PseudoModeId;

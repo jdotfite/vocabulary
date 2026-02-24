@@ -5,7 +5,7 @@ export interface QuizAnswerRecord {
   isCorrect: boolean;
 }
 
-export type ChallengeMode = "standard" | "sprint" | "perfection";
+export type ChallengeMode = "standard" | "sprint" | "perfection" | "rush";
 
 export interface QuizState {
   totalQuestions: number;
@@ -16,6 +16,8 @@ export interface QuizState {
   status: "playing" | "finished";
   answers: QuizAnswerRecord[];
   challengeMode: ChallengeMode;
+  lives: number;
+  maxLives: number;
 }
 
 export type QuizAction =
@@ -26,14 +28,17 @@ export type QuizAction =
       correctOptionIndex: number;
     }
   | { type: "nextQuestion" }
-  | { type: "reset"; totalQuestions: number; challengeMode?: ChallengeMode }
+  | { type: "reset"; totalQuestions: number; challengeMode?: ChallengeMode; lives?: number }
   | { type: "sprintReshuffle"; totalQuestions: number }
+  | { type: "rushReshuffle"; totalQuestions: number }
   | { type: "failPerfection" }
-  | { type: "timeUp" };
+  | { type: "timeUp" }
+  | { type: "rushTimeUp" };
 
 export function createInitialQuizState(
   totalQuestions: number,
-  challengeMode: ChallengeMode = "standard"
+  challengeMode: ChallengeMode = "standard",
+  lives = Infinity
 ): QuizState {
   return {
     totalQuestions,
@@ -43,7 +48,9 @@ export function createInitialQuizState(
     score: 0,
     status: totalQuestions > 0 ? "playing" : "finished",
     answers: [],
-    challengeMode
+    challengeMode,
+    lives,
+    maxLives: lives
   };
 }
 
@@ -55,12 +62,18 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
       }
 
       const isCorrect = action.optionIndex === action.correctOptionIndex;
+      const newLives = !isCorrect && state.lives !== Infinity
+        ? state.lives - 1
+        : state.lives;
+      const isDead = newLives <= 0;
 
       return {
         ...state,
         selectedOptionIndex: action.optionIndex,
         isAnswered: true,
         score: isCorrect ? state.score + 1 : state.score,
+        lives: newLives,
+        status: isDead ? "finished" : state.status,
         answers: [
           ...state.answers,
           {
@@ -98,7 +111,8 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
     case "reset": {
       return createInitialQuizState(
         action.totalQuestions,
-        action.challengeMode ?? "standard"
+        action.challengeMode ?? "standard",
+        action.lives ?? Infinity
       );
     }
 
@@ -114,6 +128,18 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
       };
     }
 
+    case "rushReshuffle": {
+      if (state.challengeMode !== "rush") return state;
+      return {
+        ...state,
+        totalQuestions: action.totalQuestions,
+        currentIndex: 0,
+        selectedOptionIndex: null,
+        isAnswered: false
+        // score, answers, and lives are preserved
+      };
+    }
+
     case "failPerfection": {
       if (state.challengeMode !== "perfection") return state;
       return { ...state, status: "finished" };
@@ -122,6 +148,16 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
     case "timeUp": {
       if (state.challengeMode !== "sprint") return state;
       return { ...state, status: "finished" };
+    }
+
+    case "rushTimeUp": {
+      if (state.challengeMode !== "rush" || state.status === "finished") return state;
+      const newLives = state.lives !== Infinity ? state.lives - 1 : state.lives;
+      return {
+        ...state,
+        lives: newLives,
+        status: newLives <= 0 ? "finished" : state.status
+      };
     }
 
     default: {

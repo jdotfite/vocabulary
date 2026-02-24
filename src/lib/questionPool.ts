@@ -187,3 +187,19 @@ export function getPerfectionPool(prefs: UserPrefs, wordStats?: WordStats): Mode
   const pool = getShufflePool(prefs, wordStats);
   return pool.slice(0, 10);
 }
+
+/** 10 random questions for Rush mode (reshuffles on exhaust, like sprint). */
+export function getRushPool(prefs: UserPrefs, wordStats?: WordStats): ModeQuestion[] {
+  const pool = getShufflePool(prefs, wordStats);
+  return pool.slice(0, 10);
+}
+
+/** 30 questions spanning all 6 tiers (5 per tier) for level test. */
+export function getLevelTestPool(): ModeQuestion[] {
+  const pool: ModeQuestion[] = [];
+  for (const tier of ALL_TIERS) {
+    const tierQs = getQuestionsByTiers([tier]);
+    pool.push(...shuffleArray(tierQs).slice(0, 5));
+  }
+  return pool;
+}
