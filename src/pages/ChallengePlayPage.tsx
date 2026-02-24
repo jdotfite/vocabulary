@@ -100,11 +100,12 @@ export function ChallengePlayPage(): JSX.Element {
   const usesFlash = isSprint || isRush;
   const initialLives = getLivesForType(challengeType);
 
-  // Splash state
+  // Splash state (per-mode dismissal)
   const splashDismissed = useUserProgress((s) => s.splashDismissed);
   const setSplashDismissed = useUserProgress((s) => s.setSplashDismissed);
-  const [showSplash, setShowSplash] = useState(!splashDismissed);
-  const [localDismissToggle, setLocalDismissToggle] = useState(splashDismissed);
+  const isModeDissmissed = splashDismissed.includes(challengeType);
+  const [showSplash, setShowSplash] = useState(!isModeDissmissed);
+  const [localDismissToggle, setLocalDismissToggle] = useState(false);
 
   const vocabularyLevel = useUserProgress((s) => s.vocabularyLevel);
   const ageRange = useUserProgress((s) => s.ageRange);
@@ -305,8 +306,8 @@ export function ChallengePlayPage(): JSX.Element {
           dismissed={localDismissToggle}
           onClose={() => navigate("/modes")}
           onStart={() => {
-            if (localDismissToggle && !splashDismissed) {
-              setSplashDismissed(true);
+            if (localDismissToggle && !isModeDissmissed) {
+              setSplashDismissed(challengeType);
             }
             setShowSplash(false);
           }}
@@ -466,6 +467,18 @@ export function ChallengePlayPage(): JSX.Element {
                 style={{ width: `${rushFraction * 100}%` }}
               />
             </div>
+            <span
+              className={clsx(
+                "min-w-[2rem] text-right text-sm font-bold tabular-nums",
+                rushRemainingMs <= 1500
+                  ? "text-state-incorrect"
+                  : rushRemainingMs <= 3000
+                    ? "text-state-warning"
+                    : "text-text-primary"
+              )}
+            >
+              {Math.ceil(rushRemainingMs / 1000)}s
+            </span>
             <HeartsDisplay lives={state.lives} maxLives={state.maxLives} />
           </div>
         </div>

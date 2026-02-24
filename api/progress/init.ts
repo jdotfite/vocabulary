@@ -20,7 +20,7 @@ interface PreferenceRow {
   nickname: string | null;
   vocabulary_level: string | null;
   age_range: string | null;
-  splash_dismissed: boolean;
+  splash_dismissed: string[] | null;
 }
 
 export default async function handler(request: Request): Promise<Response> {
@@ -95,7 +95,7 @@ export default async function handler(request: Request): Promise<Response> {
         nickname: pref?.nickname ?? null,
         vocabularyLevel: pref?.vocabulary_level ?? null,
         ageRange: pref?.age_range ?? null,
-        splashDismissed: pref?.splash_dismissed ?? false
+        splashDismissed: pref?.splash_dismissed ?? []
       }),
       {
         status: 200,

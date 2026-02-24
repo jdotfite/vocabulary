@@ -117,15 +117,14 @@ export function FeedbackSheet({
           </div>
         </div>
 
-        {isCorrect ? (
+        <div className="space-y-2">
           <p className="text-base font-semibold text-text-primary">
             Definition: <span className="font-normal">{definition}</span>
           </p>
-        ) : (
           <p className="text-base font-semibold text-text-primary">
-            Used in a sentence: <span className="font-normal">{sentence}</span>
+            Example: <span className="font-normal italic">{sentence}</span>
           </p>
-        )}
+        </div>
 
         <Button onClick={onNext} variant="primary">
           Next word

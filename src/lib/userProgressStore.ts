@@ -17,7 +17,7 @@ interface InitResponse {
   nickname: string | null;
   vocabularyLevel: string | null;
   ageRange: string | null;
-  splashDismissed: boolean;
+  splashDismissed: string[];
 }
 
 interface UserProgressState {
@@ -28,12 +28,12 @@ interface UserProgressState {
   nickname: string | null;
   vocabularyLevel: string | null;
   ageRange: string | null;
-  splashDismissed: boolean;
+  splashDismissed: string[];
   init: () => Promise<void>;
   recordAnswer: (word: string, isCorrect: boolean) => void;
   toggleFavorite: (word: string) => void;
   toggleBookmark: (word: string) => void;
-  setSplashDismissed: (dismissed: boolean) => void;
+  setSplashDismissed: (modeId: string) => void;
   reset: () => void;
 }
 
@@ -45,7 +45,7 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
   nickname: null,
   vocabularyLevel: null,
   ageRange: null,
-  splashDismissed: false,
+  splashDismissed: [],
 
   init: async () => {
     if (get().initialized) return;
@@ -114,9 +114,13 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
     apiPost("/api/progress/bookmark", { word }).catch(() => undefined);
   },
 
-  setSplashDismissed: (dismissed: boolean) => {
-    set({ splashDismissed: dismissed });
-    apiPost("/api/progress/splash", { dismissed }).catch(() => undefined);
+  setSplashDismissed: (modeId: string) => {
+    set((state) => {
+      if (state.splashDismissed.includes(modeId)) return state;
+      const updated = [...state.splashDismissed, modeId];
+      apiPost("/api/progress/splash", { dismissed: updated }).catch(() => undefined);
+      return { splashDismissed: updated };
+    });
   },
 
   reset: () => {
@@ -128,7 +132,7 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
       nickname: null,
       vocabularyLevel: null,
       ageRange: null,
-      splashDismissed: false
+      splashDismissed: []
     });
   }
 }));

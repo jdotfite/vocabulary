@@ -3,6 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { ChallengeCard } from "@/design-system/components/ChallengeCard";
 import { PracticeModeCard } from "@/design-system/components/PracticeModeCard";
 import { StreakBanner } from "@/design-system/components/StreakBanner";
+import {
+  BoltIcon,
+  DiamondIcon,
+  RocketIcon,
+  GraduateIcon,
+  DiceIcon,
+  MessageIcon,
+  TargetIcon,
+  PencilIcon,
+  DumbbellIcon
+} from "@/design-system/icons";
 import { useUserProgress } from "@/lib/userProgressStore";
 
 export function HomePage(): JSX.Element {
@@ -38,28 +49,28 @@ export function HomePage(): JSX.Element {
         <div className="-mr-screenX flex gap-3 overflow-x-auto pr-screenX [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar]:w-0">
           <ChallengeCard
             accentColor="#E8B84A"
-            icon="⚡"
+            icon={<BoltIcon />}
             onClick={() => navigate("/play/challenge/sprint")}
             subtitle="60 seconds"
             title="Sprint"
           />
           <ChallengeCard
             accentColor="#E8948A"
-            icon="💎"
+            icon={<DiamondIcon />}
             onClick={() => navigate("/play/challenge/perfection")}
             subtitle="3 lives"
             title="Perfection"
           />
           <ChallengeCard
             accentColor="#6BCB77"
-            icon="🚀"
+            icon={<RocketIcon />}
             onClick={() => navigate("/play/challenge/rush")}
             subtitle="3 lives, 5s timer"
             title="Rush"
           />
           <ChallengeCard
             accentColor="#93C1C1"
-            icon="🎓"
+            icon={<GraduateIcon />}
             onClick={() => navigate("/play/challenge/level_test")}
             subtitle="30 questions"
             title="Level test"
@@ -76,32 +87,32 @@ export function HomePage(): JSX.Element {
           <PracticeModeCard
             description="Mix of all question types"
             fullWidth
-            icon="🎲"
+            icon={<DiceIcon className="h-7 w-7" />}
             onClick={() => navigate("/play/shuffle")}
             title="Game shuffle"
           />
           <div className="grid grid-cols-2 gap-3">
             <PracticeModeCard
               description="Pick the word"
-              icon="💬"
+              icon={<MessageIcon className="h-5 w-5" />}
               onClick={() => navigate("/play/guess_word")}
               title="Guess the word"
             />
             <PracticeModeCard
               description="Match definitions"
-              icon="🎯"
+              icon={<TargetIcon className="h-5 w-5" />}
               onClick={() => navigate("/play/meaning_match")}
               title="Meaning match"
             />
             <PracticeModeCard
               description="Complete sentences"
-              icon="✏️"
+              icon={<PencilIcon className="h-5 w-5" />}
               onClick={() => navigate("/play/fill_gap")}
               title="Fill the gap"
             />
             <PracticeModeCard
               description="Review tough words"
-              icon="💪"
+              icon={<DumbbellIcon className="h-5 w-5" />}
               onClick={() => navigate("/play/weak_words")}
               title="Weak words"
             />

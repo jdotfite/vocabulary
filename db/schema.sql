@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS user_preferences (
   nickname          TEXT,
   vocabulary_level  TEXT CHECK (vocabulary_level IN ('beginner','intermediate','advanced')),
   known_words       JSONB NOT NULL DEFAULT '[]'::JSONB,
-  splash_dismissed  BOOLEAN NOT NULL DEFAULT false,
+  splash_dismissed  JSONB NOT NULL DEFAULT '[]'::JSONB,
   created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at        TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -158,14 +158,22 @@ CREATE INDEX IF NOT EXISTS idx_review_log_user         ON review_log(user_id);
 -- Migrations (safe to re-run)
 -- ---------------------------------------------------------------------------
 
--- Add splash_dismissed column for existing installs
+-- Add splash_dismissed column for existing installs (migrated from BOOLEAN to JSONB)
 DO $$
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM information_schema.columns
     WHERE table_name = 'user_preferences' AND column_name = 'splash_dismissed'
   ) THEN
-    ALTER TABLE user_preferences ADD COLUMN splash_dismissed BOOLEAN NOT NULL DEFAULT false;
+    ALTER TABLE user_preferences ADD COLUMN splash_dismissed JSONB NOT NULL DEFAULT '[]'::JSONB;
+  ELSIF (
+    SELECT data_type FROM information_schema.columns
+    WHERE table_name = 'user_preferences' AND column_name = 'splash_dismissed'
+  ) = 'boolean' THEN
+    -- Preserve legacy intent: true → all challenge modes dismissed
+    ALTER TABLE user_preferences ALTER COLUMN splash_dismissed TYPE JSONB
+      USING CASE WHEN splash_dismissed THEN '["sprint","perfection","rush","level_test"]'::JSONB ELSE '[]'::JSONB END;
+    ALTER TABLE user_preferences ALTER COLUMN splash_dismissed SET DEFAULT '[]'::JSONB;
   END IF;
 END $$;
 

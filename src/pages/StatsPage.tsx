@@ -3,6 +3,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { NavCard } from "@/design-system/components/NavCard";
+import {
+  HeartIcon as HeartNavIcon,
+  BookOpenIcon,
+  ChartIcon as ChartNavIcon,
+  FolderIcon
+} from "@/design-system/icons";
 import { Surface } from "@/design-system/primitives/Surface";
 import {
   formatPracticeDate,
@@ -273,31 +279,36 @@ export function StatsPage(): JSX.Element {
         </button>
       </header>
 
-      <Surface
-        className="flex cursor-pointer items-center justify-between p-4"
+      <button
+        className="w-full text-left"
         onClick={() => navigate("/stats/history")}
-        variant="default"
+        type="button"
       >
-        <div className="flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-accent-teal/20 text-accent-teal">
-            <PracticeIcon />
+        <Surface
+          className="flex items-center justify-between p-4"
+          variant="default"
+        >
+          <div className="flex items-center gap-3">
+            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-accent-teal/20 text-accent-teal">
+              <PracticeIcon />
+            </div>
+            <div>
+              <p className="text-3xl font-bold leading-none text-text-primary">
+                {lastScoreText}
+              </p>
+              <p className="mt-1 text-base font-semibold text-text-primary">
+                test score{" "}
+                <span className="text-sm font-bold text-text-secondary">
+                  {lastDateText}
+                </span>
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="text-3xl font-bold leading-none text-text-primary">
-              {lastScoreText}
-            </p>
-            <p className="mt-1 text-base font-semibold text-text-primary">
-              test score{" "}
-              <span className="text-sm font-bold text-text-secondary">
-                {lastDateText}
-              </span>
-            </p>
+          <div className="text-text-secondary">
+            <ChevronRightIcon />
           </div>
-        </div>
-        <div className="text-text-secondary">
-          <ChevronRightIcon />
-        </div>
-      </Surface>
+        </Surface>
+      </button>
 
       <Surface className="space-y-3 p-4" variant="default">
         <div className="flex items-center justify-between">
@@ -305,11 +316,15 @@ export function StatsPage(): JSX.Element {
             <div className="grid h-12 w-12 place-items-center rounded-full bg-state-incorrect/25 text-state-incorrect">
               <FireIcon />
             </div>
-            <p className="text-3xl font-bold text-text-primary">Your streak</p>
+            <div>
+              <p className="text-sm font-bold uppercase tracking-widest text-text-secondary">
+                Your streak
+              </p>
+              <p className="text-4xl font-bold leading-none text-text-primary">
+                {stats.streakCount} <span className="text-lg text-text-secondary">days</span>
+              </p>
+            </div>
           </div>
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-bg-app-deep text-xl font-bold text-text-primary">
-            {stats.streakCount}
-          </span>
         </div>
 
         <div className="grid grid-cols-7 gap-2 text-center text-[11px] font-bold uppercase tracking-wide text-text-secondary">
@@ -380,23 +395,23 @@ export function StatsPage(): JSX.Element {
         <div className="grid grid-cols-2 gap-3">
           <NavCard
             count={favorites.length}
-            icon="❤️"
+            icon={<HeartNavIcon className="h-5 w-5" />}
             onClick={() => navigate("/stats/favorites")}
             title="Favorites"
           />
           <NavCard
             count={Object.keys(wordStats).length}
-            icon="📖"
+            icon={<BookOpenIcon className="h-5 w-5" />}
             onClick={() => navigate("/stats/words")}
             title="Your words"
           />
           <NavCard
             count={stats.practices}
-            icon="📊"
+            icon={<ChartNavIcon className="h-5 w-5" />}
             onClick={() => navigate("/stats/history")}
             title="History"
           />
-          <NavCard icon="📁" locked title="Collections" />
+          <NavCard icon={<FolderIcon className="h-5 w-5" />} locked title="Collections" />
         </div>
       </section>
     </main>

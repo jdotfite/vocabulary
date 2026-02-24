@@ -16,18 +16,21 @@ export default async function handler(request: Request): Promise<Response> {
   }
 
   try {
-    const { dismissed } = (await request.json()) as { dismissed?: boolean };
+    const { dismissed } = (await request.json()) as { dismissed?: string[] };
 
-    if (typeof dismissed !== "boolean") {
+    if (!Array.isArray(dismissed) || !dismissed.every((d) => typeof d === "string")) {
       return new Response("Invalid body", { status: 400 });
     }
 
     const sql = getSQL();
+    const jsonValue = JSON.stringify(dismissed);
 
+    // Upsert: update if row exists, insert if not
     await sql`
-      UPDATE user_preferences
-      SET splash_dismissed = ${dismissed}, updated_at = now()
-      WHERE user_id = ${userId}
+      INSERT INTO user_preferences (user_id, splash_dismissed)
+      VALUES (${userId}, ${jsonValue}::JSONB)
+      ON CONFLICT (user_id) DO UPDATE
+      SET splash_dismissed = ${jsonValue}::JSONB, updated_at = now()
     `;
 
     return new Response(JSON.stringify({ ok: true }), {

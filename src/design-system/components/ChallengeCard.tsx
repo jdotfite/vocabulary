@@ -5,7 +5,7 @@ import { Surface } from "@/design-system/primitives/Surface";
 interface ChallengeCardProps {
   title: string;
   subtitle: string;
-  icon: string;
+  icon: React.ReactNode;
   accentColor?: string;
   locked?: boolean;
   onClick?: () => void;
@@ -33,7 +33,9 @@ export function ChallengeCard({
         className="flex h-[120px] flex-col justify-between p-3"
         variant="default"
       >
-        <span className="text-2xl">{icon}</span>
+        <span className="text-2xl" style={accentColor ? { color: accentColor } : undefined}>
+          {icon}
+        </span>
         <div>
           <p
             className="text-sm font-bold"
