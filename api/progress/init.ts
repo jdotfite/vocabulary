@@ -27,8 +27,14 @@ export default async function handler(request: Request): Promise<Response> {
     return new Response("Method not allowed", { status: 405 });
   }
 
+  let userId: string;
   try {
-    const { userId } = await verifySession(request);
+    ({ userId } = await verifySession(request));
+  } catch {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
+  try {
     const sql = getSQL();
 
     const [rawWordStats, rawFavs, rawBooks, rawPrefs] = await Promise.all([
@@ -94,7 +100,8 @@ export default async function handler(request: Request): Promise<Response> {
         headers: { "Content-Type": "application/json" }
       }
     );
-  } catch {
-    return new Response("Unauthorized", { status: 401 });
+  } catch (err) {
+    console.error("Init fetch error:", err);
+    return new Response("Internal server error", { status: 500 });
   }
 }

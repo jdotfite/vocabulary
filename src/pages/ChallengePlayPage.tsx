@@ -96,6 +96,20 @@ export function ChallengePlayPage(): JSX.Element {
   const [flashState, setFlashState] = useState<"correct" | "incorrect" | null>(null);
   const flashTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Clear flash timeout on unmount or when game finishes
+  useEffect(() => {
+    return () => {
+      if (flashTimeoutRef.current) clearTimeout(flashTimeoutRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (state.status === "finished" && flashTimeoutRef.current) {
+      clearTimeout(flashTimeoutRef.current);
+      flashTimeoutRef.current = null;
+    }
+  }, [state.status]);
+
   // For sprint reshuffle when all answered
   const [questionPool, setQuestionPool] = useState(questions);
   const currentQuestion: ModeQuestion | undefined = questionPool[state.currentIndex];
