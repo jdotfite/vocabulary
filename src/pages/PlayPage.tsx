@@ -112,12 +112,14 @@ export function PlayPage(): JSX.Element {
   const mode = useMemo(() => (isPseudo ? null : getModeById(modeId)), [modeId, isPseudo]);
   const pseudoQuestions = usePseudoModeQuestions(modeId);
 
-  const shuffledQuestions = useMemo(() => {
+  // Freeze questions for the session — pool functions shuffle randomly,
+  // so useMemo recomputation would produce a different order mid-quiz.
+  const [shuffledQuestions] = useState(() => {
     if (isPseudo) return pseudoQuestions ?? [];
     if (!mode) return [];
     const recentWords = getRecentlySeenWords(4);
     return shuffleWithDeprioritization(mode.questions, recentWords);
-  }, [isPseudo, pseudoQuestions, mode]);
+  });
 
   const [state, dispatch] = useReducer(
     quizReducer,
@@ -134,13 +136,8 @@ export function PlayPage(): JSX.Element {
   useEffect(() => {
     if (!isPseudo && !mode) {
       navigate("/modes", { replace: true });
-      return;
     }
-    dispatch({
-      type: "reset",
-      totalQuestions: shuffledQuestions.length
-    });
-  }, [isPseudo, mode, navigate, shuffledQuestions.length]);
+  }, [isPseudo, mode, navigate]);
 
   if (!isPseudo && !mode) {
     return <main className="pt-8">Loading mode…</main>;
