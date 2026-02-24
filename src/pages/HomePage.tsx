@@ -35,7 +35,7 @@ export function HomePage(): JSX.Element {
         <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-text-secondary">
           Challenges
         </h2>
-        <div className="flex gap-3 overflow-x-auto pb-1">
+        <div className="flex gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar]:w-0">
           <ChallengeCard
             accentColor="#E8B84A"
             icon="⚡"
