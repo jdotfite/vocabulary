@@ -47,7 +47,9 @@ const MODE_LABELS: Record<string, string> = {
   fill_gap: "Fill the Gap",
   weak_words: "Weak Words",
   sprint: "Sprint",
-  perfection: "Perfection"
+  perfection: "Perfection",
+  rush: "Rush",
+  level_test: "Level Test"
 };
 
 function formatDateTime(iso: string): string {

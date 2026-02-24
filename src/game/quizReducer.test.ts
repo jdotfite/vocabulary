@@ -120,22 +120,22 @@ describe("quizReducer", () => {
     expect(correct.lives).toBe(3);
   });
 
-  it("rushTimeUp decrements a life", () => {
-    const initial = createInitialQuizState(5, "rush", 3);
+  it("perfection stays playing when lives reach 0 (feedback sheet handles exit)", () => {
+    const initial = createInitialQuizState(5, "perfection", 1);
 
-    const timedOut = quizReducer(initial, { type: "rushTimeUp" });
+    const wrong = quizReducer(initial, {
+      type: "selectOption",
+      questionId: "q1",
+      optionIndex: 0,
+      correctOptionIndex: 1
+    });
 
-    expect(timedOut.lives).toBe(2);
-    expect(timedOut.status).toBe("playing");
-  });
+    expect(wrong.lives).toBe(0);
+    expect(wrong.status).toBe("playing");
 
-  it("rushTimeUp finishes game when last life lost", () => {
-    const initial = createInitialQuizState(5, "rush", 1);
-
-    const timedOut = quizReducer(initial, { type: "rushTimeUp" });
-
-    expect(timedOut.lives).toBe(0);
-    expect(timedOut.status).toBe("finished");
+    // failPerfection then ends the game
+    const finished = quizReducer(wrong, { type: "failPerfection" });
+    expect(finished.status).toBe("finished");
   });
 
   it("rushReshuffle resets index but preserves score and lives", () => {

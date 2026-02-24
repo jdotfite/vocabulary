@@ -61,6 +61,13 @@ export default async function handler(request: Request): Promise<Response> {
         FROM difficulty_tiers dt WHERE dt.mode_id = ${body.modeId}
         RETURNING id
       `;
+      if (sessionRows.length === 0) {
+        console.warn(`Session insert matched no tier for modeId="${body.modeId}"`);
+        return new Response(
+          JSON.stringify({ ok: false, error: "Unknown modeId" }),
+          { status: 400, headers: { "Content-Type": "application/json" } }
+        );
+      }
     } else {
       return new Response("Invalid body: modeId or modeType required", { status: 400 });
     }

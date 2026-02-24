@@ -32,8 +32,7 @@ export type QuizAction =
   | { type: "sprintReshuffle"; totalQuestions: number }
   | { type: "rushReshuffle"; totalQuestions: number }
   | { type: "failPerfection" }
-  | { type: "timeUp" }
-  | { type: "rushTimeUp" };
+  | { type: "timeUp" };
 
 export function createInitialQuizState(
   totalQuestions: number,
@@ -65,7 +64,8 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
       const newLives = !isCorrect && state.lives !== Infinity
         ? state.lives - 1
         : state.lives;
-      const isDead = newLives <= 0;
+      // Perfection uses a feedback sheet, so don't auto-finish — let failPerfection handle it
+      const isDead = newLives <= 0 && state.challengeMode !== "perfection";
 
       return {
         ...state,
@@ -148,16 +148,6 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
     case "timeUp": {
       if (state.challengeMode !== "sprint") return state;
       return { ...state, status: "finished" };
-    }
-
-    case "rushTimeUp": {
-      if (state.challengeMode !== "rush" || state.status === "finished") return state;
-      const newLives = state.lives !== Infinity ? state.lives - 1 : state.lives;
-      return {
-        ...state,
-        lives: newLives,
-        status: newLives <= 0 ? "finished" : state.status
-      };
     }
 
     default: {

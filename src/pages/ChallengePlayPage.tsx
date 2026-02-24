@@ -98,7 +98,6 @@ export function ChallengePlayPage(): JSX.Element {
   const isPerfection = challengeType === "perfection";
   const isLevelTest = challengeType === "level_test";
   const usesFlash = isSprint || isRush;
-  const hasLives = isPerfection || isRush;
   const initialLives = getLivesForType(challengeType);
 
   // Splash state
@@ -224,10 +223,14 @@ export function ChallengePlayPage(): JSX.Element {
     if (rushTimerExpiredRef.current) return;
     rushTimerExpiredRef.current = true;
 
-    // Treat as wrong answer — lose a life, flash red, auto-advance
-    dispatch({ type: "rushTimeUp" });
-
+    // Treat as wrong answer — record in answers + lose a life
     if (currentQuestion) {
+      dispatch({
+        type: "selectOption",
+        questionId: currentQuestion.id,
+        optionIndex: -1,
+        correctOptionIndex: currentQuestion.correctOptionIndex
+      });
       recordAnswer(currentQuestion.word, false);
     }
 
@@ -236,20 +239,17 @@ export function ChallengePlayPage(): JSX.Element {
       setFlashState(null);
       rushTimerExpiredRef.current = false;
 
-      // Check if game over after losing life
-      const updatedLives = state.lives - 1;
-      if (updatedLives <= 0) return; // finished via reducer
-
+      // Advance — reducer no-ops if already finished
       const isLast = state.currentIndex >= questionPool.length - 1;
       if (isLast) {
-        const newPool = getRushPool(prefs, wordStats);
+        const newPool = getRushPool(prefs, frozenWordStats);
         setQuestionPool(newPool);
         dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
       } else {
         dispatch({ type: "nextQuestion" });
       }
     }, FLASH_DURATION_MS);
-  }, [isRush, rushRemainingMs, state.isAnswered, state.status, state.lives, state.currentIndex, questionPool.length, flashState, currentQuestion, recordAnswer, prefs, wordStats]);
+  }, [isRush, rushRemainingMs, state.isAnswered, state.status, state.currentIndex, questionPool.length, flashState, currentQuestion, recordAnswer, prefs, frozenWordStats]);
 
   // Reset rush timer expired flag on question change
   useEffect(() => {
@@ -359,20 +359,15 @@ export function ChallengePlayPage(): JSX.Element {
       flashTimeoutRef.current = setTimeout(() => {
         setFlashState(null);
 
-        // Check if game over (lives depleted via reducer)
-        if (hasLives && !isCorrect) {
-          const newLives = state.lives - 1;
-          if (newLives <= 0) return; // finished via reducer
-        }
-
+        // Advance — reducer no-ops if already finished
         const isLast = state.currentIndex >= questionPool.length - 1;
         if (isLast) {
           if (isSprint) {
-            const newPool = getSprintPool(prefs, wordStats);
+            const newPool = getSprintPool(prefs, frozenWordStats);
             setQuestionPool(newPool);
             dispatch({ type: "sprintReshuffle", totalQuestions: newPool.length });
           } else if (isRush) {
-            const newPool = getRushPool(prefs, wordStats);
+            const newPool = getRushPool(prefs, frozenWordStats);
             setQuestionPool(newPool);
             dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
           }

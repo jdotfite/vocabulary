@@ -28,13 +28,20 @@ const PSEUDO_MODES = new Set([
   "fill_gap",
   "weak_words",
   "sprint",
-  "perfection"
+  "perfection",
+  "rush",
+  "level_test"
 ]);
+
+/** Whether a mode ID is a pseudo-mode (not a real difficulty tier). */
+export function isPseudoMode(modeId: string): boolean {
+  return PSEUDO_MODES.has(modeId);
+}
 
 export async function recordPracticeSession(
   session: CompletedQuizPayload
 ): Promise<void> {
-  const isPseudo = PSEUDO_MODES.has(session.modeId);
+  const isPseudo = isPseudoMode(session.modeId);
   await apiPost("/api/progress/session", {
     ...(isPseudo
       ? { modeType: session.modeId }
