@@ -17,12 +17,12 @@ function CloseIcon(): JSX.Element {
     <svg
       aria-hidden
       fill="none"
-      height="20"
+      height="22"
       stroke="currentColor"
       strokeLinecap="round"
       strokeWidth={2.5}
       viewBox="0 0 24 24"
-      width="20"
+      width="22"
     >
       <path d="m6 6 12 12" />
       <path d="m18 6-12 12" />
@@ -180,7 +180,7 @@ export function ModeSplash({
       <div className="flex flex-1 flex-col items-center justify-center gap-6 pb-4">
         <PlaceholderIllustration color={placeholderColor} title={title} />
 
-        <h1 className="font-display text-4xl font-bold text-text-primary">
+        <h1 className="font-display text-3xl font-bold text-text-primary">
           {title}
         </h1>
 
@@ -199,6 +199,9 @@ export function ModeSplash({
 
       {/* Bottom area */}
       <div className="space-y-4 pb-4">
+        <Button onClick={onStart} variant="primary">
+          Start
+        </Button>
         {showDismissToggle && (
           <label className="flex cursor-pointer items-center justify-center gap-2">
             <input
@@ -212,9 +215,6 @@ export function ModeSplash({
             </span>
           </label>
         )}
-        <Button onClick={onStart} variant="primary">
-          Start
-        </Button>
       </div>
     </main>
   );

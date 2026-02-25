@@ -436,19 +436,19 @@ export function ChallengePlayPage(): JSX.Element {
           <div className="flex items-center gap-3">
             <button
               aria-label="Leave quiz"
-              className="flex h-7 w-7 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
               onClick={() => setShowLeaveSheet(true)}
               type="button"
             >
               <svg
                 aria-hidden
                 fill="none"
-                height="18"
+                height="22"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeWidth={2.5}
                 viewBox="0 0 24 24"
-                width="18"
+                width="22"
               >
                 <path d="m6 6 12 12" />
                 <path d="m18 6-12 12" />
@@ -489,19 +489,19 @@ export function ChallengePlayPage(): JSX.Element {
         <div className="flex items-center justify-between">
           <button
             aria-label="Leave quiz"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
             onClick={() => setShowLeaveSheet(true)}
             type="button"
           >
             <svg
               aria-hidden
               fill="none"
-              height="18"
+              height="22"
               stroke="currentColor"
               strokeLinecap="round"
               strokeWidth={2.5}
               viewBox="0 0 24 24"
-              width="18"
+              width="22"
             >
               <path d="m6 6 12 12" />
               <path d="m18 6-12 12" />

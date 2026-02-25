@@ -28,12 +28,12 @@ function CloseIcon(): JSX.Element {
     <svg
       aria-hidden
       fill="none"
-      height="20"
+      height="22"
       stroke="currentColor"
       strokeLinecap="round"
       strokeWidth={2.5}
       viewBox="0 0 24 24"
-      width="20"
+      width="22"
     >
       <path d="m6 6 12 12" />
       <path d="m18 6-12 12" />
@@ -183,7 +183,7 @@ function StatTile({ value, label, icon }: StatTileProps): JSX.Element {
           {label}
         </p>
       </div>
-      <div className="text-accent-teal">{icon}</div>
+      <div className="text-icon-muted">{icon}</div>
     </Surface>
   );
 }
@@ -242,7 +242,7 @@ export function StatsPage(): JSX.Element {
         <button
           aria-label="Close stats"
           className={clsx(
-            "flex h-7 w-7 items-center justify-center rounded-full text-text-primary",
+            "flex h-8 w-8 items-center justify-center rounded-full text-text-primary",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
           )}
           onClick={() => navigate("/modes")}
@@ -250,13 +250,13 @@ export function StatsPage(): JSX.Element {
         >
           <CloseIcon />
         </button>
-        <h1 className="flex-1 font-display text-5xl font-bold text-text-primary">
+        <h1 className="flex-1 font-display text-3xl font-bold text-text-primary">
           Word stats
         </h1>
         <button
           aria-label="Settings"
           className={clsx(
-            "flex h-7 w-7 items-center justify-center rounded-full text-text-secondary",
+            "flex h-8 w-8 items-center justify-center rounded-full text-text-secondary",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
           )}
           onClick={() => navigate("/settings")}

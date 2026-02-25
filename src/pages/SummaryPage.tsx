@@ -85,7 +85,7 @@ export function SummaryPage(): JSX.Element {
         </svg>
       </div>
 
-      <h1 className="font-display text-6xl font-bold">
+      <h1 className="font-display text-5xl font-bold">
         {scoreMessage(payload.score, payload.total)}
       </h1>
 

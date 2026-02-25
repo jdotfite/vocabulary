@@ -45,13 +45,25 @@ export function ResultsPage(): JSX.Element {
         <div className="flex items-center gap-3">
           <button
             aria-label="Go back"
-            className="text-2xl text-text-primary"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal-bright"
             onClick={() => navigate(-1)}
             type="button"
           >
-            ←
+            <svg
+              aria-hidden
+              fill="none"
+              height="22"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              viewBox="0 0 24 24"
+              width="22"
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
           </button>
-          <h1 className="font-display text-4xl">Your results</h1>
+          <h1 className="font-display text-3xl">Your results</h1>
         </div>
         <button
           className="text-base font-bold text-text-primary"
@@ -62,7 +74,7 @@ export function ResultsPage(): JSX.Element {
         </button>
       </header>
 
-      <p className="text-center text-sm text-text-secondary">
+      <p className="text-left text-sm text-text-secondary">
         Want to practice these words more? Add them to favorites or to your collections
       </p>
 

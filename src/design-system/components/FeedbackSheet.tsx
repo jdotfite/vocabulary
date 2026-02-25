@@ -18,21 +18,36 @@ export interface FeedbackSheetProps {
   onToggleBookmark: () => void;
 }
 
-function SpeakerIcon(): JSX.Element {
+function pronounceWord(word: string): void {
+  if (!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-US";
+  speechSynthesis.speak(utterance);
+}
+
+function SpeakerButton({ word }: { word: string }): JSX.Element {
   return (
-    <svg
-      aria-hidden
-      className="inline-block h-5 w-5 text-text-secondary"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      viewBox="0 0 24 24"
+    <button
+      aria-label={`Pronounce ${word}`}
+      className="inline-flex items-center justify-center text-text-secondary"
+      onClick={() => pronounceWord(word)}
+      type="button"
     >
-      <path d="M11 5L6 9H2v6h4l5 4V5z" />
-      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08" />
-    </svg>
+      <svg
+        aria-hidden
+        className="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08" />
+      </svg>
+    </button>
   );
 }
 
@@ -59,8 +74,8 @@ export function FeedbackSheet({
           <span
             aria-hidden
             className={clsx(
-              "grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold text-white",
-              isCorrect ? "bg-state-correct-icon" : "bg-state-error-icon"
+              "grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold",
+              isCorrect ? "bg-state-correct/20 text-state-correct" : "bg-state-incorrect/20 text-state-incorrect"
             )}
           >
             {isCorrect ? "✓" : "✕"}
@@ -76,7 +91,7 @@ export function FeedbackSheet({
 
         <div className="flex items-center gap-2">
           <p className="text-2xl font-bold text-text-primary">{word}</p>
-          <SpeakerIcon />
+          <SpeakerButton word={word} />
           <div className="ml-auto flex items-center gap-3">
             <button
               aria-label={isFavorited ? "Unfavorite word" : "Favorite word"}

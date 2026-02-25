@@ -43,7 +43,7 @@ export function NavCard({
       type="button"
     >
       <Surface className="flex items-center gap-3 p-3" variant="default">
-        <span className="text-accent-teal">{icon}</span>
+        <span className="text-icon-muted">{icon}</span>
         <span className="min-w-0 flex-1 text-sm font-bold text-text-primary">
           {title}
         </span>

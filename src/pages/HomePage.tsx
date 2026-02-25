@@ -26,7 +26,7 @@ export function HomePage(): JSX.Element {
     <main className="space-y-5 pt-4">
       {/* Header */}
       <header className="flex items-start justify-between gap-3">
-        <h1 className="font-display text-4xl font-bold text-text-primary">
+        <h1 className="font-display text-3xl font-bold text-text-primary">
           {greeting}
         </h1>
         <button
