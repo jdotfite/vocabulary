@@ -33,7 +33,10 @@ export function ChallengeCard({
         className="flex h-[120px] flex-col justify-between p-3"
         variant="default"
       >
-        <span className="text-2xl text-icon-muted">
+        <span
+          className="text-2xl"
+          style={accentColor ? { color: accentColor } : undefined}
+        >
           {icon}
         </span>
         <div>

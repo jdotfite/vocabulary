@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
+import { AnimatedQuizCard } from "@/design-system/components/AnimatedQuizCard";
 import { FeedbackSheet } from "@/design-system/components/FeedbackSheet";
 import { LeaveConfirmSheet } from "@/design-system/components/LeaveConfirmSheet";
 import { ModeSplash } from "@/design-system/components/ModeSplash";
@@ -522,37 +523,29 @@ export function ChallengePlayPage(): JSX.Element {
         />
       )}
 
-      <PromptCard
-        modeLabel={modeLabelByType(currentQuestion.type)}
-        text={currentQuestion.prompt}
-      />
-
-      <section className="space-y-option-gap pt-2">
-        {currentQuestion.options.map((option, optionIndex) => (
-          <OptionButton
-            key={`${currentQuestion.id}-${option}`}
-            label={option}
-            onClick={() => handleSelectOption(optionIndex)}
-            showCheckIcon={
-              (state.isAnswered || flashState !== null) &&
-              optionIndex === currentQuestion.correctOptionIndex
-            }
-            state={buildOptionState(optionIndex)}
-          />
-        ))}
-      </section>
-
-      {/* Sprint/Rush: colored border flash */}
-      {usesFlash && flashState && (
-        <div
-          className={clsx(
-            "pointer-events-none fixed inset-0 rounded-card border-4",
-            flashState === "correct"
-              ? "border-state-correct"
-              : "border-state-incorrect"
-          )}
+      <AnimatedQuizCard questionKey={currentQuestion.id}>
+        <PromptCard
+          modeLabel={modeLabelByType(currentQuestion.type)}
+          questionId={currentQuestion.id}
+          text={currentQuestion.prompt}
         />
-      )}
+
+        <section className="space-y-option-gap pt-2">
+          {currentQuestion.options.map((option, optionIndex) => (
+            <OptionButton
+              key={`${currentQuestion.id}-${option}`}
+              label={option}
+              motionIndex={optionIndex}
+              onClick={() => handleSelectOption(optionIndex)}
+              showCheckIcon={
+                (state.isAnswered || flashState !== null) &&
+                optionIndex === currentQuestion.correctOptionIndex
+              }
+              state={buildOptionState(optionIndex)}
+            />
+          ))}
+        </section>
+      </AnimatedQuizCard>
 
       {/* Perfection: show FeedbackSheet */}
       {isPerfection && state.isAnswered && (

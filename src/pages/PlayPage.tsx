@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useReducer, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { AnimatedQuizCard } from "@/design-system/components/AnimatedQuizCard";
 import { FeedbackSheet } from "@/design-system/components/FeedbackSheet";
 import { LeaveConfirmSheet } from "@/design-system/components/LeaveConfirmSheet";
 import { OptionButton } from "@/design-system/components/OptionButton";
@@ -207,19 +208,26 @@ export function PlayPage(): JSX.Element {
     <main className="space-y-4 pt-2">
       <TopProgressBar onClose={() => setShowLeaveSheet(true)} progress={progress} />
 
-      <PromptCard modeLabel={modeLabelByType(currentQuestion.type)} text={currentQuestion.prompt} />
+      <AnimatedQuizCard questionKey={currentQuestion.id}>
+        <PromptCard
+          modeLabel={modeLabelByType(currentQuestion.type)}
+          questionId={currentQuestion.id}
+          text={currentQuestion.prompt}
+        />
 
-      <section className="space-y-option-gap pt-2">
-        {currentQuestion.options.map((option, optionIndex) => (
-          <OptionButton
-            key={`${currentQuestion.id}-${option}`}
-            label={option}
-            onClick={() => handleSelectOption(optionIndex)}
-            showCheckIcon={state.isAnswered && optionIndex === currentQuestion.correctOptionIndex}
-            state={buildOptionState(optionIndex)}
-          />
-        ))}
-      </section>
+        <section className="space-y-option-gap pt-2">
+          {currentQuestion.options.map((option, optionIndex) => (
+            <OptionButton
+              key={`${currentQuestion.id}-${option}`}
+              label={option}
+              motionIndex={optionIndex}
+              onClick={() => handleSelectOption(optionIndex)}
+              showCheckIcon={state.isAnswered && optionIndex === currentQuestion.correctOptionIndex}
+              state={buildOptionState(optionIndex)}
+            />
+          ))}
+        </section>
+      </AnimatedQuizCard>
 
       <FeedbackSheet
         definition={currentQuestion.definition}

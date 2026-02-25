@@ -75,7 +75,7 @@ export function FeedbackSheet({
             aria-hidden
             className={clsx(
               "grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold",
-              isCorrect ? "bg-state-correct/20 text-state-correct" : "bg-state-incorrect/20 text-state-incorrect"
+              isCorrect ? "bg-state-correct text-bg-app" : "bg-state-incorrect text-bg-app"
             )}
           >
             {isCorrect ? "✓" : "✕"}
