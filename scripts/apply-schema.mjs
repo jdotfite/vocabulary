@@ -17,11 +17,7 @@ async function run() {
   await pool.query(schemaSQL);
   console.log("Schema applied.");
 
-  console.log("Applying seed data...");
-  await pool.query(seedSQL);
-  console.log("Seed data applied.");
-
-  // Apply migrations in order (idempotent for existing DBs)
+  // Apply migrations BEFORE seed — seed.sql depends on columns added by migrations
   const migrationDir = "db/migrations";
   try {
     const files = readdirSync(migrationDir)
@@ -42,6 +38,10 @@ async function run() {
   } catch {
     console.log("No migrations directory found, skipping.");
   }
+
+  console.log("Applying seed data...");
+  await pool.query(seedSQL);
+  console.log("Seed data applied.");
 
   await pool.end();
   console.log("Done.");

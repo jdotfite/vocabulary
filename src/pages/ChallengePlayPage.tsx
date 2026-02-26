@@ -273,9 +273,11 @@ export function ChallengePlayPage(): JSX.Element {
       // Advance — reducer no-ops if already finished
       const isLast = state.currentIndex >= questionPool.length - 1;
       if (isLast) {
-        const newPool = getRushPool(prefs, frozenWordStats);
-        setQuestionPool(newPool);
-        dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
+        const fallback = (): ModeQuestion[] => getRushPool(prefs, frozenWordStats);
+        void getAdaptivePool("rush" as AnyModeId, fallback, 10).then((newPool) => {
+          setQuestionPool(newPool);
+          dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
+        });
       } else {
         dispatch({ type: "nextQuestion" });
       }
@@ -405,13 +407,17 @@ export function ChallengePlayPage(): JSX.Element {
         const isLast = state.currentIndex >= questionPool.length - 1;
         if (isLast) {
           if (isSprint) {
-            const newPool = getSprintPool(prefs, frozenWordStats);
-            setQuestionPool(newPool);
-            dispatch({ type: "sprintReshuffle", totalQuestions: newPool.length });
+            const fallback = (): ModeQuestion[] => getSprintPool(prefs, frozenWordStats);
+            void getAdaptivePool("sprint" as AnyModeId, fallback, 10).then((newPool) => {
+              setQuestionPool(newPool);
+              dispatch({ type: "sprintReshuffle", totalQuestions: newPool.length });
+            });
           } else if (isRush) {
-            const newPool = getRushPool(prefs, frozenWordStats);
-            setQuestionPool(newPool);
-            dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
+            const fallback = (): ModeQuestion[] => getRushPool(prefs, frozenWordStats);
+            void getAdaptivePool("rush" as AnyModeId, fallback, 10).then((newPool) => {
+              setQuestionPool(newPool);
+              dispatch({ type: "rushReshuffle", totalQuestions: newPool.length });
+            });
           }
         } else {
           dispatch({ type: "nextQuestion" });

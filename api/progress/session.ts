@@ -87,11 +87,14 @@ export default async function handler(request: Request): Promise<Response> {
           `;
         } else {
           // Static question (from JSON) — look up by question_id
-          await sql`
+          const inserted = await sql`
             INSERT INTO review_log (user_id, session_id, question_id, word_id, selected_index, correct_index, is_correct)
             SELECT ${userId}, ${sessionId}, q.id, q.word_id, ${answer.selectedOptionIndex}, ${answer.correctOptionIndex}, ${answer.isCorrect}
             FROM questions q WHERE q.question_id = ${answer.questionId}
           `;
+          if (inserted.length === 0) {
+            console.warn(`Review log skipped — no matching question_id: "${answer.questionId}"`);
+          }
         }
       }
     }

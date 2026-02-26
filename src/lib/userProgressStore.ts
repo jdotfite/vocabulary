@@ -94,8 +94,14 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
       return { wordStats: { ...state.wordStats, [word]: updated } };
     });
 
-    // Fire-and-forget API call
-    apiPost("/api/progress/answer", { word, isCorrect }).catch(() => undefined);
+    // Fire-and-forget API call — update abilityScore from response
+    apiPost<{ ok: boolean; abilityScore?: number }>("/api/progress/answer", { word, isCorrect })
+      .then((res) => {
+        if (typeof res.abilityScore === "number") {
+          set({ abilityScore: res.abilityScore });
+        }
+      })
+      .catch(() => undefined);
   },
 
   toggleFavorite: (word: string) => {

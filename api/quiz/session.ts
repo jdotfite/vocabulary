@@ -66,7 +66,7 @@ export default async function handler(request: Request): Promise<Response> {
       );
     }
 
-    const count = body.count ?? config.count;
+    const count = Math.min(Math.max(1, body.count ?? config.count), 50);
     const sql = getSQL();
 
     // Get user ability

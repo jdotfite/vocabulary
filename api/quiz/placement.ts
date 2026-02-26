@@ -33,8 +33,8 @@ export default async function handler(request: Request): Promise<Response> {
 
   try {
     const body = (await request.json()) as PlacementRequest;
-    const targetDifficulty = body.targetDifficulty ?? 50;
-    const count = body.count ?? 5;
+    const targetDifficulty = Math.min(Math.max(0, body.targetDifficulty ?? 50), 100);
+    const count = Math.min(Math.max(1, body.count ?? 5), 10);
 
     const sql = getSQL();
 
