@@ -50,29 +50,7 @@ export default async function handler(request: Request): Promise<Response> {
       return new Response("Word not found", { status: 404 });
     }
 
-    const wordDifficulty = wordRow.difficulty_score ?? 50;
-    const actual = isCorrect ? 1 : 0;
-
-    // Atomic ability update — compute Elo in SQL to avoid read-compute-write race
-    const abilityRows = (await sql`
-      UPDATE users
-      SET ability_score = LEAST(100, GREATEST(0,
-        ability_score + ${ELO_K} * (
-          ${actual} - 1.0 / (1.0 + EXP((${wordDifficulty} - ability_score) / ${ELO_SCALE}))
-        )
-      ))
-      WHERE id = ${userId}::uuid
-      RETURNING ability_score AS new_ability,
-        ability_score - ${ELO_K} * (
-          ${actual} - 1.0 / (1.0 + EXP((${wordDifficulty} - ability_score) / ${ELO_SCALE}))
-        ) AS old_ability
-    `) as unknown as AbilityUpdateRow[];
-
-    const newAbility = abilityRows[0]?.new_ability ?? 50;
-    // Recover old ability: new - delta = old
-    const oldAbility = newAbility - (newAbility - (abilityRows[0]?.old_ability ?? 50));
-
-    // Upsert word stats + get resulting streak
+    // Upsert word stats (core — works without migrations)
     const correctInc = isCorrect ? 1 : 0;
     const incorrectInc = isCorrect ? 0 : 1;
 
@@ -90,28 +68,56 @@ export default async function handler(request: Request): Promise<Response> {
 
     const currentStreak = statsRows[0]?.streak ?? 0;
 
-    // Compute SRS interval
-    const { intervalHours, nextReviewAt } = computeSrsInterval(
-      currentStreak,
-      isCorrect
-    );
+    // Adaptive features (Elo + SRS) — depend on migration 006.
+    // If columns don't exist yet, answer recording still succeeds.
+    let newAbility: number | undefined;
+    try {
+      const wordDifficulty = wordRow.difficulty_score ?? 50;
+      const actual = isCorrect ? 1 : 0;
 
-    // Update SRS fields and log ability change (fire in parallel)
-    await Promise.all([
-      sql`
-        UPDATE user_word_stats
-        SET srs_interval_hours = ${intervalHours},
-            next_review_at = ${nextReviewAt.toISOString()}::timestamptz
-        WHERE user_id = ${userId}::uuid AND word_id = ${wordRow.id}::uuid
-      `,
-      sql`
-        INSERT INTO ability_log (user_id, old_score, new_score, word_id, is_correct)
-        VALUES (${userId}::uuid, ${oldAbility}, ${newAbility}, ${wordRow.id}::uuid, ${isCorrect})
-      `,
-    ]);
+      const abilityRows = (await sql`
+        UPDATE users
+        SET ability_score = LEAST(100, GREATEST(0,
+          ability_score + ${ELO_K} * (
+            ${actual} - 1.0 / (1.0 + EXP((${wordDifficulty} - ability_score) / ${ELO_SCALE}))
+          )
+        ))
+        WHERE id = ${userId}::uuid
+        RETURNING ability_score AS new_ability,
+          ability_score - ${ELO_K} * (
+            ${actual} - 1.0 / (1.0 + EXP((${wordDifficulty} - ability_score) / ${ELO_SCALE}))
+          ) AS old_ability
+      `) as unknown as AbilityUpdateRow[];
+
+      newAbility = abilityRows[0]?.new_ability ?? 50;
+      const oldAbility = newAbility - (newAbility - (abilityRows[0]?.old_ability ?? 50));
+
+      const { intervalHours, nextReviewAt } = computeSrsInterval(
+        currentStreak,
+        isCorrect
+      );
+
+      await Promise.all([
+        sql`
+          UPDATE user_word_stats
+          SET srs_interval_hours = ${intervalHours},
+              next_review_at = ${nextReviewAt.toISOString()}::timestamptz
+          WHERE user_id = ${userId}::uuid AND word_id = ${wordRow.id}::uuid
+        `,
+        sql`
+          INSERT INTO ability_log (user_id, old_score, new_score, word_id, is_correct)
+          VALUES (${userId}::uuid, ${oldAbility}, ${newAbility}, ${wordRow.id}::uuid, ${isCorrect})
+        `,
+      ]);
+    } catch {
+      // Migration 006 not applied — skip Elo + SRS, answer still recorded
+    }
 
     return new Response(
-      JSON.stringify({ ok: true, abilityScore: Math.round(newAbility * 10) / 10 }),
+      JSON.stringify({
+        ok: true,
+        ...(newAbility !== undefined && { abilityScore: Math.round(newAbility * 10) / 10 }),
+      }),
       {
         status: 200,
         headers: { "Content-Type": "application/json" },

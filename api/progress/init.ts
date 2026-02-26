@@ -42,7 +42,7 @@ export default async function handler(request: Request): Promise<Response> {
   try {
     const sql = getSQL();
 
-    const [rawWordStats, rawFavs, rawBooks, rawPrefs, rawAbility] =
+    const [rawWordStats, rawFavs, rawBooks, rawPrefs] =
       await Promise.all([
         sql`
         SELECT w.word, uws.times_seen, uws.times_correct, uws.times_incorrect, uws.streak, uws.last_seen_at
@@ -61,16 +61,23 @@ export default async function handler(request: Request): Promise<Response> {
         FROM user_preferences WHERE user_id = ${userId}
         LIMIT 1
       `,
-        sql`
-        SELECT ability_score FROM users WHERE id = ${userId}::uuid
-      `,
       ]);
+
+    // ability_score depends on migration 006 — query separately so init
+    // still works even if migrations haven't been applied yet.
+    let abilityRows: UserAbilityRow[] = [];
+    try {
+      abilityRows = (await sql`
+        SELECT ability_score FROM users WHERE id = ${userId}::uuid
+      `) as unknown as UserAbilityRow[];
+    } catch {
+      // Migration 006 not applied yet — fall back to default
+    }
 
     const wordStatsRows = rawWordStats as unknown as WordStatRow[];
     const favRows = rawFavs as unknown as WordRow[];
     const bookRows = rawBooks as unknown as WordRow[];
     const prefRows = rawPrefs as unknown as PreferenceRow[];
-    const abilityRows = rawAbility as unknown as UserAbilityRow[];
 
     const wordStats: Record<
       string,

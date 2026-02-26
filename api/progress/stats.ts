@@ -33,7 +33,7 @@ export default async function handler(request: Request): Promise<Response> {
   try {
     const sql = getSQL();
 
-    const [sessionsRows, favCountRows, bookCountRows, abilityRows, reviewCountRows, masteredCountRows] = await Promise.all([
+    const [sessionsRows, favCountRows, bookCountRows] = await Promise.all([
       sql`
         SELECT COALESCE(dt.mode_id, ps.mode_type) as mode_id, ps.score, ps.total, ps.completed_at
         FROM practice_sessions ps
@@ -43,10 +43,25 @@ export default async function handler(request: Request): Promise<Response> {
       `,
       sql`SELECT COUNT(*) as count FROM user_favorites WHERE user_id = ${userId}`,
       sql`SELECT COUNT(*) as count FROM user_bookmarks WHERE user_id = ${userId}`,
-      sql`SELECT ability_score FROM users WHERE id = ${userId}::uuid`,
-      sql`SELECT COUNT(*) as count FROM user_word_stats WHERE user_id = ${userId}::uuid AND next_review_at <= now()`,
-      sql`SELECT COUNT(*) as count FROM user_word_stats WHERE user_id = ${userId}::uuid AND srs_interval_hours >= 168`
     ]);
+
+    // These columns come from migration 006 — query separately so stats
+    // still load even if migrations haven't been applied yet.
+    let abilityRows: Record<string, unknown>[] = [];
+    let reviewCountRows: Record<string, unknown>[] = [];
+    let masteredCountRows: Record<string, unknown>[] = [];
+    try {
+      const results = await Promise.all([
+        sql`SELECT ability_score FROM users WHERE id = ${userId}::uuid`,
+        sql`SELECT COUNT(*) as count FROM user_word_stats WHERE user_id = ${userId}::uuid AND next_review_at <= now()`,
+        sql`SELECT COUNT(*) as count FROM user_word_stats WHERE user_id = ${userId}::uuid AND srs_interval_hours >= 168`,
+      ]);
+      abilityRows = results[0] as unknown as Record<string, unknown>[];
+      reviewCountRows = results[1] as unknown as Record<string, unknown>[];
+      masteredCountRows = results[2] as unknown as Record<string, unknown>[];
+    } catch {
+      // Migration 006 not applied yet — fall back to defaults
+    }
 
     // Build day set for streak calculation
     const daySet = new Set<string>();
@@ -100,7 +115,7 @@ export default async function handler(request: Request): Promise<Response> {
       wordsRead += row.total as number;
     }
 
-    const abilityScore = Number((abilityRows[0] as Record<string, unknown> | undefined)?.ability_score ?? 50);
+    const abilityScore = Number(abilityRows[0]?.ability_score ?? 50);
     const wordsForReview = Number(reviewCountRows[0]?.count ?? 0);
     const wordsMastered = Number(masteredCountRows[0]?.count ?? 0);
 
