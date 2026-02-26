@@ -9,3 +9,8 @@ coverage
 
 .vercel
 .env*.local
+
+# External datasets (large CSVs)
+data/*.csv
+data/*.tsv
+data/*.xlsx

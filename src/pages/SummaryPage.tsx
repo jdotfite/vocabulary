@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ScoreRing } from "@/design-system/components/ScoreRing";
 import { Button } from "@/design-system/primitives/Button";
 import { Surface } from "@/design-system/primitives/Surface";
+import { useUserProgress } from "@/lib/userProgressStore";
 import type { AnyModeId } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
@@ -51,6 +52,7 @@ export function SummaryPage(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   const payload = location.state as CompletedQuizPayload | undefined;
+  const abilityScore = useUserProgress((s) => s.abilityScore);
 
   if (!payload) {
     return (
@@ -62,6 +64,10 @@ export function SummaryPage(): JSX.Element {
       </main>
     );
   }
+
+  const abilityBefore = payload.abilityBefore;
+  const abilityAfter = Math.round(abilityScore * 10) / 10;
+  const abilityChanged = abilityBefore != null && Math.abs(abilityAfter - abilityBefore) >= 0.1;
 
   const percentage = payload.total > 0 ? Math.round((payload.score / payload.total) * 100) : 0;
   const nextActions = getNextActions(payload.modeId, payload.score, payload.total);
@@ -96,6 +102,21 @@ export function SummaryPage(): JSX.Element {
       <p className="text-lg font-bold text-text-primary">
         You scored {percentage}% ({payload.score}/{payload.total})
       </p>
+
+      {abilityChanged ? (
+        <Surface className="flex items-center justify-center gap-2 p-3" variant="default">
+          <span className="text-sm font-semibold text-text-secondary">Ability</span>
+          <span className="text-lg font-bold text-text-primary">
+            {Math.round(abilityBefore)}
+          </span>
+          <span className="text-text-secondary">&rarr;</span>
+          <span
+            className={`text-lg font-bold ${abilityAfter > abilityBefore ? "text-state-correct" : "text-state-incorrect"}`}
+          >
+            {Math.round(abilityAfter)}
+          </span>
+        </Surface>
+      ) : null}
 
       <Surface className="mx-auto p-4 text-center text-sm text-text-secondary" variant="default">
         Practicing at least 5 days a week allows you to retain <strong className="text-text-primary">25%</strong> more words

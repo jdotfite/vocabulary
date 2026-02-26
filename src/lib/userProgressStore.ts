@@ -18,6 +18,7 @@ interface InitResponse {
   vocabularyLevel: string | null;
   ageRange: string | null;
   splashDismissed: string[];
+  abilityScore: number;
 }
 
 interface UserProgressState {
@@ -29,6 +30,7 @@ interface UserProgressState {
   vocabularyLevel: string | null;
   ageRange: string | null;
   splashDismissed: string[];
+  abilityScore: number;
   init: () => Promise<void>;
   recordAnswer: (word: string, isCorrect: boolean) => void;
   toggleFavorite: (word: string) => void;
@@ -46,6 +48,7 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
   vocabularyLevel: null,
   ageRange: null,
   splashDismissed: [],
+  abilityScore: 50,
 
   init: async () => {
     if (get().initialized) return;
@@ -59,7 +62,8 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
         nickname: data.nickname,
         vocabularyLevel: data.vocabularyLevel,
         ageRange: data.ageRange,
-        splashDismissed: data.splashDismissed
+        splashDismissed: data.splashDismissed,
+        abilityScore: data.abilityScore,
       });
     } catch {
       // If fetching fails, still mark initialized so we don't loop
@@ -132,7 +136,8 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
       nickname: null,
       vocabularyLevel: null,
       ageRange: null,
-      splashDismissed: []
+      splashDismissed: [],
+      abilityScore: 50,
     });
   }
 }));

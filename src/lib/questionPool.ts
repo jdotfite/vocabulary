@@ -1,6 +1,8 @@
 import { getQuestionsByTiers } from "@/lib/modes";
+import { fetchAdaptiveSession } from "@/lib/sessionApi";
+import type { AdaptiveQuestion } from "@/lib/sessionApi";
 import { getRecentlySeenWords } from "@/lib/userProgressStore";
-import type { ModeId, ModeQuestion, QuestionType } from "@/types/content";
+import type { AnyModeId, ModeId, ModeQuestion, QuestionType } from "@/types/content";
 
 interface UserPrefs {
   vocabularyLevel: string | null;
@@ -202,4 +204,44 @@ export function getLevelTestPool(): ModeQuestion[] {
     pool.push(...shuffleArray(tierQs).slice(0, 5));
   }
   return pool;
+}
+
+// ---------------------------------------------------------------------------
+// Adaptive API — feature-flag gated
+// ---------------------------------------------------------------------------
+
+function adaptiveToModeQuestion(q: AdaptiveQuestion): ModeQuestion {
+  return {
+    id: q.id,
+    type: q.type,
+    prompt: q.prompt,
+    word: q.word,
+    phonetic: q.phonetic,
+    definition: q.definition,
+    sentence: q.sentence,
+    options: q.options,
+    correctOptionIndex: q.correctOptionIndex,
+    wordId: q.wordId,
+    difficultyScore: q.difficultyScore,
+  };
+}
+
+/**
+ * Fetch questions from the adaptive API for any mode.
+ * Falls back to local JSON pool on error or when feature flag is off.
+ */
+export async function getAdaptivePool(
+  mode: AnyModeId,
+  fallback: () => ModeQuestion[],
+  count?: number
+): Promise<ModeQuestion[]> {
+  try {
+    const response = await fetchAdaptiveSession(mode, count);
+    if (response.questions.length > 0) {
+      return response.questions.map(adaptiveToModeQuestion);
+    }
+    return fallback();
+  } catch {
+    return fallback();
+  }
 }

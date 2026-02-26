@@ -1,5 +1,7 @@
 export interface QuizAnswerRecord {
   questionId: string;
+  wordId?: string | undefined;
+  questionType?: string | undefined;
   selectedOptionIndex: number;
   correctOptionIndex: number;
   isCorrect: boolean;
@@ -24,6 +26,8 @@ export type QuizAction =
   | {
       type: "selectOption";
       questionId: string;
+      wordId?: string | undefined;
+      questionType?: string | undefined;
       optionIndex: number;
       correctOptionIndex: number;
     }
@@ -78,6 +82,8 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
           ...state.answers,
           {
             questionId: action.questionId,
+            wordId: action.wordId,
+            questionType: action.questionType,
             selectedOptionIndex: action.optionIndex,
             correctOptionIndex: action.correctOptionIndex,
             isCorrect

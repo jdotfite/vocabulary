@@ -25,6 +25,7 @@ interface OnboardingBody {
   nickname?: string | null;
   vocabularyLevel?: string | null;
   knownWords?: string[];
+  abilityScore?: number | null;
 }
 
 export default async function handler(request: Request): Promise<Response> {
@@ -64,6 +65,12 @@ export default async function handler(request: Request): Promise<Response> {
           (w): w is string => typeof w === "string" && w.length > 0
         )
       : [];
+    const abilityScore =
+      typeof body.abilityScore === "number" &&
+      body.abilityScore >= 0 &&
+      body.abilityScore <= 100
+        ? body.abilityScore
+        : null;
 
     const sql = getSQL();
 
@@ -79,9 +86,17 @@ export default async function handler(request: Request): Promise<Response> {
         updated_at = now()
     `;
 
-    await sql`
-      UPDATE users SET onboarding_completed = true WHERE id = ${userId}
-    `;
+    // Set ability score from placement test if provided
+    if (abilityScore !== null) {
+      await sql`
+        UPDATE users SET onboarding_completed = true, ability_score = ${abilityScore}
+        WHERE id = ${userId}
+      `;
+    } else {
+      await sql`
+        UPDATE users SET onboarding_completed = true WHERE id = ${userId}
+      `;
+    }
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

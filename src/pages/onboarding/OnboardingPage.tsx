@@ -2,31 +2,23 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 import {
   INITIAL_ONBOARDING_DATA,
   type OnboardingData
 } from "./onboardingTypes";
-import {
-  ADVANCED_WORDS,
-  BEGINNER_WORDS,
-  INTERMEDIATE_WORDS
-} from "./onboardingWords";
+import { PlacementTest } from "./PlacementTest";
 import { AgeStep } from "./steps/AgeStep";
 import { CompletionStep } from "./steps/CompletionStep";
 import { GenderStep } from "./steps/GenderStep";
 import { NicknameStep } from "./steps/NicknameStep";
 import { StreakMotivationStep } from "./steps/StreakMotivationStep";
 import { TailorStep } from "./steps/TailorStep";
-import { TransitionToTestStep } from "./steps/TransitionToTestStep";
-import { VocabularyLevelStep } from "./steps/VocabularyLevelStep";
 import { WelcomeStep } from "./steps/WelcomeStep";
-import { WordCheckStep } from "./steps/WordCheckStep";
 
 import { apiPost } from "@/lib/api";
 import { useAuth } from "@/lib/AuthContext";
 
-const TOTAL_STEPS = 12;
+const TOTAL_STEPS = 8;
 
 const slideVariants = {
   enter: { x: 40, opacity: 0 },
@@ -35,6 +27,13 @@ const slideVariants = {
 } as const;
 
 const slideTransition = { duration: 0.2, ease: "easeInOut" } as const;
+
+/** Derive vocabulary_level from placement ability score for backward compat. */
+function abilityToVocabLevel(ability: number): string {
+  if (ability >= 70) return "advanced";
+  if (ability >= 40) return "intermediate";
+  return "beginner";
+}
 
 export function OnboardingPage(): JSX.Element {
   const navigate = useNavigate();
@@ -55,18 +54,6 @@ export function OnboardingPage(): JSX.Element {
     []
   );
 
-  const toggleWord = useCallback((word: string) => {
-    setData((prev) => {
-      const has = prev.knownWords.includes(word);
-      return {
-        ...prev,
-        knownWords: has
-          ? prev.knownWords.filter((w) => w !== word)
-          : [...prev.knownWords, word]
-      };
-    });
-  }, []);
-
   const handleFinish = useCallback(async () => {
     setSaving(true);
     setSaveError(false);
@@ -76,7 +63,8 @@ export function OnboardingPage(): JSX.Element {
         gender: data.gender,
         nickname: data.nickname,
         vocabularyLevel: data.vocabularyLevel,
-        knownWords: data.knownWords
+        knownWords: data.knownWords,
+        abilityScore: data.abilityScore,
       });
       markOnboardingComplete();
       navigate("/modes", { replace: true });
@@ -90,7 +78,6 @@ export function OnboardingPage(): JSX.Element {
   const handleAgeSelect = useCallback(
     (val: string) => {
       updateField("ageRange", val);
-      // Auto-advance after short delay for visual feedback
       setTimeout(next, 200);
     },
     [updateField, next]
@@ -104,12 +91,16 @@ export function OnboardingPage(): JSX.Element {
     [updateField, next]
   );
 
-  const handleVocabSelect = useCallback(
-    (val: string) => {
-      updateField("vocabularyLevel", val);
-      setTimeout(next, 200);
+  const handlePlacementComplete = useCallback(
+    (abilityScore: number) => {
+      setData((prev) => ({
+        ...prev,
+        abilityScore,
+        vocabularyLevel: abilityToVocabLevel(abilityScore),
+      }));
+      next();
     },
-    [updateField, next]
+    [next]
   );
 
   function renderStep(): JSX.Element {
@@ -144,45 +135,8 @@ export function OnboardingPage(): JSX.Element {
       case 6:
         return <StreakMotivationStep onNext={next} />;
       case 7:
-        return (
-          <VocabularyLevelStep
-            onSelect={handleVocabSelect}
-            value={data.vocabularyLevel}
-          />
-        );
+        return <PlacementTest onComplete={handlePlacementComplete} />;
       case 8:
-        return <TransitionToTestStep onNext={next} />;
-      case 9:
-        return (
-          <WordCheckStep
-            onNext={next}
-            onToggle={toggleWord}
-            selectedWords={data.knownWords}
-            title="Beginner Words"
-            words={BEGINNER_WORDS}
-          />
-        );
-      case 10:
-        return (
-          <WordCheckStep
-            onNext={next}
-            onToggle={toggleWord}
-            selectedWords={data.knownWords}
-            title="Intermediate Words"
-            words={INTERMEDIATE_WORDS}
-          />
-        );
-      case 11:
-        return (
-          <WordCheckStep
-            onNext={next}
-            onToggle={toggleWord}
-            selectedWords={data.knownWords}
-            title="Advanced Words"
-            words={ADVANCED_WORDS}
-          />
-        );
-      case 12:
         return (
           <CompletionStep
             onFinish={() => void handleFinish()}
@@ -202,21 +156,23 @@ export function OnboardingPage(): JSX.Element {
         </p>
       )}
 
-      {/* Progress dots */}
-      <div className="flex items-center justify-center gap-1.5 py-3">
-        {Array.from({ length: TOTAL_STEPS }, (_, i) => (
-          <span
-            className={`h-1.5 rounded-full transition-all duration-fast ${
-              i + 1 === step
-                ? "w-6 bg-accent-teal"
-                : i + 1 < step
-                  ? "w-1.5 bg-accent-teal/60"
-                  : "w-1.5 bg-bg-surface"
-            }`}
-            key={`dot-${i}`}
-          />
-        ))}
-      </div>
+      {/* Progress dots — hide during placement test (it has its own progress) */}
+      {step !== 7 && (
+        <div className="flex items-center justify-center gap-1.5 py-3">
+          {Array.from({ length: TOTAL_STEPS }, (_, i) => (
+            <span
+              className={`h-1.5 rounded-full transition-all duration-fast ${
+                i + 1 === step
+                  ? "w-6 bg-accent-teal"
+                  : i + 1 < step
+                    ? "w-1.5 bg-accent-teal/60"
+                    : "w-1.5 bg-bg-surface"
+              }`}
+              key={`dot-${i}`}
+            />
+          ))}
+        </div>
+      )}
 
       <AnimatePresence mode="wait">
         <motion.div

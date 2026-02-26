@@ -4,6 +4,7 @@ export interface OnboardingData {
   nickname: string | null;
   vocabularyLevel: string | null;
   knownWords: string[];
+  abilityScore: number | null;
 }
 
 export const INITIAL_ONBOARDING_DATA: OnboardingData = {
@@ -11,5 +12,6 @@ export const INITIAL_ONBOARDING_DATA: OnboardingData = {
   gender: null,
   nickname: null,
   vocabularyLevel: null,
-  knownWords: []
+  knownWords: [],
+  abilityScore: null,
 };

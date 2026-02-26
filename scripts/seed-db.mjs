@@ -2,7 +2,8 @@
 
 /**
  * seed-db.mjs — Reads all content/modes/*.json files and generates
- * db/seed.sql with INSERT statements for the Neon Postgres database.
+ * db/seed.sql with INSERT ... ON CONFLICT DO UPDATE (upsert) statements
+ * for the Neon Postgres database.
  *
  * Usage:
  *   node scripts/seed-db.mjs              # writes db/seed.sql
@@ -17,10 +18,10 @@ const MODES_DIR = join(ROOT, "content", "modes");
 const OUTPUT = join(ROOT, "db", "seed.sql");
 
 const MODE_ORDER = [
-  "kids_easy",
-  "kids_middle",
+  "kids_beginner",
+  "kids_intermediate",
   "kids_advanced",
-  "adult_elementary",
+  "adult_beginner",
   "adult_intermediate",
   "adult_advanced",
 ];
@@ -48,20 +49,20 @@ function generateSeedSQL(modes) {
   lines.push("-- Do not edit by hand.\n");
   lines.push("BEGIN;\n");
 
-  // ---- difficulty_tiers ----
+  // ---- difficulty_tiers (upsert) ----
   lines.push("-- difficulty_tiers");
   for (let i = 0; i < modes.length; i++) {
     const m = modes[i];
     lines.push(
       `INSERT INTO difficulty_tiers (mode_id, display_name, audience, tier, grade_band, min_word_len, max_word_len, sort_order)` +
         ` VALUES ('${esc(m.modeId)}', '${esc(m.displayName)}', '${esc(m.audience)}', '${esc(m.tier)}', '${esc(m.gradeBand)}', ${m.rules.minWordLength}, ${m.rules.maxWordLength}, ${i})` +
-        ` ON CONFLICT (mode_id) DO NOTHING;`
+        ` ON CONFLICT (mode_id) DO UPDATE SET display_name = EXCLUDED.display_name, audience = EXCLUDED.audience, tier = EXCLUDED.tier, grade_band = EXCLUDED.grade_band, min_word_len = EXCLUDED.min_word_len, max_word_len = EXCLUDED.max_word_len, sort_order = EXCLUDED.sort_order;`
     );
   }
   lines.push("");
 
   // Collect unique words across all modes (keyed by word text)
-  const wordMap = new Map(); // word text → { phonetic, definition, modeId, sentences }
+  const wordMap = new Map(); // word text → { phonetic, definition, modeId, sentence, gapSentence }
 
   for (const mode of modes) {
     for (const q of mode.questions) {
@@ -70,14 +71,11 @@ function generateSeedSQL(modes) {
           phonetic: q.phonetic,
           definition: q.definition,
           modeId: mode.modeId,
-          sentences: [],
+          sentence: q.sentence,
+          gapSentence: null,
         });
       }
       const entry = wordMap.get(q.word);
-      // Collect unique sentences for word_examples
-      if (!entry.sentences.includes(q.sentence)) {
-        entry.sentences.push(q.sentence);
-      }
       // For fill_gap questions, capture the gap sentence (prompt)
       if (q.type === "fill_gap" && !entry.gapSentence) {
         entry.gapSentence = q.prompt;
@@ -85,33 +83,36 @@ function generateSeedSQL(modes) {
     }
   }
 
-  // ---- words ----
+  // ---- words (upsert with sentence + gap_sentence) ----
   lines.push("-- words");
   for (const [word, info] of wordMap) {
+    const sentenceVal = info.sentence ? `'${esc(info.sentence)}'` : "NULL";
+    const gapVal = info.gapSentence ? `'${esc(info.gapSentence)}'` : "NULL";
     lines.push(
-      `INSERT INTO words (word, phonetic, definition, tier_id)` +
-        ` VALUES ('${esc(word)}', '${esc(info.phonetic)}', '${esc(info.definition)}', (SELECT id FROM difficulty_tiers WHERE mode_id = '${esc(info.modeId)}'))` +
-        ` ON CONFLICT (word) DO NOTHING;`
+      `INSERT INTO words (word, phonetic, definition, tier_id, sentence, gap_sentence, word_length)` +
+        ` VALUES ('${esc(word)}', '${esc(info.phonetic)}', '${esc(info.definition)}', (SELECT id FROM difficulty_tiers WHERE mode_id = '${esc(info.modeId)}'), ${sentenceVal}, ${gapVal}, ${word.length})` +
+        ` ON CONFLICT (word) DO UPDATE SET phonetic = EXCLUDED.phonetic, definition = EXCLUDED.definition, tier_id = EXCLUDED.tier_id, sentence = EXCLUDED.sentence, gap_sentence = COALESCE(EXCLUDED.gap_sentence, words.gap_sentence), word_length = EXCLUDED.word_length;`
     );
   }
   lines.push("");
 
-  // ---- word_examples ----
-  lines.push("-- word_examples");
+  // ---- word_examples (legacy compat — delete + re-insert) ----
+  lines.push("-- word_examples (clear stale, re-insert from source of truth)");
+  lines.push(
+    "DELETE FROM word_examples WHERE word_id IN (SELECT id FROM words);"
+  );
   for (const [word, info] of wordMap) {
-    for (const sentence of info.sentences) {
-      const gap = info.gapSentence
-        ? `'${esc(info.gapSentence)}'`
-        : "NULL";
+    const gap = info.gapSentence ? `'${esc(info.gapSentence)}'` : "NULL";
+    if (info.sentence) {
       lines.push(
         `INSERT INTO word_examples (word_id, sentence, gap_sentence)` +
-          ` VALUES ((SELECT id FROM words WHERE word = '${esc(word)}'), '${esc(sentence)}', ${gap});`
+          ` VALUES ((SELECT id FROM words WHERE word = '${esc(word)}'), '${esc(info.sentence)}', ${gap});`
       );
     }
   }
   lines.push("");
 
-  // ---- questions ----
+  // ---- questions (upsert) ----
   lines.push("-- questions");
   for (const mode of modes) {
     for (const q of mode.questions) {
@@ -119,7 +120,7 @@ function generateSeedSQL(modes) {
       lines.push(
         `INSERT INTO questions (question_id, word_id, tier_id, question_type, prompt, options, correct_index)` +
           ` VALUES ('${esc(q.id)}', (SELECT id FROM words WHERE word = '${esc(q.word)}'), (SELECT id FROM difficulty_tiers WHERE mode_id = '${esc(mode.modeId)}'), '${esc(q.type)}', '${esc(q.prompt)}', '${esc(optionsJson)}'::jsonb, ${q.correctOptionIndex})` +
-          ` ON CONFLICT (question_id) DO NOTHING;`
+          ` ON CONFLICT (question_id) DO UPDATE SET word_id = EXCLUDED.word_id, tier_id = EXCLUDED.tier_id, question_type = EXCLUDED.question_type, prompt = EXCLUDED.prompt, options = EXCLUDED.options, correct_index = EXCLUDED.correct_index;`
       );
     }
   }
@@ -131,7 +132,12 @@ function generateSeedSQL(modes) {
 
 // ---- Main ----
 const modes = loadModes();
-console.log(`Loaded ${modes.length} modes with ${modes.reduce((s, m) => s + m.questions.length, 0)} questions total.`);
+const wordCount = new Set(
+  modes.flatMap((m) => m.questions.map((q) => q.word))
+).size;
+console.log(
+  `Loaded ${modes.length} modes, ${wordCount} unique words, ${modes.reduce((s, m) => s + m.questions.length, 0)} questions total.`
+);
 
 const sql = generateSeedSQL(modes);
 writeFileSync(OUTPUT, sql, "utf-8");

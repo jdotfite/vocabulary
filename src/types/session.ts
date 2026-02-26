@@ -7,4 +7,6 @@ export interface CompletedQuizPayload {
   total: number;
   answers: QuizAnswerRecord[];
   completedAt: string;
+  /** Ability score at session start — for showing change after session. */
+  abilityBefore?: number | undefined;
 }

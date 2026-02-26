@@ -19,6 +19,9 @@ export interface PracticeStatsSnapshot {
   practices: number;
   favoritedCount: number;
   bookmarkedCount: number;
+  abilityScore: number;
+  wordsForReview: number;
+  wordsMastered: number;
 }
 
 const PSEUDO_MODES = new Set([

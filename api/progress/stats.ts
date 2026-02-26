@@ -33,7 +33,7 @@ export default async function handler(request: Request): Promise<Response> {
   try {
     const sql = getSQL();
 
-    const [sessionsRows, favCountRows, bookCountRows] = await Promise.all([
+    const [sessionsRows, favCountRows, bookCountRows, abilityRows, reviewCountRows, masteredCountRows] = await Promise.all([
       sql`
         SELECT COALESCE(dt.mode_id, ps.mode_type) as mode_id, ps.score, ps.total, ps.completed_at
         FROM practice_sessions ps
@@ -42,7 +42,10 @@ export default async function handler(request: Request): Promise<Response> {
         ORDER BY ps.completed_at DESC
       `,
       sql`SELECT COUNT(*) as count FROM user_favorites WHERE user_id = ${userId}`,
-      sql`SELECT COUNT(*) as count FROM user_bookmarks WHERE user_id = ${userId}`
+      sql`SELECT COUNT(*) as count FROM user_bookmarks WHERE user_id = ${userId}`,
+      sql`SELECT ability_score FROM users WHERE id = ${userId}::uuid`,
+      sql`SELECT COUNT(*) as count FROM user_word_stats WHERE user_id = ${userId}::uuid AND next_review_at <= now()`,
+      sql`SELECT COUNT(*) as count FROM user_word_stats WHERE user_id = ${userId}::uuid AND srs_interval_hours >= 168`
     ]);
 
     // Build day set for streak calculation
@@ -97,6 +100,10 @@ export default async function handler(request: Request): Promise<Response> {
       wordsRead += row.total as number;
     }
 
+    const abilityScore = Number((abilityRows[0] as Record<string, unknown> | undefined)?.ability_score ?? 50);
+    const wordsForReview = Number(reviewCountRows[0]?.count ?? 0);
+    const wordsMastered = Number(masteredCountRows[0]?.count ?? 0);
+
     return new Response(
       JSON.stringify({
         lastPractice,
@@ -105,7 +112,10 @@ export default async function handler(request: Request): Promise<Response> {
         wordsRead,
         practices: sessionsRows.length,
         favoritedCount: Number(favCountRows[0]?.count ?? 0),
-        bookmarkedCount: Number(bookCountRows[0]?.count ?? 0)
+        bookmarkedCount: Number(bookCountRows[0]?.count ?? 0),
+        abilityScore: Math.round(abilityScore * 10) / 10,
+        wordsForReview,
+        wordsMastered
       }),
       {
         status: 200,

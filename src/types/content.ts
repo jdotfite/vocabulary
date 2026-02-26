@@ -33,6 +33,10 @@ export interface ModeQuestion {
   sentence: string;
   options: [string, string, string];
   correctOptionIndex: 0 | 1 | 2;
+  /** DB word UUID — present when questions come from the adaptive API. */
+  wordId?: string;
+  /** 0-100 composite difficulty — present when questions come from the adaptive API. */
+  difficultyScore?: number;
 }
 
 export interface ModeRules {

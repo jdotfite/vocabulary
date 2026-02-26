@@ -3,23 +3,32 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { LevelLadder } from "@/design-system/components/LevelLadder";
 import { Button } from "@/design-system/primitives/Button";
 import { Surface } from "@/design-system/primitives/Surface";
+import { useUserProgress } from "@/lib/userProgressStore";
 import type { CompletedQuizPayload } from "@/types/session";
 
 const levelNames = ["Advanced", "Upper intermediate", "Intermediate", "Elementary", "Beginner"];
 
-function scoreToLevelIndex(score: number, total: number): number {
-  const ratio = total > 0 ? score / total : 0;
-  if (ratio >= 0.9) return 0;
-  if (ratio >= 0.75) return 1;
-  if (ratio >= 0.55) return 2;
-  if (ratio >= 0.35) return 3;
+function abilityToLevelIndex(ability: number): number {
+  if (ability >= 85) return 0;
+  if (ability >= 70) return 1;
+  if (ability >= 50) return 2;
+  if (ability >= 30) return 3;
   return 4;
+}
+
+function abilityToProgressToNext(ability: number): number {
+  if (ability >= 85) return Math.min(1, (ability - 85) / 15);
+  if (ability >= 70) return (ability - 70) / 15;
+  if (ability >= 50) return (ability - 50) / 20;
+  if (ability >= 30) return (ability - 30) / 20;
+  return ability / 30;
 }
 
 export function LevelPage(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   const payload = location.state as CompletedQuizPayload | undefined;
+  const abilityScore = useUserProgress((s) => s.abilityScore);
 
   if (!payload) {
     return (
@@ -32,9 +41,9 @@ export function LevelPage(): JSX.Element {
     );
   }
 
-  const levelIndex = scoreToLevelIndex(payload.score, payload.total);
+  const levelIndex = abilityToLevelIndex(abilityScore);
   const currentLevel = levelNames[levelIndex] ?? "Beginner";
-  const progressToNext = payload.total > 0 ? payload.score / payload.total : 0;
+  const progressToNext = abilityToProgressToNext(abilityScore);
 
   return (
     <main className="space-y-6 pt-6">

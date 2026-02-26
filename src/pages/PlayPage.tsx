@@ -15,8 +15,7 @@ import {
   getShufflePool,
   getPoolByType,
   getWeakWordsPool,
-  getSprintPool,
-  getPerfectionPool
+  getAdaptivePool,
 } from "@/lib/questionPool";
 import { useUserProgress, getRecentlySeenWords } from "@/lib/userProgressStore";
 import type { AnyModeId, ModeQuestion, QuestionType } from "@/types/content";
@@ -78,73 +77,71 @@ function shuffleWithDeprioritization(
   return [...shuffleArray(fresh), ...shuffleArray(recent)];
 }
 
-function usePseudoModeQuestions(modeId: string): ModeQuestion[] | null {
-  const vocabularyLevel = useUserProgress((s) => s.vocabularyLevel);
-  const ageRange = useUserProgress((s) => s.ageRange);
-  const wordStats = useUserProgress((s) => s.wordStats);
-
-  // Freeze wordStats at session start so adaptive pool doesn't recompute mid-quiz
-  const [frozenWordStats] = useState(() => wordStats);
-
-  return useMemo(() => {
-    if (!PSEUDO_MODES.has(modeId)) return null;
-
-    const prefs = { vocabularyLevel, ageRange };
-
-    if (modeId === "shuffle") return getShufflePool(prefs, frozenWordStats);
-    if (modeId === "sprint") return getSprintPool(prefs, frozenWordStats);
-    if (modeId === "perfection") return getPerfectionPool(prefs, frozenWordStats);
-    if (modeId === "weak_words") return getWeakWordsPool(prefs, frozenWordStats);
-
-    const questionType = TYPE_MAP[modeId];
-    if (questionType) return getPoolByType(prefs, questionType, frozenWordStats);
-
-    return getShufflePool(prefs, frozenWordStats);
-  }, [modeId, vocabularyLevel, ageRange, frozenWordStats]);
-}
-
 export function PlayPage(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams();
   const [showLeaveSheet, setShowLeaveSheet] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState<ModeQuestion[]>([]);
 
   const modeId = params.modeId ?? "";
   const isPseudo = PSEUDO_MODES.has(modeId);
   const mode = useMemo(() => (isPseudo ? null : getModeById(modeId)), [modeId, isPseudo]);
-  const pseudoQuestions = usePseudoModeQuestions(modeId);
 
-  // Freeze questions for the session — pool functions shuffle randomly,
-  // so useMemo recomputation would produce a different order mid-quiz.
-  const [shuffledQuestions] = useState(() => {
-    if (isPseudo) return pseudoQuestions ?? [];
-    if (!mode) return [];
-    const recentWords = getRecentlySeenWords(4);
-    return shuffleWithDeprioritization(mode.questions, recentWords);
-  });
-
-  const [state, dispatch] = useReducer(
-    quizReducer,
-    shuffledQuestions.length,
-    createInitialQuizState
-  );
-
+  const vocabularyLevel = useUserProgress((s) => s.vocabularyLevel);
+  const ageRange = useUserProgress((s) => s.ageRange);
+  const wordStats = useUserProgress((s) => s.wordStats);
+  const [frozenWordStats] = useState(() => wordStats);
   const recordAnswer = useUserProgress((s) => s.recordAnswer);
   const toggleFavorite = useUserProgress((s) => s.toggleFavorite);
   const toggleBookmark = useUserProgress((s) => s.toggleBookmark);
   const favorites = useUserProgress((s) => s.favorites);
   const bookmarks = useUserProgress((s) => s.bookmarks);
+  const abilityScore = useUserProgress((s) => s.abilityScore);
+  const [startAbility] = useState(() => abilityScore);
+
+  const [state, dispatch] = useReducer(quizReducer, 0, createInitialQuizState);
+
+  // Load questions from adaptive API on mount
+  useEffect(() => {
+    const prefs = { vocabularyLevel, ageRange };
+
+    const localFallback = (): ModeQuestion[] => {
+      if (isPseudo) {
+        if (modeId === "shuffle") return getShufflePool(prefs, frozenWordStats);
+        if (modeId === "weak_words") return getWeakWordsPool(prefs, frozenWordStats);
+        const questionType = TYPE_MAP[modeId];
+        if (questionType) return getPoolByType(prefs, questionType, frozenWordStats);
+        return getShufflePool(prefs, frozenWordStats);
+      }
+      if (!mode) return [];
+      const recentWords = getRecentlySeenWords(4);
+      return shuffleWithDeprioritization(mode.questions, recentWords);
+    };
+
+    void getAdaptivePool(modeId as AnyModeId, localFallback).then((qs) => {
+      setQuestions(qs);
+      dispatch({ type: "reset", totalQuestions: qs.length });
+      setLoading(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- load once on mount
+  }, []);
 
   useEffect(() => {
-    if (!isPseudo && !mode) {
+    if (!loading && !isPseudo && !mode) {
       navigate("/modes", { replace: true });
     }
-  }, [isPseudo, mode, navigate]);
+  }, [loading, isPseudo, mode, navigate]);
 
-  if (!isPseudo && !mode) {
-    return <main className="pt-8">Loading mode…</main>;
+  if (loading) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center">
+        <p className="text-text-secondary">Loading questions...</p>
+      </main>
+    );
   }
 
-  const currentQuestion = shuffledQuestions[state.currentIndex];
+  const currentQuestion = questions[state.currentIndex];
 
   if (!currentQuestion) {
     return (
@@ -154,7 +151,7 @@ export function PlayPage(): JSX.Element {
     );
   }
 
-  const progress = (state.currentIndex + 1) / shuffledQuestions.length;
+  const progress = (state.currentIndex + 1) / questions.length;
   const answerStatus =
     state.selectedOptionIndex === currentQuestion.correctOptionIndex ? "correct" : "incorrect";
 
@@ -172,6 +169,8 @@ export function PlayPage(): JSX.Element {
     dispatch({
       type: "selectOption",
       questionId: currentQuestion.id,
+      wordId: currentQuestion.wordId,
+      questionType: currentQuestion.type,
       optionIndex,
       correctOptionIndex: currentQuestion.correctOptionIndex
     });
@@ -179,7 +178,7 @@ export function PlayPage(): JSX.Element {
   };
 
   const handleNext = (): void => {
-    const isLast = state.currentIndex >= shuffledQuestions.length - 1;
+    const isLast = state.currentIndex >= questions.length - 1;
 
     if (isLast) {
       const effectiveModeId: AnyModeId = isPseudo
@@ -188,9 +187,10 @@ export function PlayPage(): JSX.Element {
       const payload: CompletedQuizPayload = {
         modeId: effectiveModeId,
         score: state.score,
-        total: shuffledQuestions.length,
+        total: questions.length,
         answers: state.answers,
-        completedAt: new Date().toISOString()
+        completedAt: new Date().toISOString(),
+        abilityBefore: startAbility,
       };
       void recordPracticeSession(payload)
         .catch(() => undefined)

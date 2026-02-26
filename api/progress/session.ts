@@ -5,6 +5,8 @@ export const config = { runtime: "edge" };
 
 interface AnswerRecord {
   questionId: string;
+  wordId?: string;
+  questionType?: string;
   selectedOptionIndex: number;
   correctOptionIndex: number;
   isCorrect: boolean;
@@ -77,11 +79,20 @@ export default async function handler(request: Request): Promise<Response> {
       const sessionId = sessionRows[0].id as string;
 
       for (const answer of body.answers) {
-        await sql`
-          INSERT INTO review_log (user_id, session_id, question_id, word_id, selected_index, correct_index, is_correct)
-          SELECT ${userId}, ${sessionId}, q.id, q.word_id, ${answer.selectedOptionIndex}, ${answer.correctOptionIndex}, ${answer.isCorrect}
-          FROM questions q WHERE q.question_id = ${answer.questionId}
-        `;
+        if (answer.wordId) {
+          // Dynamic question (from adaptive API) — has wordId, no static question_id
+          await sql`
+            INSERT INTO review_log (user_id, session_id, question_id, word_id, question_type, selected_index, correct_index, is_correct)
+            VALUES (${userId}, ${sessionId}, NULL, ${answer.wordId}::uuid, ${answer.questionType ?? null}, ${answer.selectedOptionIndex}, ${answer.correctOptionIndex}, ${answer.isCorrect})
+          `;
+        } else {
+          // Static question (from JSON) — look up by question_id
+          await sql`
+            INSERT INTO review_log (user_id, session_id, question_id, word_id, selected_index, correct_index, is_correct)
+            SELECT ${userId}, ${sessionId}, q.id, q.word_id, ${answer.selectedOptionIndex}, ${answer.correctOptionIndex}, ${answer.isCorrect}
+            FROM questions q WHERE q.question_id = ${answer.questionId}
+          `;
+        }
       }
     }
 

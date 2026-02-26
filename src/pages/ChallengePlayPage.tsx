@@ -18,7 +18,7 @@ import {
 import type { ChallengeMode } from "@/game/quizReducer";
 import { CHALLENGE_CONFIGS } from "@/lib/challengeConfig";
 import { recordPracticeSession } from "@/lib/practiceStats";
-import { getSprintPool, getPerfectionPool, getRushPool, getLevelTestPool } from "@/lib/questionPool";
+import { getSprintPool, getPerfectionPool, getRushPool, getLevelTestPool, getAdaptivePool } from "@/lib/questionPool";
 import { useUserProgress } from "@/lib/userProgressStore";
 import type { AnyModeId, ModeQuestion } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
@@ -118,23 +118,44 @@ export function ChallengePlayPage(): JSX.Element {
   const favorites = useUserProgress((s) => s.favorites);
   const bookmarks = useUserProgress((s) => s.bookmarks);
 
+  const abilityScore = useUserProgress((s) => s.abilityScore);
+  const [startAbility] = useState(() => abilityScore);
+  const [loading, setLoading] = useState(true);
+
   const prefs = useMemo(
     () => ({ vocabularyLevel, ageRange }),
     [vocabularyLevel, ageRange]
   );
 
-  const questions = useMemo<ModeQuestion[]>(() => {
-    if (isLevelTest) return getLevelTestPool();
-    if (isRush) return getRushPool(prefs, frozenWordStats);
-    if (isPerfection) return getPerfectionPool(prefs, frozenWordStats);
-    return getSprintPool(prefs, frozenWordStats);
-  }, [isLevelTest, isRush, isPerfection, prefs, frozenWordStats]);
+  const [questions, setQuestionsState] = useState<ModeQuestion[]>([]);
 
   const [state, dispatch] = useReducer(
     quizReducer,
-    { total: questions.length, mode: challengeMode, lives: initialLives },
+    { total: 0, mode: challengeMode, lives: initialLives },
     (arg) => createInitialQuizState(arg.total, arg.mode, arg.lives)
   );
+
+  // Load questions from adaptive API on mount
+  useEffect(() => {
+    const localFallback = (): ModeQuestion[] => {
+      if (isLevelTest) return getLevelTestPool();
+      if (isRush) return getRushPool(prefs, frozenWordStats);
+      if (isPerfection) return getPerfectionPool(prefs, frozenWordStats);
+      return getSprintPool(prefs, frozenWordStats);
+    };
+
+    void getAdaptivePool(challengeType, localFallback).then((qs) => {
+      setQuestionsState(qs);
+      dispatch({
+        type: "reset",
+        totalQuestions: qs.length,
+        challengeMode,
+        lives: initialLives,
+      });
+      setLoading(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- load once on mount
+  }, []);
 
   const [showLeaveSheet, setShowLeaveSheet] = useState(false);
 
@@ -215,7 +236,13 @@ export function ChallengePlayPage(): JSX.Element {
   }, [state.status]);
 
   // Question pool for reshuffle modes (sprint/rush)
-  const [questionPool, setQuestionPool] = useState(questions);
+  const [questionPool, setQuestionPool] = useState<ModeQuestion[]>([]);
+  // Sync questionPool with loaded questions
+  useEffect(() => {
+    if (questions.length > 0 && questionPool.length === 0) {
+      setQuestionPool(questions);
+    }
+  }, [questions, questionPool.length]);
   const currentQuestion: ModeQuestion | undefined = questionPool[state.currentIndex];
 
   // Rush: handle timer expiry as wrong answer
@@ -230,6 +257,8 @@ export function ChallengePlayPage(): JSX.Element {
       dispatch({
         type: "selectOption",
         questionId: currentQuestion.id,
+        wordId: currentQuestion.wordId,
+        questionType: currentQuestion.type,
         optionIndex: -1,
         correctOptionIndex: currentQuestion.correctOptionIndex
       });
@@ -271,7 +300,8 @@ export function ChallengePlayPage(): JSX.Element {
       score: state.score,
       total: state.answers.length,
       answers: state.answers,
-      completedAt: new Date().toISOString()
+      completedAt: new Date().toISOString(),
+      abilityBefore: startAbility,
     };
 
     const destination = isLevelTest ? "/level" : "/summary";
@@ -279,7 +309,7 @@ export function ChallengePlayPage(): JSX.Element {
     void recordPracticeSession(payload)
       .catch(() => undefined)
       .finally(() => navigate(destination, { state: payload }));
-  }, [challengeType, isLevelTest, state.score, state.answers, navigate]);
+  }, [challengeType, isLevelTest, state.score, state.answers, navigate, startAbility]);
 
   // Navigate when finished
   useEffect(() => {
@@ -296,6 +326,14 @@ export function ChallengePlayPage(): JSX.Element {
   // Redirect invalid challenge types
   if (!isValidType) {
     return <Navigate replace to="/modes" />;
+  }
+
+  if (loading) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center">
+        <p className="text-text-secondary">Loading questions...</p>
+      </main>
+    );
   }
 
   // Splash screen
@@ -349,6 +387,8 @@ export function ChallengePlayPage(): JSX.Element {
     dispatch({
       type: "selectOption",
       questionId: currentQuestion.id,
+      wordId: currentQuestion.wordId,
+      questionType: currentQuestion.type,
       optionIndex,
       correctOptionIndex: currentQuestion.correctOptionIndex
     });

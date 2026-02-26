@@ -368,24 +368,31 @@ export function StatsPage(): JSX.Element {
         />
       </section>
 
-      {/* Percentile placeholder */}
-      <Surface className="space-y-3 p-4 text-center" variant="default">
+      {/* Ability score */}
+      <Surface className="space-y-2 p-4 text-center" variant="default">
         <p className="text-sm font-bold uppercase tracking-widest text-text-secondary">
-          Vocabulary percentile
+          Ability score
         </p>
-        <div className="flex h-16 items-end justify-center gap-[3px]">
-          {[1, 2, 4, 7, 10, 14, 18, 22, 18, 14, 10, 7, 4, 2, 1].map(
-            (h, i) => (
-              <div
-                className="w-3 rounded-t bg-bg-surface-alt"
-                key={i}
-                style={{ height: `${h * 3}px` }}
-              />
-            )
-          )}
-        </div>
-        <p className="text-xs text-text-secondary">Coming soon</p>
+        <p className="text-5xl font-bold text-accent-teal">
+          {Math.round(stats.abilityScore)}
+        </p>
+        <p className="text-xs text-text-secondary">
+          {stats.abilityScore >= 85
+            ? "Advanced"
+            : stats.abilityScore >= 70
+              ? "Upper intermediate"
+              : stats.abilityScore >= 50
+                ? "Intermediate"
+                : stats.abilityScore >= 30
+                  ? "Elementary"
+                  : "Beginner"}
+        </p>
       </Surface>
+
+      <section className="grid grid-cols-2 gap-3">
+        <StatTile icon={<PracticeIcon />} label="For review" value={stats.wordsForReview} />
+        <StatTile icon={<CheckIcon />} label="Mastered" value={stats.wordsMastered} />
+      </section>
 
       {/* Your Vocabulary */}
       <section>

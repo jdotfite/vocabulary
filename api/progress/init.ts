@@ -23,6 +23,10 @@ interface PreferenceRow {
   splash_dismissed: string[] | null;
 }
 
+interface UserAbilityRow {
+  ability_score: number;
+}
+
 export default async function handler(request: Request): Promise<Response> {
   if (request.method !== "GET") {
     return new Response("Method not allowed", { status: 405 });
@@ -38,30 +42,35 @@ export default async function handler(request: Request): Promise<Response> {
   try {
     const sql = getSQL();
 
-    const [rawWordStats, rawFavs, rawBooks, rawPrefs] = await Promise.all([
-      sql`
+    const [rawWordStats, rawFavs, rawBooks, rawPrefs, rawAbility] =
+      await Promise.all([
+        sql`
         SELECT w.word, uws.times_seen, uws.times_correct, uws.times_incorrect, uws.streak, uws.last_seen_at
         FROM user_word_stats uws
         JOIN words w ON w.id = uws.word_id
         WHERE uws.user_id = ${userId}
       `,
-      sql`
+        sql`
         SELECT w.word FROM user_favorites uf JOIN words w ON w.id = uf.word_id WHERE uf.user_id = ${userId}
       `,
-      sql`
+        sql`
         SELECT w.word FROM user_bookmarks ub JOIN words w ON w.id = ub.word_id WHERE ub.user_id = ${userId}
       `,
-      sql`
+        sql`
         SELECT nickname, vocabulary_level, age_range, splash_dismissed
         FROM user_preferences WHERE user_id = ${userId}
         LIMIT 1
-      `
-    ]);
+      `,
+        sql`
+        SELECT ability_score FROM users WHERE id = ${userId}::uuid
+      `,
+      ]);
 
     const wordStatsRows = rawWordStats as unknown as WordStatRow[];
     const favRows = rawFavs as unknown as WordRow[];
     const bookRows = rawBooks as unknown as WordRow[];
     const prefRows = rawPrefs as unknown as PreferenceRow[];
+    const abilityRows = rawAbility as unknown as UserAbilityRow[];
 
     const wordStats: Record<
       string,
@@ -95,7 +104,8 @@ export default async function handler(request: Request): Promise<Response> {
         nickname: pref?.nickname ?? null,
         vocabularyLevel: pref?.vocabulary_level ?? null,
         ageRange: pref?.age_range ?? null,
-        splashDismissed: pref?.splash_dismissed ?? []
+        splashDismissed: pref?.splash_dismissed ?? [],
+        abilityScore: abilityRows[0]?.ability_score ?? 50,
       }),
       {
         status: 200,
