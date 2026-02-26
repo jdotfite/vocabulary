@@ -254,7 +254,7 @@ export function PlacementTest({
 
       <PromptCard modeLabel="Placement" questionId={question.id} text={question.prompt} />
 
-      <section className="space-y-option-gap pt-2">
+      <section className="space-y-option-gap pt-6">
         {question.options.map((option, optionIndex) => (
           <OptionButton
             key={`${question.id}-${option}`}

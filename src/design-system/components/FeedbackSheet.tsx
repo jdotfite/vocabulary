@@ -74,11 +74,36 @@ export function FeedbackSheet({
           <span
             aria-hidden
             className={clsx(
-              "grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold",
-              isCorrect ? "bg-state-correct text-bg-app" : "bg-state-incorrect text-bg-app"
+              "grid h-8 w-8 shrink-0 place-items-center rounded-full",
+              isCorrect ? "bg-state-correct" : "bg-state-incorrect"
             )}
           >
-            {isCorrect ? "✓" : "✕"}
+            {isCorrect ? (
+              <svg
+                className="h-5 w-5 text-bg-app"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                viewBox="0 0 24 24"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            ) : (
+              <svg
+                className="h-5 w-5 text-bg-app"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                viewBox="0 0 24 24"
+              >
+                <line x1="18" x2="6" y1="6" y2="18" />
+                <line x1="6" x2="18" y1="6" y2="18" />
+              </svg>
+            )}
           </span>
           <Text as="h2" className="text-3xl font-bold text-text-primary" variant="title">
             {isCorrect ? "That's correct!" : "That's incorrect"}

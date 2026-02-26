@@ -165,7 +165,7 @@ export function ModeSplash({
   onToggleDismiss
 }: ModeSplashProps): JSX.Element {
   return (
-    <main className="flex min-h-[85vh] flex-col px-2 pt-2">
+    <main className="relative flex min-h-[85vh] flex-col px-2 pt-2 pb-20">
       {/* Close button */}
       <button
         aria-label="Close"
@@ -198,24 +198,26 @@ export function ModeSplash({
       </div>
 
       {/* Bottom area */}
-      <div className="space-y-4 pb-4">
+      <div className="pb-4">
         <Button onClick={onStart} variant="primary">
           Start
         </Button>
-        {showDismissToggle && (
-          <label className="flex cursor-pointer items-center justify-center gap-2">
-            <input
-              checked={dismissed}
-              className="h-4 w-4 rounded border-2 border-border-strong accent-accent-teal"
-              onChange={onToggleDismiss}
-              type="checkbox"
-            />
-            <span className="text-sm text-text-secondary">
-              Don&apos;t show again
-            </span>
-          </label>
-        )}
       </div>
+
+      {/* Dismiss toggle — pinned near bottom of viewport */}
+      {showDismissToggle && (
+        <label className="absolute bottom-6 left-0 right-0 flex cursor-pointer items-center justify-center gap-2">
+          <input
+            checked={dismissed}
+            className="h-4 w-4 rounded border-2 border-border-strong accent-accent-teal"
+            onChange={onToggleDismiss}
+            type="checkbox"
+          />
+          <span className="text-sm text-text-secondary">
+            Don&apos;t show again
+          </span>
+        </label>
+      )}
     </main>
   );
 }

@@ -578,7 +578,7 @@ export function ChallengePlayPage(): JSX.Element {
           text={currentQuestion.prompt}
         />
 
-        <section className="space-y-option-gap pt-2">
+        <section className="space-y-option-gap pt-6">
           {currentQuestion.options.map((option, optionIndex) => (
             <OptionButton
               key={`${currentQuestion.id}-${option}`}
