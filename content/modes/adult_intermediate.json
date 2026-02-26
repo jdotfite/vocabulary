@@ -913,12 +913,282 @@
         "conclude"
       ],
       "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q61",
+      "type": "guess_word",
+      "prompt": "Humble submission and respect.",
+      "word": "deference",
+      "phonetic": "def-er-uhns",
+      "definition": "Humble submission and respect.",
+      "sentence": "The young officer showed deference to the experienced commander.",
+      "options": [
+        "erudition",
+        "deference",
+        "invective"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q62",
+      "type": "meaning_match",
+      "prompt": "destitute",
+      "word": "destitute",
+      "phonetic": "des-tih-toot",
+      "definition": "Without the basic necessities of life; extremely poor.",
+      "sentence": "After the flood, many families were left destitute and homeless.",
+      "options": [
+        "Subject to sudden or unpredictable changes of mood or mind.",
+        "Without the basic necessities of life; extremely poor.",
+        "Causing or tending to cause annoyance, frustration, or worry."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q63",
+      "type": "fill_gap",
+      "prompt": "The artist's _______ smile has puzzled viewers for centuries.",
+      "word": "enigmatic",
+      "phonetic": "en-ig-mat-ik",
+      "definition": "Difficult to interpret or understand; mysterious.",
+      "sentence": "The artist's enigmatic smile has puzzled viewers for centuries.",
+      "options": [
+        "enigmatic",
+        "frivolous",
+        "mercurial"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q64",
+      "type": "guess_word",
+      "prompt": "The quality of having or showing great knowledge or learning.",
+      "word": "erudition",
+      "phonetic": "er-oo-dish-uhn",
+      "definition": "The quality of having or showing great knowledge or learning.",
+      "sentence": "Her erudition was evident in every lecture she delivered.",
+      "options": [
+        "profusion",
+        "penitence",
+        "erudition"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q65",
+      "type": "meaning_match",
+      "prompt": "expatiate",
+      "word": "expatiate",
+      "phonetic": "ik-spay-shee-ayt",
+      "definition": "To speak or write at length or in detail.",
+      "sentence": "The professor loved to expatiate on the finer points of Roman law.",
+      "options": [
+        "To speak or write at length or in detail.",
+        "Humble submission and respect.",
+        "Not harmful or offensive; harmless."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q66",
+      "type": "fill_gap",
+      "prompt": "The judge dismissed the _______ lawsuit without a hearing.",
+      "word": "frivolous",
+      "phonetic": "friv-uh-luhs",
+      "definition": "Not having any serious purpose or value; carefree.",
+      "sentence": "The judge dismissed the frivolous lawsuit without a hearing.",
+      "options": [
+        "innocuous",
+        "frivolous",
+        "vexatious"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q67",
+      "type": "guess_word",
+      "prompt": "Assuming power or authority without justification; domineering.",
+      "word": "imperious",
+      "phonetic": "im-peer-ee-uhs",
+      "definition": "Assuming power or authority without justification; domineering.",
+      "sentence": "Her imperious tone made even senior staff reluctant to disagree.",
+      "options": [
+        "imperious",
+        "lecherous",
+        "seneschal"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q68",
+      "type": "meaning_match",
+      "prompt": "ineffable",
+      "word": "ineffable",
+      "phonetic": "in-ef-uh-buhl",
+      "definition": "Too great or extreme to be expressed or described in words.",
+      "sentence": "The sunset over the canyon filled them with an ineffable sense of wonder.",
+      "options": [
+        "Having or showing excessive or offensive sexual desire.",
+        "The quality of having or showing great knowledge or learning.",
+        "Too great or extreme to be expressed or described in words."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q69",
+      "type": "fill_gap",
+      "prompt": "What seemed like an _______ comment soon sparked a heated debate.",
+      "word": "innocuous",
+      "phonetic": "ih-nok-yoo-uhs",
+      "definition": "Not harmful or offensive; harmless.",
+      "sentence": "What seemed like an innocuous comment soon sparked a heated debate.",
+      "options": [
+        "pensively",
+        "innocuous",
+        "destitute"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q70",
+      "type": "guess_word",
+      "prompt": "Insulting, abusive, or highly critical language.",
+      "word": "invective",
+      "phonetic": "in-vek-tiv",
+      "definition": "Insulting, abusive, or highly critical language.",
+      "sentence": "The debate descended into personal invective rather than policy discussion.",
+      "options": [
+        "manticore",
+        "invective",
+        "deference"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q71",
+      "type": "meaning_match",
+      "prompt": "lecherous",
+      "word": "lecherous",
+      "phonetic": "lech-er-uhs",
+      "definition": "Having or showing excessive or offensive sexual desire.",
+      "sentence": "The lecherous character in the novel served as a moral warning.",
+      "options": [
+        "An abundance or large quantity of something.",
+        "Having or showing excessive or offensive sexual desire.",
+        "Assuming power or authority without justification; domineering."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q72",
+      "type": "fill_gap",
+      "prompt": "The medieval bestiary featured a _______ among its terrifying creatures.",
+      "word": "manticore",
+      "phonetic": "man-tih-kor",
+      "definition": "A mythical beast with a human head, lion's body, and scorpion tail.",
+      "sentence": "The medieval bestiary featured a manticore among its terrifying creatures.",
+      "options": [
+        "manticore",
+        "erudition",
+        "imperious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q73",
+      "type": "guess_word",
+      "prompt": "Subject to sudden or unpredictable changes of mood or mind.",
+      "word": "mercurial",
+      "phonetic": "mur-kyoor-ee-uhl",
+      "definition": "Subject to sudden or unpredictable changes of mood or mind.",
+      "sentence": "His mercurial temperament made him both brilliant and difficult to work with.",
+      "options": [
+        "vexatious",
+        "pensively",
+        "mercurial"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q74",
+      "type": "meaning_match",
+      "prompt": "penitence",
+      "word": "penitence",
+      "phonetic": "pen-ih-tuhns",
+      "definition": "The action of feeling or showing sorrow and regret for having done wrong.",
+      "sentence": "She expressed genuine penitence for the harm her words had caused.",
+      "options": [
+        "Difficult to interpret or understand; mysterious.",
+        "The action of feeling or showing sorrow and regret for having done wrong.",
+        "The steward or major-domo of a medieval great house or estate."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_intermediate_q75",
+      "type": "fill_gap",
+      "prompt": "He stared _______ out the window before making his decision.",
+      "word": "pensively",
+      "phonetic": "pen-siv-lee",
+      "definition": "In a way that suggests deep or serious thought.",
+      "sentence": "He stared pensively out the window before making his decision.",
+      "options": [
+        "deference",
+        "expatiate",
+        "pensively"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q76",
+      "type": "guess_word",
+      "prompt": "An abundance or large quantity of something.",
+      "word": "profusion",
+      "phonetic": "proh-fyoo-zhuhn",
+      "definition": "An abundance or large quantity of something.",
+      "sentence": "Wildflowers grew in profusion along the sun-drenched hillside.",
+      "options": [
+        "profusion",
+        "enigmatic",
+        "innocuous"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_intermediate_q77",
+      "type": "meaning_match",
+      "prompt": "seneschal",
+      "word": "seneschal",
+      "phonetic": "sen-uh-shuhl",
+      "definition": "The steward or major-domo of a medieval great house or estate.",
+      "sentence": "The seneschal managed the castle's daily affairs while the lord was away.",
+      "options": [
+        "Not having any serious purpose or value; carefree.",
+        "Insulting, abusive, or highly critical language.",
+        "The steward or major-domo of a medieval great house or estate."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_intermediate_q78",
+      "type": "fill_gap",
+      "prompt": "The _______ delays pushed the project well past its deadline.",
+      "word": "vexatious",
+      "phonetic": "vek-say-shuhs",
+      "definition": "Causing or tending to cause annoyance, frustration, or worry.",
+      "sentence": "The vexatious delays pushed the project well past its deadline.",
+      "options": [
+        "lecherous",
+        "destitute",
+        "vexatious"
+      ],
+      "correctOptionIndex": 2
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
     "generatedAt": "2026-02-23T12:00:00.000Z",
-    "questionCount": 60,
-    "wordCount": 60
+    "questionCount": 78,
+    "wordCount": 78
   }
 }

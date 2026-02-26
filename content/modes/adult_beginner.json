@@ -913,12 +913,342 @@
         "submit"
       ],
       "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q61",
+      "type": "guess_word",
+      "prompt": "Extremely unpleasant; repulsive.",
+      "word": "odious",
+      "phonetic": "oh-dee-uhs",
+      "definition": "Extremely unpleasant; repulsive.",
+      "sentence": "His odious remarks offended everyone in the room.",
+      "options": [
+        "bilious",
+        "odious",
+        "sordid"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q62",
+      "type": "meaning_match",
+      "prompt": "satyrs",
+      "word": "satyrs",
+      "phonetic": "sat-erz",
+      "definition": "Creatures from Greek mythology, part man and part goat, known for revelry.",
+      "sentence": "The ancient mural depicted satyrs dancing in a forest glade.",
+      "options": [
+        "Extremely unpleasant; repulsive.",
+        "Creatures from Greek mythology, part man and part goat, known for revelry.",
+        "Involving immoral or dishonourable actions; filthy or squalid."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q63",
+      "type": "fill_gap",
+      "prompt": "The journalist exposed the _______ details of the corruption scandal.",
+      "word": "sordid",
+      "phonetic": "sor-did",
+      "definition": "Involving immoral or dishonourable actions; filthy or squalid.",
+      "sentence": "The journalist exposed the sordid details of the corruption scandal.",
+      "options": [
+        "sordid",
+        "odious",
+        "bemused"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q64",
+      "type": "guess_word",
+      "prompt": "To speak or write about in an abusively disparaging manner.",
+      "word": "vilify",
+      "phonetic": "vil-uh-fy",
+      "definition": "To speak or write about in an abusively disparaging manner.",
+      "sentence": "Critics sought to vilify the author for her controversial views.",
+      "options": [
+        "placated",
+        "vilify",
+        "effacing"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q65",
+      "type": "meaning_match",
+      "prompt": "bemused",
+      "word": "bemused",
+      "phonetic": "bih-myoozd",
+      "definition": "Puzzled, confused, or bewildered.",
+      "sentence": "She gave a bemused look when asked to explain the strange results.",
+      "options": [
+        "Puzzled, confused, or bewildered.",
+        "Relating to bile; bad-tempered or spiteful.",
+        "A large, imposing building or a complex system of beliefs."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q66",
+      "type": "fill_gap",
+      "prompt": "His _______ outburst startled the otherwise calm gathering.",
+      "word": "bilious",
+      "phonetic": "bil-yuhs",
+      "definition": "Relating to bile; bad-tempered or spiteful.",
+      "sentence": "His bilious outburst startled the otherwise calm gathering.",
+      "options": [
+        "uncouth",
+        "bilious",
+        "sordid"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q67",
+      "type": "guess_word",
+      "prompt": "A large, imposing building or a complex system of beliefs.",
+      "word": "edifice",
+      "phonetic": "ed-uh-fis",
+      "definition": "A large, imposing building or a complex system of beliefs.",
+      "sentence": "The stone edifice towered above the narrow streets of the old city.",
+      "options": [
+        "edifice",
+        "shelter",
+        "channel"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q68",
+      "type": "meaning_match",
+      "prompt": "uncouth",
+      "word": "uncouth",
+      "phonetic": "un-kooth",
+      "definition": "Lacking good manners, refinement, or grace.",
+      "sentence": "His uncouth behavior at dinner embarrassed his hosts.",
+      "options": [
+        "Deserving blame or censure.",
+        "Unable to move through lack of wind; motionless.",
+        "Lacking good manners, refinement, or grace."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q69",
+      "type": "fill_gap",
+      "prompt": "The ship was _______ for days in the windless strait.",
+      "word": "becalmed",
+      "phonetic": "bih-kahmd",
+      "definition": "Unable to move through lack of wind (of a sailing vessel); motionless.",
+      "sentence": "The ship was becalmed for days in the windless strait.",
+      "options": [
+        "placated",
+        "bemused",
+        "becalmed"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q70",
+      "type": "guess_word",
+      "prompt": "Deserving blame or censure.",
+      "word": "culpable",
+      "phonetic": "kul-puh-buhl",
+      "definition": "Deserving blame or censure.",
+      "sentence": "The inquiry found the manager culpable for the safety failures.",
+      "options": [
+        "culpable",
+        "capable",
+        "indolent"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q71",
+      "type": "meaning_match",
+      "prompt": "derision",
+      "word": "derision",
+      "phonetic": "dih-rizh-uhn",
+      "definition": "Contemptuous ridicule or mockery.",
+      "sentence": "His proposal was met with derision from the senior partners.",
+      "options": [
+        "Fame or recognized superiority within a particular sphere.",
+        "Contemptuous ridicule or mockery.",
+        "Not showing due respect; impertinent."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q72",
+      "type": "fill_gap",
+      "prompt": "Her quiet, _______ manner hid a sharp and determined mind.",
+      "word": "effacing",
+      "phonetic": "ih-fay-sing",
+      "definition": "Erasing or making oneself appear insignificant; self-effacing.",
+      "sentence": "Her quiet, effacing manner hid a sharp and determined mind.",
+      "options": [
+        "serenely",
+        "effacing",
+        "indolent"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q73",
+      "type": "guess_word",
+      "prompt": "Fame or recognized superiority within a particular sphere.",
+      "word": "eminence",
+      "phonetic": "em-uh-nuhns",
+      "definition": "Fame or recognized superiority within a particular sphere.",
+      "sentence": "She achieved eminence in the field of medical research.",
+      "options": [
+        "veracity",
+        "tutelage",
+        "eminence"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q74",
+      "type": "meaning_match",
+      "prompt": "impudent",
+      "word": "impudent",
+      "phonetic": "im-pyoo-duhnt",
+      "definition": "Not showing due respect; impertinent.",
+      "sentence": "The impudent clerk talked back to every customer who complained.",
+      "options": [
+        "Not showing due respect; impertinent.",
+        "Wanting to avoid activity or exertion; lazy.",
+        "Tending to obstruct or harm; hostile."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q75",
+      "type": "fill_gap",
+      "prompt": "The _______ student rarely completed any assignments on time.",
+      "word": "indolent",
+      "phonetic": "in-doh-luhnt",
+      "definition": "Wanting to avoid activity or exertion; lazy.",
+      "sentence": "The indolent student rarely completed any assignments on time.",
+      "options": [
+        "indolent",
+        "inimical",
+        "impudent"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_beginner_q76",
+      "type": "guess_word",
+      "prompt": "Tending to obstruct or harm; hostile.",
+      "word": "inimical",
+      "phonetic": "ih-nim-ih-kuhl",
+      "definition": "Tending to obstruct or harm; hostile.",
+      "sentence": "Pollution is inimical to the health of the entire community.",
+      "options": [
+        "radical",
+        "inimical",
+        "odious"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q77",
+      "type": "meaning_match",
+      "prompt": "laudanum",
+      "word": "laudanum",
+      "phonetic": "law-duh-nuhm",
+      "definition": "A tincture of opium formerly used as a painkiller and sedative.",
+      "sentence": "Victorian physicians often prescribed laudanum for common ailments.",
+      "options": [
+        "Made less angry or hostile; pacified.",
+        "A tincture of opium formerly used as a painkiller and sedative.",
+        "Optimistic or positive, especially in a difficult situation."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q78",
+      "type": "fill_gap",
+      "prompt": "The crowd was _______ only after the mayor addressed their concerns.",
+      "word": "placated",
+      "phonetic": "play-kay-tid",
+      "definition": "Made less angry or hostile; pacified.",
+      "sentence": "The crowd was placated only after the mayor addressed their concerns.",
+      "options": [
+        "becalmed",
+        "effacing",
+        "placated"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_beginner_q79",
+      "type": "guess_word",
+      "prompt": "Optimistic or positive, especially in a difficult situation.",
+      "word": "sanguine",
+      "phonetic": "sang-gwin",
+      "definition": "Optimistic or positive, especially in a difficult situation.",
+      "sentence": "Despite the setback, she remained sanguine about the outcome.",
+      "options": [
+        "mindful",
+        "sanguine",
+        "genuine"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q80",
+      "type": "meaning_match",
+      "prompt": "serenely",
+      "word": "serenely",
+      "phonetic": "suh-reen-lee",
+      "definition": "In a calm, peaceful, and untroubled manner.",
+      "sentence": "She smiled serenely as the chaos unfolded around her.",
+      "options": [
+        "Protection of or authority over someone or something; guardianship or instruction.",
+        "In a calm, peaceful, and untroubled manner.",
+        "Conformity to facts; accuracy or truthfulness."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q81",
+      "type": "fill_gap",
+      "prompt": "Under his _______, the apprentice became a skilled craftsman.",
+      "word": "tutelage",
+      "phonetic": "too-tuh-lij",
+      "definition": "Protection of or authority over someone or something; guardianship or instruction.",
+      "sentence": "Under his tutelage, the apprentice became a skilled craftsman.",
+      "options": [
+        "veracity",
+        "tutelage",
+        "eminence"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_beginner_q82",
+      "type": "meaning_match",
+      "prompt": "veracity",
+      "word": "veracity",
+      "phonetic": "vuh-ras-ih-tee",
+      "definition": "Conformity to facts; accuracy or truthfulness.",
+      "sentence": "The witness swore to the veracity of her testimony.",
+      "options": [
+        "Erasing or making oneself appear insignificant; self-effacing.",
+        "Contemptuous ridicule or mockery.",
+        "Conformity to facts; accuracy or truthfulness."
+      ],
+      "correctOptionIndex": 2
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
     "generatedAt": "2026-02-23T12:00:00.000Z",
-    "questionCount": 60,
-    "wordCount": 60
+    "questionCount": 82,
+    "wordCount": 82
   }
 }

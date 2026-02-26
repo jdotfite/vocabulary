@@ -51,7 +51,7 @@ const MODE_POLICIES = {
     tier: "advanced",
     gradeBand: "Adult",
     minWordLength: 8,
-    maxWordLength: 12
+    maxWordLength: 14
   }
 };
 

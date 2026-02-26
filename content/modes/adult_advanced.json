@@ -6,7 +6,7 @@
   "gradeBand": "Adult",
   "rules": {
     "minWordLength": 8,
-    "maxWordLength": 12,
+    "maxWordLength": 14,
     "allowedQuestionTypes": [
       "guess_word",
       "meaning_match",
@@ -913,12 +913,432 @@
         "supercilious"
       ],
       "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q61",
+      "type": "guess_word",
+      "prompt": "Having or showing an extreme greed for wealth or material gain.",
+      "word": "avaricious",
+      "phonetic": "av-uh-rish-uhs",
+      "definition": "Having or showing an extreme greed for wealth or material gain.",
+      "sentence": "The avaricious merchant hoarded gold while his workers went unpaid.",
+      "options": [
+        "profligate",
+        "avaricious",
+        "capricious"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q62",
+      "type": "meaning_match",
+      "prompt": "benevolent",
+      "word": "benevolent",
+      "phonetic": "buh-nev-uh-luhnt",
+      "definition": "Well-meaning and kindly; showing goodwill.",
+      "sentence": "The benevolent patron funded scholarships for underprivileged students.",
+      "options": [
+        "Well-meaning and kindly; showing goodwill.",
+        "Having or showing a wish to do evil to others; malicious.",
+        "Obedient or attentive to an excessive or servile degree; fawning."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q63",
+      "type": "fill_gap",
+      "prompt": "The ___________ creditor pursued every last penny owed to him.",
+      "word": "implacable",
+      "phonetic": "im-plak-uh-buhl",
+      "definition": "Unable to be calmed or appeased; relentless.",
+      "sentence": "The implacable creditor pursued every last penny owed to him.",
+      "options": [
+        "equivocal",
+        "implacable",
+        "untenable"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q64",
+      "type": "guess_word",
+      "prompt": "Incapable of making mistakes or being wrong.",
+      "word": "infallible",
+      "phonetic": "in-fal-uh-buhl",
+      "definition": "Incapable of making mistakes or being wrong.",
+      "sentence": "No system of governance is infallible, however carefully it is designed.",
+      "options": [
+        "untenable",
+        "fallacious",
+        "infallible"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q65",
+      "type": "meaning_match",
+      "prompt": "lascivious",
+      "word": "lascivious",
+      "phonetic": "luh-siv-ee-uhs",
+      "definition": "Feeling or revealing an overt sexual interest or desire.",
+      "sentence": "The censor objected to the lascivious content of the theatrical production.",
+      "options": [
+        "Grimly mocking or cynical; disdainfully humorous.",
+        "Feeling or revealing an overt sexual interest or desire.",
+        "Lasting for a very short time; transitory and delicate."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q66",
+      "type": "fill_gap",
+      "prompt": "The ___________ heap of refuse attracted swarms of flies to the alley.",
+      "word": "malodorous",
+      "phonetic": "mal-oh-duh-ruhs",
+      "definition": "Smelling very unpleasant; foul-smelling.",
+      "sentence": "The malodorous heap of refuse attracted swarms of flies to the alley.",
+      "options": [
+        "malodorous",
+        "pernicious",
+        "gratuitous"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q67",
+      "type": "guess_word",
+      "prompt": "A point of high land jutting out into a body of water; a headland.",
+      "word": "promontory",
+      "phonetic": "prom-uhn-tor-ee",
+      "definition": "A point of high land jutting out into a body of water; a headland.",
+      "sentence": "From the promontory they could see ships approaching the harbour.",
+      "options": [
+        "dichotomy",
+        "promontory",
+        "equanimity"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q68",
+      "type": "meaning_match",
+      "prompt": "propitious",
+      "word": "propitious",
+      "phonetic": "pruh-pish-uhs",
+      "definition": "Indicating a good chance of success; favourable.",
+      "sentence": "The calm weather provided propitious conditions for the ocean crossing.",
+      "options": [
+        "Causing harm or damage, especially in a way that is gradual or not easily noticed.",
+        "Having an obstinately uncooperative attitude toward authority or discipline.",
+        "Indicating a good chance of success; favourable."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q69",
+      "type": "fill_gap",
+      "prompt": "Her ___________ of the hypothesis was supported by compelling data.",
+      "word": "refutation",
+      "phonetic": "ref-yoo-tay-shuhn",
+      "definition": "The action of proving a statement or theory to be wrong or false.",
+      "sentence": "Her refutation of the hypothesis was supported by compelling data.",
+      "options": [
+        "erudition",
+        "refutation",
+        "synthesis"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q70",
+      "type": "guess_word",
+      "prompt": "With great care and perseverance; diligently.",
+      "word": "assiduously",
+      "phonetic": "uh-sid-yoo-uhs-lee",
+      "definition": "With great care and perseverance; diligently.",
+      "sentence": "The researcher assiduously documented every stage of the experiment.",
+      "options": [
+        "assiduously",
+        "despondently",
+        "supercilious"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q71",
+      "type": "meaning_match",
+      "prompt": "decrepitude",
+      "word": "decrepitude",
+      "phonetic": "dih-krep-ih-tood",
+      "definition": "The state of being decrepit; worn out or ruined by age or neglect.",
+      "sentence": "Years of neglect had reduced the once-grand estate to decrepitude.",
+      "options": [
+        "The state of being decrepit; worn out or ruined by age or neglect.",
+        "Mental calmness and composure, especially in difficult situations.",
+        "A division or contrast between two things that are represented as being opposed or entirely different."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q72",
+      "type": "fill_gap",
+      "prompt": "His ___________ comments about the team's effort angered the coach.",
+      "word": "disparaging",
+      "phonetic": "dih-spar-uh-jing",
+      "definition": "Expressing the opinion that something is of little worth; derogatory.",
+      "sentence": "His disparaging comments about the team's effort angered the coach.",
+      "options": [
+        "mendacious",
+        "disparaging",
+        "audacious"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q73",
+      "type": "guess_word",
+      "prompt": "Not showing proper respect; rude or insolent.",
+      "word": "impertinent",
+      "phonetic": "im-pur-tuh-nuhnt",
+      "definition": "Not showing proper respect; rude or insolent.",
+      "sentence": "The impertinent remark earned the student a stern reprimand from the headmaster.",
+      "options": [
+        "belligerent",
+        "impertinent",
+        "truculent"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q74",
+      "type": "meaning_match",
+      "prompt": "improvident",
+      "word": "improvident",
+      "phonetic": "im-prov-ih-duhnt",
+      "definition": "Not having or showing foresight; not providing for future needs.",
+      "sentence": "His improvident spending left nothing in reserve for emergencies.",
+      "options": [
+        "Not having or showing foresight; not providing for future needs.",
+        "Unwilling to spend money or use resources; extremely frugal to the point of meanness.",
+        "Recklessly extravagant or wasteful in the use of resources; licentious."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q75",
+      "type": "fill_gap",
+      "prompt": "The ___________ of a luxury car parked outside the derelict building drew stares.",
+      "word": "incongruity",
+      "phonetic": "in-kuhn-groo-ih-tee",
+      "definition": "The state of being incongruous or out of place; incompatibility.",
+      "sentence": "The incongruity of a luxury car parked outside the derelict building drew stares.",
+      "options": [
+        "incongruity",
+        "anachronism",
+        "equanimity"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q76",
+      "type": "guess_word",
+      "prompt": "An uncertain belief; an assumption or hypothesis.",
+      "word": "supposition",
+      "phonetic": "suh-puh-zish-uhn",
+      "definition": "An uncertain belief; an assumption or hypothesis.",
+      "sentence": "The detective's supposition proved correct when the evidence was analysed.",
+      "options": [
+        "refutation",
+        "supposition",
+        "dichotomy"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q77",
+      "type": "meaning_match",
+      "prompt": "trepidation",
+      "word": "trepidation",
+      "phonetic": "trep-ih-day-shuhn",
+      "definition": "A feeling of fear or agitation about something that may happen.",
+      "sentence": "She approached the stage with considerable trepidation before her first speech.",
+      "options": [
+        "Showing great attention to detail or correct behavior; very careful about rules.",
+        "A feeling of fear or agitation about something that may happen.",
+        "Having or showing keen mental discernment and good judgment; shrewd."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q78",
+      "type": "fill_gap",
+      "prompt": "After weeks of tension, ___________ between the two factions finally began.",
+      "word": "conciliation",
+      "phonetic": "kuhn-sil-ee-ay-shuhn",
+      "definition": "The action of stopping someone from being angry; placation or mediation.",
+      "sentence": "After weeks of tension, conciliation between the two factions finally began.",
+      "options": [
+        "hegemony",
+        "conciliation",
+        "dichotomy"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q79",
+      "type": "guess_word",
+      "prompt": "Intended or likely to placate or pacify.",
+      "word": "conciliatory",
+      "phonetic": "kuhn-sil-ee-uh-tor-ee",
+      "definition": "Intended or likely to placate or pacify.",
+      "sentence": "His conciliatory gesture helped restore trust between the rival departments.",
+      "options": [
+        "acrimonious",
+        "ostentatious",
+        "conciliatory"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q80",
+      "type": "meaning_match",
+      "prompt": "despondently",
+      "word": "despondently",
+      "phonetic": "dih-spon-duhnt-lee",
+      "definition": "In a manner showing loss of hope or courage.",
+      "sentence": "She stared despondently at the rejection letter on her desk.",
+      "options": [
+        "With great care and perseverance; diligently.",
+        "In a manner showing loss of hope or courage.",
+        "Uncalled for; lacking good reason; unwarranted; done without necessity or justification."
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q81",
+      "type": "fill_gap",
+      "prompt": "The project's failure was attributed to bureaucratic ___________ at every level.",
+      "word": "dilatoriness",
+      "phonetic": "dil-uh-tor-ee-nuhs",
+      "definition": "The quality of being slow to act; deliberate delay.",
+      "sentence": "The project's failure was attributed to bureaucratic dilatoriness at every level.",
+      "options": [
+        "equanimity",
+        "dilatoriness",
+        "decrepitude"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q82",
+      "type": "guess_word",
+      "prompt": "The quality of having a ready insight into things; shrewdness.",
+      "word": "perspicacity",
+      "phonetic": "pur-spih-kas-ih-tee",
+      "definition": "The quality of having a ready insight into things; shrewdness.",
+      "sentence": "Her perspicacity in reading market trends made her an invaluable analyst.",
+      "options": [
+        "perspicacity",
+        "incongruity",
+        "trepidation"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q83",
+      "type": "meaning_match",
+      "prompt": "accoutrements",
+      "word": "accoutrements",
+      "phonetic": "uh-koo-truh-muhnts",
+      "definition": "Additional items of dress or equipment carried or worn.",
+      "sentence": "The knight's accoutrements included a polished shield and an ornate scabbard.",
+      "options": [
+        "Additional items of dress or equipment carried or worn.",
+        "A thing belonging or appropriate to a period other than that in which it exists; something out of its proper historical time.",
+        "The combination of elements or ideas into a coherent whole; a complex product formed by combining elements."
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q84",
+      "type": "fill_gap",
+      "prompt": "The ___________ consumed three city blocks before firefighters contained it.",
+      "word": "conflagration",
+      "phonetic": "kon-fluh-gray-shuhn",
+      "definition": "An extensive fire that destroys a great deal of land or property.",
+      "sentence": "The conflagration consumed three city blocks before firefighters contained it.",
+      "options": [
+        "refutation",
+        "conflagration",
+        "supposition"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q85",
+      "type": "guess_word",
+      "prompt": "Persisting tirelessly; showing sustained enthusiastic action.",
+      "word": "indefatigable",
+      "phonetic": "in-dih-fat-ih-guh-buhl",
+      "definition": "Persisting tirelessly; showing sustained enthusiastic action.",
+      "sentence": "The indefatigable campaigner knocked on doors every evening for six months.",
+      "options": [
+        "recalcitrant",
+        "indefatigable",
+        "magnanimous"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "id": "adult_advanced_q86",
+      "type": "meaning_match",
+      "prompt": "perambulation",
+      "word": "perambulation",
+      "phonetic": "puh-ram-byoo-lay-shuhn",
+      "definition": "A walk or journey, especially a leisurely one.",
+      "sentence": "His Sunday perambulation through the park became a cherished weekly ritual.",
+      "options": [
+        "The action of proving a statement or theory to be wrong or false.",
+        "An uncertain belief; an assumption or hypothesis.",
+        "A walk or journey, especially a leisurely one."
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": "adult_advanced_q87",
+      "type": "fill_gap",
+      "prompt": "The ___________ court had jurisdiction over matters of church doctrine.",
+      "word": "ecclesiastical",
+      "phonetic": "ih-klee-zee-as-tih-kuhl",
+      "definition": "Of or relating to the Christian Church or its clergy.",
+      "sentence": "The ecclesiastical court had jurisdiction over matters of church doctrine.",
+      "options": [
+        "ecclesiastical",
+        "ostentatious",
+        "clandestine"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "id": "adult_advanced_q88",
+      "type": "meaning_match",
+      "prompt": "exsanguination",
+      "word": "exsanguination",
+      "phonetic": "ek-sang-gwih-nay-shuhn",
+      "definition": "The action of draining a person or animal of blood.",
+      "sentence": "The forensic report identified exsanguination as the primary cause of death.",
+      "options": [
+        "An extensive fire that destroys a great deal of land or property.",
+        "The action of draining a person or animal of blood.",
+        "The quality of being slow to act; deliberate delay."
+      ],
+      "correctOptionIndex": 1
     }
   ],
   "metadata": {
     "source": "seed_word_banks",
     "generatedAt": "2026-02-23T12:00:00.000Z",
-    "questionCount": 60,
-    "wordCount": 60
+    "questionCount": 88,
+    "wordCount": 88
   }
 }
