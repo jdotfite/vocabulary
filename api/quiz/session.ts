@@ -66,7 +66,10 @@ export default async function handler(request: Request): Promise<Response> {
       );
     }
 
-    const count = Math.min(Math.max(1, body.count ?? config.count), 50);
+    const rawCount = body.count ?? config.count;
+    const count = typeof rawCount === "number" && Number.isFinite(rawCount)
+      ? Math.min(Math.max(1, Math.round(rawCount)), 50)
+      : config.count;
     const sql = getSQL();
 
     // Get user ability

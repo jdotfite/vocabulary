@@ -17,7 +17,7 @@ import {
   getWeakWordsPool,
   getAdaptivePool,
 } from "@/lib/questionPool";
-import { useUserProgress, getRecentlySeenWords } from "@/lib/userProgressStore";
+import { useUserProgress, getRecentlySeenWords, waitForLastAnswer } from "@/lib/userProgressStore";
 import type { AnyModeId, ModeQuestion, QuestionType } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
@@ -192,7 +192,9 @@ export function PlayPage(): JSX.Element {
         completedAt: new Date().toISOString(),
         abilityBefore: startAbility,
       };
-      void recordPracticeSession(payload)
+      // Wait for last answer API to land so abilityScore is fresh for summary
+      void waitForLastAnswer()
+        .then(() => recordPracticeSession(payload))
         .catch(() => undefined)
         .finally(() => navigate("/summary", { state: payload }));
       return;

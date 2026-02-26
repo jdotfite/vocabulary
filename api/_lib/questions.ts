@@ -43,39 +43,51 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 /**
- * Pick distractors for a target word from nearby-difficulty words.
- * Returns 2 distractor WordRows.
+ * Fetch a shared distractor pool in one query (avoids N+1 per-word queries).
+ * Returns words sorted randomly, covering a wide difficulty range.
  */
-async function pickDistractors(
+async function fetchDistractorPool(
   sql: NeonQueryFunction<false, false>,
-  targetWordId: string,
-  targetDifficulty: number
+  excludeIds: string[],
+  centerDifficulty: number
 ): Promise<WordRow[]> {
+  const exclude = excludeIds.length > 0 ? excludeIds : ["00000000-0000-0000-0000-000000000000"];
   const rows = (await sql`
     SELECT w.id, w.word, w.phonetic, w.definition, w.sentence, w.gap_sentence,
            w.difficulty_score, dt.mode_id
     FROM words w
     JOIN difficulty_tiers dt ON dt.id = w.tier_id
-    WHERE w.id != ${targetWordId}::uuid
-      AND w.difficulty_score BETWEEN ${targetDifficulty - 20} AND ${targetDifficulty + 20}
-    ORDER BY random()
-    LIMIT 10
+    WHERE w.id != ALL(${exclude}::uuid[])
+    ORDER BY ABS(COALESCE(w.difficulty_score, 50) - ${centerDifficulty}), random()
+    LIMIT 60
   `) as unknown as WordRow[];
+  return rows;
+}
 
-  if (rows.length >= 2) return rows.slice(0, 2);
+/**
+ * Pick 2 distractors for a target word from the pre-fetched pool.
+ * Prefers words within ±20 difficulty points.
+ */
+function pickDistractorsFromPool(
+  pool: WordRow[],
+  targetWordId: string,
+  targetDifficulty: number
+): WordRow[] {
+  const nearby: WordRow[] = [];
+  const rest: WordRow[] = [];
 
-  // Fallback: get any 2 random words
-  const fallback = (await sql`
-    SELECT w.id, w.word, w.phonetic, w.definition, w.sentence, w.gap_sentence,
-           w.difficulty_score, dt.mode_id
-    FROM words w
-    JOIN difficulty_tiers dt ON dt.id = w.tier_id
-    WHERE w.id != ${targetWordId}::uuid
-    ORDER BY random()
-    LIMIT 2
-  `) as unknown as WordRow[];
+  for (const w of pool) {
+    if (w.id === targetWordId) continue;
+    const diff = Math.abs((w.difficulty_score ?? 50) - targetDifficulty);
+    if (diff <= 20) {
+      nearby.push(w);
+    } else {
+      rest.push(w);
+    }
+  }
 
-  return fallback;
+  const candidates = [...nearby, ...rest];
+  return candidates.slice(0, 2);
 }
 
 /**
@@ -149,17 +161,27 @@ function assembleQuestion(
 
 /**
  * Build a full set of questions from selected words.
+ * Fetches one shared distractor pool to avoid N+1 queries.
  */
 export async function buildQuestions(
   sql: NeonQueryFunction<false, false>,
   words: WordRow[],
   typeOverride?: "guess_word" | "meaning_match" | "fill_gap"
 ): Promise<GeneratedQuestion[]> {
-  const questions: GeneratedQuestion[] = [];
+  if (words.length === 0) return [];
 
+  // Compute center difficulty for the distractor pool
+  const avgDifficulty =
+    words.reduce((sum, w) => sum + (w.difficulty_score ?? 50), 0) / words.length;
+  const wordIds = words.map((w) => w.id);
+
+  // Single query for all distractors
+  const pool = await fetchDistractorPool(sql, wordIds, avgDifficulty);
+
+  const questions: GeneratedQuestion[] = [];
   for (const word of words) {
-    const distractors = await pickDistractors(
-      sql,
+    const distractors = pickDistractorsFromPool(
+      pool,
       word.id,
       word.difficulty_score ?? 50
     );

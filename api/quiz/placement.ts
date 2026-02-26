@@ -33,8 +33,14 @@ export default async function handler(request: Request): Promise<Response> {
 
   try {
     const body = (await request.json()) as PlacementRequest;
-    const targetDifficulty = Math.min(Math.max(0, body.targetDifficulty ?? 50), 100);
-    const count = Math.min(Math.max(1, body.count ?? 5), 10);
+    const rawDifficulty = body.targetDifficulty ?? 50;
+    const targetDifficulty = typeof rawDifficulty === "number" && Number.isFinite(rawDifficulty)
+      ? Math.min(Math.max(0, rawDifficulty), 100)
+      : 50;
+    const rawCount = body.count ?? 5;
+    const count = typeof rawCount === "number" && Number.isFinite(rawCount)
+      ? Math.min(Math.max(1, Math.round(rawCount)), 10)
+      : 5;
 
     const sql = getSQL();
 

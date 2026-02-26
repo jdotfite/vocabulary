@@ -6,8 +6,8 @@
 // Elo ability update
 // ---------------------------------------------------------------------------
 
-const K = 4; // sensitivity factor
-const SCALE = 15; // logistic scale
+export const ELO_K = 4; // sensitivity factor
+export const ELO_SCALE = 15; // logistic scale
 
 export function computeEloUpdate(
   userAbility: number,
@@ -15,9 +15,9 @@ export function computeEloUpdate(
   isCorrect: boolean
 ): number {
   const expected =
-    1 / (1 + Math.exp((wordDifficulty - userAbility) / SCALE));
+    1 / (1 + Math.exp((wordDifficulty - userAbility) / ELO_SCALE));
   const actual = isCorrect ? 1 : 0;
-  const newAbility = userAbility + K * (actual - expected);
+  const newAbility = userAbility + ELO_K * (actual - expected);
   return clamp(0, 100, newAbility);
 }
 
@@ -41,8 +41,8 @@ export function computeSrsInterval(
     // Reset to shortest interval on incorrect
     intervalHours = SRS_INTERVALS[0] ?? 4;
   } else {
-    // Use streak to index into intervals (capped at max)
-    const idx = Math.min(currentStreak, SRS_INTERVALS.length - 1);
+    // Use streak-1 as index (streak=1 after first correct → index 0 → 4h)
+    const idx = Math.min(Math.max(0, currentStreak - 1), SRS_INTERVALS.length - 1);
     intervalHours = SRS_INTERVALS[idx] ?? 4;
   }
 

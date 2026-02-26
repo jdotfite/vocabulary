@@ -39,6 +39,14 @@ interface UserProgressState {
   reset: () => void;
 }
 
+// Track last pending answer API call so navigation can wait for ability update
+let _lastAnswerPromise: Promise<void> = Promise.resolve();
+
+/** Wait for the most recent recordAnswer API call to complete. */
+export function waitForLastAnswer(): Promise<void> {
+  return _lastAnswerPromise;
+}
+
 export const useUserProgress = create<UserProgressState>()((set, get) => ({
   initialized: false,
   wordStats: {},
@@ -94,8 +102,8 @@ export const useUserProgress = create<UserProgressState>()((set, get) => ({
       return { wordStats: { ...state.wordStats, [word]: updated } };
     });
 
-    // Fire-and-forget API call — update abilityScore from response
-    apiPost<{ ok: boolean; abilityScore?: number }>("/api/progress/answer", { word, isCorrect })
+    // API call — update abilityScore from response; track promise for navigation
+    _lastAnswerPromise = apiPost<{ ok: boolean; abilityScore?: number }>("/api/progress/answer", { word, isCorrect })
       .then((res) => {
         if (typeof res.abilityScore === "number") {
           set({ abilityScore: res.abilityScore });

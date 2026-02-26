@@ -19,7 +19,7 @@ import type { ChallengeMode } from "@/game/quizReducer";
 import { CHALLENGE_CONFIGS } from "@/lib/challengeConfig";
 import { recordPracticeSession } from "@/lib/practiceStats";
 import { getSprintPool, getPerfectionPool, getRushPool, getLevelTestPool, getAdaptivePool } from "@/lib/questionPool";
-import { useUserProgress } from "@/lib/userProgressStore";
+import { useUserProgress, waitForLastAnswer } from "@/lib/userProgressStore";
 import type { AnyModeId, ModeQuestion } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
@@ -308,7 +308,9 @@ export function ChallengePlayPage(): JSX.Element {
 
     const destination = isLevelTest ? "/level" : "/summary";
 
-    void recordPracticeSession(payload)
+    // Wait for last answer API to land so abilityScore is fresh for summary
+    void waitForLastAnswer()
+      .then(() => recordPracticeSession(payload))
       .catch(() => undefined)
       .finally(() => navigate(destination, { state: payload }));
   }, [challengeType, isLevelTest, state.score, state.answers, navigate, startAbility]);
