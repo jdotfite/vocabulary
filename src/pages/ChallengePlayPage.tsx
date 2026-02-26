@@ -315,8 +315,9 @@ export function ChallengePlayPage(): JSX.Element {
       .finally(() => navigate(destination, { state: payload }));
   }, [challengeType, isLevelTest, state.score, state.answers, navigate, startAbility]);
 
-  // Navigate when finished
+  // Navigate when finished (skip while still loading questions)
   useEffect(() => {
+    if (loading) return;
     if (state.status !== "finished") return;
 
     if (state.answers.length === 0) {
@@ -325,7 +326,7 @@ export function ChallengePlayPage(): JSX.Element {
     }
 
     finishGame();
-  }, [state.status, state.answers.length, finishGame, navigate]);
+  }, [loading, state.status, state.answers.length, finishGame, navigate]);
 
   // Redirect invalid challenge types
   if (!isValidType) {
