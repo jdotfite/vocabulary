@@ -329,6 +329,9 @@ async function main() {
 
   let totalErrors = 0;
 
+  // Cross-mode duplicate tracking: word → first mode file that claimed it
+  const globalWordMap = new Map();
+
   for (const target of targets) {
     const absolutePath = path.isAbsolute(target) ? target : path.join(rootDir, target);
     let data;
@@ -342,6 +345,24 @@ async function main() {
     }
 
     const errors = validateModePayload(data, absolutePath);
+
+    // Check for cross-mode duplicate words
+    if (Array.isArray(data.questions)) {
+      const fileName = path.basename(absolutePath);
+      for (const q of data.questions) {
+        if (!isNonEmptyString(q.word)) continue;
+        const wordKey = normalizeText(q.word);
+        const existingFile = globalWordMap.get(wordKey);
+        if (existingFile && existingFile !== fileName) {
+          errors.push(
+            `word '${q.word}' also appears in ${existingFile} (cross-mode duplicate).`
+          );
+        } else {
+          globalWordMap.set(wordKey, fileName);
+        }
+      }
+    }
+
     if (errors.length === 0) {
       console.log(`[ok] ${absolutePath}`);
       continue;

@@ -137,15 +137,15 @@
     {
       "id": "kids_advanced_q09",
       "type": "fill_gap",
-      "prompt": "We learned a new _______ for solving the math problem.",
-      "word": "method",
-      "phonetic": "meth-ud",
-      "definition": "A step-by-step way of doing something.",
-      "sentence": "The teacher showed us a method for measuring carefully.",
+      "prompt": "The _______ fox found a way to open the gate all by itself.",
+      "word": "clever",
+      "phonetic": "klev-er",
+      "definition": "Quick to understand and find smart solutions.",
+      "sentence": "The clever student solved the puzzle before anyone else.",
       "options": [
-        "method",
-        "review",
-        "design"
+        "clever",
+        "frozen",
+        "barren"
       ],
       "correctOptionIndex": 0
     },
@@ -272,17 +272,17 @@
     {
       "id": "kids_advanced_q18",
       "type": "fill_gap",
-      "prompt": "The company plans to _______ the playground by adding two new sections.",
-      "word": "expand",
-      "phonetic": "ik-spand",
-      "definition": "To grow larger or take up more space.",
-      "sentence": "Plants expand toward sunlight as they grow.",
+      "prompt": "The _______ bridge held up even during the heavy storm.",
+      "word": "sturdy",
+      "phonetic": "stur-dee",
+      "definition": "Strong and well-built; not easily broken.",
+      "sentence": "The sturdy table did not wobble at all.",
       "options": [
-        "invent",
-        "legend",
-        "expand"
+        "scarce",
+        "sturdy",
+        "mighty"
       ],
-      "correctOptionIndex": 2
+      "correctOptionIndex": 1
     },
     {
       "id": "kids_advanced_q19",
