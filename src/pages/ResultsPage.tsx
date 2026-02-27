@@ -1,27 +1,14 @@
-import { useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { ResultsListItem } from "@/design-system/components/ResultsListItem";
 import { Button } from "@/design-system/primitives/Button";
-import { getAllModes } from "@/lib/modes";
 import { useUserProgress } from "@/lib/userProgressStore";
-import type { ModeQuestion } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
 
 export function ResultsPage(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   const payload = location.state as CompletedQuizPayload | undefined;
-
-  const questionMap = useMemo(() => {
-    const map = new Map<string, ModeQuestion>();
-    for (const mode of getAllModes()) {
-      for (const q of mode.questions) {
-        map.set(q.id, q);
-      }
-    }
-    return map;
-  }, []);
 
   const favorites = useUserProgress((s) => s.favorites);
   const bookmarks = useUserProgress((s) => s.bookmarks);
@@ -80,20 +67,20 @@ export function ResultsPage(): JSX.Element {
 
       <section className="pb-4">
         {payload.answers.map((answer) => {
-          const question = questionMap.get(answer.questionId);
-          if (!question) return null;
+          const word = answer.word;
+          if (!word) return null;
           return (
             <ResultsListItem
-              definition={question.definition}
-              isBookmarked={bookmarks.includes(question.word)}
+              definition={answer.definition ?? ""}
+              isBookmarked={bookmarks.includes(word)}
               isCorrect={answer.isCorrect}
-              isFavorited={favorites.includes(question.word)}
+              isFavorited={favorites.includes(word)}
               key={answer.questionId}
-              onToggleBookmark={() => toggleBookmark(question.word)}
-              onToggleFavorite={() => toggleFavorite(question.word)}
-              phonetic={question.phonetic}
-              sentence={question.sentence}
-              word={question.word}
+              onToggleBookmark={() => toggleBookmark(word)}
+              onToggleFavorite={() => toggleFavorite(word)}
+              phonetic={answer.phonetic ?? ""}
+              sentence={answer.sentence ?? ""}
+              word={word}
             />
           );
         })}

@@ -8,7 +8,8 @@ export interface LevelLadderProps {
 
 export function LevelLadder({
   levels,
-  currentLevel
+  currentLevel,
+  progressToNext
 }: LevelLadderProps): JSX.Element {
   const currentIndex = levels.findIndex((level) => level === currentLevel);
 
@@ -36,7 +37,14 @@ export function LevelLadder({
                 <div className="absolute bottom-1/2 left-1/2 top-[-1rem] w-[6px] -translate-x-1/2 rounded-full bg-white/20" />
               )}
               {index !== levels.length - 1 && (
-                <div className="absolute bottom-[-1rem] left-1/2 top-1/2 w-[6px] -translate-x-1/2 rounded-full bg-white/20" />
+                <div className="absolute bottom-[-1rem] left-1/2 top-1/2 w-[6px] -translate-x-1/2 rounded-full bg-white/20">
+                  {isCurrent && (
+                    <div
+                      className="absolute inset-x-0 top-0 rounded-full bg-accent-teal"
+                      style={{ height: `${progressToNext * 100}%` }}
+                    />
+                  )}
+                </div>
               )}
 
               {/* Dot */}

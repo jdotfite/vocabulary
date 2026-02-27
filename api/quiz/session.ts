@@ -24,7 +24,7 @@ const MODE_CONFIG: Record<
     stratified?: boolean;
   }
 > = {
-  shuffle: { count: 15 },
+  shuffle: { count: 8 },
   guess_word: { count: 15, questionType: "guess_word" },
   meaning_match: { count: 15, questionType: "meaning_match" },
   fill_gap: { count: 15, questionType: "fill_gap" },

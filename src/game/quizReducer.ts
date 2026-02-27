@@ -5,6 +5,10 @@ export interface QuizAnswerRecord {
   selectedOptionIndex: number;
   correctOptionIndex: number;
   isCorrect: boolean;
+  word?: string | undefined;
+  definition?: string | undefined;
+  phonetic?: string | undefined;
+  sentence?: string | undefined;
 }
 
 export type ChallengeMode = "standard" | "sprint" | "perfection" | "rush";
@@ -30,11 +34,16 @@ export type QuizAction =
       questionType?: string | undefined;
       optionIndex: number;
       correctOptionIndex: number;
+      word?: string | undefined;
+      definition?: string | undefined;
+      phonetic?: string | undefined;
+      sentence?: string | undefined;
     }
   | { type: "nextQuestion" }
   | { type: "reset"; totalQuestions: number; challengeMode?: ChallengeMode; lives?: number }
   | { type: "sprintReshuffle"; totalQuestions: number }
   | { type: "rushReshuffle"; totalQuestions: number }
+  | { type: "perfectionReshuffle"; totalQuestions: number }
   | { type: "failPerfection" }
   | { type: "timeUp" };
 
@@ -86,7 +95,11 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
             questionType: action.questionType,
             selectedOptionIndex: action.optionIndex,
             correctOptionIndex: action.correctOptionIndex,
-            isCorrect
+            isCorrect,
+            word: action.word,
+            definition: action.definition,
+            phonetic: action.phonetic,
+            sentence: action.sentence
           }
         ]
       };
@@ -136,6 +149,18 @@ export function quizReducer(state: QuizState, action: QuizAction): QuizState {
 
     case "rushReshuffle": {
       if (state.challengeMode !== "rush") return state;
+      return {
+        ...state,
+        totalQuestions: action.totalQuestions,
+        currentIndex: 0,
+        selectedOptionIndex: null,
+        isAnswered: false
+        // score, answers, and lives are preserved
+      };
+    }
+
+    case "perfectionReshuffle": {
+      if (state.challengeMode !== "perfection") return state;
       return {
         ...state,
         totalQuestions: action.totalQuestions,

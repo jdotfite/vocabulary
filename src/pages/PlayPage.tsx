@@ -172,7 +172,11 @@ export function PlayPage(): JSX.Element {
       wordId: currentQuestion.wordId,
       questionType: currentQuestion.type,
       optionIndex,
-      correctOptionIndex: currentQuestion.correctOptionIndex
+      correctOptionIndex: currentQuestion.correctOptionIndex,
+      word: currentQuestion.word,
+      definition: currentQuestion.definition,
+      phonetic: currentQuestion.phonetic,
+      sentence: currentQuestion.sentence
     });
     recordAnswer(currentQuestion.word, isCorrect);
   };

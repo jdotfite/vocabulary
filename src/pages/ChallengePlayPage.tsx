@@ -260,7 +260,11 @@ export function ChallengePlayPage(): JSX.Element {
         wordId: currentQuestion.wordId,
         questionType: currentQuestion.type,
         optionIndex: -1,
-        correctOptionIndex: currentQuestion.correctOptionIndex
+        correctOptionIndex: currentQuestion.correctOptionIndex,
+        word: currentQuestion.word,
+        definition: currentQuestion.definition,
+        phonetic: currentQuestion.phonetic,
+        sentence: currentQuestion.sentence
       });
       recordAnswer(currentQuestion.word, false);
     }
@@ -395,7 +399,11 @@ export function ChallengePlayPage(): JSX.Element {
       wordId: currentQuestion.wordId,
       questionType: currentQuestion.type,
       optionIndex,
-      correctOptionIndex: currentQuestion.correctOptionIndex
+      correctOptionIndex: currentQuestion.correctOptionIndex,
+      word: currentQuestion.word,
+      definition: currentQuestion.definition,
+      phonetic: currentQuestion.phonetic,
+      sentence: currentQuestion.sentence
     });
     recordAnswer(currentQuestion.word, isCorrect);
 
@@ -438,10 +446,14 @@ export function ChallengePlayPage(): JSX.Element {
       return;
     }
 
-    // For perfection: if a wrong answer was given but lives remain, continue
+    // For perfection: reshuffle when pool exhausted (lives still remain)
     const isLast = state.currentIndex >= questionPool.length - 1;
-    if (isLast) {
-      dispatch({ type: "failPerfection" });
+    if (isLast && isPerfection) {
+      const fallback = (): ModeQuestion[] => getPerfectionPool(prefs, frozenWordStats);
+      void getAdaptivePool("perfection" as AnyModeId, fallback, 10).then((newPool) => {
+        setQuestionPool(newPool);
+        dispatch({ type: "perfectionReshuffle", totalQuestions: newPool.length });
+      });
       return;
     }
 

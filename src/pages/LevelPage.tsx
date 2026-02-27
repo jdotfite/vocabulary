@@ -68,7 +68,14 @@ export function LevelPage(): JSX.Element {
         </Surface>
         <Surface className="p-3 text-center" variant="default">
           <p className="text-sm text-text-secondary">Points to next level</p>
-          <p className="text-3xl font-bold">{Math.max(payload.total - payload.score, 0)}</p>
+          <p className="text-3xl font-bold">
+            {abilityScore >= 85
+              ? "Max!"
+              : Math.max(
+                  (abilityScore >= 70 ? 85 : abilityScore >= 50 ? 70 : abilityScore >= 30 ? 50 : 30) - abilityScore,
+                  0
+                )}
+          </p>
         </Surface>
       </div>
 

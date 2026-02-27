@@ -165,4 +165,42 @@ describe("quizReducer", () => {
     expect(reshuffled.lives).toBe(2);
     expect(reshuffled.isAnswered).toBe(false);
   });
+
+  it("perfectionReshuffle resets index but preserves score and lives", () => {
+    let state = createInitialQuizState(2, "perfection", 3);
+    state = quizReducer(state, {
+      type: "selectOption",
+      questionId: "q1",
+      optionIndex: 1,
+      correctOptionIndex: 1
+    });
+    state = quizReducer(state, { type: "nextQuestion" });
+    state = quizReducer(state, {
+      type: "selectOption",
+      questionId: "q2",
+      optionIndex: 1,
+      correctOptionIndex: 1
+    });
+
+    const reshuffled = quizReducer(state, {
+      type: "perfectionReshuffle",
+      totalQuestions: 8
+    });
+
+    expect(reshuffled.currentIndex).toBe(0);
+    expect(reshuffled.totalQuestions).toBe(8);
+    expect(reshuffled.score).toBe(2);
+    expect(reshuffled.lives).toBe(3);
+    expect(reshuffled.isAnswered).toBe(false);
+    expect(reshuffled.answers).toHaveLength(2);
+  });
+
+  it("perfectionReshuffle is ignored for non-perfection modes", () => {
+    const state = createInitialQuizState(5, "rush", 3);
+    const result = quizReducer(state, {
+      type: "perfectionReshuffle",
+      totalQuestions: 8
+    });
+    expect(result).toBe(state);
+  });
 });
