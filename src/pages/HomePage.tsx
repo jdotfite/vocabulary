@@ -128,7 +128,12 @@ export function HomePage(): JSX.Element {
   const timeOfDay = getTimeOfDay();
   const rankLabel = getRankLabel(abilityScore);
   const levelNumber = getLevelNumber(abilityScore);
-  const dailyInsight = getDailyHomeInsight();
+  const dailyInsight = getDailyHomeInsight({
+    streakCount,
+    wordsForReview,
+    wordsMastered,
+    accuracy
+  });
 
   const greeting = nickname
     ? `Good ${timeOfDay}, ${nickname}.`

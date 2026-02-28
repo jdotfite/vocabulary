@@ -10,7 +10,9 @@ describe("motivationCopy", () => {
   const sampleDate = new Date("2026-02-28T09:00:00");
 
   it("returns a stable daily home insight for the same day", () => {
-    expect(getDailyHomeInsight(sampleDate)).toBe(getDailyHomeInsight(sampleDate));
+    expect(getDailyHomeInsight(undefined, sampleDate)).toBe(
+      getDailyHomeInsight(undefined, sampleDate)
+    );
   });
 
   it("returns a stable challenge insight for the same mode and day", () => {
@@ -23,5 +25,13 @@ describe("motivationCopy", () => {
     expect(getSummaryInsight(8, 10, sampleDate)).toBe(
       getSummaryInsight(8, 10, sampleDate)
     );
+  });
+
+  it("prefers review-focused copy when words are due", () => {
+    const insight = getDailyHomeInsight(
+      { wordsForReview: 4, streakCount: 5, wordsMastered: 12, accuracy: 90 },
+      sampleDate
+    );
+    expect(insight.toLowerCase()).toMatch(/review|weak|revisit/);
   });
 });
