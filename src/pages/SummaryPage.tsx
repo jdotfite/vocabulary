@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ScoreRing } from "@/design-system/components/ScoreRing";
 import { Button } from "@/design-system/primitives/Button";
 import { Surface } from "@/design-system/primitives/Surface";
+import { getSummaryInsight } from "@/lib/motivationCopy";
 import { useUserProgress } from "@/lib/userProgressStore";
 import type { AnyModeId } from "@/types/content";
 import type { CompletedQuizPayload } from "@/types/session";
@@ -71,6 +72,7 @@ export function SummaryPage(): JSX.Element {
 
   const percentage = payload.total > 0 ? Math.round((payload.score / payload.total) * 100) : 0;
   const nextActions = getNextActions(payload.modeId, payload.score, payload.total);
+  const summaryInsight = getSummaryInsight(payload.score, payload.total);
 
   return (
     <main className="space-y-6 pt-6 text-center">
@@ -118,8 +120,13 @@ export function SummaryPage(): JSX.Element {
         </Surface>
       ) : null}
 
-      <Surface className="mx-auto p-4 text-center text-sm text-text-secondary" variant="default">
-        Practicing at least 5 days a week allows you to retain <strong className="text-text-primary">25%</strong> more words
+      <Surface className="mx-auto p-4 text-center" variant="default">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-text-secondary">
+          Why It Matters
+        </p>
+        <p className="mt-1 text-sm font-semibold text-text-primary">
+          {summaryInsight}
+        </p>
       </Surface>
 
       <Button onClick={() => navigate("/results", { state: payload })} variant="primary">

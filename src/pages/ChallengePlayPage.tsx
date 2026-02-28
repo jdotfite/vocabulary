@@ -17,6 +17,7 @@ import {
 } from "@/game/quizReducer";
 import type { ChallengeMode } from "@/game/quizReducer";
 import { CHALLENGE_CONFIGS } from "@/lib/challengeConfig";
+import { getChallengeInsight } from "@/lib/motivationCopy";
 import { recordPracticeSession } from "@/lib/practiceStats";
 import { getSprintPool, getPerfectionPool, getRushPool, getLevelTestPool, getAdaptivePool } from "@/lib/questionPool";
 import { useUserProgress, waitForLastAnswer } from "@/lib/userProgressStore";
@@ -360,6 +361,7 @@ export function ChallengePlayPage(): JSX.Element {
             setShowSplash(false);
           }}
           onToggleDismiss={() => setLocalDismissToggle((v) => !v)}
+          insight={getChallengeInsight(challengeType)}
           placeholderColor={config.accentColor}
           rules={config.rules}
           title={config.title}

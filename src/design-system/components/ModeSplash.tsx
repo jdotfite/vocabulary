@@ -4,6 +4,7 @@ import { Surface } from "@/design-system/primitives/Surface";
 interface ModeSplashProps {
   title: string;
   rules: { icon: string; text: string }[];
+  insight?: string;
   placeholderColor: string;
   onStart: () => void;
   onClose: () => void;
@@ -157,6 +158,7 @@ function PlaceholderIllustration({ color, title }: { color: string; title: strin
 export function ModeSplash({
   title,
   rules,
+  insight,
   placeholderColor,
   onStart,
   onClose,
@@ -195,6 +197,17 @@ export function ModeSplash({
             </div>
           ))}
         </Surface>
+
+        {insight ? (
+          <Surface className="w-full p-4" variant="default">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-text-secondary">
+              Why It Helps
+            </p>
+            <p className="mt-1 text-sm font-semibold text-text-primary">
+              {insight}
+            </p>
+          </Surface>
+        ) : null}
       </div>
 
       {/* Bottom area */}
