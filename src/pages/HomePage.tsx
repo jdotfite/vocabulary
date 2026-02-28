@@ -12,6 +12,7 @@ import {
   FolderIcon
 } from "@/design-system/icons";
 import { Surface } from "@/design-system/primitives/Surface";
+import { getDailyHomeInsight } from "@/lib/motivationCopy";
 import {
   getPracticeStatsSnapshot,
   type PracticeStatsSnapshot
@@ -127,6 +128,7 @@ export function HomePage(): JSX.Element {
   const timeOfDay = getTimeOfDay();
   const rankLabel = getRankLabel(abilityScore);
   const levelNumber = getLevelNumber(abilityScore);
+  const dailyInsight = getDailyHomeInsight();
 
   const greeting = nickname
     ? `Good ${timeOfDay}, ${nickname}.`
@@ -159,6 +161,15 @@ export function HomePage(): JSX.Element {
             ⭐ {wordsMastered}
           </span>
         </button>
+
+        <Surface className="mt-3 p-3" variant="default">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-text-secondary">
+            Today&apos;s word note
+          </p>
+          <p className="mt-1 text-sm font-semibold text-text-primary">
+            {dailyInsight}
+          </p>
+        </Surface>
       </header>
 
       {/* ── 2. Primary CTA — Continue Streak ── */}
